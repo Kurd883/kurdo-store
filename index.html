@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KurdoStore | وجهتك الموثوقة للحسابات الرقمية</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
             --bg-color: #0d0d0d;
@@ -129,13 +128,6 @@
         .buy-btn:hover {
             background-color: var(--gold-light);
         }
-        .empty-msg, .loading-msg {
-            text-align: center;
-            color: var(--text-muted);
-            grid-column: 1 / -1;
-            padding: 40px;
-            font-size: 1.1rem;
-        }
         footer {
             text-align: center;
             margin-top: 40px;
@@ -157,72 +149,35 @@
     <div class="container">
         <h2 class="section-title">الحسابات المتوفرة حالياً</h2>
         <div id="products-grid" class="grid">
-            <div class="loading-msg">جاري تحميل الحسابات...</div>
+            <!-- المنتجات المعروضة مباشرة لتجنب مشاكل الاتصال -->
+            <div class="card">
+                <img src="https://i.postimg.cc/nzrqLjKw/IMG-288..." alt="حساب Apple ID (توم ريدر + ماينكرافت)">
+                <div class="card-content">
+                    <div class="card-title">حساب Apple ID (توم ريدر + ماينكرافت)</div>
+                    <div class="card-desc">حساب أبل ستور مشحون ومشتراة فيه الألعاب الأصلية بالكامل</div>
+                    <div class="card-footer">
+                        <div class="price">4$</div>
+                        <a href="https://t.me/yousifmziri?text=مرحباً، أريد شراء حساب Apple ID (توم ريدر + ماينكرافت)" target="_blank" class="buy-btn">شراء</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://i.postimg.cc/8cVWmKg1/IMG-2..." alt="حساب Apple ID (ماينكرافت)">
+                <div class="card-content">
+                    <div class="card-title">حساب Apple ID (ماينكرافت)</div>
+                    <div class="card-desc">حساب أبل ستور مشحون ومشتراة فيه الألعاب</div>
+                    <div class="card-footer">
+                        <div class="price">1$</div>
+                        <a href="https://t.me/yousifmziri?text=مرحباً، أريد شراء حساب Apple ID (ماينكرافت)" target="_blank" class="buy-btn">شراء</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <footer>
         جميع الحقوق محفوظة &copy; KurdoStore 2026
     </footer>
-
-    <script>
-        const SUPABASE_URL = 'https://lxfjvksxsuwmvixqautv.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4Zmp2a3N4c3V3bXZpeHFhdXR2IjsxMGxlIjoiYW5vbiIsImlhdCI6MTc5NDg0ODY5NSwiZXhwIjoyMTEwNDI0Njk1fQ.hPGN7e04cL3YQXpLz2hqkmsE_TMHaGh-4ANirJoEVpU';
-
-        const { createClient } = supabase;
-        const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-        async function loadProducts() {
-            const grid = document.getElementById('products-grid');
-            
-            try {
-                const { data, error } = await _supabase
-                    .from('accounts')
-                    .select('*');
-
-                if (error) throw error;
-
-                if (!data || data.length === 0) {
-                    grid.innerHTML = '<div class="empty-msg">لا توجد حسابات متاحة حالياً.</div>';
-                    return;
-                }
-
-                grid.innerHTML = '';
-                data.forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    
-                    const imageUrl = item['image-url'] || 'https://via.placeholder.com/300x160/161616/d4af37?text=KurdoStore';
-                    const title = item.title || 'حساب رقمي';
-                    const description = item.description || 'بدون تفاصيل إضافية';
-                    const price = item.price ? `${item.price}` : '';
-                    
-                    const telegramUrl = `https://t.me/yousifmziri?text=مرحباً، أريد شراء هذا الحساب: ${encodeURIComponent(title)}`;
-
-                    card.innerHTML = `
-                        <img src="${imageUrl}" alt="${title}" onerror="this.src='https://via.placeholder.com/300x160/161616/d4af37?text=KurdoStore'">
-                        <div class="card-content">
-                            <div class="card-title">${title}</div>
-                            <div class="card-desc">${description}</div>
-                            <div class="card-footer">
-                                <div class="price">${price}</div>
-                                <a href="${telegramUrl}" target="_blank" class="buy-btn">شراء</a>
-                            </div>
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                });
-
-            } colspan => {
-                console.error('Error loading products:', err);
-                grid.innerHTML = `<div class="empty-msg">حدث خطأ أثناء تحميل المنتجات. تأكد من إعدادات الاتصال.</div>`;
-            } catch (err) {
-                console.error('Error loading products:', err);
-                grid.innerHTML = `<div class="empty-msg">حدث خطأ أثناء تحميل المنتجات. تأكد من إعدادات الاتصال.</div>`;
-            }
-        }
-
-        loadProducts();
-    </script>
 </body>
 </html>
