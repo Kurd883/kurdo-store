@@ -3,326 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KurdoStore | متجر الحسابات الرقمية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <title>KurdoStore | وجهتك الموثوقة للحسابات الرقمية</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
-            --bg-dark: #0a0a0c;
-            --card-bg: #141418;
-            --gold-primary: #d4af37;
+            --bg-color: #0d0d0d;
+            --card-bg: #161616;
+            --gold: #d4af37;
             --gold-light: #f3e5ab;
-            --gold-hover: #b5952f;
             --text-main: #ffffff;
-            --text-muted: #a0a0ab;
-            --border-color: rgba(212, 175, 55, 0.25);
+            --text-muted: #a0a0a0;
+            --border-gold: rgba(212, 175, 55, 0.3);
         }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Cairo', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
-
         body {
-            background-color: var(--bg-dark);
+            background-color: var(--bg-color);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            padding: 20px;
         }
-
-        /* Header */
         header {
-            background: linear-gradient(180deg, rgba(20,20,24,0.98) 0%, rgba(10,10,12,0.95) 100%);
-            border-bottom: 1px solid var(--border-color);
-            padding: 1.5rem 5%;
             text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
+            margin: 30px 0;
+            border-bottom: 1px solid var(--border-gold);
+            padding-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
         }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--gold-primary), var(--gold-light), var(--gold-primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        header h1 {
+            color: var(--gold);
+            font-size: 2.2rem;
+            margin-bottom: 5px;
             letter-spacing: 1px;
         }
-
-        .subtitle {
+        header p {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 0.3rem;
+            font-size: 0.95rem;
         }
-
-        /* Main Container */
-        main {
-            flex: 1;
-            max-width: 1200px;
+        .container {
             width: 100%;
-            margin: 2rem auto;
-            padding: 0 1.2rem;
+            max-width: 1000px;
+            flex: 1;
         }
-
         .section-title {
+            color: var(--gold);
             font-size: 1.4rem;
-            color: var(--gold-primary);
-            margin-bottom: 1.5rem;
-            border-right: 4px solid var(--gold-primary);
-            padding-right: 12px;
+            margin-bottom: 20px;
+            border-right: 4px solid var(--gold);
+            padding-right: 10px;
         }
-
-        /* Grid */
-        .accounts-grid {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.8rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
         }
-
-        /* Card */
         .card {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
+            border: 1px solid var(--border-gold);
+            border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-
         .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
-            border-color: var(--gold-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
         }
-
-        .image-slider {
-            position: relative;
+        .card img {
             width: 100%;
-            height: 210px;
-            background-color: #000;
-            overflow: hidden;
-        }
-
-        .image-slider img {
-            width: 100%;
-            height: 100%;
+            height: 160px;
             object-fit: cover;
-            transition: opacity 0.3s ease;
+            border-bottom: 1px solid var(--border-gold);
         }
-
-        .slider-dots {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 6px;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 4px 10px;
-            border-radius: 20px;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .dot.active {
-            background: var(--gold-primary);
-            transform: scale(1.2);
-        }
-
-        .badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(10, 10, 12, 0.85);
-            color: var(--gold-primary);
-            border: 1px solid var(--gold-primary);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
-
-        .card-body {
-            padding: 1.4rem;
-            flex: 1;
+        .card-content {
+            padding: 15px;
             display: flex;
             flex-direction: column;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 0.6rem;
-        }
-
-        .card-desc {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 1.2rem;
             flex: 1;
         }
-
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+        .card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            flex: 1;
+            line-height: 1.4;
+        }
         .card-footer {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 1rem;
+            align-items: center;
             margin-top: auto;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
-
         .price {
-            font-size: 1.35rem;
-            font-weight: 900;
-            color: var(--gold-primary);
-        }
-
-        .buy-btn {
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-hover));
-            color: #000;
-            border: none;
-            padding: 0.6rem 1.4rem;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            cursor: pointer;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .buy-btn:hover {
-            filter: brightness(1.1);
-            transform: scale(1.03);
-        }
-
-        .loader {
-            text-align: center;
-            padding: 3rem;
-            color: var(--gold-primary);
+            color: var(--gold-light);
+            font-weight: bold;
             font-size: 1.1rem;
         }
-
+        .buy-btn {
+            background-color: var(--gold);
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+        .buy-btn:hover {
+            background-color: var(--gold-light);
+        }
+        .empty-msg, .loading-msg {
+            text-align: center;
+            color: var(--text-muted);
+            grid-column: 1 / -1;
+            padding: 40px;
+            font-size: 1.1rem;
+        }
         footer {
             text-align: center;
-            padding: 1.5rem;
-            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+            padding: 20px 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
             color: var(--text-muted);
             font-size: 0.85rem;
-            margin-top: 3rem;
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">KurdoStore</div>
-        <div class="subtitle">وجهتك الموثوقة للحسابات الرقمية والألعاب الأصلية</div>
+        <h1>KurdoStore</h1>
+        <p>وجهتك الموثوقة للحسابات الرقمية والألعاب الأصلية</p>
     </header>
 
-    <main>
+    <div class="container">
         <h2 class="section-title">الحسابات المتوفرة حالياً</h2>
-        <div id="accounts-container" class="accounts-grid">
-            <div class="loader">جاري تحميل الحسابات...</div>
+        <div id="products-grid" class="grid">
+            <div class="loading-msg">جاري تحميل الحسابات...</div>
         </div>
-    </main>
+    </div>
 
     <footer>
-        جميع الحقوق محفوظة &copy; 2026 KurdoStore
+        جميع الحقوق محفوظة &copy; KurdoStore 2026
     </footer>
 
     <script>
-        // إعدادات الربط مع Supabase
         const SUPABASE_URL = 'https://lxfjvksxsuwmvixqautv.supabase.co';
-        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4Zmp2a3N4c3V3bXZpeHFhdXR2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ4NDg2OTUsImV4cCI6MjExMDQyNDY5NX0.hPGN7e04cL3YQXpLz2hqkmsE_TMHaGh-4ANirJoEVpU';
-        
-        // ضع يوزر التليجرام أو رابط الواتساب الخاص بك هنا للطلب
-        const CONTACT_LINK = 'https://t.me/yousifmziri'; 
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4Zmp2a3N4c3V3bXZpeHFhdXR2IjsxMGxlIjoiYW5vbiIsImlhdCI6MTc5NDg0ODY5NSwiZXhwIjoyMTEwNDI0Njk1fQ.hPGN7e04cL3YQXpLz2hqkmsE_TMHaGh-4ANirJoEVpU';
 
-        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        const { createClient } = supabase;
+        const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        async function fetchAccounts() {
-            const container = document.getElementById('accounts-container');
+        async function loadProducts() {
+            const grid = document.getElementById('products-grid');
             
-            const { data, error } = await supabaseClient
-                .from('accounts')
-                .select('*')
-                .eq('status', 'available')
-                .order('id', { ascending: false });
+            try {
+                const { data, error } = await _supabase
+                    .from('accounts')
+                    .select('*')
+                    .eq('status', 'available');
 
-            if (error) {
-                console.error('Error:', error);
-                container.innerHTML = '<div class="loader">حدث خطأ في تحميل البيانات. تأكد من إعدادات قاعدة البيانات.</div>';
-                return;
-            }
+                if (error) throw error;
 
-            if (!data || data.length === 0) {
-                container.innerHTML = '<div class="loader">لا توجد حسابات متاحة حالياً.</div>';
-                return;
-            }
-
-            container.innerHTML = '';
-
-            data.forEach((account, index) => {
-                // تقسيم الروابط في حال وجود أكثر من صورة مفصولة بفاصلة
-                const rawImages = account['image-url'] || '';
-                const images = rawImages.split(',').map(url => url.trim()).filter(url => url !== '');
-                const mainImg = images.length > 0 ? images[0] : 'https://via.placeholder.com/400x250/141418/d4af37?text=No+Image';
-
-                // بناء نقاط التنقل إذا كان هناك أكثر من صورة
-                let dotsHtml = '';
-                if (images.length > 1) {
-                    dotsHtml = `<div class="slider-dots">` + 
-                        images.map((_, i) => `<span class="dot ${i === 0 ? 'active' : ''}" onclick="changeImage(${index}, '${images[i]}', this)"></span>`).join('') +
-                    `</div>`;
+                if (!data || data.length === 0) {
+                    grid.innerHTML = '<div class="empty-msg">لا توجد حسابات متاحة حالياً.</div>';
+                    return;
                 }
 
-                const message = encodeURIComponent(`مرحباً، أريد شراء: ${account.title} (السعر: ${account.price})`);
-                const orderUrl = `${CONTACT_LINK}?text=${message}`;
+                grid.innerHTML = '';
+                data.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    
+                    const imageUrl = item['image-url'] || 'https://via.placeholder.com/300x160/161616/d4af37?text=KurdoStore';
+                    const title = item.title || 'حساب رقمي';
+                    const description = item.description || 'بدون تفاصيل إضافية';
+                    const price = item.price ? `${item.price}` : '';
+                    
+                    // رابط التليجرام المباشر للطلب
+                    const telegramUrl = `https://t.me/yousifmziri?text=مرحباً، أريد شراء هذا الحساب: ${encodeURIComponent(title)}`;
 
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <div class="image-slider">
-                        <span class="badge">متاح الآن</span>
-                        <img id="img-${index}" src="${mainImg}" alt="${account.title}">
-                        ${dotsHtml}
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">${account.title || 'حساب رقمي'}</h3>
-                        <p class="card-desc">${account.description || ''}</p>
-                        <div class="card-footer">
-                            <span class="price">${account.price || ''}</span>
-                            <a href="${orderUrl}" target="_blank" class="buy-btn">شراء الآن</a>
+                    card.innerHTML = `
+                        <img src="${imageUrl}" alt="${title}" onerror="this.src='https://via.placeholder.com/300x160/161616/d4af37?text=KurdoStore'">
+                        <div class="card-content">
+                            <div class="card-title">${title}</div>
+                            <div class="card-desc">${description}</div>
+                            <div class="card-footer">
+                                <div class="price">${price}</div>
+                                <a href="${telegramUrl}" target="_blank" class="buy-btn">شراء</a>
+                            </div>
                         </div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
+                    `;
+                    grid.appendChild(card);
+                });
+
+            } catch (err) {
+                console.error('Error loading products:', err);
+                grid.innerHTML = `<div class="empty-msg">حدث خطأ أثناء تحميل المنتجات. تأكد من إعدادات الاتصال.</div>`;
+            }
         }
 
-        function changeImage(cardIndex, imgUrl, dotElement) {
-            document.getElementById(`img-${cardIndex}`).src = imgUrl;
-            const parent = dotElement.parentElement;
-            parent.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
-            dotElement.classList.add('active');
-        }
-
-        fetchAccounts();
+        loadProducts();
     </script>
 </body>
 </html>
