@@ -178,8 +178,7 @@
             try {
                 const { data, error } = await _supabase
                     .from('accounts')
-                    .select('*')
-                    .eq('status', 'available');
+                    .select('*');
 
                 if (error) throw error;
 
@@ -214,6 +213,9 @@
                     grid.appendChild(card);
                 });
 
+            } colspan => {
+                console.error('Error loading products:', err);
+                grid.innerHTML = `<div class="empty-msg">حدث خطأ أثناء تحميل المنتجات. تأكد من إعدادات الاتصال.</div>`;
             } catch (err) {
                 console.error('Error loading products:', err);
                 grid.innerHTML = `<div class="empty-msg">حدث خطأ أثناء تحميل المنتجات. تأكد من إعدادات الاتصال.</div>`;
