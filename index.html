@@ -36,6 +36,16 @@ ul{list-style:disc;padding-inline-start:20px;margin-bottom:16px}
 li{margin-bottom:10px}
 img{width:100%;height:215px;object-fit:cover;border-radius:4px;display:block;margin-bottom:16px}
 section{margin-bottom:32px}
+.warn-full{background:#fff1f2;border-left:4px solid #f43f5e;border-radius:0 12px 12px 0;padding:15px 16px;margin-bottom:24px;box-shadow:0 2px 10px rgba(0,0,0,.04);color:#9f1239}
+.app-card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px;margin-bottom:18px;box-shadow:0 6px 20px rgba(15,23,42,.06);position:relative;overflow:hidden}
+.app-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.app-icon{width:62px;height:62px;border-radius:15px;background:#f5f3ff;border:1px solid #ddd6fe;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:32px;color:#7c3aed}
+.app-btn{display:inline-block;margin-top:8px;background:#2563eb;color:#fff;font-size:12px;font-weight:700;padding:4px 16px;border-radius:999px;text-decoration:none}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;border-top:1px solid #f1f5f9;padding-top:12px;margin-bottom:10px}
+.stat-label{font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase}
+.stat-value{font-size:16px;font-weight:800;color:#4b5563;margin-top:2px}
+.stat-sub{font-size:11px;color:#6b7280}
+.app-footer{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#9ca3af;padding-top:4px}
 </style>
 </head>
 <body>
@@ -54,16 +64,16 @@ section{margin-bottom:32px}
   <div class="lang-wrap">
     <button class="lang-pill" onclick="toggleLangDropdown(event)" id="lang-current">🇬🇧 EN ⌄</button>
     <div id="lang-dropdown" class="lang-dropdown" onclick="event.stopPropagation()">
-      <button class="lang-option" onclick="applyLang('en','🇬🇧 EN ⌄')">English</button>
-      <button class="lang-option" onclick="applyLang('ar','🇸🇦 AR ⌄')">العربية</button>
-      <button class="lang-option" onclick="applyLang('ku','KU ⌄')">کوردی (Badînî)</button>
-      <button class="lang-option" onclick="applyLang('vi','🇻🇳 VI ⌄')">Tiếng Việt</button>
-      <button class="lang-option" onclick="applyLang('tr','🇹🇷 TR ⌄')">Türkçe</button>
-      <button class="lang-option" onclick="applyLang('fr','🇫🇷 FR ⌄')">Français</button>
-      <button class="lang-option" onclick="applyLang('de','🇩🇪 DE ⌄')">Deutsch</button>
-      <button class="lang-option" onclick="applyLang('es','🇪🇸 ES ⌄')">Español</button>
-      <button class="lang-option" onclick="applyLang('ru','🇷🇺 RU ⌄')">Русский</button>
-      <button class="lang-option" onclick="applyLang('ja','🇯🇵 JA ⌄')">日本語</button>
+      <button class="lang-option" onclick="applyLang('en')">English</button>
+      <button class="lang-option" onclick="applyLang('ar')">العربية</button>
+      <button class="lang-option" onclick="applyLang('ku')">کوردی (Badînî)</button>
+      <button class="lang-option" onclick="applyLang('vi')">Tiếng Việt</button>
+      <button class="lang-option" onclick="applyLang('tr')">Türkçe</button>
+      <button class="lang-option" onclick="applyLang('fr')">Français</button>
+      <button class="lang-option" onclick="applyLang('de')">Deutsch</button>
+      <button class="lang-option" onclick="applyLang('es')">Español</button>
+      <button class="lang-option" onclick="applyLang('ru')">Русский</button>
+      <button class="lang-option" onclick="applyLang('ja')">日本語</button>
     </div>
   </div>
 
@@ -125,266 +135,104 @@ section{margin-bottom:32px}
     </ul>
   </section>
 
+  <section id="sec-continuation-4">
+    <h2><span>📱</span><span id="c4-dev-title">Experience on iPhone & iPad</span></h2>
+
+    <p id="c4-dev-p1">Minecraft has a version thoughtfully optimized for mobile devices. Moving, jumping, breaking blocks, placing blocks, and opening your inventory are all intuitive on a touch screen.</p>
+
+    <p id="c4-dev-p2">Especially on <strong>iPad</strong>, the larger display gives a much more comfortable view, making building structures and managing inventory noticeably more accurate.</p>
+
+    <h2><span>🧩</span><span id="c4-mkt-title">Add-On, Map and Texture Pack</span></h2>
+
+    <p id="c4-mkt-p1">Once you've played vanilla Minecraft for a while, there are still thousands of extra items to discover through the <strong>Minecraft Marketplace</strong>:</p>
+
+    <ul>
+      <li id="c4-mkt-li1"><strong>Add-On:</strong> Adds new creatures, vehicles, items, and unique weapons.</li>
+      <li id="c4-mkt-li2"><strong>Map:</strong> Play Adventure, Horror, Puzzle, or Mini Game maps.</li>
+      <li id="c4-mkt-li3"><strong>Texture Pack:</strong> Completely refreshes the game's visual look, from blocks to the sky.</li>
+    </ul>
+  </section>
+
+  <section id="sec-continuation-5">
+    <div class="warn-full">
+      <p id="c5-warn-full">⚠️ <strong>Note:</strong> If downloading content from outside (not via Marketplace), carefully check the source and compatibility with your game version to avoid errors.</p>
+    </div>
+
+    <h2><span>🚀</span><span id="c5-sr-title">What Is the Shadowrocket App?</span></h2>
+
+    <div class="app-card">
+      <div class="app-head">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="app-icon">🚀</div>
+          <div>
+            <div style="font-size:18px;font-weight:800;color:#111827;line-height:1.2;">Shadowrocket</div>
+            <div style="font-size:12px;color:#6b7280;margin-top:2px;">Shadow Launch Technology Limited</div>
+            <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" id="c5-app-btn" class="app-btn">Open</a>
+          </div>
+        </div>
+        <div style="font-size:44px;opacity:.14;color:#2563eb;user-select:none;">🚀</div>
+      </div>
+
+      <div class="stats">
+        <div>
+          <div class="stat-label" id="c5-stat-rating-lbl">236 RATINGS</div>
+          <div class="stat-value">4,2</div>
+          <div class="stat-sub">★★★★☆</div>
+        </div>
+        <div style="border-inline:1px solid #f1f5f9;">
+          <div class="stat-label" id="c5-stat-age-lbl">AGE</div>
+          <div class="stat-value">4+</div>
+          <div class="stat-sub" id="c5-stat-age-sub">Years</div>
+        </div>
+        <div>
+          <div class="stat-label" id="c5-stat-rank-lbl">CHART</div>
+          <div class="stat-value">#1</div>
+          <div class="stat-sub" id="c5-stat-rank-sub">Utilities</div>
+        </div>
+      </div>
+
+      <div class="app-footer">
+        <span id="c5-whats-new">What's New ></span>
+        <span style="font-weight:800;font-size:15px;color:#3b82f6;">A</span>
+      </div>
+    </div>
+
+    <p id="c5-sr-p1">Along with that, we also introduce <strong>Shadowrocket</strong> – an essential Utilities app for users in the Apple ecosystem.</p>
+
+    <p id="c5-sr-p2">It is a <strong>rule-based proxy utility</strong> that helps you manage network connections based on configuration rules. Key highlights:</p>
+
+    <ul>
+      <li id="c5-sr-li1">🔒 Flexible network traffic management (Domain, CIDR, GeoIP...).</li>
+      <li id="c5-sr-li2">📊 Real-time network traffic monitoring.</li>
+    </ul>
+  </section>
+
 </main>
 
 <script>
 const LANG_KEY = "site_language";
-const LANG_LABELS = {
-  en:"🇬🇧 EN ⌄", ar:"🇸🇦 AR ⌄", ku:"KU ⌄", vi:"🇻🇳 VI ⌄",
-  tr:"🇹🇷 TR ⌄", fr:"🇫🇷 FR ⌄", de:"🇩🇪 DE ⌄",
-  es:"🇪🇸 ES ⌄", ru:"🇷🇺 RU ⌄", ja:"🇯🇵 JA ⌄"
-};
+const LANG_LABELS = {en:"🇬🇧 EN ⌄",ar:"🇸🇦 AR ⌄",ku:"KU ⌄",vi:"🇻🇳 VI ⌄",tr:"🇹🇷 TR ⌄",fr:"🇫🇷 FR ⌄",de:"🇩🇪 DE ⌄",es:"🇪🇸 ES ⌄",ru:"🇷🇺 RU ⌄",ja:"🇯🇵 JA ⌄"};
 
 const TEXTS = {
-en:{
-dir:"ltr",
-buy:"Buy Apple Accounts",
-contact:"Contact & Inquiries",
-h1:"Minecraft iOS – Detailed Review & How to Download on iPhone & iPad",
-p1:"Some games you download, play for a few days, and forget. Others keep pulling you back time after time even after hundreds of hours.",
-p2:"<strong>Minecraft iOS</strong> is one of them.",
-p3:"Without needing hyper-realistic graphics or over-the-top effects, Minecraft stands out with <strong>freedom, creativity, and a vast world</strong> to explore.",
-c2title:"What Makes Minecraft iOS So Engaging?",
-c2p1:"Minecraft on iPhone and iPad brings the familiar Minecraft sandbox experience right to your mobile device.",
-c2p2:"The best part of the game is that it <strong>does not force players down a single fixed path</strong>. As soon as you create a world, you decide your own adventure.",
-c2li1:"🌲 Want to build a house? Start chopping trees and gathering resources.",
-c2li2:"🗺️ Want to explore? Gear up and hit the road.",
-c2li3:"💎 Want to find diamonds? Craft a pickaxe and start mining deep underground.",
-c2p3:"Or if you just want to relax, you can build a cozy house by the coast, run a farm, and enjoy the Minecraft world your own way.",
-survTitle:"Survival – Survival and Exploration",
-survP1:"<strong>Survival</strong> is the best mode if you want to experience the full adventure side of Minecraft. At the start, you have almost nothing. You gather wood, find food, mine resources, and craft your first tools.",
-survP2:"When night falls, things get more dangerous. Zombies, Skeletons, Spiders, and especially Creepers can spawn around you, so securing a safe shelter on day one is essential.",
-tipBox:"🔥 <strong>Beginner Tip:</strong> Don't spend your entire first day wandering too far. Prioritize wood, food, tools, and shelter before nightfall.",
-creaTitle:"Creative – Limitless Building",
-creaP1:"If Survival is about surviving the wild, <strong>Creative</strong> is like a massive sandbox for building. From simple blocks, players can create:",
-creaLi1:"🏙️ Modern houses, villas, and cities.",
-creaLi2:"🏰 Giant castles and fantasy builds."
-},
+en:{dir:"ltr",buy:"Buy Apple Accounts",contact:"Contact & Inquiries",h1:"Minecraft iOS – Detailed Review & How to Download on iPhone & iPad",p1:"Some games you download, play for a few days, and forget. Others keep pulling you back time after time even after hundreds of hours.",p2:"<strong>Minecraft iOS</strong> is one of them.",p3:"Without needing hyper-realistic graphics or over-the-top effects, Minecraft stands out with <strong>freedom, creativity, and a vast world</strong> to explore.",c2title:"What Makes Minecraft iOS So Engaging?",c2p1:"Minecraft on iPhone and iPad brings the familiar Minecraft sandbox experience right to your mobile device.",c2p2:"The best part of the game is that it <strong>does not force players down a single fixed path</strong>. As soon as you create a world, you decide your own adventure.",c2li1:"🌲 Want to build a house? Start chopping trees and gathering resources.",c2li2:"🗺️ Want to explore? Gear up and hit the road.",c2li3:"💎 Want to find diamonds? Craft a pickaxe and start mining deep underground.",c2p3:"Or if you just want to relax, you can build a cozy house by the coast, run a farm, and enjoy the Minecraft world your own way.",survTitle:"Survival – Survival and Exploration",survP1:"<strong>Survival</strong> is the best mode if you want to experience the full adventure side of Minecraft. At the start, you have almost nothing. You gather wood, find food, mine resources, and craft your first tools.",survP2:"When night falls, things get more dangerous. Zombies, Skeletons, Spiders, and especially Creepers can spawn around you, so securing a safe shelter on day one is essential.",tipBox:"🔥 <strong>Beginner Tip:</strong> Don't spend your entire first day wandering too far. Prioritize wood, food, tools, and shelter before nightfall.",creaTitle:"Creative – Limitless Building",creaP1:"If Survival is about surviving the wild, <strong>Creative</strong> is like a massive sandbox for building. From simple blocks, players can create:",creaLi1:"🏙️ Modern houses, villas, and cities.",creaLi2:"🏰 Giant castles and fantasy builds.",devTitle:"Experience on iPhone & iPad",devP1:"Minecraft has a version thoughtfully optimized for mobile devices. Moving, jumping, breaking blocks, placing blocks, and opening your inventory are all intuitive on a touch screen.",devP2:"Especially on <strong>iPad</strong>, the larger display gives a much more comfortable view, making building structures and managing inventory noticeably more accurate.",mktTitle:"Add-On, Map and Texture Pack",mktP1:"Once you've played vanilla Minecraft for a while, there are still thousands of extra items to discover through the <strong>Minecraft Marketplace</strong>:",mktLi1:"<strong>Add-On:</strong> Adds new creatures, vehicles, items, and unique weapons.",mktLi2:"<strong>Map:</strong> Play Adventure, Horror, Puzzle, or Mini Game maps.",mktLi3:"<strong>Texture Pack:</strong> Completely refreshes the game's visual look, from blocks to the sky.",warnFull:"⚠️ <strong>Note:</strong> If downloading content from outside (not via Marketplace), carefully check the source and compatibility with your game version to avoid errors.",srTitle:"What Is the Shadowrocket App?",appBtn:"Open",ratingLbl:"236 RATINGS",ageLbl:"AGE",ageSub:"Years",rankLbl:"CHART",rankSub:"Utilities",whatsNew:"What's New >",srP1:"Along with that, we also introduce <strong>Shadowrocket</strong> – an essential Utilities app for users in the Apple ecosystem.",srP2:"It is a <strong>rule-based proxy utility</strong> that helps you manage network connections based on configuration rules. Key highlights:",srLi1:"🔒 Flexible network traffic management (Domain, CIDR, GeoIP...).",srLi2:"📊 Real-time network traffic monitoring."},
 
-ar:{
-dir:"rtl",
-buy:"لشراء حسابات أبل",
-contact:"للتواصل واستفسار",
-h1:"ماينكرافت iOS – مراجعة تفصيلية وطريقة التحميل على iPhone و iPad",
-p1:"هناك ألعاب تحملها وتلعبها لأيام ثم تنساها، وهناك ألعاب تعود إليها مراراً وتكراراً رغم قضاء مئات الساعات في تجربتها.",
-p2:"<strong>ماينكرافت iOS</strong> واحدة من تلك الألعاب.",
-p3:"دون الحاجة إلى رسوميات فائقة الواقعية أو مؤثرات مبالغ فيها، تحافظ ماينكرافت على جاذبيتها بفضل <strong>الحرية والإبداع وعالم واسع</strong> للاستكشاف.",
-c2title:"ما الذي يجعل ماينكرافت iOS ممتعة ومميزة؟",
-c2p1:"تقدم ماينكرافت على iPhone و iPad تجربة اللعب الحر (Sandbox) المألوفة مباشرة على هاتفك.",
-c2p2:"أكثر ما يميز اللعبة أنها <strong>لا تجبر اللاعب على مسار واحد ثابت</strong>؛ فبمجرد إنشاء العالم يمكنك تحديد مغامرتك بنفسك.",
-c2li1:"🌲 تريد بناء منزل؟ ابدأ بقطع الأشجار وجمع الموارد.",
-c2li2:"🗺️ تريد الاستكشاف؟ جهّز معداتك وانطلق في الرحلة.",
-c2li3:"💎 تريد العثور على الألماس؟ اصنع معولاً وابدأ بالحفر عميقاً تحت الأرض.",
-c2p3:"أو إذا كنت تفضل الاسترخاء، يمكنك بناء منزل قرب البحر وإنشاء مزرعة والاستمتاع بعالم ماينكرافت بطريقتك الخاصة.",
-survTitle:"Survival – البقاء والاستكشاف",
-survP1:"وضع <strong>Survival</strong> هو الأنسب إذا أردت عيش روح المغامرة الكاملة في ماينكرافت؛ تبدأ تقريباً بلا شيء وتجمع الخشب والطعام وتستخرج الموارد وتصنع أدواتك الأولى.",
-survP2:"عندما يحل الليل تصبح الأمور أخطر؛ فقد تظهر الزومبي والهياكل العظمية والعناكب وخاصة الكريبر حولك، لذلك من المهم تأمين مأوى آمن في اليوم الأول.",
-tipBox:"🔥 <strong>نصيحة للمبتدئين:</strong> لا تقضِ يومك الأول كاملاً في الابتعاد كثيراً؛ اجعل الأولوية للخشب والطعام والأدوات والمأوى قبل حلول الظلام.",
-creaTitle:"Creative – حرية البناء والإبداع",
-creaP1:"إذا كان Survival مغامرة للبقاء، فإن <strong>Creative</strong> مساحة إبداع واسعة للبناء؛ فمن الكتل البسيطة يمكن للاعب إنشاء:",
-creaLi1:"🏙️ منازل حديثة وفيلات ومدناً.",
-creaLi2:"🏰 قلاعاً ضخمة ومبانٍ خيالية."
-},
+ar:{dir:"rtl",buy:"لشراء حسابات أبل",contact:"للتواصل واستفسار",h1:"ماينكرافت iOS – مراجعة تفصيلية وطريقة التحميل على iPhone و iPad",p1:"هناك ألعاب تحملها وتلعبها لأيام ثم تنساها، وهناك ألعاب تعود إليها مراراً وتكراراً رغم قضاء مئات الساعات في تجربتها.",p2:"<strong>ماينكرافت iOS</strong> واحدة من تلك الألعاب.",p3:"دون الحاجة إلى رسوميات فائقة الواقعية أو مؤثرات مبالغ فيها، تحافظ ماينكرافت على جاذبيتها بفضل <strong>الحرية والإبداع وعالم واسع</strong> للاستكشاف.",c2title:"ما الذي يجعل ماينكرافت iOS ممتعة ومميزة؟",c2p1:"تقدم ماينكرافت على iPhone و iPad تجربة اللعب الحر (Sandbox) المألوفة مباشرة على هاتفك.",c2p2:"أكثر ما يميز اللعبة أنها <strong>لا تجبر اللاعب على مسار واحد ثابت</strong>؛ فبمجرد إنشاء العالم يمكنك تحديد مغامرتك بنفسك.",c2li1:"🌲 تريد بناء منزل؟ ابدأ بقطع الأشجار وجمع الموارد.",c2li2:"🗺️ تريد الاستكشاف؟ جهّز معداتك وانطلق في الرحلة.",c2li3:"💎 تريد العثور على الألماس؟ اصنع معولاً وابدأ بالحفر عميقاً تحت الأرض.",c2p3:"أو إذا كنت تفضل الاسترخاء، يمكنك بناء منزل قرب البحر وإنشاء مزرعة والاستمتاع بعالم ماينكرافت بطريقتك الخاصة.",survTitle:"Survival – البقاء والاستكشاف",survP1:"وضع <strong>Survival</strong> هو الأنسب إذا أردت عيش روح المغامرة الكاملة في ماينكرافت؛ تبدأ تقريباً بلا شيء وتجمع الخشب والطعام وتستخرج الموارد وتصنع أدواتك الأولى.",survP2:"عندما يحل الليل تصبح الأمور أخطر؛ فقد تظهر الزومبي والهياكل العظمية والعناكب وخاصة الكريبر حولك، لذلك من المهم تأمين مأوى آمن في اليوم الأول.",tipBox:"🔥 <strong>نصيحة للمبتدئين:</strong> لا تقضِ يومك الأول كاملاً في الابتعاد كثيراً؛ اجعل الأولوية للخشب والطعام والأدوات والمأوى قبل حلول الظلام.",creaTitle:"Creative – حرية البناء والإبداع",creaP1:"إذا كان Survival مغامرة للبقاء، فإن <strong>Creative</strong> مساحة إبداع واسعة للبناء؛ فمن الكتل البسيطة يمكن للاعب إنشاء:",creaLi1:"🏙️ منازل حديثة وفيلات ومدناً.",creaLi2:"🏰 قلاعاً ضخمة ومبانٍ خيالية.",devTitle:"التجربة على iPhone و iPad",devP1:"تتوفر ماينكرافت بنسخة محسّنة خصيصاً للأجهزة المحمولة؛ فالحركة والقفز وكسر الكتل ووضعها وفتح حقيبة الأدوات سهلة ومريحة عبر شاشة اللمس.",devP2:"وبشكل خاص على <strong>iPad</strong>، تمنح الشاشة الكبيرة مساحة عرض مريحة للغاية تجعل بناء المشاريع وإدارة المخزون أكثر دقة بكثير.",mktTitle:"Add-On و Map و Texture Pack",mktP1:"بعد قضاء وقت كافٍ في ماينكرافت الأساسية، لا يزال أمامك آلاف الإضافات لاستكشافها عبر <strong>Minecraft Marketplace</strong>:",mktLi1:"<strong>Add-On:</strong> يضيف مخلوقات جديدة ومركبات وعناصر وأسلحة مميزة.",mktLi2:"<strong>Map:</strong> تجربة خرائط المغامرات والرعب والألغاز أو الألعاب المصغرة.",mktLi3:"<strong>Texture Pack:</strong> يغيّر المظهر الرسومي للعبة بالكامل من الكتل وحتى السماء.",warnFull:"⚠️ <strong>تنبيه:</strong> إذا قمت بتحميل محتوى من خارج (ليس عبر Marketplace)، فتحقق جيداً من المصدر ومدى توافقه مع إصدار لعبتك لتجنب الأخطاء.",srTitle:"ما هو تطبيق Shadowrocket؟",appBtn:"فتح",ratingLbl:"236 تقييم",ageLbl:"العمر",ageSub:"سنوات",rankLbl:"التصنيف",rankSub:"أدوات",whatsNew:"الجديد >",srP1:"وبالمناسبة، نعرّفك أيضاً على تطبيق <strong>Shadowrocket</strong> – وهو تطبيق أدوات (Utilities) مهم لمستخدمي منظومة Apple.",srP2:"وهو أداة بروكسي تعتمد على القواعد (<strong>rule-based proxy utility</strong>) تساعدك في إدارة اتصالات الشبكة وفق قواعد الإعداد. من أبرز ميزاته:",srLi1:"🔒 إدارة مرنة لحركة الشبكة (Domain و CIDR و GeoIP وغيرها).",srLi2:"📊 مراقبة حركة البيانات والشبكة بشكل لحظي."},
 
-ku:{
-dir:"rtl",
-buy:"بۆ کڕینا هژمارێن Apple",
-contact:"بۆ پەیوەندی و پسیارکرنێ",
-h1:"Minecraft iOS – شرۆڤەیا هویر و چاوانیا داگرتنێ ل iPhone و iPad",
-p1:"هندەك یاری هەنە پشتی چەند رۆژان ژ بیردچن، بەلێ هندەك یاری هەنە سەرەڕای سەدەها دەمژمێران هەر دزڤڕییێ ڤە.",
-p2:"<strong>Minecraft iOS</strong> ئێك ژ وان یارییانە.",
-p3:"بێی پێدڤی ب گرافیکێن زێدە ئاڵۆز بیت، ماینكرافت ب <strong>ئازادی، داهێنان و جیهانەکا بەرفرەهـ</strong> بۆ گەڕیانێ سەرنجا هەمییان رادکێشیت.",
-c2title:"چ دکەت کو Minecraft iOS هندی خۆش و سەرنجراکێش بیت؟",
-c2p1:"ماینكرافت ل iPhone و iPad ئەزموونا ئازاد یا ماینكرافتێ راستەوخۆ دئینیتە سەر مۆبایلا تە.",
-c2p2:"تشتێ هەرە تایبەت ئەوە کو <strong>یاریزانێ ناچار ناکەت ب رێکەکا دیاریکری بچیت</strong>؛ هەر دەمێ جیهانێ چێکەی تو ب خۆ سەرکێشیا خۆ دیار دکەی.",
-c2li1:"🌲 دڤێت خانیەکێ چێکەی؟ دەست ب بڕینا داران و کۆمکرنا کەرەستان بکە.",
-c2li2:"🗺️ دڤێت بگەڕیی؟ خۆ ئامادە بکە و بکەڤە رێ.",
-c2li3:"💎 دڤێت ئەڵماسێ ببینی؟ تێڤرەکێ چێکە و ب کویراتی د ناڤ ئەردی دا هەڵکۆڵە.",
-c2p3:"یان ئەگەر تە بڤێت بهێنڤەدانا خۆ ببەی، دشیێ خانیەکێ ل سەر لێڤا دەریایێ چێکەی، زەڤیەکێ دروست بکەی و ب شێوازێ خۆ چێژێ ژ جیهانا ماینكرافتێ ببینی.",
-survTitle:"Survival – مانەوە و گەڕیان",
-survP1:"شێوازێ <strong>Survival</strong> هەرە گونجایە ئەگەر تە بڤێت تاما سەرکێشیا راستەقینە یا ماینكرافتێ ببینی؛ ل دەستپێکێ تە چ نینە و تو داران کۆم دکەی، خوارنێ دبینی، کانزایان دەردێخی و ئامێرێن خۆ یێن ئێکێ چێدکەی.",
-survP2:"دەمێ شەڤ دهێت تشت مەترسیدارتر دبن؛ زۆمبی، سکیلێتن، جاڵجاڵۆك و ب تایبەت کریپەر ل دەوروبەرا تە پەیدا دبن، لەوما چێکرنا جهەکێ پاراستی د رۆژا ئێکێ دا گەلەك گرنگە.",
-tipBox:"🔥 <strong>شیرەت بۆ دەستپێکەران:</strong> هەمی رۆژا ئێکێ ب دویرکەفتنا زێدە ڤە نەبۆرینە؛ بەری شەڤ بهێت دار، خوارن، ئامێر و جهێ ڤەحەواندنێ د پێشینەیێ دا بهێلە.",
-creaTitle:"Creative – ئازادیا ئاڤاکرنێ",
-creaP1:"ئەگەر Survival سەرکێشیا مانەوەیێ بیت، <strong>Creative</strong> گۆڕەپانەکا مەزنە بۆ ئاڤاکرنێ؛ ژ بلۆکێن سادە یاریزان دشیێت چێبکەت:",
-creaLi1:"🏙️ خانیێن مودێرن، ڤێلا و باژێڕان.",
-creaLi2:"🏰 قەڵایێن مەزن و ئاڤاهیێن خەیالی."
-},
+ku:{dir:"rtl",buy:"بۆ کڕینا هژمارێن Apple",contact:"بۆ پەیوەندی و پسیارکرنێ",h1:"Minecraft iOS – شرۆڤەیا هویر و چاوانیا داگرتنێ ل iPhone و iPad",p1:"هندەك یاری هەنە پشتی چەند رۆژان ژ بیردچن، بەلێ هندەك یاری هەنە سەرەڕای سەدەها دەمژمێران هەر دزڤڕییێ ڤە.",p2:"<strong>Minecraft iOS</strong> ئێك ژ وان یارییانە.",p3:"بێی پێدڤی ب گرافیکێن زێدە ئاڵۆز بیت، ماینكرافت ب <strong>ئازادی، داهێنان و جیهانەکا بەرفرەهـ</strong> بۆ گەڕیانێ سەرنجا هەمییان رادکێشیت.",c2title:"چ دکەت کو Minecraft iOS هندی خۆش و سەرنجراکێش بیت؟",c2p1:"ماینكرافت ل iPhone و iPad ئەزموونا ئازاد یا ماینكرافتێ راستەوخۆ دئینیتە سەر مۆبایلا تە.",c2p2:"تشتێ هەرە تایبەت ئەوە کو <strong>یاریزانێ ناچار ناکەت ب رێکەکا دیاریکری بچیت</strong>؛ هەر دەمێ جیهانێ چێکەی تو ب خۆ سەرکێشیا خۆ دیار دکەی.",c2li1:"🌲 دڤێت خانیەکێ چێکەی؟ دەست ب بڕینا داران و کۆمکرنا کەرەستان بکە.",c2li2:"🗺️ دڤێت بگەڕیی؟ خۆ ئامادە بکە و بکەڤە رێ.",c2li3:"💎 دڤێت ئەڵماسێ ببینی؟ تێڤرەکێ چێکە و ب کویراتی د ناڤ ئەردی دا هەڵکۆڵە.",c2p3:"یان ئەگەر تە بڤێت بهێنڤەدانا خۆ ببەی، دشیێ خانیەکێ ل سەر لێڤا دەریایێ چێکەی، زەڤیەکێ دروست بکەی و ب شێوازێ خۆ چێژێ ژ جیهانا ماینكرافتێ ببینی.",survTitle:"Survival – مانەوە و گەڕیان",survP1:"شێوازێ <strong>Survival</strong> هەرە گونجایە ئەگەر تە بڤێت تاما سەرکێشیا راستەقینە یا ماینكرافتێ ببینی؛ ل دەستپێکێ تە چ نینە و تو داران کۆم دکەی، خوارنێ دبینی، کانزایان دەردێخی و ئامێرێن خۆ یێن ئێکێ چێدکەی.",survP2:"دەمێ شەڤ دهێت تشت مەترسیدارتر دبن؛ زۆمبی، سکیلێتن، جاڵجاڵۆك و ب تایبەت کریپەر ل دەوروبەرا تە پەیدا دبن، لەوما چێکرنا جهەکێ پاراستی د رۆژا ئێکێ دا گەلەك گرنگە.",tipBox:"🔥 <strong>شیرەت بۆ دەستپێکەران:</strong> هەمی رۆژا ئێکێ ب دویرکەفتنا زێدە ڤە نەبۆرینە؛ بەری شەڤ بهێت دار، خوارن، ئامێر و جهێ ڤەحەواندنێ د پێشینەیێ دا بهێلە.",creaTitle:"Creative – ئازادیا ئاڤاکرنێ",creaP1:"ئەگەر Survival سەرکێشیا مانەوەیێ بیت، <strong>Creative</strong> گۆڕەپانەکا مەزنە بۆ ئاڤاکرنێ؛ ژ بلۆکێن سادە یاریزان دشیێت چێبکەت:",creaLi1:"🏙️ خانیێن مودێرن، ڤێلا و باژێڕان.",creaLi2:"🏰 قەڵایێن مەزن و ئاڤاهیێن خەیالی.",devTitle:"ئەزموون ل سەر iPhone و iPad",devP1:"ماینكرافت ب شێوازەکێ تایبەت بۆ مۆبایلان هاتیە رێکخستن؛ چوون، بازدان، شکاندنا بلۆکان، دانان و ڤەکرنا جانتایێ ب شاشا لەمسێ گەلەك ب ساناهی نە.",devP2:"ب تایبەت ل سەر <strong>iPad</strong>، شاشا مەزن جهەکێ زۆر ئارام ددەتە پیشاندانێ و ئاڤاکرن و رێکخستنا کەلوپەلان گەلەك هویرتر لێ دکەت.",mktTitle:"Add-On، Map و Texture Pack",mktP1:"پشتی کو ب ماینكرافتا سەرەکی دا تێر یاری دکەی، هێشتا ب هەزاران تشتێن دی هەنە کو ب رێکا <strong>Minecraft Marketplace</strong> بگەڕیی:",mktLi1:"<strong>Add-On:</strong> زیندەوەرێن نوی، ترۆمبێل، کەلوپەل و چەکێن جودا زێدە دکەت.",mktLi2:"<strong>Map:</strong> ئەزموونکرنا نەخشەیێن سەرکێشی، ترس، مەتەڵ یان یاریێن بچویک.",mktLi3:"<strong>Texture Pack:</strong> شێوازێ گرافیکی یێ یاریێ ب تەمامی دگوهۆڕیت ژ بلۆکان هەتا ئەسمانی.",warnFull:"⚠️ <strong>تێبینی:</strong> ئەگەر تە ژ دەرڤە تشتەك داگرت (نە ب رێکا Marketplace)، ژێدەر و گونجاندنا وێ دگەل وەشانا یاریا خۆ ب باشی بپشکنە دا خەلەتی دروست نەبن.",srTitle:"ئەپڵیکەیشنا Shadowrocket چییە؟",appBtn:"ڤەکرن",ratingLbl:"236 هەلسەنگاندن",ageLbl:"ژییێ",ageSub:"ساڵ",rankLbl:"رێزبەندی",rankSub:"ئامراز",whatsNew:"تشتێن نوی >",srP1:"دگەل وێ دا، ئەم ئەپڵیکەیشنا <strong>Shadowrocket</strong> ژی ددەینە نیاسین – کو ئێك ژ ئەپێن گرنگ یێن Utilities یە بۆ بکارهێنەرێن Apple.",srP2:"ئەڤە ئامرازەکێ برۆکسی یە ب پشتبەستن ب رێسایان (<strong>rule-based proxy utility</strong>) کو هاریکاریا تە دکەت پەیوەندیێن تۆڕێ ب رێکا رێسایان برێڤە ببەی. ژ دیارترین تایبەتمەندیێن وێ:",srLi1:"🔒 برێڤەبرنا نەرم یا هاتنوچوونا تۆڕێ (Domain، CIDR، GeoIP...).",srLi2:"📊 چاودێریکرنا هاتنوچوونا تۆڕێ ب شێوەیێ راستەوخۆ."},
 
-vi:{
-dir:"ltr",
-buy:"Mua tài khoản Apple",
-contact:"Liên hệ & giải đáp",
-h1:"Minecraft iOS – Review Chi Tiết, Cách Tải Trên iPhone & iPad",
-p1:"Có những tựa game bạn tải về, chơi vài ngày rồi quên mất. Nhưng cũng có những trò chơi khiến bạn quay lại hết lần này đến lần khác dù đã dành hàng trăm giờ trải nghiệm.",
-p2:"<strong>Minecraft iOS</strong> chính là một trong số đó.",
-p3:"Không cần đồ họa siêu thực hay những hiệu ứng quá hoành tráng, Minecraft vẫn tạo nên sức hút riêng nhờ <strong>sự tự do, khả năng sáng tạo và một thế giới rộng lớn</strong> để khám phá.",
-c2title:"Minecraft iOS Có Gì Hấp Dẫn?",
-c2p1:"Minecraft trên iPhone và iPad mang đến trải nghiệm sandbox quen thuộc của Minecraft ngay trên thiết bị di động.",
-c2p2:"Điểm đặc biệt nhất của trò chơi là <strong>không ép người chơi phải đi theo một con đường cố định</strong>. Ngay sau khi tạo thế giới, bạn có thể tự quyết định cuộc phiêu lưu của mình.",
-c2li1:"🌲 Bạn muốn xây nhà? Hãy bắt đầu chặt cây và thu thập tài nguyên.",
-c2li2:"🗺️ Bạn muốn khám phá? Hãy chuẩn bị trang bị và lên đường.",
-c2li3:"💎 Bạn muốn tìm kim cương? Hãy chế tạo cuốc và bắt đầu đào sâu xuống lòng đất.",
-c2p3:"Hoặc nếu chỉ muốn thư giãn, bạn hoàn toàn có thể xây một căn nhà bên bờ biển, làm trang trại và tận hưởng thế giới Minecraft theo cách riêng.",
-survTitle:"Survival – Sinh Tồn Và Khám Phá",
-survP1:"<strong>Survival</strong> là chế độ phù hợp nhất nếu bạn muốn cảm nhận trọn vẹn yếu tố phiêu lưu của Minecraft. Ban đầu, bạn gần như không sở hữu bất cứ thứ gì. Bạn phải tự thu thập gỗ, tìm thức ăn, khai thác khoáng sản và chế tạo những công cụ đầu tiên.",
-survP2:"Khi màn đêm buông xuống, mọi thứ bắt đầu trở nên nguy hiểm hơn. Zombie, Skeleton, Spider và đặc biệt là Creeper có thể xuất hiện quanh khu vực của bạn. Vì vậy, một trong những mục tiêu quan trọng trong ngày đầu tiên là chuẩn bị một nơi trú ẩn an toàn.",
-tipBox:"🔥 <strong>Mẹo cho người mới:</strong> Đừng dành cả ngày đầu tiên để khám phá quá xa. Hãy ưu tiên gỗ, thức ăn, công cụ và một nơi trú ẩn trước khi trời tối.",
-creaTitle:"Creative – Thỏa Sức Xây Dựng",
-creaP1:"Nếu Survival là cuộc phiêu lưu sinh tồn thì <strong>Creative</strong> lại giống như một sân chơi sáng tạo khổng lồ. Từ những block đơn giản, người chơi có thể tạo ra:",
-creaLi1:"🏙️ Nhà hiện đại, biệt thự, thành phố.",
-creaLi2:"🏰 Lâu đài khổng lồ, công trình fantasy."
-},
+vi:{dir:"ltr",buy:"Mua tài khoản Apple",contact:"Liên hệ & giải đáp",h1:"Minecraft iOS – Review Chi Tiết, Cách Tải Trên iPhone & iPad",p1:"Có những tựa game bạn tải về, chơi vài ngày rồi quên mất. Nhưng cũng có những trò chơi khiến bạn quay lại hết lần này đến lần khác dù đã dành hàng trăm giờ trải nghiệm.",p2:"<strong>Minecraft iOS</strong> chính là một trong số đó.",p3:"Không cần đồ họa siêu thực hay những hiệu ứng quá hoành tráng, Minecraft vẫn tạo nên sức hút riêng nhờ <strong>sự tự do, khả năng sáng tạo và một thế giới rộng lớn</strong> để khám phá.",c2title:"Minecraft iOS Có Gì Hấp Dẫn?",c2p1:"Minecraft trên iPhone và iPad mang đến trải nghiệm sandbox quen thuộc của Minecraft ngay trên thiết bị di động.",c2p2:"Điểm đặc biệt nhất của trò chơi là <strong>không ép người chơi phải đi theo một con đường cố định</strong>. Ngay sau khi tạo thế giới, bạn có thể tự quyết định cuộc phiêu lưu của mình.",c2li1:"🌲 Bạn muốn xây nhà? Hãy bắt đầu chặt cây và thu thập tài nguyên.",c2li2:"🗺️ Bạn muốn khám phá? Hãy chuẩn bị trang bị và lên đường.",c2li3:"💎 Bạn muốn tìm kim cương? Hãy chế tạo cuốc và bắt đầu đào sâu xuống lòng đất.",c2p3:"Hoặc nếu chỉ muốn thư giãn, bạn hoàn toàn có thể xây một căn nhà bên bờ biển, làm trang trại và tận hưởng thế giới Minecraft theo cách riêng.",survTitle:"Survival – Sinh Tồn Và Khám Phá",survP1:"<strong>Survival</strong> là chế độ phù hợp nhất nếu bạn muốn cảm nhận trọn vẹn yếu tố phiêu lưu của Minecraft. Ban đầu, bạn gần như không sở hữu bất cứ thứ gì. Bạn phải tự thu thập gỗ, tìm thức ăn, khai thác khoáng sản và chế tạo những công cụ đầu tiên.",survP2:"Khi màn đêm buông xuống, mọi thứ bắt đầu trở nên nguy hiểm hơn. Zombie, Skeleton, Spider và đặc biệt là Creeper có thể xuất hiện quanh khu vực của bạn. Vì vậy, một trong những mục tiêu quan trọng trong ngày đầu tiên là chuẩn bị một nơi trú ẩn an toàn.",tipBox:"🔥 <strong>Mẹo cho người mới:</strong> Đừng dành cả ngày đầu tiên để khám phá quá xa. Hãy ưu tiên gỗ, thức ăn, công cụ và một nơi trú ẩn trước khi trời tối.",creaTitle:"Creative – Thỏa Sức Xây Dựng",creaP1:"Nếu Survival là cuộc phiêu lưu sinh tồn thì <strong>Creative</strong> lại giống như một sân chơi sáng tạo khổng lồ. Từ những block đơn giản, người chơi có thể tạo ra:",creaLi1:"🏙️ Nhà hiện đại, biệt thự, thành phố.",creaLi2:"🏰 Lâu đài khổng lồ, công trình fantasy.",devTitle:"Trải Nghiệm Trên iPhone & iPad",devP1:"Minecraft có phiên bản được thiết kế tối ưu dành riêng cho thiết bị di động. Di chuyển, nhảy, phá block, đặt block, mở kho đồ đều khá dễ làm quen qua màn hình cảm ứng.",devP2:"Đặc biệt trên <strong>iPad</strong>, màn hình lớn mang lại không gian hiển thị cực kỳ thoải mái, giúp thao tác xây dựng công trình hoặc quản lý kho đồ chính xác hơn rất nhiều.",mktTitle:"Add-On, Map Và Texture Pack",mktP1:"Khi đã chơi Minecraft mặc định đủ lâu, bạn vẫn còn hàng nghìn nội dung khác để khám phá thông qua <strong>Minecraft Marketplace</strong>:",mktLi1:"<strong>Add-On:</strong> Bổ sung sinh vật mới, phương tiện, vật phẩm và vũ khí độc lạ.",mktLi2:"<strong>Map:</strong> Trải nghiệm các bản đồ Adventure, Horror, Puzzle hay Mini Game.",mktLi3:"<strong>Texture Pack:</strong> Thay đổi hoàn toàn diện mạo đồ họa của game, từ block đến bầu trời.",warnFull:"⚠️ <strong>Lưu ý:</strong> Nếu tải nội dung từ bên ngoài (không qua Marketplace), hãy kiểm tra kỹ nguồn cung cấp và độ tương thích với phiên bản game của bạn để tránh lỗi.",srTitle:"Ứng Dụng Shadowrocket Là Gì?",appBtn:"Mở",ratingLbl:"236 XẾP HẠNG",ageLbl:"TUỔI",ageSub:"Tuổi",rankLbl:"BXH",rankSub:"Tiện Ích",whatsNew:"Tính Năng Mới >",srP1:"Tiện đây, chúng tôi cũng giới thiệu thêm về <strong>Shadowrocket</strong> – một ứng dụng Tiện ích (Utilities) không thể thiếu cho người dùng hệ sinh thái Apple.",srP2:"Đây là một <strong>rule-based proxy utility</strong> giúp bạn quản lý kết nối mạng dựa trên các quy tắc cấu hình. Các tính năng nổi bật:",srLi1:"🔒 Quản lý lưu lượng mạng linh hoạt (Domain, CIDR, GeoIP...).",srLi2:"📊 Theo dõi lưu lượng mạng theo thời gian thực."},
 
-tr:{
-dir:"ltr",
-buy:"Apple Hesapları Satın Al",
-contact:"İletişim ve Soru",
-h1:"Minecraft iOS – Detaylı İnceleme ve iPhone & iPad İndirme Rehberi",
-p1:"Bazı oyunları indirip birkaç gün oynar ve unutursunuz; bazıları ise yüzlerce saat sonra bile sizi tekrar tekrar geri getirir.",
-p2:"<strong>Minecraft iOS</strong> tam olarak bunlardan biridir.",
-p3:"Abartılı efektlere veya gerçeküstü grafiklere gerek kalmadan Minecraft, <strong>özgürlüğü, yaratıcılığı ve keşfedilecek geniş dünyasıyla</strong> öne çıkar.",
-c2title:"Minecraft iOS'u Cazip Kılan Nedir?",
-c2p1:"iPhone ve iPad'deki Minecraft, tanıdık sandbox deneyimini doğrudan mobil cihazınıza getirir.",
-c2p2:"Oyunun en özel yanı, oyuncuları <strong>tek bir sabit yola zorlamamasıdır</strong>. Dünyayı oluşturur oluşturmaz kendi maceranıza karar verebilirsiniz.",
-c2li1:"🌲 Ev yapmak mı istiyorsun? Ağaç kesmeye ve kaynak toplamaya başla.",
-c2li2:"🗺️ Keşfetmek mi istiyorsun? Ekipmanını hazırla ve yola çık.",
-c2li3:"💎 Elmas mı bulmak istiyorsun? Kazma üret ve yerin derinliklerine kazmaya başla.",
-c2p3:"Ya da sadece rahatlamak istersen sahilde bir ev yapabilir, çiftlik kurabilir ve Minecraft dünyasının tadını kendi tarzında çıkarabilirsin.",
-survTitle:"Survival – Hayatta Kalma ve Keşif",
-survP1:"<strong>Survival</strong>, Minecraft'ın macera yönünü tam anlamıyla yaşamak istiyorsan en uygun moddur. Başlangıçta neredeyse hiçbir şeyin yoktur; odun toplar, yiyecek bulur, maden çıkarır ve ilk araçlarını üretirsin.",
-survP2:"Gece çöktüğünde her şey daha tehlikeli hale gelir. Etrafında Zombi, İskelet, Örümcek ve özellikle Creeper belirebilir; bu yüzden ilk gün güvenli bir barınak hazırlamak önemlidir.",
-tipBox:"🔥 <strong>Yeni Başlayanlara İpucu:</strong> İlk gününün tamamını çok uzağa giderek geçirme. Karanlık çökmeden önce odun, yiyecek, alet ve barınağa öncelik ver.",
-creaTitle:"Creative – Sınırsız İnşa",
-creaP1:"Survival hayatta kalma macerasıysa, <strong>Creative</strong> devasa bir inşa alanı gibidir. Basit bloklardan şunları yapabilirsin:",
-creaLi1:"🏙️ Modern evler, villalar ve şehirler.",
-creaLi2:"🏰 Dev kaleler ve fantastik yapılar."
-},
+tr:{dir:"ltr",buy:"Apple Hesapları Satın Al",contact:"İletişim ve Soru",h1:"Minecraft iOS – Detaylı İnceleme ve iPhone & iPad İndirme Rehberi",p1:"Bazı oyunları indirip birkaç gün oynar ve unutursunuz; bazıları ise yüzlerce saat sonra bile sizi tekrar tekrar geri getirir.",p2:"<strong>Minecraft iOS</strong> tam olarak bunlardan biridir.",p3:"Abartılı efektlere veya gerçeküstü grafiklere gerek kalmadan Minecraft, <strong>özgürlüğü, yaratıcılığı ve keşfedilecek geniş dünyasıyla</strong> öne çıkar.",c2title:"Minecraft iOS'u Cazip Kılan Nedir?",c2p1:"iPhone ve iPad'deki Minecraft, tanıdık sandbox deneyimini doğrudan mobil cihazınıza getirir.",c2p2:"Oyunun en özel yanı, oyuncuları <strong>tek bir sabit yola zorlamamasıdır</strong>. Dünyayı oluşturur oluşturmaz kendi maceranıza karar verebilirsiniz.",c2li1:"🌲 Ev yapmak mı istiyorsun? Ağaç kesmeye ve kaynak toplamaya başla.",c2li2:"🗺️ Keşfetmek mi istiyorsun? Ekipmanını hazırla ve yola çık.",c2li3:"💎 Elmas mı bulmak istiyorsun? Kazma üret ve yerin derinliklerine kazmaya başla.",c2p3:"Ya da sadece rahatlamak istersen sahilde bir ev yapabilir, çiftlik kurabilir ve Minecraft dünyasının tadını kendi tarzında çıkarabilirsin.",survTitle:"Survival – Hayatta Kalma ve Keşif",survP1:"<strong>Survival</strong>, Minecraft'ın macera yönünü tam anlamıyla yaşamak istiyorsan en uygun moddur. Başlangıçta neredeyse hiçbir şeyin yoktur; odun toplar, yiyecek bulur, maden çıkarır ve ilk araçlarını üretirsin.",survP2:"Gece çöktüğünde her şey daha tehlikeli hale gelir. Etrafında Zombi, İskelet, Örümcek ve özellikle Creeper belirebilir; bu yüzden ilk gün güvenli bir barınak hazırlamak önemlidir.",tipBox:"🔥 <strong>Yeni Başlayanlara İpucu:</strong> İlk gününün tamamını çok uzağa giderek geçirme. Karanlık çökmeden önce odun, yiyecek, alet ve barınağa öncelik ver.",creaTitle:"Creative – Sınırsız İnşa",creaP1:"Survival hayatta kalma macerasıysa, <strong>Creative</strong> devasa bir inşa alanı gibidir. Basit bloklardan şunları yapabilirsin:",creaLi1:"🏙️ Modern evler, villalar ve şehirler.",creaLi2:"🏰 Dev kaleler ve fantastik yapılar.",devTitle:"iPhone ve iPad Deneyimi",devP1:"Minecraft, mobil cihazlar için optimize edilmiş bir sürüme sahiptir. Hareket etme, zıplama, blok kırma, blok yerleştirme ve envanter açma dokunmatik ekranda oldukça kolaydır.",devP2:"Özellikle <strong>iPad</strong>'de büyük ekran çok rahat bir görünüm sunar; yapı inşa etmeyi ve envanter yönetmeyi çok daha hassas hale getirir.",mktTitle:"Add-On, Map ve Texture Pack",mktP1:"Varsayılan Minecraft'ı yeterince oynadıktan sonra <strong>Minecraft Marketplace</strong> üzerinden keşfedebileceğin binlerce içerik daha bulunur:",mktLi1:"<strong>Add-On:</strong> Yeni yaratıklar, araçlar, eşyalar ve özel silahlar ekler.",mktLi2:"<strong>Map:</strong> Macera, Korku, Bulmaca veya Mini Oyun haritalarını deneyimle.",mktLi3:"<strong>Texture Pack:</strong> Bloklardan gökyüzüne kadar oyunun görsel görünümünü tamamen değiştirir.",warnFull:"⚠️ <strong>Not:</strong> Dışarıdan içerik indiriyorsanız (Marketplace üzerinden değilse), hataları önlemek için kaynağı ve oyun sürümünüzle uyumluluğu dikkatlice kontrol edin.",srTitle:"Shadowrocket Uygulaması Nedir?",appBtn:"Aç",ratingLbl:"236 DEĞERLENDİRME",ageLbl:"YAŞ",ageSub:"Yaş",rankLbl:"SIRA",rankSub:"Araçlar",whatsNew:"Yenilikler >",srP1:"Bunun yanında Apple ekosistemi kullanıcıları için vazgeçilmez Araçlar (Utilities) uygulamalarından <strong>Shadowrocket</strong>'ı da tanıtıyoruz.",srP2:"Yapılandırma kurallarına göre ağ bağlantılarını yönetmene yardımcı olan bir <strong>rule-based proxy utility</strong> uygulamasıdır. Öne çıkan özellikler:",srLi1:"🔒 Esnek ağ trafiği yönetimi (Domain, CIDR, GeoIP vb.).",srLi2:"📊 Gerçek zamanlı ağ trafiği takibi."},
 
-fr:{
-dir:"ltr",
-buy:"Acheter des comptes Apple",
-contact:"Contact et questions",
-h1:"Minecraft iOS – Avis Détaillé et Téléchargement sur iPhone & iPad",
-p1:"Certains jeux s'oublient après quelques jours, tandis que d'autres vous rappellent encore et encore après des centaines d'heures.",
-p2:"<strong>Minecraft iOS</strong> en fait partie.",
-p3:"Sans graphismes irréalistes ni effets excessifs, Minecraft séduit par sa <strong>liberté, sa créativité et son vaste monde</strong> à explorer.",
-c2title:"Qu'est-ce qui rend Minecraft iOS si captivant ?",
-c2p1:"Minecraft sur iPhone et iPad apporte l'expérience sandbox familière directement sur votre appareil mobile.",
-c2p2:"Ce qui le rend unique, c'est qu'il <strong>n'impose aucun chemin fixe</strong>. Dès la création du monde, vous choisissez votre propre aventure.",
-c2li1:"🌲 Envie de construire une maison ? Commencez par couper du bois et récolter des ressources.",
-c2li2:"🗺️ Envie d'explorer ? Préparez votre équipement et partez à l'aventure.",
-c2li3:"💎 Envie de trouver des diamants ? Fabriquez une pioche et creusez en profondeur.",
-c2p3:"Ou si vous voulez simplement vous détendre, construisez une maison au bord de la mer, créez une ferme et profitez de Minecraft à votre façon.",
-survTitle:"Survival – Survie et Exploration",
-survP1:"<strong>Survival</strong> est le mode idéal pour vivre l'aventure complète de Minecraft. Au début, vous n'avez presque rien : vous récoltez du bois, trouvez de la nourriture, minez et fabriquez vos premiers outils.",
-survP2:"À la nuit tombée, le danger augmente. Zombies, Squelettes, Araignées et surtout Creepers peuvent apparaître autour de vous, d'où l'importance d'un abri sûr dès le premier jour.",
-tipBox:"🔥 <strong>Astuce débutant :</strong> Ne passez pas toute votre première journée à aller trop loin. Donnez la priorité au bois, à la nourriture, aux outils et à un abri avant la nuit.",
-creaTitle:"Creative – Construction Libre",
-creaP1:"Si Survival est une aventure de survie, <strong>Creative</strong> est un immense espace de création. À partir de simples blocs, vous pouvez construire :",
-creaLi1:"🏙️ Maisons modernes, villas et villes.",
-creaLi2:"🏰 Châteaux géants et créations fantastiques."
-},
+fr:{dir:"ltr",buy:"Acheter des comptes Apple",contact:"Contact et questions",h1:"Minecraft iOS – Avis Détaillé et Téléchargement sur iPhone & iPad",p1:"Certains jeux s'oublient après quelques jours, tandis que d'autres vous rappellent encore et encore après des centaines d'heures.",p2:"<strong>Minecraft iOS</strong> en fait partie.",p3:"Sans graphismes irréalistes ni effets excessifs, Minecraft séduit par sa <strong>liberté, sa créativité et son vaste monde</strong> à explorer.",c2title:"Qu'est-ce qui rend Minecraft iOS si captivant ?",c2p1:"Minecraft sur iPhone et iPad apporte l'expérience sandbox familière directement sur votre appareil mobile.",c2p2:"Ce qui le rend unique, c'est qu'il <strong>n'impose aucun chemin fixe</strong>. Dès la création du monde, vous choisissez votre propre aventure.",c2li1:"🌲 Envie de construire une maison ? Commencez par couper du bois et récolter des ressources.",c2li2:"🗺️ Envie d'explorer ? Préparez votre équipement et partez à l'aventure.",c2li3:"💎 Envie de trouver des diamants ? Fabriquez une pioche et creusez en profondeur.",c2p3:"Ou si vous voulez simplement vous détendre, construisez une maison au bord de la mer, créez une ferme et profitez de Minecraft à votre façon.",survTitle:"Survival – Survie et Exploration",survP1:"<strong>Survival</strong> est le mode idéal pour vivre l'aventure complète de Minecraft. Au début, vous n'avez presque rien : vous récoltez du bois, trouvez de la nourriture, minez et fabriquez vos premiers outils.",survP2:"À la nuit tombée, le danger augmente. Zombies, Squelettes, Araignées et surtout Creepers peuvent apparaître autour de vous, d'où l'importance d'un abri sûr dès le premier jour.",tipBox:"🔥 <strong>Astuce débutant :</strong> Ne passez pas toute votre première journée à aller trop loin. Donnez la priorité au bois, à la nourriture, aux outils et à un abri avant la nuit.",creaTitle:"Creative – Construction Libre",creaP1:"Si Survival est une aventure de survie, <strong>Creative</strong> est un immense espace de création. À partir de simples blocs, vous pouvez construire :",creaLi1:"🏙️ Maisons modernes, villas et villes.",creaLi2:"🏰 Châteaux géants et créations fantastiques.",devTitle:"Expérience sur iPhone et iPad",devP1:"Minecraft dispose d'une version optimisée pour les mobiles. Se déplacer, sauter, casser ou poser des blocs et ouvrir l'inventaire est fluide sur écran tactile.",devP2:"Surtout sur <strong>iPad</strong>, le grand écran offre un affichage très confortable qui rend la construction et la gestion de l'inventaire bien plus précises.",mktTitle:"Add-On, Map et Texture Pack",mktP1:"Une fois Minecraft classique bien exploré, des milliers de contenus supplémentaires vous attendent sur le <strong>Minecraft Marketplace</strong> :",mktLi1:"<strong>Add-On :</strong> Ajoute de nouvelles créatures, véhicules, objets et armes uniques.",mktLi2:"<strong>Map :</strong> Découvrez des cartes Aventure, Horreur, Puzzle ou Mini-jeux.",mktLi3:"<strong>Texture Pack :</strong> Transforme entièrement l'apparence graphique du jeu, des blocs jusqu'au ciel.",warnFull:"⚠️ <strong>Remarque :</strong> Si vous téléchargez du contenu externe (hors Marketplace), vérifiez soigneusement la source et la compatibilité avec votre version du jeu pour éviter les erreurs.",srTitle:"Qu'est-ce que l'application Shadowrocket ?",appBtn:"Ouvrir",ratingLbl:"236 AVIS",ageLbl:"ÂGE",ageSub:"Ans",rankLbl:"CLASSEMENT",rankSub:"Utilitaires",whatsNew:"Nouveautés >",srP1:"Par ailleurs, nous vous présentons <strong>Shadowrocket</strong> – une application Utilitaires essentielle pour l'écosystème Apple.",srP2:"C'est un <strong>rule-based proxy utility</strong> qui aide à gérer les connexions réseau selon des règles de configuration. Points forts :",srLi1:"🔒 Gestion flexible du trafic réseau (Domain, CIDR, GeoIP, etc.).",srLi2:"📊 Suivi du trafic réseau en temps réel."},
 
-de:{
-dir:"ltr",
-buy:"Apple-Accounts kaufen",
-contact:"Kontakt & Fragen",
-h1:"Minecraft iOS – Ausführliches Review & Download auf iPhone & iPad",
-p1:"Manche Spiele vergisst man nach wenigen Tagen, andere spielt man auch nach hunderten Stunden immer wieder gern.",
-p2:"<strong>Minecraft iOS</strong> gehört genau dazu.",
-p3:"Ganz ohne überladene Effekte begeistert Minecraft durch <strong>Freiheit, Kreativität und eine riesige Welt</strong> zum Entdecken.",
-c2title:"Was macht Minecraft iOS so spannend?",
-c2p1:"Minecraft für iPhone und iPad bringt das vertraute Sandbox-Erlebnis direkt auf dein Mobilgerät.",
-c2p2:"Das Besondere ist, dass es <strong>keinen festen Weg vorgibt</strong>. Sobald du eine Welt erstellst, bestimmst du dein Abenteuer selbst.",
-c2li1:"🌲 Du willst ein Haus bauen? Fang an, Bäume zu fällen und Rohstoffe zu sammeln.",
-c2li2:"🗺️ Du willst erkunden? Rüste dich aus und mach dich auf den Weg.",
-c2li3:"💎 Du willst Diamanten finden? Stelle eine Spitzhacke her und grabe tief unter der Erde.",
-c2p3:"Oder wenn du einfach entspannen möchtest, baue ein Haus am Meer, lege eine Farm an und genieße Minecraft ganz nach deinem Geschmack.",
-survTitle:"Survival – Überleben und Erkunden",
-survP1:"<strong>Survival</strong> ist der richtige Modus, wenn du das volle Abenteuer von Minecraft erleben willst. Am Anfang hast du fast nichts: Du sammelst Holz, findest Essen, baust Erze ab und craftest erste Werkzeuge.",
-survP2:"Wenn es dunkel wird, steigt die Gefahr. Zombies, Skelette, Spinnen und vor allem Creeper können auftauchen, weshalb ein sicherer Unterschlupf am ersten Tag entscheidend ist.",
-tipBox:"🔥 <strong>Tipp für Einsteiger:</strong> Verbringe nicht den ganzen ersten Tag damit, zu weit zu laufen. Priorisiere Holz, Essen, Werkzeuge und einen Unterschlupf vor Einbruch der Dunkelheit.",
-creaTitle:"Creative – Grenzenloses Bauen",
-creaP1:"Während Survival ein Überlebensabenteuer ist, bietet <strong>Creative</strong> eine riesige Bauwelt. Aus einfachen Blöcken entstehen:",
-creaLi1:"🏙️ Moderne Häuser, Villen und Städte.",
-creaLi2:"🏰 Riesige Burgen und Fantasy-Bauwerke."
-},
+de:{dir:"ltr",buy:"Apple-Accounts kaufen",contact:"Kontakt & Fragen",h1:"Minecraft iOS – Ausführliches Review & Download auf iPhone & iPad",p1:"Manche Spiele vergisst man nach wenigen Tagen, andere spielt man auch nach hunderten Stunden immer wieder gern.",p2:"<strong>Minecraft iOS</strong> gehört genau dazu.",p3:"Ganz ohne überladene Effekte begeistert Minecraft durch <strong>Freiheit, Kreativität und eine riesige Welt</strong> zum Entdecken.",c2title:"Was macht Minecraft iOS so spannend?",c2p1:"Minecraft für iPhone und iPad bringt das vertraute Sandbox-Erlebnis direkt auf dein Mobilgerät.",c2p2:"Das Besondere ist, dass es <strong>keinen festen Weg vorgibt</strong>. Sobald du eine Welt erstellst, bestimmst du dein Abenteuer selbst.",c2li1:"🌲 Du willst ein Haus bauen? Fang an, Bäume zu fällen und Rohstoffe zu sammeln.",c2li2:"🗺️ Du willst erkunden? Rüste dich aus und mach dich auf den Weg.",c2li3:"💎 Du willst Diamanten finden? Stelle eine Spitzhacke her und grabe tief unter der Erde.",c2p3:"Oder wenn du einfach entspannen möchtest, baue ein Haus am Meer, lege eine Farm an und genieße Minecraft ganz nach deinem Geschmack.",survTitle:"Survival – Überleben und Erkunden",survP1:"<strong>Survival</strong> ist der richtige Modus, wenn du das volle Abenteuer von Minecraft erleben willst. Am Anfang hast du fast nichts: Du sammelst Holz, findest Essen, baust Erze ab und craftest erste Werkzeuge.",survP2:"Wenn es dunkel wird, steigt die Gefahr. Zombies, Skelette, Spinnen und vor allem Creeper können auftauchen, weshalb ein sicherer Unterschlupf am ersten Tag entscheidend ist.",tipBox:"🔥 <strong>Tipp für Einsteiger:</strong> Verbringe nicht den ganzen ersten Tag damit, zu weit zu laufen. Priorisiere Holz, Essen, Werkzeuge und einen Unterschlupf vor Einbruch der Dunkelheit.",creaTitle:"Creative – Grenzenloses Bauen",creaP1:"Während Survival ein Überlebensabenteuer ist, bietet <strong>Creative</strong> eine riesige Bauwelt. Aus einfachen Blöcken entstehen:",creaLi1:"🏙️ Moderne Häuser, Villen und Städte.",creaLi2:"🏰 Riesige Burgen und Fantasy-Bauwerke.",devTitle:"Erlebnis auf iPhone & iPad",devP1:"Minecraft bietet eine für Mobilgeräte optimierte Version. Laufen, Springen, Blöcke abbauen oder setzen und das Inventar öffnen gelingen auf dem Touchscreen schnell.",devP2:"Besonders auf dem <strong>iPad</strong> sorgt der große Bildschirm für viel Übersicht, sodass Bauen und Inventarverwaltung deutlich präziser funktionieren.",mktTitle:"Add-On, Map und Texture Pack",mktP1:"Wenn du das normale Minecraft ausgiebig gespielt hast, warten auf dem <strong>Minecraft Marketplace</strong> noch tausende zusätzliche Inhalte:",mktLi1:"<strong>Add-On:</strong> Ergänzt neue Kreaturen, Fahrzeuge, Gegenstände und besondere Waffen.",mktLi2:"<strong>Map:</strong> Spiele Adventure-, Horror-, Puzzle- oder Mini-Game-Maps.",mktLi3:"<strong>Texture Pack:</strong> Verändert die Optik des Spiels komplett – von den Blöcken bis zum Himmel.",warnFull:"⚠️ <strong>Hinweis:</strong> Wenn Sie Inhalte von extern herunterladen (nicht über den Marketplace), prüfen Sie Quelle und Kompatibilität mit Ihrer Spielversion sorgfältig, um Fehler zu vermeiden.",srTitle:"Was ist die Shadowrocket-App?",appBtn:"Öffnen",ratingLbl:"236 BEWERTUNGEN",ageLbl:"ALTER",ageSub:"Jahre",rankLbl:"CHARTS",rankSub:"Dienstprogramme",whatsNew:"Neuheiten >",srP1:"Außerdem stellen wir <strong>Shadowrocket</strong> vor – eine wichtige Utilities-App für Nutzer im Apple-Ökosystem.",srP2:"Es ist ein <strong>rule-based proxy utility</strong>, mit dem du Netzwerkverbindungen anhand von Konfigurationsregeln verwaltest. Wichtige Funktionen:",srLi1:"🔒 Flexible Netzwerkverkehrssteuerung (Domain, CIDR, GeoIP usw.).",srLi2:"📊 Echtzeit-Überwachung des Netzwerkverkehrs."},
 
-es:{
-dir:"ltr",
-buy:"Comprar cuentas de Apple",
-contact:"Contacto y consultas",
-h1:"Minecraft iOS – Reseña Detallada y Cómo Descargar en iPhone y iPad",
-p1:"Hay juegos que olvidas en unos días y otros a los que vuelves una y otra vez tras cientos de horas.",
-p2:"<strong>Minecraft iOS</strong> es uno de ellos.",
-p3:"Sin gráficos irreales ni efectos exagerados, Minecraft destaca por su <strong>libertad, creatividad y un mundo enorme</strong> por explorar.",
-c2title:"¿Qué hace tan atractivo a Minecraft iOS?",
-c2p1:"Minecraft en iPhone y iPad lleva la experiencia sandbox clásica directamente a tu dispositivo móvil.",
-c2p2:"Lo mejor del juego es que <strong>no obliga a seguir un camino fijo</strong>. Al crear un mundo, tú decides tu propia aventura.",
-c2li1:"🌲 ¿Quieres construir una casa? Empieza talando árboles y reuniendo recursos.",
-c2li2:"🗺️ ¿Quieres explorar? Prepara tu equipo y sal de viaje.",
-c2li3:"💎 ¿Quieres encontrar diamantes? Fabrica un pico y empieza a cavar bajo tierra.",
-c2p3:"O si solo quieres relajarte, puedes levantar una casa junto a la costa, hacer una granja y disfrutar de Minecraft a tu manera.",
-survTitle:"Survival – Supervivencia y Exploración",
-survP1:"<strong>Survival</strong> es el modo ideal para vivir la aventura completa de Minecraft. Al principio casi no tienes nada: recolectas madera, buscas comida, extraes minerales y creas tus primeras herramientas.",
-survP2:"Cuando cae la noche, el peligro aumenta. Zombis, Esqueletos, Arañas y sobre todo Creepers pueden aparecer cerca, por lo que tener un refugio seguro el primer día es clave.",
-tipBox:"🔥 <strong>Consejo inicial:</strong> No pases todo el primer día alejándote demasiado. Prioriza madera, comida, herramientas y refugio antes de que oscurezca.",
-creaTitle:"Creative – Construcción sin Límites",
-creaP1:"Si Survival es sobrevivir a la aventura, <strong>Creative</strong> es un enorme espacio de creación. Con simples bloques puedes levantar:",
-creaLi1:"🏙️ Casas modernas, villas y ciudades.",
-creaLi2:"🏰 Castillos gigantes y construcciones de fantasía."
-},
+es:{dir:"ltr",buy:"Comprar cuentas de Apple",contact:"Contacto y consultas",h1:"Minecraft iOS – Reseña Detallada y Cómo Descargar en iPhone y iPad",p1:"Hay juegos que olvidas en unos días y otros a los que vuelves una y otra vez tras cientos de horas.",p2:"<strong>Minecraft iOS</strong> es uno de ellos.",p3:"Sin gráficos irreales ni efectos exagerados, Minecraft destaca por su <strong>libertad, creatividad y un mundo enorme</strong> por explorar.",c2title:"¿Qué hace tan atractivo a Minecraft iOS?",c2p1:"Minecraft en iPhone y iPad lleva la experiencia sandbox clásica directamente a tu dispositivo móvil.",c2p2:"Lo mejor del juego es que <strong>no obliga a seguir un camino fijo</strong>. Al crear un mundo, tú decides tu propia aventura.",c2li1:"🌲 ¿Quieres construir una casa? Empieza talando árboles y reuniendo recursos.",c2li2:"🗺️ ¿Quieres explorar? Prepara tu equipo y sal de viaje.",c2li3:"💎 ¿Quieres encontrar diamantes? Fabrica un pico y empieza a cavar bajo tierra.",c2p3:"O si solo quieres relajarte, puedes levantar una casa junto a la costa, hacer una granja y disfrutar de Minecraft a tu manera.",survTitle:"Survival – Supervivencia y Exploración",survP1:"<strong>Survival</strong> es el modo ideal para vivir la aventura completa de Minecraft. Al principio casi no tienes nada: recolectas madera, buscas comida, extraes minerales y creas tus primeras herramientas.",survP2:"Cuando cae la noche, el peligro aumenta. Zombis, Esqueletos, Arañas y sobre todo Creepers pueden aparecer cerca, por lo que tener un refugio seguro el primer día es clave.",tipBox:"🔥 <strong>Consejo inicial:</strong> No pases todo el primer día alejándote demasiado. Prioriza madera, comida, herramientas y refugio antes de que oscurezca.",creaTitle:"Creative – Construcción sin Límites",creaP1:"Si Survival es sobrevivir a la aventura, <strong>Creative</strong> es un enorme espacio de creación. Con simples bloques puedes levantar:",creaLi1:"🏙️ Casas modernas, villas y ciudades.",creaLi2:"🏰 Castillos gigantes y construcciones de fantasía.",devTitle:"Experiencia en iPhone y iPad",devP1:"Minecraft cuenta con una versión optimizada para móviles. Moverse, saltar, romper o colocar bloques y abrir el inventario es muy sencillo en pantalla táctil.",devP2:"Especialmente en <strong>iPad</strong>, la pantalla grande brinda una vista muy cómoda que hace construir y organizar el inventario mucho más preciso.",mktTitle:"Add-On, Map y Texture Pack",mktP1:"Tras jugar suficiente tiempo al Minecraft base, aún tienes miles de contenidos extra por descubrir en <strong>Minecraft Marketplace</strong>:",mktLi1:"<strong>Add-On:</strong> Añade nuevas criaturas, vehículos, objetos y armas singulares.",mktLi2:"<strong>Map:</strong> Disfruta mapas de Aventura, Terror, Puzles o Minijuegos.",mktLi3:"<strong>Texture Pack:</strong> Cambia por completo el aspecto visual del juego, desde los bloques hasta el cielo.",warnFull:"⚠️ <strong>Nota:</strong> Si descargas contenido externo (no a través de Marketplace), revisa bien el origen y la compatibilidad con la versión de tu juego para evitar errores.",srTitle:"¿Qué es la aplicación Shadowrocket?",appBtn:"Abrir",ratingLbl:"236 VALORACIONES",ageLbl:"EDAD",ageSub:"Años",rankLbl:"RANKING",rankSub:"Utilidades",whatsNew:"Novedades >",srP1:"De paso, también presentamos <strong>Shadowrocket</strong> – una aplicación de Utilidades clave para el ecosistema Apple.",srP2:"Es una <strong>rule-based proxy utility</strong> que ayuda a gestionar conexiones de red según reglas de configuración. Funciones destacadas:",srLi1:"🔒 Gestión flexible del tráfico de red (Domain, CIDR, GeoIP, etc.).",srLi2:"📊 Monitoreo del tráfico de red en tiempo real."},
 
-ru:{
-dir:"ltr",
-buy:"Купить аккаунты Apple",
-contact:"Связь и вопросы",
-h1:"Minecraft iOS – Подробный обзор и загрузка на iPhone и iPad",
-p1:"Одни игры забываются через пару дней, а к другим возвращаешься снова и снова даже после сотен часов.",
-p2:"<strong>Minecraft iOS</strong> — одна из таких игр.",
-p3:"Без лишних эффектов Minecraft привлекает <strong>свободой, творчеством и огромным миром</strong> для исследования.",
-c2title:"Чем привлекателен Minecraft на iOS?",
-c2p1:"Minecraft на iPhone и iPad переносит знакомый мир-песочницу прямо на ваше мобильное устройство.",
-c2p2:"Главная особенность игры в том, что она <strong>не заставляет идти по заданному пути</strong>. Создав мир, вы сами выбираете приключение.",
-c2li1:"🌲 Хотите построить дом? Начните рубить деревья и собирать ресурсы.",
-c2li2:"🗺️ Хотите исследовать мир? Подготовьте снаряжение и отправляйтесь в путь.",
-c2li3:"💎 Хотите найти алмазы? Скрафтите кирку и копайте вглубь.",
-c2p3:"А если хочется отдохнуть, можно построить домик у моря, завести ферму и играть в Minecraft в своём ритме.",
-survTitle:"Survival – Выживание и исследование",
-survP1:"<strong>Survival</strong> — лучший режим для полного погружения в приключения Minecraft. В начале у вас почти ничего нет: вы добываете дерево, еду, руду и делаете первые инструменты.",
-survP2:"С наступлением ночи становится опаснее: рядом могут появиться зомби, скелеты, пауки и особенно криперы, поэтому важно заранее сделать укрытие в первый день.",
-tipBox:"🔥 <strong>Совет новичкам:</strong> Не уходите слишком далеко в первый день. Сначала добудьте дерево, еду, инструменты и укрытие до темноты.",
-creaTitle:"Creative – Свобода строительства",
-creaP1:"Если Survival — это выживание, то <strong>Creative</strong> — огромный простор для творчества. Из простых блоков можно построить:",
-creaLi1:"🏙️ Современные дома, виллы и города.",
-creaLi2:"🏰 Огромные замки и фэнтези-постройки."
-},
+ru:{dir:"ltr",buy:"Купить аккаунты Apple",contact:"Связь и вопросы",h1:"Minecraft iOS – Подробный обзор и загрузка на iPhone и iPad",p1:"Одни игры забываются через пару дней, а к другим возвращаешься снова и снова даже после сотен часов.",p2:"<strong>Minecraft iOS</strong> — одна из таких игр.",p3:"Без лишних эффектов Minecraft привлекает <strong>свободой, творчеством и огромным миром</strong> для исследования.",c2title:"Чем привлекателен Minecraft на iOS?",c2p1:"Minecraft на iPhone и iPad переносит знакомый мир-песочницу прямо на ваше мобильное устройство.",c2p2:"Главная особенность игры в том, что она <strong>не заставляет идти по заданному пути</strong>. Создав мир, вы сами выбираете приключение.",c2li1:"🌲 Хотите построить дом? Начните рубить деревья и собирать ресурсы.",c2li2:"🗺️ Хотите исследовать мир? Подготовьте снаряжение и отправляйтесь в путь.",c2li3:"💎 Хотите найти алмазы? Скрафтите кирку и копайте вглубь.",c2p3:"А если хочется отдохнуть, можно построить домик у моря, завести ферму и играть в Minecraft в своём ритме.",survTitle:"Survival – Выживание и исследование",survP1:"<strong>Survival</strong> — лучший режим для полного погружения в приключения Minecraft. В начале у вас почти ничего нет: вы добываете дерево, еду, руду и делаете первые инструменты.",survP2:"С наступлением ночи становится опаснее: рядом могут появиться зомби, скелеты, пауки и особенно криперы, поэтому важно заранее сделать укрытие в первый день.",tipBox:"🔥 <strong>Совет новичкам:</strong> Не уходите слишком далеко в первый день. Сначала добудьте дерево, еду, инструменты и укрытие до темноты.",creaTitle:"Creative – Свобода строительства",creaP1:"Если Survival — это выживание, то <strong>Creative</strong> — огромный простор для творчества. Из простых блоков можно построить:",creaLi1:"🏙️ Современные дома, виллы и города.",creaLi2:"🏰 Огромные замки и фэнтези-постройки.",devTitle:"Опыт игры на iPhone и iPad",devP1:"У Minecraft есть версия, адаптированная для мобильных устройств: ходить, прыгать, ломать и ставить блоки, а также открывать инвентарь удобно на сенсорном экране.",devP2:"Особенно на <strong>iPad</strong> большой экран даёт просторный обзор, благодаря чему строить и управлять инвентарём заметно точнее.",mktTitle:"Add-On, Map и Texture Pack",mktP1:"Когда базовый Minecraft уже изучен, в <strong>Minecraft Marketplace</strong> остаются тысячи дополнений:",mktLi1:"<strong>Add-On:</strong> Добавляет новых существ, транспорт, предметы и необычное оружие.",mktLi2:"<strong>Map:</strong> Проходите карты в жанрах Adventure, Horror, Puzzle или Mini Game.",mktLi3:"<strong>Texture Pack:</strong> Полностью меняет визуальный стиль игры — от блоков до неба.",warnFull:"⚠️ <strong>Примечание:</strong> Если загружаете контент извне (не через Marketplace), внимательно проверьте источник и совместимость с версией игры, чтобы избежать ошибок.",srTitle:"Что такое приложение Shadowrocket?",appBtn:"Открыть",ratingLbl:"236 ОЦЕНОК",ageLbl:"ВОЗРАСТ",ageSub:"Лет",rankLbl:"РЕЙТИНГ",rankSub:"Утилиты",whatsNew:"Что нового >",srP1:"Заодно расскажем о приложении <strong>Shadowrocket</strong> — полезной утилите для пользователей экосистемы Apple.",srP2:"Это <strong>rule-based proxy utility</strong>, помогающая управлять сетевыми подключениями по правилам конфигурации. Основные возможности:",srLi1:"🔒 Гибкое управление сетевым трафиком (Domain, CIDR, GeoIP и др.).",srLi2:"📊 Мониторинг сетевого трафика в реальном времени."},
 
-ja:{
-dir:"ltr",
-buy:"Appleアカウントを購入",
-contact:"お問い合わせ・質問",
-h1:"Minecraft iOS – 詳細レビューとiPhone・iPadでのダウンロード方法",
-p1:"数日で忘れてしまうゲームもあれば、何百時間遊んでも何度も戻ってきたくなるゲームもあります。",
-p2:"<strong>Minecraft iOS</strong> はまさにそんな作品です。",
-p3:"派手な演出がなくても、<strong>自由度・創造性・広大な世界</strong>によって多くの人を惹きつけます。",
-c2title:"Minecraft iOSのどんなところが魅力？",
-c2p1:"iPhoneやiPadのMinecraftは、おなじみのサンドボックス体験をモバイル端末でそのまま楽しめます。",
-c2p2:"一番の特徴は、<strong>決められた一本道を強制されないこと</strong>。ワールドを作ったら、冒険はあなたの自由です。",
-c2li1:"🌲 家を建てたい？木を切って素材を集めるところから始めましょう。",
-c2li2:"🗺️ 探索したい？装備を整えて旅に出ましょう。",
-c2li3:"💎 ダイヤを探したい？ツルハシを作って地中深く掘り進めましょう。",
-c2p3:"のんびり過ごしたいときは、海辺に家を建てて農場を作り、自分だけのスタイルでMinecraftを楽しめます。",
-survTitle:"Survival – サバイバルと探索",
-survP1:"<strong>Survival</strong> はMinecraftの冒険を存分に味わうためのモードです。最初はほぼ何もない状態から、木や食料を集め、鉱石を掘り、最初の道具を作ります。",
-survP2:"夜になると危険が増します。ゾンビ、スケルトン、クモ、特にクリーパーが近くに現れることがあるため、初日に安全な拠点を作ることが大切です。",
-tipBox:"🔥 <strong>初心者向けヒント：</strong> 初日に遠くへ行きすぎないようにしましょう。暗くなる前に木・食料・道具・拠点を優先してください。",
-creaTitle:"Creative – 自由な建築",
-creaP1:"Survivalがサバイバルの冒険なら、<strong>Creative</strong> は広大な建築の場です。シンプルなブロックから次のようなものを作れます：",
-creaLi1:"🏙️ モダンな家、別荘、街並み。",
-creaLi2:"🏰 巨大な城やファンタジー建築。"
-}
+ja:{dir:"ltr",buy:"Appleアカウントを購入",contact:"お問い合わせ・質問",h1:"Minecraft iOS – 詳細レビューとiPhone・iPadでのダウンロード方法",p1:"数日で忘れてしまうゲームもあれば、何百時間遊んでも何度も戻ってきたくなるゲームもあります。",p2:"<strong>Minecraft iOS</strong> はまさにそんな作品です。",p3:"派手な演出がなくても、<strong>自由度・創造性・広大な世界</strong>によって多くの人を惹きつけます。",c2title:"Minecraft iOSのどんなところが魅力？",c2p1:"iPhoneやiPadのMinecraftは、おなじみのサンドボックス体験をモバイル端末でそのまま楽しめます。",c2p2:"一番の特徴は、<strong>決められた一本道を強制されないこと</strong>。ワールドを作ったら、冒険はあなたの自由です。",c2li1:"🌲 家を建てたい？木を切って素材を集めるところから始めましょう。",c2li2:"🗺️ 探索したい？装備を整えて旅に出ましょう。",c2li3:"💎 ダイヤを探したい？ツルハシを作って地中深く掘り進めましょう。",c2p3:"のんびり過ごしたいときは、海辺に家を建てて農場を作り、自分だけのスタイルでMinecraftを楽しめます。",survTitle:"Survival – サバイバルと探索",survP1:"<strong>Survival</strong> はMinecraftの冒険を存分に味わうためのモードです。最初はほぼ何もない状態から、木や食料を集め、鉱石を掘り、最初の道具を作ります。",survP2:"夜になると危険が増します。ゾンビ、スケルトン、クモ、特にクリーパーが近くに現れることがあるため、初日に安全な拠点を作ることが大切です。",tipBox:"🔥 <strong>初心者向けヒント：</strong> 初日に遠くへ行きすぎないようにしましょう。暗くなる前に木・食料・道具・拠点を優先してください。",creaTitle:"Creative – 自由な建築",creaP1:"Survivalがサバイバルの冒険なら、<strong>Creative</strong> は広大な建築の場です。シンプルなブロックから次のようなものを作れます：",creaLi1:"🏙️ モダンな家、別荘、街並み。",creaLi2:"🏰 巨大な城やファンタジー建築。",devTitle:"iPhoneとiPadでのプレイ体験",devP1:"Minecraftにはモバイル向けに最適化された版があり、移動やジャンプ、ブロックの破壊・設置、インベントリ操作もタッチ画面で直感的に行えます。",devP2:"特に<strong>iPad</strong>では大画面ならではの広い表示領域があり、建築やアイテム管理をより正確に行えます。",mktTitle:"Add-On、Map、Texture Pack",mktP1:"通常のMinecraftをたっぷり楽しんだあとも、<strong>Minecraft Marketplace</strong>には数千もの追加コンテンツがあります：",mktLi1:"<strong>Add-On：</strong> 新しい生き物や乗り物、アイテム、ユニークな武器を追加します。",mktLi2:"<strong>Map：</strong> アドベンチャー、ホラー、パズル、ミニゲームのマップを遊べます。",mktLi3:"<strong>Texture Pack：</strong> ブロックから空まで、ゲームの見た目を丸ごと変更します。",warnFull:"⚠️ <strong>注意：</strong> Marketplace以外から外部コンテンツをダウンロードする場合は、エラーを防ぐため提供元とゲームのバージョン互換性をよく確認してください。",srTitle:"Shadowrocketアプリとは？",appBtn:"開く",ratingLbl:"236件の評価",ageLbl:"対象年齢",ageSub:"歳以上",rankLbl:"ランキング",rankSub:"ユーティリティ",whatsNew:"新機能 >",srP1:"あわせて、Appleエコシステムで役立つユーティリティアプリ <strong>Shadowrocket</strong> もご紹介します。",srP2:"設定ルールに基づいてネットワーク接続を管理できる <strong>rule-based proxy utility</strong> です。主な特徴：",srLi1:"🔒 柔軟なネットワークトラフィック管理（Domain、CIDR、GeoIPなど）。",srLi2:"📊 リアルタイムでのネットワーク通信量モニタリング。"}
 };
 
 function applyLang(code, save = true){
@@ -417,461 +265,47 @@ function applyLang(code, save = true){
   document.getElementById("c3-crea-li1").innerHTML = t.creaLi1;
   document.getElementById("c3-crea-li2").innerHTML = t.creaLi2;
 
-  if(save){
-    try{ localStorage.setItem(LANG_KEY, code); }catch(e){}
-  }
+  document.getElementById("c4-dev-title").innerText = t.devTitle;
+  document.getElementById("c4-dev-p1").innerHTML = t.devP1;
+  document.getElementById("c4-dev-p2").innerHTML = t.devP2;
+  document.getElementById("c4-mkt-title").innerText = t.mktTitle;
+  document.getElementById("c4-mkt-p1").innerHTML = t.mktP1;
+  document.getElementById("c4-mkt-li1").innerHTML = t.mktLi1;
+  document.getElementById("c4-mkt-li2").innerHTML = t.mktLi2;
+  document.getElementById("c4-mkt-li3").innerHTML = t.mktLi3;
 
+  document.getElementById("c5-warn-full").innerHTML = t.warnFull;
+  document.getElementById("c5-sr-title").innerText = t.srTitle;
+  document.getElementById("c5-app-btn").innerText = t.appBtn;
+  document.getElementById("c5-stat-rating-lbl").innerText = t.ratingLbl;
+  document.getElementById("c5-stat-age-lbl").innerText = t.ageLbl;
+  document.getElementById("c5-stat-age-sub").innerText = t.ageSub;
+  document.getElementById("c5-stat-rank-lbl").innerText = t.rankLbl;
+  document.getElementById("c5-stat-rank-sub").innerText = t.rankSub;
+  document.getElementById("c5-whats-new").innerText = t.whatsNew;
+  document.getElementById("c5-sr-p1").innerHTML = t.srP1;
+  document.getElementById("c5-sr-p2").innerHTML = t.srP2;
+  document.getElementById("c5-sr-li1").innerHTML = t.srLi1;
+  document.getElementById("c5-sr-li2").innerHTML = t.srLi2;
+
+  if(save){ try{ localStorage.setItem(LANG_KEY, code); }catch(e){} }
   document.getElementById("lang-dropdown").classList.remove("show");
 }
 
-function toggleLangDropdown(e){
-  e.stopPropagation();
-  document.getElementById("side-drawer").classList.remove("show");
-  document.getElementById("lang-dropdown").classList.toggle("show");
-}
+function toggleLangDropdown(e){e.stopPropagation();document.getElementById("side-drawer").classList.remove("show");document.getElementById("lang-dropdown").classList.toggle("show");}
+function toggleDrawer(e){e.stopPropagation();document.getElementById("lang-dropdown").classList.remove("show");document.getElementById("side-drawer").classList.toggle("show");}
 
-function toggleDrawer(e){
-  e.stopPropagation();
-  document.getElementById("lang-dropdown").classList.remove("show");
-  document.getElementById("side-drawer").classList.toggle("show");
-}
-
-document.addEventListener("click", () => {
+document.addEventListener("click",()=>{
   document.getElementById("lang-dropdown").classList.remove("show");
   document.getElementById("side-drawer").classList.remove("show");
 });
 
-(function initLang(){
-  let saved = "en";
-  try{ saved = localStorage.getItem(LANG_KEY) || "en"; }catch(e){}
-  applyLang(saved, false);
+(function(){
+  let saved="en";
+  try{saved=localStorage.getItem(LANG_KEY)||"en";}catch(e){}
+  applyLang(saved,false);
 })();
 </script>
 
 </body>
 </html>
-<!-- تكملة الصورة الرابعة (iPhone & iPad + Add-On, Map & Texture Pack) -->
-<section id="sec-continuation-4" style="max-width:480px;margin:0 auto;padding:8px 16px 32px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#111827;">
-
-    <!-- قسم التجربة على iPhone و iPad -->
-    <h2 style="font-size:21px;font-weight:700;line-height:1.35;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
-        <span>📱</span>
-        <span id="c4-dev-title">Trải Nghiệm Trên iPhone &amp; iPad</span>
-    </h2>
-
-    <p id="c4-dev-p1" style="font-size:15px;line-height:1.65;color:#1f2937;margin-bottom:14px;">
-        Minecraft có phiên bản được thiết kế tối ưu dành riêng cho thiết bị di động. Di chuyển, nhảy, phá block, đặt block, mở kho đồ đều khá dễ làm quen qua màn hình cảm ứng.
-    </p>
-
-    <p id="c4-dev-p2" style="font-size:15px;line-height:1.65;color:#1f2937;margin-bottom:22px;">
-        Đặc biệt trên <strong>iPad</strong>, màn hình lớn mang lại không gian hiển thị cực kỳ thoải mái, giúp thao tác xây dựng công trình hoặc quản lý kho đồ chính xác hơn rất nhiều.
-    </p>
-
-    <!-- قسم Add-On, Map و Texture Pack -->
-    <h2 style="font-size:21px;font-weight:700;line-height:1.35;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
-        <span>🧩</span>
-        <span id="c4-mkt-title">Add-On, Map Và Texture Pack</span>
-    </h2>
-
-    <p id="c4-mkt-p1" style="font-size:15px;line-height:1.65;color:#1f2937;margin-bottom:14px;">
-        Khi đã chơi Minecraft mặc định đủ lâu, bạn vẫn còn hàng nghìn nội dung khác để khám phá thông qua <strong>Minecraft Marketplace</strong>:
-    </p>
-
-    <ul style="list-style:disc;padding-inline-start:20px;font-size:15px;line-height:1.65;color:#1f2937;margin-bottom:18px;">
-        <li id="c4-mkt-li1" style="margin-bottom:10px;"><strong>Add-On:</strong> Bổ sung sinh vật mới, phương tiện, vật phẩm và vũ khí độc lạ.</li>
-        <li id="c4-mkt-li2" style="margin-bottom:10px;"><strong>Map:</strong> Trải nghiệm các bản đồ Adventure, Horror, Puzzle hay Mini Game.</li>
-        <li id="c4-mkt-li3"><strong>Texture Pack:</strong> Thay đổi hoàn toàn diện mạo đồ họa của game, từ block đến bầu trời.</li>
-    </ul>
-
-    <div style="background:#fffbeb;border-left:4px solid #f59e0b;border-radius:0 12px 12px 0;padding:15px 16px;box-shadow:0 2px 10px rgba(0,0,0,0.04);font-size:14.5px;line-height:1.6;color:#1f2937;">
-        <p id="c4-warn-box">⚠️ <strong>Lưu ý:</strong> Nếu tải nội dung từ bên ngoài (không...</p>
-    </div>
-
-</section>
-
-<script>
-(function () {
-    const C4_LANGS = {
-        en: {
-            devTitle: "Experience on iPhone & iPad",
-            devP1: "Minecraft has a version thoughtfully optimized for mobile devices. Moving, jumping, breaking blocks, placing blocks, and opening your inventory are all intuitive on a touch screen.",
-            devP2: "Especially on <strong>iPad</strong>, the larger display gives a much more comfortable view, making building structures and managing inventory noticeably more accurate.",
-            mktTitle: "Add-On, Map and Texture Pack",
-            mktP1: "Once you've played vanilla Minecraft for a while, there are still thousands of extra items to discover through the <strong>Minecraft Marketplace</strong>:",
-            mktLi1: "<strong>Add-On:</strong> Adds new creatures, vehicles, items, and unique weapons.",
-            mktLi2: "<strong>Map:</strong> Play Adventure, Horror, Puzzle, or Mini Game maps.",
-            mktLi3: "<strong>Texture Pack:</strong> Completely refreshes the game's visual look, from blocks to the sky.",
-            warnBox: "⚠️ <strong>Note:</strong> If downloading content from outside (not..."
-        },
-        ar: {
-            devTitle: "التجربة على iPhone و iPad",
-            devP1: "تتوفر ماينكرافت بنسخة محسّنة خصيصاً للأجهزة المحمولة؛ فالحركة والقفز وكسر الكتل ووضعها وفتح حقيبة الأدوات سهلة ومريحة عبر شاشة اللمس.",
-            devP2: "وبشكل خاص على <strong>iPad</strong>، تمنح الشاشة الكبيرة مساحة عرض مريحة للغاية تجعل بناء المشاريع وإدارة المخزون أكثر دقة بكثير.",
-            mktTitle: "Add-On و Map و Texture Pack",
-            mktP1: "بعد قضاء وقت كافٍ في ماينكرافت الأساسية، لا يزال أمامك آلاف الإضافات لاستكشافها عبر <strong>Minecraft Marketplace</strong>:",
-            mktLi1: "<strong>Add-On:</strong> يضيف مخلوقات جديدة ومركبات وعناصر وأسلحة مميزة.",
-            mktLi2: "<strong>Map:</strong> تجربة خرائط المغامرات والرعب والألغاز أو الألعاب المصغرة.",
-            mktLi3: "<strong>Texture Pack:</strong> يغيّر المظهر الرسومي للعبة بالكامل من الكتل وحتى السماء.",
-            warnBox: "⚠️ <strong>تنبيه:</strong> إذا قمت بتحميل محتوى من خارج (ليس..."
-        },
-        ku: {
-            devTitle: "ئەزموون ل سەر iPhone و iPad",
-            devP1: "ماینكرافت ب شێوازەکێ تایبەت بۆ مۆبایلان هاتیە رێکخستن؛ چوون، بازدان، شکاندنا بلۆکان، دانان و ڤەکرنا جانتایێ ب شاشا لەمسێ گەلەك ب ساناهی نە.",
-            devP2: "ب تایبەت ل سەر <strong>iPad</strong>، شاشا مەزن جهەکێ زۆر ئارام ددەتە پیشاندانێ و ئاڤاکرن و رێکخستنا کەلوپەلان گەلەك هویرتر لێ دکەت.",
-            mktTitle: "Add-On، Map و Texture Pack",
-            mktP1: "پشتی کو ب ماینكرافتا سەرەکی دا تێر یاری دکەی، هێشتا ب هەزاران تشتێن دی هەنە کو ب رێکا <strong>Minecraft Marketplace</strong> بگەڕیی:",
-            mktLi1: "<strong>Add-On:</strong> زیندەوەرێن نوی، ترۆمبێل، کەلوپەل و چەکێن جودا زێدە دکەت.",
-            mktLi2: "<strong>Map:</strong> ئەزموونکرنا نەخشەیێن سەرکێشی، ترس، مەتەڵ یان یاریێن بچویک.",
-            mktLi3: "<strong>Texture Pack:</strong> شێوازێ گرافیکی یێ یاریێ ب تەمامی دگوهۆڕیت ژ بلۆکان هەتا ئەسمانی.",
-            warnBox: "⚠️ <strong>تێبینی:</strong> ئەگەر تە ژ دەرڤە تشتەك داگرت (نە..."
-        },
-        vi: {
-            devTitle: "Trải Nghiệm Trên iPhone & iPad",
-            devP1: "Minecraft có phiên bản được thiết kế tối ưu dành riêng cho thiết bị di động. Di chuyển, nhảy, phá block, đặt block, mở kho đồ đều khá dễ làm quen qua màn hình cảm ứng.",
-            devP2: "Đặc biệt trên <strong>iPad</strong>, màn hình lớn mang lại không gian hiển thị cực kỳ thoải mái, giúp thao tác xây dựng công trình hoặc quản lý kho đồ chính xác hơn rất nhiều.",
-            mktTitle: "Add-On, Map Và Texture Pack",
-            mktP1: "Khi đã chơi Minecraft mặc định đủ lâu, bạn vẫn còn hàng nghìn nội dung khác để khám phá thông qua <strong>Minecraft Marketplace</strong>:",
-            mktLi1: "<strong>Add-On:</strong> Bổ sung sinh vật mới, phương tiện, vật phẩm và vũ khí độc lạ.",
-            mktLi2: "<strong>Map:</strong> Trải nghiệm các bản đồ Adventure, Horror, Puzzle hay Mini Game.",
-            mktLi3: "<strong>Texture Pack:</strong> Thay đổi hoàn toàn diện mạo đồ họa của game, từ block đến bầu trời.",
-            warnBox: "⚠️ <strong>Lưu ý:</strong> Nếu tải nội dung từ bên ngoài (không..."
-        },
-        tr: {
-            devTitle: "iPhone ve iPad Deneyimi",
-            devP1: "Minecraft, mobil cihazlar için optimize edilmiş bir sürüme sahiptir. Hareket etme, zıplama, blok kırma, blok yerleştirme ve envanter açma dokunmatik ekranda oldukça kolaydır.",
-            devP2: "Özellikle <strong>iPad</strong>'de büyük ekran çok rahat bir görünüm sunar; yapı inşa etmeyi ve envanter yönetmeyi çok daha hassas hale getirir.",
-            mktTitle: "Add-On, Map ve Texture Pack",
-            mktP1: "Varsayılan Minecraft'ı yeterince oynadıktan sonra <strong>Minecraft Marketplace</strong> üzerinden keşfedebileceğin binlerce içerik daha bulunur:",
-            mktLi1: "<strong>Add-On:</strong> Yeni yaratıklar, araçlar, eşyalar ve özel silahlar ekler.",
-            mktLi2: "<strong>Map:</strong> Macera, Korku, Bulmaca veya Mini Oyun haritalarını deneyimle.",
-            mktLi3: "<strong>Texture Pack:</strong> Bloklardan gökyüzüne kadar oyunun görsel görünümünü tamamen değiştirir.",
-            warnBox: "⚠️ <strong>Not:</strong> Dışarıdan içerik indiriyorsanız (olmayan..."
-        },
-        fr: {
-            devTitle: "Expérience sur iPhone et iPad",
-            devP1: "Minecraft dispose d'une version optimisée pour les mobiles. Se déplacer, sauter, casser ou poser des blocs et ouvrir l'inventaire est fluide sur écran tactile.",
-            devP2: "Surtout sur <strong>iPad</strong>, le grand écran offre un affichage très confortable qui rend la construction et la gestion de l'inventaire bien plus précises.",
-            mktTitle: "Add-On, Map et Texture Pack",
-            mktP1: "Une fois Minecraft classique bien exploré, des milliers de contenus supplémentaires vous attendent sur le <strong>Minecraft Marketplace</strong> :",
-            mktLi1: "<strong>Add-On :</strong> Ajoute de nouvelles créatures, véhicules, objets et armes uniques.",
-            mktLi2: "<strong>Map :</strong> Découvrez des cartes Aventure, Horreur, Puzzle ou Mini-jeux.",
-            mktLi3: "<strong>Texture Pack :</strong> Transforme entièrement l'apparence graphique du jeu, des blocs jusqu'au ciel.",
-            warnBox: "⚠️ <strong>Remarque :</strong> Si vous téléchargez du contenu externe (pas..."
-        },
-        de: {
-            devTitle: "Erlebnis auf iPhone & iPad",
-            devP1: "Minecraft bietet eine für Mobilgeräte optimierte Version. Laufen, Springen, Blöcke abbauen oder setzen und das Inventar öffnen gelingen auf dem Touchscreen schnell.",
-            devP2: "Besonders auf dem <strong>iPad</strong> sorgt der große Bildschirm für viel Übersicht, sodass Bauen und Inventarverwaltung deutlich präziser funktionieren.",
-            mktTitle: "Add-On, Map und Texture Pack",
-            mktP1: "Wenn du das normale Minecraft ausgiebig gespielt hast, warten auf dem <strong>Minecraft Marketplace</strong> noch tausende zusätzliche Inhalte:",
-            mktLi1: "<strong>Add-On:</strong> Ergänzt neue Kreaturen, Fahrzeuge, Gegenstände und besondere Waffen.",
-            mktLi2: "<strong>Map:</strong> Spiele Adventure-, Horror-, Puzzle- oder Mini-Game-Maps.",
-            mktLi3: "<strong>Texture Pack:</strong> Verändert die Optik des Spiels komplett – von den Blöcken bis zum Himmel.",
-            warnBox: "⚠️ <strong>Hinweis:</strong> Wenn Sie Inhalte von extern herunterladen (nicht..."
-        },
-        es: {
-            devTitle: "Experiencia en iPhone y iPad",
-            devP1: "Minecraft cuenta con una versión optimizada para móviles. Moverse, saltar, romper o colocar bloques y abrir el inventario es muy sencillo en pantalla táctil.",
-            devP2: "Especialmente en <strong>iPad</strong>, la pantalla grande brinda una vista muy cómoda que hace construir y organizar el inventario mucho más preciso.",
-            mktTitle: "Add-On, Map y Texture Pack",
-            mktP1: "Tras jugar suficiente tiempo al Minecraft base, aún tienes miles de contenidos extra por descubrir en <strong>Minecraft Marketplace</strong>:",
-            mktLi1: "<strong>Add-On:</strong> Añade nuevas criaturas, vehículos, objetos y armas singulares.",
-            mktLi2: "<strong>Map:</strong> Disfruta mapas de Aventura, Terror, Puzles o Minijuegos.",
-            mktLi3: "<strong>Texture Pack:</strong> Cambia por completo el aspecto visual del juego, desde los bloques hasta el cielo.",
-            warnBox: "⚠️ <strong>Nota:</strong> Si descargas contenido externo (no..."
-        },
-        ru: {
-            devTitle: "Опыт игры на iPhone и iPad",
-            devP1: "У Minecraft есть версия, адаптированная для мобильных устройств: ходить, прыгать, ломать и ставить блоки, а также открывать инвентарь удобно на сенсорном экране.",
-            devP2: "Особенно на <strong>iPad</strong> большой экран даёт просторный обзор, благодаря чему строить и управлять инвентарём заметно точнее.",
-            mktTitle: "Add-On, Map и Texture Pack",
-            mktP1: "Когда базовый Minecraft уже изучен, в <strong>Minecraft Marketplace</strong> остаются тысячи дополнений:",
-            mktLi1: "<strong>Add-On:</strong> Добавляет новых существ, транспорт, предметы и необычное оружие.",
-            mktLi2: "<strong>Map:</strong> Проходите карты в жанрах Adventure, Horror, Puzzle или Mini Game.",
-            mktLi3: "<strong>Texture Pack:</strong> Полностью меняет визуальный стиль игры — от блоков до неба.",
-            warnBox: "⚠️ <strong>Примечание:</strong> При загрузке контента извне (не..."
-        },
-        ja: {
-            devTitle: "iPhoneとiPadでのプレイ体験",
-            devP1: "Minecraftにはモバイル向けに最適化された版があり、移動やジャンプ、ブロックの破壊・設置、インベントリ操作もタッチ画面で直感的に行えます。",
-            devP2: "特に<strong>iPad</strong>では大画面ならではの広い表示領域があり、建築やアイテム管理をより正確に行えます。",
-            mktTitle: "Add-On、Map、Texture Pack",
-            mktP1: "通常のMinecraftをたっぷり楽しんだあとも、<strong>Minecraft Marketplace</strong>には数千もの追加コンテンツがあります：",
-            mktLi1: "<strong>Add-On：</strong> 新しい生き物や乗り物、アイテム、ユニークな武器を追加します。",
-            mktLi2: "<strong>Map：</strong> アドベンチャー、ホラー、パズル、ミニゲームのマップを遊べます。",
-            mktLi3: "<strong>Texture Pack：</strong> ブロックから空まで、ゲームの見た目を丸ごと変更します。",
-            warnBox: "⚠️ <strong>注意：</strong> 外部からコンテンツをダウンロードする場合（〜でない..."
-        }
-    };
-
-    function syncC4Lang() {
-        const htmlLang = document.documentElement.getAttribute("lang") || "en";
-        const d = C4_LANGS[htmlLang] || C4_LANGS.en;
-        document.getElementById("c4-dev-title").innerText = d.devTitle;
-        document.getElementById("c4-dev-p1").innerHTML = d.devP1;
-        document.getElementById("c4-dev-p2").innerHTML = d.devP2;
-        document.getElementById("c4-mkt-title").innerText = d.mktTitle;
-        document.getElementById("c4-mkt-p1").innerHTML = d.mktP1;
-        document.getElementById("c4-mkt-li1").innerHTML = d.mktLi1;
-        document.getElementById("c4-mkt-li2").innerHTML = d.mktLi2;
-        document.getElementById("c4-mkt-li3").innerHTML = d.mktLi3;
-        document.getElementById("c4-warn-box").innerHTML = d.warnBox;
-    }
-
-    document.addEventListener("click", () => setTimeout(syncC4Lang, 0));
-    window.addEventListener("DOMContentLoaded", syncC4Lang);
-    syncC4Lang();
-})();
-</script>
-<!-- تكملة الصورة الخامسة (إكمال التحذير + تطبيق Shadowrocket) -->
-<section id="sec-continuation-5" style="max-width:480px;margin:0 auto;padding:8px 16px 32px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#111827;">
-
-    <!-- إكمال صندوق التحذير -->
-    <div style="background:#fff1f2;border-left:4px solid #f43f5e;border-radius:0 12px 12px 0;padding:15px 16px;margin-bottom:24px;box-shadow:0 2px 10px rgba(0,0,0,0.04);font-size:14.5px;line-height:1.65;color:#9f1239;">
-        <p id="c5-warn-full">
-            ⚠️ <strong>Lưu ý:</strong> Nếu tải nội dung từ bên ngoài (không qua Marketplace), hãy kiểm tra kỹ nguồn cung cấp và độ tương thích với phiên bản game của bạn để tránh lỗi.
-        </p>
-    </div>
-
-    <!-- عنوان قسم Shadowrocket -->
-    <h2 style="font-size:21px;font-weight:700;line-height:1.35;margin-bottom:16px;display:flex;align-items:center;gap:8px;">
-        <span>🚀</span>
-        <span id="c5-sr-title">Ứng Dụng Shadowrocket Là Gì?</span>
-    </h2>
-
-    <!-- بطاقة تطبيق Shadowrocket -->
-    <div style="background:#ffffff;border:1px solid #e5e7eb;border-radius:14px;padding:16px;margin-bottom:18px;box-shadow:0 6px 20px rgba(15,23,42,0.06);position:relative;overflow:hidden;">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;">
-            <div style="display:flex;align-items:center;gap:12px;">
-                <div style="width:62px;height:62px;border-radius:15px;background:#f5f3ff;border:1px solid #ddd6fe;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:32px;color:#7c3aed;">
-                    🚀
-                </div>
-                <div>
-                    <div style="font-size:18px;font-weight:800;color:#111827;line-height:1.2;">Shadowrocket</div>
-                    <div style="font-size:12px;color:#6b7280;margin-top:2px;">Shadow Launch Technology Limited</div>
-                    <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" id="c5-app-btn" style="display:inline-block;margin-top:8px;background:#2563eb;color:#ffffff;font-size:12px;font-weight:700;padding:4px 16px;border-radius:999px;text-decoration:none;">Mở</a>
-                </div>
-            </div>
-            <div style="font-size:44px;opacity:0.14;color:#2563eb;user-select:none;">🚀</div>
-        </div>
-
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;border-top:1px solid #f1f5f9;padding-top:12px;margin-bottom:10px;">
-            <div>
-                <div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;" id="c5-stat-rating-lbl">236 XẾP HẠNG</div>
-                <div style="font-size:16px;font-weight:800;color:#4b5563;margin-top:2px;">4,2</div>
-                <div style="font-size:10px;color:#6b7280;">★★★★☆</div>
-            </div>
-            <div style="border-inline:1px solid #f1f5f9;">
-                <div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;" id="c5-stat-age-lbl">TUỔI</div>
-                <div style="font-size:16px;font-weight:800;color:#4b5563;margin-top:2px;">4+</div>
-                <div style="font-size:11px;color:#6b7280;" id="c5-stat-age-sub">Tuổi</div>
-            </div>
-            <div>
-                <div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;" id="c5-stat-rank-lbl">BXH</div>
-                <div style="font-size:16px;font-weight:800;color:#4b5563;margin-top:2px;">#1</div>
-                <div style="font-size:11px;color:#6b7280;" id="c5-stat-rank-sub">Tiện Ích</div>
-            </div>
-        </div>
-
-        <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#9ca3af;padding-top:4px;">
-            <span id="c5-whats-new">Tính Năng Mới &gt;</span>
-            <span style="font-weight:800;font-size:15px;color:#3b82f6;">A</span>
-        </div>
-    </div>
-
-    <!-- الفقرات التعريفية -->
-    <p id="c5-sr-p1" style="font-size:15px;line-height:1.65;color:#1f2937;margin-bottom:14px;">
-        Tiện đây, chúng tôi cũng giới thiệu thêm về <strong>Shadowrocket</strong> – một ứng dụng Tiện ích (Utilities) không thể thiếu cho người dùng hệ sinh thái Apple.
-    </p>
-
-    <p id="c5-sr-p2" style="font-size:15px;line-height:1.65;color:#1f2937;margin-bottom:14px;">
-        Đây là một <strong>rule-based proxy utility</strong> giúp bạn quản lý kết nối mạng dựa trên các quy tắc cấu hình. Các tính năng nổi bật:
-    </p>
-
-    <!-- نقاط المميزات الظاهرة بالصورة -->
-    <ul style="list-style:disc;padding-inline-start:20px;font-size:15px;line-height:1.65;color:#1f2937;">
-        <li id="c5-sr-li1" style="margin-bottom:10px;">🔒 Quản lý lưu lượng mạng linh hoạt (Domain, CIDR, GeoIP...).</li>
-        <li id="c5-sr-li2">📊 Theo dõi lưu lượng mạng theo thời gian thực.</li>
-    </ul>
-
-</section>
-
-<script>
-(function () {
-    const C5_LANGS = {
-        en: {
-            warnFull: "⚠️ <strong>Note:</strong> If downloading content from outside (not via Marketplace), carefully check the source and compatibility with your game version to avoid errors.",
-            srTitle: "What Is the Shadowrocket App?",
-            appBtn: "Open",
-            ratingLbl: "236 RATINGS",
-            ageLbl: "AGE",
-            ageSub: "Years",
-            rankLbl: "CHART",
-            rankSub: "Utilities",
-            whatsNew: "What's New >",
-            srP1: "Along with that, we also introduce <strong>Shadowrocket</strong> – an essential Utilities app for users in the Apple ecosystem.",
-            srP2: "It is a <strong>rule-based proxy utility</strong> that helps you manage network connections based on configuration rules. Key highlights:",
-            srLi1: "🔒 Flexible network traffic management (Domain, CIDR, GeoIP...).",
-            srLi2: "📊 Real-time network traffic monitoring."
-        },
-        ar: {
-            warnFull: "⚠️ <strong>تنبيه:</strong> إذا قمت بتحميل محتوى من خارج (ليس عبر Marketplace)، فتحقق جيداً من المصدر ومدى توافقه مع إصدار لعبتك لتجنب الأخطاء.",
-            srTitle: "ما هو تطبيق Shadowrocket؟",
-            appBtn: "فتح",
-            ratingLbl: "236 تقييم",
-            ageLbl: "العمر",
-            ageSub: "سنوات",
-            rankLbl: "التصنيف",
-            rankSub: "أدوات",
-            whatsNew: "الجديد >",
-            srP1: "وبالمناسبة، نعرّفك أيضاً على تطبيق <strong>Shadowrocket</strong> – وهو تطبيق أدوات (Utilities) مهم لمستخدمي منظومة Apple.",
-            srP2: "وهو أداة بروكسي تعتمد على القواعد (<strong>rule-based proxy utility</strong>) تساعدك في إدارة اتصالات الشبكة وفق قواعد الإعداد. من أبرز ميزاته:",
-            srLi1: "🔒 إدارة مرنة لحركة الشبكة (Domain و CIDR و GeoIP وغيرها).",
-            srLi2: "📊 مراقبة حركة البيانات والشبكة بشكل لحظي."
-        },
-        ku: {
-            warnFull: "⚠️ <strong>تێبینی:</strong> ئەگەر تە ژ دەرڤە تشتەك داگرت (نە ب رێکا Marketplace)، ژێدەر و گونجاندنا وێ دگەل وەشانا یاریا خۆ ب باشی بپشکنە دا خەلەتی دروست نەبن.",
-            srTitle: "ئەپڵیکەیشنا Shadowrocket چییە؟",
-            appBtn: "ڤەکرن",
-            ratingLbl: "236 هەلسەنگاندن",
-            ageLbl: "ژییێ",
-            ageSub: "ساڵ",
-            rankLbl: "رێزبەندی",
-            rankSub: "ئامراز",
-            whatsNew: "تشتێن نوی >",
-            srP1: "دگەل وێ دا، ئەم ئەپڵیکەیشنا <strong>Shadowrocket</strong> ژی ددەینە نیاسین – کو ئێك ژ ئەپێن گرنگ یێن Utilities یە بۆ بکارهێنەرێن Apple.",
-            srP2: "ئەڤە ئامرازەکێ برۆکسی یە ب پشتبەستن ب رێسایان (<strong>rule-based proxy utility</strong>) کو هاریکاریا تە دکەت پەیوەندیێن تۆڕێ ب رێکا رێسایان برێڤە ببەی. ژ دیارترین تایبەتمەندیێن وێ:",
-            srLi1: "🔒 برێڤەبرنا نەرم یا هاتنوچوونا تۆڕێ (Domain، CIDR، GeoIP...).",
-            srLi2: "📊 چاودێریکرنا هاتنوچوونا تۆڕێ ب شێوەیێ راستەوخۆ."
-        },
-        vi: {
-            warnFull: "⚠️ <strong>Lưu ý:</strong> Nếu tải nội dung từ bên ngoài (không qua Marketplace), hãy kiểm tra kỹ nguồn cung cấp và độ tương thích với phiên bản game của bạn để tránh lỗi.",
-            srTitle: "Ứng Dụng Shadowrocket Là Gì?",
-            appBtn: "Mở",
-            ratingLbl: "236 XẾP HẠNG",
-            ageLbl: "TUỔI",
-            ageSub: "Tuổi",
-            rankLbl: "BXH",
-            rankSub: "Tiện Ích",
-            whatsNew: "Tính Năng Mới >",
-            srP1: "Tiện đây, chúng tôi cũng giới thiệu thêm về <strong>Shadowrocket</strong> – một ứng dụng Tiện ích (Utilities) không thể thiếu cho người dùng hệ sinh thái Apple.",
-            srP2: "Đây là một <strong>rule-based proxy utility</strong> giúp bạn quản lý kết nối mạng dựa trên các quy tắc cấu hình. Các tính năng nổi bật:",
-            srLi1: "🔒 Quản lý lưu lượng mạng linh hoạt (Domain, CIDR, GeoIP...).",
-            srLi2: "📊 Theo dõi lưu lượng mạng theo thời gian thực."
-        },
-        tr: {
-            warnFull: "⚠️ <strong>Not:</strong> Dışarıdan içerik indiriyorsanız (Marketplace üzerinden değilse), hataları önlemek için kaynağı ve oyun sürümünüzle uyumluluğu dikkatlice kontrol edin.",
-            srTitle: "Shadowrocket Uygulaması Nedir?",
-            appBtn: "Aç",
-            ratingLbl: "236 DEĞERLENDİRME",
-            ageLbl: "YAŞ",
-            ageSub: "Yaş",
-            rankLbl: "SIRA",
-            rankSub: "Araçlar",
-            whatsNew: "Yenilikler >",
-            srP1: "Bunun yanında Apple ekosistemi kullanıcıları için vazgeçilmez Araçlar (Utilities) uygulamalarından <strong>Shadowrocket</strong>'ı da tanıtıyoruz.",
-            srP2: "Yapılandırma kurallarına göre ağ bağlantılarını yönetmene yardımcı olan bir <strong>rule-based proxy utility</strong> uygulamasıdır. Öne çıkan özellikler:",
-            srLi1: "🔒 Esnek ağ trafiği yönetimi (Domain, CIDR, GeoIP vb.).",
-            srLi2: "📊 Gerçek zamanlı ağ trafiği takibi."
-        },
-        fr: {
-            warnFull: "⚠️ <strong>Remarque :</strong> Si vous téléchargez du contenu externe (hors Marketplace), vérifiez soigneusement la source et la compatibilité avec votre version du jeu pour éviter les erreurs.",
-            srTitle: "Qu'est-ce que l'application Shadowrocket ?",
-            appBtn: "Ouvrir",
-            ratingLbl: "236 AVIS",
-            ageLbl: "ÂGE",
-            ageSub: "Ans",
-            rankLbl: "CLASSEMENT",
-            rankSub: "Utilitaires",
-            whatsNew: "Nouveautés >",
-            srP1: "Par ailleurs, nous vous présentons <strong>Shadowrocket</strong> – une application Utilitaires essentielle pour l'écosystème Apple.",
-            srP2: "C'est un <strong>rule-based proxy utility</strong> qui aide à gérer les connexions réseau selon des règles de configuration. Points forts :",
-            srLi1: "🔒 Gestion flexible du trafic réseau (Domain, CIDR, GeoIP, etc.).",
-            srLi2: "📊 Suivi du trafic réseau en temps réel."
-        },
-        de: {
-            warnFull: "⚠️ <strong>Hinweis:</strong> Wenn Sie Inhalte von extern herunterladen (nicht über den Marketplace), prüfen Sie Quelle und Kompatibilität mit Ihrer Spielversion sorgfältig, um Fehler zu vermeiden.",
-            srTitle: "Was ist die Shadowrocket-App?",
-            appBtn: "Öffnen",
-            ratingLbl: "236 BEWERTUNGEN",
-            ageLbl: "ALTER",
-            ageSub: "Jahre",
-            rankLbl: "CHARTS",
-            rankSub: "Dienstprogramme",
-            whatsNew: "Neuheiten >",
-            srP1: "Außerdem stellen wir <strong>Shadowrocket</strong> vor – eine wichtige Utilities-App für Nutzer im Apple-Ökosystem.",
-            srP2: "Es ist ein <strong>rule-based proxy utility</strong>, mit dem du Netzwerkverbindungen anhand von Konfigurationsregeln verwaltest. Wichtige Funktionen:",
-            srLi1: "🔒 Flexible Netzwerkverkehrssteuerung (Domain, CIDR, GeoIP usw.).",
-            srLi2: "📊 Echtzeit-Überwachung des Netzwerkverkehrs."
-        },
-        es: {
-            warnFull: "⚠️ <strong>Nota:</strong> Si descargas contenido externo (no a través de Marketplace), revisa bien el origen y la compatibilidad con la versión de tu juego para evitar errores.",
-            srTitle: "¿Qué es la aplicación Shadowrocket?",
-            appBtn: "Abrir",
-            ratingLbl: "236 VALORACIONES",
-            ageLbl: "EDAD",
-            ageSub: "Años",
-            rankLbl: "RANKING",
-            rankSub: "Utilidades",
-            whatsNew: "Novedades >",
-            srP1: "De paso, también presentamos <strong>Shadowrocket</strong> – una aplicación de Utilidades clave para el ecosistema Apple.",
-            srP2: "Es una <strong>rule-based proxy utility</strong> que ayuda a gestionar conexiones de red según reglas de configuración. Funciones destacadas:",
-            srLi1: "🔒 Gestión flexible del tráfico de red (Domain, CIDR, GeoIP, etc.).",
-            srLi2: "📊 Monitoreo del tráfico de red en tiempo real."
-        },
-        ru: {
-            warnFull: "⚠️ <strong>Примечание:</strong> Если загружаете контент извне (не через Marketplace), внимательно проверьте источник и совместимость с версией игры, чтобы избежать ошибок.",
-            srTitle: "Что такое приложение Shadowrocket?",
-            appBtn: "Открыть",
-            ratingLbl: "236 ОЦЕНОК",
-            ageLbl: "ВОЗРАСТ",
-            ageSub: "Лет",
-            rankLbl: "РЕЙТИНГ",
-            rankSub: "Утилиты",
-            whatsNew: "Что нового >",
-            srP1: "Заодно расскажем о приложении <strong>Shadowrocket</strong> — полезной утилите для пользователей экосистемы Apple.",
-            srP2: "Это <strong>rule-based proxy utility</strong>, помогающая управлять сетевыми подключениями по правилам конфигурации. Основные возможности:",
-            srLi1: "🔒 Гибкое управление сетевым трафиком (Domain, CIDR, GeoIP и др.).",
-            srLi2: "📊 Мониторинг сетевого трафика в реальном времени."
-        },
-        ja: {
-            warnFull: "⚠️ <strong>注意：</strong> Marketplace以外から外部コンテンツをダウンロードする場合は、エラーを防ぐため提供元とゲームのバージョン互換性をよく確認してください。",
-            srTitle: "Shadowrocketアプリとは？",
-            appBtn: "開く",
-            ratingLbl: "236件の評価",
-            ageLbl: "対象年齢",
-            ageSub: "歳以上",
-            rankLbl: "ランキング",
-            rankSub: "ユーティリティ",
-            whatsNew: "新機能 >",
-            srP1: "あわせて、Appleエコシステムで役立つユーティリティアプリ <strong>Shadowrocket</strong> もご紹介します。",
-            srP2: "設定ルールに基づいてネットワーク接続を管理できる <strong>rule-based proxy utility</strong> です。主な特徴：",
-            srLi1: "🔒 柔軟なネットワークトラフィック管理（Domain、CIDR、GeoIPなど）。",
-            srLi2: "📊 リアルタイムでのネットワーク通信量モニタリング。"
-        }
-    };
-
-    function syncC5Lang() {
-        const htmlLang = document.documentElement.getAttribute("lang") || "en";
-        const d = C5_LANGS[htmlLang] || C5_LANGS.en;
-        document.getElementById("c5-warn-full").innerHTML = d.warnFull;
-        document.getElementById("c5-sr-title").innerText = d.srTitle;
-        document.getElementById("c5-app-btn").innerText = d.appBtn;
-        document.getElementById("c5-stat-rating-lbl").innerText = d.ratingLbl;
-        document.getElementById("c5-stat-age-lbl").innerText = d.ageLbl;
-        document.getElementById("c5-stat-age-sub").innerText = d.ageSub;
-        document.getElementById("c5-stat-rank-lbl").innerText = d.rankLbl;
-        document.getElementById("c5-stat-rank-sub").innerText = d.rankSub;
-        document.getElementById("c5-whats-new").innerText = d.whatsNew;
-        document.getElementById("c5-sr-p1").innerHTML = d.srP1;
-        document.getElementById("c5-sr-p2").innerHTML = d.srP2;
-        document.getElementById("c5-sr-li1").innerHTML = d.srLi1;
-        document.getElementById("c5-sr-li2").innerHTML = d.srLi2;
-    }
-
-    document.addEventListener("click", () => setTimeout(syncC5Lang, 0));
-    window.addEventListener("DOMContentLoaded", syncC5Lang);
-    syncC5Lang();
-})();
-</script>
-
