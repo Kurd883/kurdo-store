@@ -181,8 +181,8 @@
             <a href="#" class="brand">Kurd0o</a>
 
             <div id="side-drawer" class="side-drawer" onclick="event.stopPropagation()">
-                <a class="drawer-link" href="https://kurd3.github.io/KurdoAccounts/" target="_blank">لشراء حسابات أبل</a>
-                <a class="drawer-link" href="https://t.me/yousifmziri" target="_blank">للتواصل واستفسار</a>
+                <a id="drawer-buy" class="drawer-link" href="https://kurd3.github.io/KurdoAccounts/" target="_blank">لشراء حسابات أبل</a>
+                <a id="drawer-contact" class="drawer-link" href="https://t.me/yousifmziri" target="_blank">للتواصل واستفسار</a>
             </div>
         </div>
 
@@ -225,6 +225,8 @@
         const TEXTS = {
             vi: {
                 dir: "ltr",
+                buy: "Mua tài khoản Apple",
+                contact: "Liên hệ & giải đáp",
                 h1: "Minecraft iOS – Review Chi Tiết, Cách Tải Trên iPhone & iPad",
                 p1: "Có những tựa game bạn tải về, chơi vài ngày rồi quên mất. Nhưng cũng có những trò chơi khiến bạn quay lại hết lần này đến lần khác dù đã dành hàng trăm giờ trải nghiệm.",
                 p2: "<strong>Minecraft iOS</strong> chính là một trong số đó.",
@@ -232,6 +234,8 @@
             },
             ar: {
                 dir: "rtl",
+                buy: "لشراء حسابات أبل",
+                contact: "للتواصل واستفسار",
                 h1: "ماينكرافت iOS – مراجعة تفصيلية وطريقة التحميل على iPhone و iPad",
                 p1: "هناك ألعاب تحملها وتلعبها لأيام ثم تنساها، وهناك ألعاب تعود إليها مراراً وتكراراً رغم قضاء مئات الساعات في تجربتها.",
                 p2: "<strong>ماينكرافت iOS</strong> واحدة من تلك الألعاب.",
@@ -239,6 +243,8 @@
             },
             ku: {
                 dir: "rtl",
+                buy: "بۆ کڕینا هژمارێن Apple",
+                contact: "بۆ پەیوەندی و پسیارکرنێ",
                 h1: "Minecraft iOS – شرۆڤەیا هویر و چاوانیا داگرتنێ ل iPhone و iPad",
                 p1: "هندەك یاری هەنە پشتی چەند رۆژان ژ بیردچن، بەلێ هندەك یاری هەنە سەرەڕای سەدەها دەمژمێران هەر دزڤڕییێ ڤە.",
                 p2: "<strong>Minecraft iOS</strong> ئێك ژ وان یارییانە.",
@@ -246,6 +252,8 @@
             },
             en: {
                 dir: "ltr",
+                buy: "Buy Apple Accounts",
+                contact: "Contact & Inquiries",
                 h1: "Minecraft iOS – Detailed Review & How to Download on iPhone & iPad",
                 p1: "Some games you download, play for a few days, and forget. Others keep pulling you back time after time even after hundreds of hours.",
                 p2: "<strong>Minecraft iOS</strong> is one of them.",
@@ -253,6 +261,8 @@
             },
             tr: {
                 dir: "ltr",
+                buy: "Apple Hesapları Satın Al",
+                contact: "İletişim ve Soru",
                 h1: "Minecraft iOS – Detaylı İnceleme ve iPhone & iPad İndirme Rehberi",
                 p1: "Bazı oyunları indirip birkaç gün oynar ve unutursunuz; bazıları ise yüzlerce saat sonra bile sizi tekrar tekrar geri getirir.",
                 p2: "<strong>Minecraft iOS</strong> tam olarak bunlardan biridir.",
@@ -260,6 +270,8 @@
             },
             fr: {
                 dir: "ltr",
+                buy: "Acheter des comptes Apple",
+                contact: "Contact et questions",
                 h1: "Minecraft iOS – Avis Détaillé et Téléchargement sur iPhone & iPad",
                 p1: "Certains jeux s'oublient après quelques jours, tandis que d'autres vous rappellent encore et encore après des centaines d'heures.",
                 p2: "<strong>Minecraft iOS</strong> en fait partie.",
@@ -267,6 +279,8 @@
             },
             de: {
                 dir: "ltr",
+                buy: "Apple-Accounts kaufen",
+                contact: "Kontakt & Fragen",
                 h1: "Minecraft iOS – Ausführliches Review & Download auf iPhone & iPad",
                 p1: "Manche Spiele vergisst man nach wenigen Tagen, andere spielt man auch nach hunderten Stunden immer wieder gern.",
                 p2: "<strong>Minecraft iOS</strong> gehört genau dazu.",
@@ -274,6 +288,8 @@
             },
             es: {
                 dir: "ltr",
+                buy: "Comprar cuentas de Apple",
+                contact: "Contacto y consultas",
                 h1: "Minecraft iOS – Reseña Detallada y Cómo Descargar en iPhone y iPad",
                 p1: "Hay juegos que olvidas en unos días y otros a los que vuelves una y otra vez tras cientos de horas.",
                 p2: "<strong>Minecraft iOS</strong> es uno de ellos.",
@@ -281,6 +297,8 @@
             },
             ru: {
                 dir: "ltr",
+                buy: "Купить аккаунты Apple",
+                contact: "Связь и вопросы",
                 h1: "Minecraft iOS – Подробный обзор и загрузка на iPhone и iPad",
                 p1: "Одни игры забываются через пару дней, а к другим возвращаешься снова и снова даже после сотен часов.",
                 p2: "<strong>Minecraft iOS</strong> — одна из таких игр.",
@@ -288,6 +306,8 @@
             },
             ja: {
                 dir: "ltr",
+                buy: "Appleアカウントを購入",
+                contact: "お問い合わせ・質問",
                 h1: "Minecraft iOS – 詳細レビューとiPhone・iPadでのダウンロード方法",
                 p1: "数日で忘れてしまうゲームもあれば、何百時間遊んでも何度も戻ってきたくなるゲームもあります。",
                 p2: "<strong>Minecraft iOS</strong> はまさにそんな作品です。",
@@ -312,6 +332,8 @@
             document.getElementById("html-root").setAttribute("lang", code);
             document.getElementById("html-root").setAttribute("dir", t.dir);
             document.getElementById("lang-current").innerText = label;
+            document.getElementById("drawer-buy").innerText = t.buy;
+            document.getElementById("drawer-contact").innerText = t.contact;
             document.getElementById("page-h1").innerText = t.h1;
             document.getElementById("p-1").innerHTML = t.p1;
             document.getElementById("p-2").innerHTML = t.p2;
