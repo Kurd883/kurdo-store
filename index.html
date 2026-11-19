@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,13 +20,30 @@
             border-bottom: 1px solid #f1f5f9;
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 30;
+        }
+        .left-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            position: relative;
+        }
+        .menu-btn {
+            background: none;
+            border: none;
+            font-size: 19px;
+            cursor: pointer;
+            color: #111827;
         }
         .brand {
             font-weight: 800;
             font-size: 20px;
             color: #f43f5e;
             letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+        .lang-wrap {
+            position: relative;
         }
         .lang-pill {
             font-size: 12px;
@@ -35,11 +52,82 @@
             border: 1px solid #e2e8f0;
             border-radius: 8px;
             background: #f8fafc;
+            cursor: pointer;
+            color: #111827;
+        }
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 6px;
+            width: 185px;
+            max-height: 260px;
+            overflow-y: auto;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            z-index: 50;
+        }
+        .lang-dropdown.show {
+            display: block;
+        }
+        .lang-option {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 8px 12px;
+            font-size: 13px;
+            color: #1f2937;
+            cursor: pointer;
+            display: block;
+        }
+        .lang-option:hover {
+            background: #f1f5f9;
+        }
+        .side-drawer {
+            display: none;
+            position: absolute;
+            top: 42px;
+            right: -120px;
+            width: 230px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+            padding: 8px;
+            z-index: 50;
+        }
+        .side-drawer.show {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .drawer-link {
+            display: block;
+            padding: 10px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            color: #111827;
+            background: #f8fafc;
+        }
+        .drawer-link:hover {
+            background: #f1f5f9;
         }
         .icons {
             display: flex;
+            align-items: center;
             gap: 14px;
             font-size: 17px;
+            color: #1e293b;
+        }
+        .icon-link {
+            text-decoration: none;
             color: #1e293b;
         }
         .container {
@@ -83,14 +171,35 @@
 <body>
 
     <header class="topbar">
-        <div style="display:flex;align-items:center;gap:14px;">
-            <span style="font-size:19px;">☰</span>
-            <span class="brand">Kurd0o</span>
+        <div class="left-group">
+            <button class="menu-btn" onclick="toggleDrawer()" aria-label="Menu">☰</button>
+            <a href="#" class="brand">Kurd0o</a>
+
+            <div id="side-drawer" class="side-drawer">
+                <a class="drawer-link" href="https://kurd3.github.io/KurdoAccounts/" target="_blank">لشراء حسابات أبل</a>
+                <a class="drawer-link" href="https://t.me/yousifmziri" target="_blank">للتواصل واستفسار</a>
+            </div>
         </div>
-        <span class="lang-pill">🇻🇳 VI ⌄</span>
+
+        <div class="lang-wrap">
+            <button class="lang-pill" onclick="toggleLangDropdown()" id="lang-current">🇻🇳 VI ⌄</button>
+            <div id="lang-dropdown" class="lang-dropdown">
+                <button class="lang-option" onclick="applyLang('vi', '🇻🇳 VI ⌄')">Tiếng Việt</button>
+                <button class="lang-option" onclick="applyLang('ar', '🇸🇦 AR ⌄')">العربية</button>
+                <button class="lang-option" onclick="applyLang('ku', 'KU ⌄')">کوردی (Badînî)</button>
+                <button class="lang-option" onclick="applyLang('en', '🇬🇧 EN ⌄')">English</button>
+                <button class="lang-option" onclick="applyLang('tr', '🇹🇷 TR ⌄')">Türkçe</button>
+                <button class="lang-option" onclick="applyLang('fr', '🇫🇷 FR ⌄')">Français</button>
+                <button class="lang-option" onclick="applyLang('de', '🇩🇪 DE ⌄')">Deutsch</button>
+                <button class="lang-option" onclick="applyLang('es', '🇪🇸 ES ⌄')">Español</button>
+                <button class="lang-option" onclick="applyLang('ru', '🇷🇺 RU ⌄')">Русский</button>
+                <button class="lang-option" onclick="applyLang('ja', '🇯🇵 JA ⌄')">日本語</button>
+            </div>
+        </div>
+
         <div class="icons">
-            <span>👤</span>
-            <span>🛒</span>
+            <a class="icon-link" href="https://t.me/yousifmziri" target="_blank" title="Telegram">👤</a>
+            <a class="icon-link" href="https://kurd3.github.io/KurdoAccounts/" target="_blank" title="Accounts">🛒</a>
             <span>🔍</span>
         </div>
     </header>
@@ -98,14 +207,120 @@
     <main class="container">
         <img class="banner" src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=900&q=75" alt="Minecraft iOS">
 
-        <h1>Minecraft iOS – Review Chi Tiết, Cách Tải Trên iPhone &amp; iPad</h1>
+        <h1 id="page-h1">Minecraft iOS – Review Chi Tiết, Cách Tải Trên iPhone &amp; iPad</h1>
 
         <div class="callout-blue">
-            <p>Có những tựa game bạn tải về, chơi vài ngày rồi quên mất. Nhưng cũng có những trò chơi khiến bạn quay lại hết lần này đến lần khác dù đã dành hàng trăm giờ trải nghiệm.</p>
-            <p><strong>Minecraft iOS</strong> chính là một trong số đó.</p>
-            <p>Không cần đồ họa siêu thực hay những hiệu ứng quá hoành tráng, Minecraft vẫn tạo nên sức hút riêng nhờ <strong>sự tự do, khả năng sáng tạo và một thế giới rộng lớn</strong> để khám phá.</p>
+            <p id="p-1">Có những tựa game bạn tải về, chơi vài ngày rồi quên mất. Nhưng cũng có những trò chơi khiến bạn quay lại hết lần này đến lần khác dù đã dành hàng trăm giờ trải nghiệm.</p>
+            <p id="p-2"><strong>Minecraft iOS</strong> chính là một trong số đó.</p>
+            <p id="p-3">Không cần đồ họa siêu thực hay những hiệu ứng quá hoành tráng, Minecraft vẫn tạo nên sức hút riêng nhờ <strong>sự tự do, khả năng sáng tạo và một thế giới rộng lớn</strong> để khám phá.</p>
         </div>
     </main>
+
+    <script>
+        const TEXTS = {
+            vi: {
+                dir: "ltr",
+                h1: "Minecraft iOS – Review Chi Tiết, Cách Tải Trên iPhone & iPad",
+                p1: "Có những tựa game bạn tải về, chơi vài ngày rồi quên mất. Nhưng cũng có những trò chơi khiến bạn quay lại hết lần này đến lần khác dù đã dành hàng trăm giờ trải nghiệm.",
+                p2: "<strong>Minecraft iOS</strong> chính là một trong số đó.",
+                p3: "Không cần đồ họa siêu thực hay những hiệu ứng quá hoành tráng, Minecraft vẫn tạo nên sức hút riêng nhờ <strong>sự tự do, khả năng sáng tạo và một thế giới rộng lớn</strong> để khám phá."
+            },
+            ar: {
+                dir: "rtl",
+                h1: "ماينكرافت iOS – مراجعة تفصيلية وطريقة التحميل على iPhone و iPad",
+                p1: "هناك ألعاب تحملها وتلعبها لأيام ثم تنساها، وهناك ألعاب تعود إليها مراراً وتكراراً رغم قضاء مئات الساعات في تجربتها.",
+                p2: "<strong>ماينكرافت iOS</strong> واحدة من تلك الألعاب.",
+                p3: "دون الحاجة إلى رسوميات فائقة الواقعية أو مؤثرات مبالغ فيها، تحافظ ماينكرافت على جاذبيتها بفضل <strong>الحرية والإبداع وعالم واسع</strong> للاستكشاف."
+            },
+            ku: {
+                dir: "rtl",
+                h1: "Minecraft iOS – شرۆڤەیا هویر و چاوانیا داگرتنێ ل iPhone و iPad",
+                p1: "هندەك یاری هەنە پشتی چەند رۆژان ژ بیردچن، بەلێ هندەك یاری هەنە سەرەڕای سەدەها دەمژمێران هەر دزڤڕییێ ڤە.",
+                p2: "<strong>Minecraft iOS</strong> ئێك ژ وان یارییانە.",
+                p3: "بێی پێدڤی ب گرافیکێن زێدە ئاڵۆز بیت، ماینكرافت ب <strong>ئازادی، داهێنان و جیهانەکا بەرفرەهـ</strong> بۆ گەڕیانێ سەرنجا هەمییان رادکێشیت."
+            },
+            en: {
+                dir: "ltr",
+                h1: "Minecraft iOS – Detailed Review & How to Download on iPhone & iPad",
+                p1: "Some games you download, play for a few days, and forget. Others keep pulling you back time after time even after hundreds of hours.",
+                p2: "<strong>Minecraft iOS</strong> is one of them.",
+                p3: "Without needing hyper-realistic graphics or over-the-top effects, Minecraft stands out with <strong>freedom, creativity, and a vast world</strong> to explore."
+            },
+            tr: {
+                dir: "ltr",
+                h1: "Minecraft iOS – Detaylı İnceleme ve iPhone & iPad İndirme Rehberi",
+                p1: "Bazı oyunları indirip birkaç gün oynar ve unutursunuz; bazıları ise yüzlerce saat sonra bile sizi tekrar tekrar geri getirir.",
+                p2: "<strong>Minecraft iOS</strong> tam olarak bunlardan biridir.",
+                p3: "Abartılı efektlere veya gerçeküstü grafiklere gerek kalmadan Minecraft, <strong>özgürlüğü, yaratıcılığı ve keşfedilecek geniş dünyasıyla</strong> öne çıkar."
+            },
+            fr: {
+                dir: "ltr",
+                h1: "Minecraft iOS – Avis Détaillé et Téléchargement sur iPhone & iPad",
+                p1: "Certains jeux s'oublient après quelques jours, tandis que d'autres vous rappellent encore et encore après des centaines d'heures.",
+                p2: "<strong>Minecraft iOS</strong> en fait partie.",
+                p3: "Sans graphismes irréalistes ni effets excessifs, Minecraft séduit par sa <strong>liberté, sa créativité et son vaste monde</strong> à explorer."
+            },
+            de: {
+                dir: "ltr",
+                h1: "Minecraft iOS – Ausführliches Review & Download auf iPhone & iPad",
+                p1: "Manche Spiele vergisst man nach wenigen Tagen, andere spielt man auch nach hunderten Stunden immer wieder gern.",
+                p2: "<strong>Minecraft iOS</strong> gehört genau dazu.",
+                p3: "Ganz ohne überladene Effekte begeistert Minecraft durch <strong>Freiheit, Kreativität und eine riesige Welt</strong> zum Entdecken."
+            },
+            es: {
+                dir: "ltr",
+                h1: "Minecraft iOS – Reseña Detallada y Cómo Descargar en iPhone y iPad",
+                p1: "Hay juegos que olvidas en unos días y otros a los que vuelves una y otra vez tras cientos de horas.",
+                p2: "<strong>Minecraft iOS</strong> es uno de ellos.",
+                p3: "Sin gráficos irreales ni efectos exagerados, Minecraft destaca por su <strong>libertad, creatividad y un mundo enorme</strong> por explorar."
+            },
+            ru: {
+                dir: "ltr",
+                h1: "Minecraft iOS – Подробный обзор и загрузка на iPhone и iPad",
+                p1: "Одни игры забываются через пару дней, а к другим возвращаешься снова и снова даже после сотен часов.",
+                p2: "<strong>Minecraft iOS</strong> — одна из таких игр.",
+                p3: "Без лишних эффектов Minecraft привлекает <strong>свободой, творчеством и огромным миром</strong> для исследования."
+            },
+            ja: {
+                dir: "ltr",
+                h1: "Minecraft iOS – 詳細レビューとiPhone・iPadでのダウンロード方法",
+                p1: "数日で忘れてしまうゲームもあれば、何百時間遊んでも何度も戻ってきたくなるゲームもあります。",
+                p2: "<strong>Minecraft iOS</strong> はまさにそんな作品です。",
+                p3: "派手な演出がなくても、<strong>自由度・創造性・広大な世界</strong>によって多くの人を惹きつけます。"
+            }
+        };
+
+        function toggleLangDropdown() {
+            document.getElementById("side-drawer").classList.remove("show");
+            document.getElementById("lang-dropdown").classList.toggle("show");
+        }
+
+        function toggleDrawer() {
+            document.getElementById("lang-dropdown").classList.remove("show");
+            document.getElementById("side-drawer").classList.toggle("show");
+        }
+
+        function applyLang(code, label) {
+            const t = TEXTS[code] || TEXTS.en;
+            document.getElementById("html-root").setAttribute("lang", code);
+            document.getElementById("html-root").setAttribute("dir", t.dir);
+            document.getElementById("lang-current").innerText = label;
+            document.getElementById("page-h1").innerText = t.h1;
+            document.getElementById("p-1").innerHTML = t.p1;
+            document.getElementById("p-2").innerHTML = t.p2;
+            document.getElementById("p-3").innerHTML = t.p3;
+            document.getElementById("lang-dropdown").classList.remove("show");
+        }
+
+        document.addEventListener("click", (e) => {
+            if (!e.target.closest(".lang-wrap")) {
+                document.getElementById("lang-dropdown").classList.remove("show");
+            }
+            if (!e.target.closest(".left-group")) {
+                document.getElementById("side-drawer").classList.remove("show");
+            }
+        });
+    </script>
 
 </body>
 </html>
