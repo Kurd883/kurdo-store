@@ -746,3 +746,124 @@ document.addEventListener("click",()=>{
     syncCurLang();
 })();
 </script>
+<!-- تكملة دليل تسجيل الدخول في App Store (الخطوات 1 إلى 5 بدون تكرار التحذير) -->
+<section id="sec-appstore-steps-1-5" style="max-width:480px;margin:0 auto;padding:0 16px 32px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#111827;">
+
+    <ul style="list-style:disc;padding-inline-start:20px;font-size:15px;line-height:1.65;color:#1f2937;margin:0;">
+        <li id="as-step-1" style="margin-bottom:12px;">
+            <strong>Bước 1:</strong> Mở ứng dụng App Store trên iPhone/iPad.
+        </li>
+        <li id="as-step-2" style="margin-bottom:12px;">
+            <strong>Bước 2:</strong> Nhấn vào Avatar ở góc trên cùng bên phải. Kéo xuống dưới cùng chọn <strong>Đăng xuất</strong> tài khoản cũ.
+        </li>
+        <li id="as-step-3" style="margin-bottom:12px;">
+            <strong>Bước 3:</strong> Nhập ID và Mật khẩu được Kurd0o cung cấp.
+        </li>
+        <li id="as-step-4" style="margin-bottom:12px;">
+            <strong>Bước 4:</strong> Nếu có thông báo bảo mật, chọn “Các lựa chọn khác” → “Không nâng cấp”.
+        </li>
+        <li id="as-step-5">
+            <strong>Bước 5:</strong> Tìm game/app và tải. Sau khi tải xong, vào lại Avatar và <strong>Đăng xuất</strong>.
+        </li>
+    </ul>
+
+</section>
+
+<script>
+(function () {
+    const AS_STEPS_LANGS = {
+        en: {
+            s1: "<strong>Step 1:</strong> Open the App Store app on iPhone/iPad.",
+            s2: "<strong>Step 2:</strong> Tap the Avatar in the top-right corner. Scroll to the bottom and tap <strong>Sign Out</strong> of the old account.",
+            s3: "<strong>Step 3:</strong> Enter the ID and Password provided by Kurd0o.",
+            s4: "<strong>Step 4:</strong> If a security prompt appears, select “Other Options” → “Don’t Upgrade”.",
+            s5: "<strong>Step 5:</strong> Search for the game/app and download it. Once downloaded, go back to the Avatar and <strong>Sign Out</strong>."
+        },
+        ar: {
+            s1: "<strong>الخطوة 1:</strong> افتح تطبيق App Store على iPhone/iPad.",
+            s2: "<strong>الخطوة 2:</strong> اضغط على صورة الحساب (Avatar) في الزاوية العلوية اليمنى. انزل للأسفل واختر <strong>تسجيل الخروج</strong> من الحساب القديم.",
+            s3: "<strong>الخطوة 3:</strong> أدخل الـ ID وكلمة المرور المقدمة من Kurd0o.",
+            s4: "<strong>الخطوة 4:</strong> إذا ظهرت رسالة أمان، اختر «خيارات أخرى» ← «عدم الترقية».",
+            s5: "<strong>الخطوة 5:</strong> ابحث عن اللعبة/التطبيق وحمّله. وبعد انتهاء التحميل، ارجع إلى صورة الحساب و<strong>سجّل الخروج</strong>."
+        },
+        ku: {
+            s1: "<strong>پێنگاڤا 1:</strong> ئەپڵیکەیشنا App Store ل سەر iPhone/iPad ڤەکە.",
+            s2: "<strong>پێنگاڤا 2:</strong> ل سەر وێنەیێ هژمارێ (Avatar) ل سەرێ لایێ راستێ بکوژە. هەرە خارێ و <strong>دەرکەڤە (Sign Out)</strong> ژ هژمارا کەڤن.",
+            s3: "<strong>پێنگاڤا 3:</strong> ID و پاسۆردا ژ لایێ Kurd0o ڤە هاتیە دان بنڤیسە.",
+            s4: "<strong>پێنگاڤا 4:</strong> ئەگەر ئاگەهداریا سکیوریتیێ هات، «هەلبژارتنێن دی» ← «پێشڤە نەبرن (Don't Upgrade)» هەلبژێرە.",
+            s5: "<strong>پێنگاڤا 5:</strong> ل یاری یان ئەپێ بگەڕێ و دابگرە. پشتی داگرتنێ، بزڤڕە سەر Avatar و <strong>دەرکەڤە</strong>."
+        },
+        vi: {
+            s1: "<strong>Bước 1:</strong> Mở ứng dụng App Store trên iPhone/iPad.",
+            s2: "<strong>Bước 2:</strong> Nhấn vào Avatar ở góc trên cùng bên phải. Kéo xuống dưới cùng chọn <strong>Đăng xuất</strong> tài khoản cũ.",
+            s3: "<strong>Bước 3:</strong> Nhập ID và Mật khẩu được Kurd0o cung cấp.",
+            s4: "<strong>Bước 4:</strong> Nếu có thông báo bảo mật, chọn “Các lựa chọn khác” → “Không nâng cấp”.",
+            s5: "<strong>Bước 5:</strong> Tìm game/app và tải. Sau khi tải xong, vào lại Avatar và <strong>Đăng xuất</strong>."
+        },
+        tr: {
+            s1: "<strong>Adım 1:</strong> iPhone/iPad'de App Store uygulamasını açın.",
+            s2: "<strong>Adım 2:</strong> Sağ üst köşedeki Avatar'a dokunun. En alta kaydırın ve eski hesaptan <strong>Çıkış Yap</strong> seçeneğini seçin.",
+            s3: "<strong>Adım 3:</strong> Kurd0o tarafından sağlanan ID ve Şifreyi girin.",
+            s4: "<strong>Adım 4:</strong> Güvenlik uyarısı çıkarsa “Diğer Seçenekler” → “Yükseltme” seçeneğini seçin.",
+            s5: "<strong>Adım 5:</strong> Oyunu/uygulamayı arayın ve indirin. İndirme bitince tekrar Avatar'a girin ve <strong>Çıkış Yapın</strong>."
+        },
+        fr: {
+            s1: "<strong>Étape 1 :</strong> Ouvrez l'application App Store sur iPhone/iPad.",
+            s2: "<strong>Étape 2 :</strong> Appuyez sur l'Avatar en haut à droite. Faites défiler tout en bas et touchez <strong>Déconnexion</strong> de l'ancien compte.",
+            s3: "<strong>Étape 3 :</strong> Saisissez l'identifiant et le mot de passe fournis par Kurd0o.",
+            s4: "<strong>Étape 4 :</strong> Si une alerte de sécurité apparaît, choisissez « Autres options » → « Ne pas mettre à niveau ».",
+            s5: "<strong>Étape 5 :</strong> Recherchez le jeu/l'app et téléchargez-le. Une fois téléchargé, revenez sur l'Avatar et <strong>Déconnectez-vous</strong>."
+        },
+        de: {
+            s1: "<strong>Schritt 1:</strong> Öffne die App Store-App auf iPhone/iPad.",
+            s2: "<strong>Schritt 2:</strong> Tippe oben rechts auf den Avatar. Scrolle nach ganz unten und wähle beim alten Account <strong>Abmelden</strong>.",
+            s3: "<strong>Schritt 3:</strong> Gib die von Kurd0o bereitgestellte ID und das Passwort ein.",
+            s4: "<strong>Schritt 4:</strong> Wenn ein Sicherheitshinweis erscheint, wähle „Weitere Optionen“ → „Nicht aktualisieren“.",
+            s5: "<strong>Schritt 5:</strong> Suche das Spiel/die App und lade sie herunter. Danach zurück zum Avatar gehen und <strong>Abmelden</strong>."
+        },
+        es: {
+            s1: "<strong>Paso 1:</strong> Abre la app App Store en iPhone/iPad.",
+            s2: "<strong>Paso 2:</strong> Toca el Avatar en la esquina superior derecha. Desplázate hasta abajo y toca <strong>Cerrar sesión</strong> de la cuenta anterior.",
+            s3: "<strong>Paso 3:</strong> Ingresa el ID y la contraseña proporcionados por Kurd0o.",
+            s4: "<strong>Paso 4:</strong> Si aparece un aviso de seguridad, selecciona “Otras opciones” → “No actualizar”.",
+            s5: "<strong>Paso 5:</strong> Busca el juego/app y descárgalo. Al terminar la descarga, vuelve al Avatar y <strong>Cierra sesión</strong>."
+        },
+        ru: {
+            s1: "<strong>Шаг 1:</strong> Откройте приложение App Store на iPhone/iPad.",
+            s2: "<strong>Шаг 2:</strong> Нажмите на аватар в правом верхнем углу. Прокрутите вниз и выберите <strong>Выйти</strong> из старого аккаунта.",
+            s3: "<strong>Шаг 3:</strong> Введите ID и пароль, предоставленные Kurd0o.",
+            s4: "<strong>Шаг 4:</strong> Если появится уведомление безопасности, выберите «Другие варианты» → «Не обновлять».",
+            s5: "<strong>Шаг 5:</strong> Найдите игру/приложение и загрузите. После загрузки снова зайдите в аватар и <strong>Выйдите</strong>."
+        },
+        ja: {
+            s1: "<strong>ステップ1：</strong> iPhone/iPadでApp Storeアプリを開きます。",
+            s2: "<strong>ステップ2：</strong> 右上のアバターをタップし、一番下までスクロールして古いアカウントから<strong>サインアウト</strong>を選択します。",
+            s3: "<strong>ステップ3：</strong> Kurd0oから提供されたIDとパスワードを入力します。",
+            s4: "<strong>ステップ4：</strong> セキュリティ通知が表示されたら「その他のオプション」→「アップグレードしない」を選択します。",
+            s5: "<strong>ステップ5：</strong> ゲーム/アプリを検索してダウンロードします。完了後、再びアバターを開いて<strong>サインアウト</strong>してください。"
+        }
+    };
+
+    function getActiveAsLang() {
+        try {
+            const saved = localStorage.getItem("lang") || localStorage.getItem("selectedLang") || localStorage.getItem("kurd0o_lang");
+            if (saved && AS_STEPS_LANGS[saved]) return saved;
+        } catch (e) {}
+        const htmlLang = document.documentElement.getAttribute("lang") || "en";
+        return AS_STEPS_LANGS[htmlLang] ? htmlLang : "en";
+    }
+
+    function syncAsStepsLang() {
+        const d = AS_STEPS_LANGS[getActiveAsLang()] || AS_STEPS_LANGS.en;
+        document.getElementById("as-step-1").innerHTML = d.s1;
+        document.getElementById("as-step-2").innerHTML = d.s2;
+        document.getElementById("as-step-3").innerHTML = d.s3;
+        document.getElementById("as-step-4").innerHTML = d.s4;
+        document.getElementById("as-step-5").innerHTML = d.s5;
+    }
+
+    document.addEventListener("click", () => setTimeout(syncAsStepsLang, 0));
+    window.addEventListener("DOMContentLoaded", syncAsStepsLang);
+    syncAsStepsLang();
+})();
+</script>
