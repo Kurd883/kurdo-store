@@ -323,105 +323,120 @@ document.addEventListener("click",()=>{
 
 </body>
 </html>
-<!-- المرحلة الحالية المصححة: صورة Minecraft + أزرار ID + دليل App Store + نافذة القنوات الأربع والديسكور مع عداد 5 ثوانٍ وتحول أخضر -->
+<!-- المرحلة الحالية: صورة Minecraft + أزرار ID + دليل App Store والتحذير + عرض مستقل للقنوات والديسكور والزر الأحمر -->
 <section id="sec-current-step" style="max-width:480px;margin:0 auto;padding:8px 16px 32px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#111827;">
 
-    <!-- صورة Minecraft -->
-    <img src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=900&q=75"
-         alt="Minecraft Adventure"
-         style="width:100%;height:215px;object-fit:cover;border-radius:10px;display:block;margin-bottom:18px;box-shadow:0 4px 14px rgba(0,0,0,0.08);">
+    <!-- المحتوى الأساسي للموقع في هذا القسم (يختفي عند الدخول لواجهة القنوات المستقلة ويعود عند الرجوع) -->
+    <div id="kurd0o-main-step-view">
+        <!-- صورة Minecraft -->
+        <img src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=900&q=75"
+             alt="Minecraft Adventure"
+             style="width:100%;height:215px;object-fit:cover;border-radius:10px;display:block;margin-bottom:18px;box-shadow:0 4px 14px rgba(0,0,0,0.08);">
 
-    <!-- زر أخضر: Minecraft -->
-    <button type="button" onclick="openChannelsModal('minecraft')"
-            style="width:100%;border:none;border-radius:14px;padding:15px 16px;margin-bottom:12px;background:linear-gradient(135deg,#16a34a,#15803d);color:#ffffff;font-size:15px;font-weight:800;line-height:1.35;text-align:center;cursor:pointer;box-shadow:0 6px 16px rgba(22,163,74,0.28);display:flex;align-items:center;justify-content:center;gap:8px;">
-        <span>🍏</span>
-        <span id="btn-mc-free">GET FREE MINECRAFT DOWNLOAD ID</span>
-    </button>
+        <!-- زر أخضر: Minecraft -->
+        <button type="button" onclick="openJoinPageView('minecraft')"
+                style="width:100%;border:none;border-radius:14px;padding:15px 16px;margin-bottom:12px;background:linear-gradient(135deg,#16a34a,#15803d);color:#ffffff;font-size:15px;font-weight:800;line-height:1.35;text-align:center;cursor:pointer;box-shadow:0 6px 16px rgba(22,163,74,0.28);display:flex;align-items:center;justify-content:center;gap:8px;">
+            <span>🍏</span>
+            <span id="btn-mc-free">GET FREE MINECRAFT DOWNLOAD ID</span>
+        </button>
 
-    <!-- زر أزرق: Shadowrocket -->
-    <button type="button" onclick="openChannelsModal('shadowrocket')"
-            style="width:100%;border:none;border-radius:14px;padding:15px 16px;margin-bottom:26px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#ffffff;font-size:15px;font-weight:800;line-height:1.35;text-align:center;cursor:pointer;box-shadow:0 6px 16px rgba(37,99,235,0.28);display:flex;align-items:center;justify-content:center;gap:8px;">
-        <span>🚀</span>
-        <span id="btn-sr-free">GET FREE SHADOWROCKET DOWNLOAD ID</span>
-    </button>
+        <!-- زر أزرق: Shadowrocket -->
+        <button type="button" onclick="openJoinPageView('shadowrocket')"
+                style="width:100%;border:none;border-radius:14px;padding:15px 16px;margin-bottom:26px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#ffffff;font-size:15px;font-weight:800;line-height:1.35;text-align:center;cursor:pointer;box-shadow:0 6px 16px rgba(37,99,235,0.28);display:flex;align-items:center;justify-content:center;gap:8px;">
+            <span>🚀</span>
+            <span id="btn-sr-free">GET FREE SHADOWROCKET DOWNLOAD ID</span>
+        </button>
 
-    <!-- عنوان دليل تسجيل الدخول الآمن في App Store -->
-    <h2 style="font-size:21px;font-weight:700;line-height:1.35;margin-bottom:16px;display:flex;align-items:center;gap:8px;">
-        <span>🛡️</span>
-        <span id="guide-appstore-title">Hướng Dẫn Đăng Nhập App Store An Toàn</span>
-    </h2>
+        <!-- عنوان دليل تسجيل الدخول الآمن في App Store -->
+        <h2 style="font-size:21px;font-weight:700;line-height:1.35;margin-bottom:16px;display:flex;align-items:center;gap:8px;">
+            <span>🛡️</span>
+            <span id="guide-appstore-title">Hướng Dẫn Đăng Nhập App Store An Toàn</span>
+        </h2>
 
-    <!-- صندوق التحذير المحدد -->
-    <div style="background:#fff1f2;border-left:4px solid #f43f5e;border-radius:0 12px 12px 0;padding:15px 16px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,0.04);font-size:14.5px;line-height:1.65;color:#be123c;font-weight:700;">
-        <p id="strict-id-warning">
-            ĐẶC BIỆT LƯU Ý: KHI SỬ DỤNG ID CHIA SẺ, TUYỆT ĐỐI KHÔNG ĐĂNG NHẬP VÀO CÀI ĐẶT (ICLOUD) CỦA MÁY. CHỈ ĐĂNG NHẬP TẠI APP STORE! TẢI XONG PHẢI ĐĂNG XUẤT NGAY!
-        </p>
-    </div>
-
-    <!-- الخطوة الأولى -->
-    <ul style="list-style:disc;padding-inline-start:20px;font-size:15px;line-height:1.65;color:#1f2937;">
-        <li id="step1-appstore"><strong>Bước 1:</strong> Mở ứng dụng App Store trên...</li>
-    </ul>
-
-</section>
-
-<!-- نافذة القنوات الأربع والديسكور -->
-<div id="kurd0o-channels-modal" onclick="closeChannelsModal()"
-     style="display:none;position:fixed;inset:0;background:rgba(15,23,42,0.65);z-index:120;align-items:center;justify-content:center;padding:16px;">
-    <div onclick="event.stopPropagation()"
-         style="width:100%;max-width:395px;background:#ffffff;border:1px solid #e5e7eb;border-radius:16px;padding:18px;box-shadow:0 20px 40px rgba(0,0,0,0.25);color:#111827;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-            <h3 id="modal-channels-title" style="font-size:16px;font-weight:800;margin:0;">Minecraft</h3>
-            <button type="button" onclick="closeChannelsModal()"
-                    style="background:#f1f5f9;border:none;border-radius:8px;width:30px;height:30px;font-size:15px;font-weight:700;cursor:pointer;color:#111827;">✕</button>
+        <!-- صندوق التحذير المحدد -->
+        <div style="background:#fff1f2;border-left:4px solid #f43f5e;border-radius:0 12px 12px 0;padding:15px 16px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,0.04);font-size:14.5px;line-height:1.65;color:#be123c;font-weight:700;">
+            <p id="strict-id-warning">
+                ĐẶC BIỆT LƯU Ý: KHI SỬ DỤNG ID CHIA SẺ, TUYỆT ĐỐI KHÔNG ĐĂNG NHẬP VÀO CÀI ĐẶT (ICLOUD) CỦA MÁY. CHỈ ĐĂNG NHẬP TẠI APP STORE! TẢI XONG PHẢI ĐĂNG XUẤT NGAY!
+            </p>
         </div>
 
-        <p id="modal-channels-sub" style="font-size:13.5px;color:#374151;margin-bottom:14px;line-height:1.6;font-weight:600;"></p>
+        <!-- الخطوة الأولى -->
+        <ul style="list-style:disc;padding-inline-start:20px;font-size:15px;line-height:1.65;color:#1f2937;">
+            <li id="step1-appstore"><strong>Bước 1:</strong> Mở ứng dụng App Store trên...</li>
+        </ul>
+    </div>
 
-        <div id="channels-list-box" style="display:flex;flex-direction:column;gap:9px;">
+    <!-- واجهة القنوات الأربع والديسكور المستقلة (تظهر عند الضغط على Minecraft أو Shadowrocket) -->
+    <div id="kurd0o-join-page-view" style="display:none;background:#ffffff;border:1px solid #e5e7eb;border-radius:16px;padding:18px;box-shadow:0 12px 28px rgba(15,23,42,0.08);">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;">
+            <h3 id="join-page-title" style="font-size:17px;font-weight:800;margin:0;color:#111827;">Minecraft</h3>
+            <button type="button" onclick="backToMainSiteView()"
+                    id="btn-back-site"
+                    style="background:#f1f5f9;border:1px solid #cbd5e1;border-radius:10px;padding:6px 12px;font-size:12.5px;font-weight:700;cursor:pointer;color:#111827;">
+                ← العودة إلى الموقع
+            </button>
+        </div>
+
+        <p id="join-page-sub" style="font-size:13.5px;color:#374151;margin-bottom:14px;line-height:1.6;font-weight:600;"></p>
+
+        <div style="display:flex;flex-direction:column;gap:9px;">
             <button type="button" data-target="ch1" onclick="handleJoinTarget('ch1', 'https://t.me/kurd0o1')"
                     class="kurd-join-btn"
-                    style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 14px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;color:#111827;font-size:13.5px;font-weight:700;cursor:pointer;text-align:start;">
-                <span class="join-label">📢 kurd0o1</span>
+                    style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;color:#111827;font-size:13.5px;font-weight:700;cursor:pointer;text-align:start;">
+                <span>📢 kurd0o1</span>
                 <span class="join-status" style="font-size:12px;font-weight:800;white-space:nowrap;">↗</span>
             </button>
 
             <button type="button" data-target="ch2" onclick="handleJoinTarget('ch2', 'https://t.me/Kurd0o2')"
                     class="kurd-join-btn"
-                    style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 14px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;color:#111827;font-size:13.5px;font-weight:700;cursor:pointer;text-align:start;">
-                <span class="join-label">📢 Kurd0o2</span>
+                    style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;color:#111827;font-size:13.5px;font-weight:700;cursor:pointer;text-align:start;">
+                <span>📢 Kurd0o2</span>
                 <span class="join-status" style="font-size:12px;font-weight:800;white-space:nowrap;">↗</span>
             </button>
 
             <button type="button" data-target="ch3" onclick="handleJoinTarget('ch3', 'https://t.me/Kurd0o3')"
                     class="kurd-join-btn"
-                    style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 14px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;color:#111827;font-size:13.5px;font-weight:700;cursor:pointer;text-align:start;">
-                <span class="join-label">📢 Kurd0o3</span>
+                    style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;color:#111827;font-size:13.5px;font-weight:700;cursor:pointer;text-align:start;">
+                <span>📢 Kurd0o3</span>
                 <span class="join-status" style="font-size:12px;font-weight:800;white-space:nowrap;">↗</span>
             </button>
 
             <button type="button" data-target="ch4" onclick="handleJoinTarget('ch4', 'https://t.me/Kurd0o4')"
                     class="kurd-join-btn"
-                    style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 14px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;color:#111827;font-size:13.5px;font-weight:700;cursor:pointer;text-align:start;">
-                <span class="join-label">📢 Kurd0o4</span>
+                    style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;color:#111827;font-size:13.5px;font-weight:700;cursor:pointer;text-align:start;">
+                <span>📢 Kurd0o4</span>
                 <span class="join-status" style="font-size:12px;font-weight:800;white-space:nowrap;">↗</span>
             </button>
 
             <button type="button" data-target="discord" onclick="handleJoinTarget('discord', 'https://discord.gg/Tn4U989mmz')"
                     class="kurd-join-btn"
-                    style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 14px;border-radius:10px;background:#eef2ff;border:1px solid #c7d2fe;color:#1e1b4b;font-size:13.5px;font-weight:800;cursor:pointer;text-align:start;">
-                <span class="join-label">🎮 Discord</span>
+                    style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px;border-radius:10px;background:#eef2ff;border:1px solid #c7d2fe;color:#1e1b4b;font-size:13.5px;font-weight:800;cursor:pointer;text-align:start;">
+                <span>🎮 Discord</span>
                 <span class="join-status" style="font-size:12px;font-weight:800;white-space:nowrap;">↗</span>
             </button>
         </div>
+
+        <!-- الزر الأحمر الذي يظهر بالأسفل فقط بعد إكمال الخطوات الخمس (4 قنوات + ديسكور) -->
+        <div id="kurd0o-red-account-box" style="display:none;margin-top:16px;">
+            <a id="kurd0o-red-account-btn"
+               href="https://kurd3.github.io/KurdoAccounts/"
+               target="_blank"
+               rel="noopener noreferrer"
+               style="display:block;width:100%;box-sizing:border-box;text-align:center;background:linear-gradient(135deg,#dc2626,#b91c1c);color:#ffffff;padding:14px 16px;border-radius:12px;font-size:14.5px;font-weight:800;text-decoration:none;box-shadow:0 6px 18px rgba(220,38,38,0.32);">
+                اضغط هنا للانتقال للحساب
+            </a>
+        </div>
     </div>
-</div>
+
+</section>
 
 <script>
 (function () {
     const STORAGE_JOIN_KEY = "kurd0o_joined_targets_v1";
+    const REQUIRED_TARGETS = ["ch1", "ch2", "ch3", "ch4", "discord"];
     const timers = {};
     const countdowns = {};
+    let currentSelectedApp = "minecraft";
 
     const CUR_LANGS = {
         en: {
@@ -433,7 +448,10 @@ document.addEventListener("click",()=>{
             modalMc: "Join the 4 channels and Discord to go to the Minecraft account (if you don't join them, the account will not appear).",
             modalSr: "Join the 4 channels and Discord to go to the Shadowrocket account (if you don't join them, the account will not appear).",
             waitText: (sec) => `Wait ${sec}s...`,
-            joinedText: "✓ Joined"
+            joinedText: "✓ Joined",
+            backSite: "← Back to Site",
+            redBtnMc: "Click here to go to the Minecraft account",
+            redBtnSr: "Click here to go to the Shadowrocket account"
         },
         ar: {
             mcBtn: "احصل على ID تحميل ماينكرافت مجاناً",
@@ -444,7 +462,10 @@ document.addEventListener("click",()=>{
             modalMc: "انضم للقنوات الأربعة والديسكورد للانتقال إلى حساب ماينكرافت (إذا لم تنضم إليهم فلن يظهر لك الحساب).",
             modalSr: "انضم للقنوات الأربعة والديسكورد للانتقال إلى حساب شادوركوت (إذا لم تنضم إليهم فلن يظهر لك الحساب).",
             waitText: (sec) => `انتظر ${sec} ثواني...`,
-            joinedText: "✓ انضممت"
+            joinedText: "✓ انضممت",
+            backSite: "← العودة إلى الموقع",
+            redBtnMc: "اضغط هنا للانتقال لحساب ماينكرافت",
+            redBtnSr: "اضغط هنا للانتقال لحساب شادوركوت"
         },
         ku: {
             mcBtn: "ID یێ داگرتنا ماینكرافتێ بێ بەرامبەر وەرگرە",
@@ -455,7 +476,10 @@ document.addEventListener("click",()=>{
             modalMc: "بۆ چوونا سەر هژمارا ماینكرافتێ پشکداری ٤ کەناڵان و دیسکۆردێ ببە (ئەگەر پشکداری نەبی هژمار بۆ تە دیار نابیت).",
             modalSr: "بۆ چوونا سەر هژمارا شادورۆکێتێ پشکداری ٤ کەناڵان و دیسکۆردێ ببە (ئەگەر پشکداری نەبی هژمار بۆ تە دیار نابیت).",
             waitText: (sec) => `${sec} چرکان چاوەڕێ بە...`,
-            joinedText: "✓ پشکداری بوو"
+            joinedText: "✓ پشکداری بوو",
+            backSite: "← زڤرین بۆ سایتێ",
+            redBtnMc: "ل ڤێرێ کلیک بکە بۆ چوونا هژمارا ماینكرافتێ",
+            redBtnSr: "ل ڤێرێ کلیک بکە بۆ چوونا هژمارا شادورۆکێتێ"
         },
         vi: {
             mcBtn: "LẤY ID TẢI MINECRAFT MIỄN PHÍ",
@@ -466,7 +490,10 @@ document.addEventListener("click",()=>{
             modalMc: "Hãy tham gia 4 kênh và Discord để chuyển đến tài khoản Minecraft (nếu chưa tham gia thì tài khoản sẽ không hiển thị).",
             modalSr: "Hãy tham gia 4 kênh và Discord để chuyển đến tài khoản Shadowrocket (nếu chưa tham gia thì tài khoản sẽ không hiển thị).",
             waitText: (sec) => `Đợi ${sec} giây...`,
-            joinedText: "✓ Đã tham gia"
+            joinedText: "✓ Đã tham gia",
+            backSite: "← Quay lại trang",
+            redBtnMc: "Nhấn vào đây để chuyển đến tài khoản Minecraft",
+            redBtnSr: "Nhấn vào đây để chuyển đến tài khoản Shadowrocket"
         },
         tr: {
             mcBtn: "ÜCRETSİZ MINECRAFT İNDİRME ID'Sİ AL",
@@ -477,7 +504,10 @@ document.addEventListener("click",()=>{
             modalMc: "Minecraft hesabına geçmek için 4 kanala ve Discord'a katılın (katılmazsanız hesap görünmez).",
             modalSr: "Shadowrocket hesabına geçmek için 4 kanala ve Discord'a katılın (katılmazsanız hesap görünmez).",
             waitText: (sec) => `${sec} sn bekleyin...`,
-            joinedText: "✓ Katılındı"
+            joinedText: "✓ Katılındı",
+            backSite: "← Siteye Dön",
+            redBtnMc: "Minecraft hesabına gitmek için buraya tıklayın",
+            redBtnSr: "Shadowrocket hesabına gitmek için buraya tıklayın"
         },
         fr: {
             mcBtn: "OBTENIR UN ID MINECRAFT GRATUIT",
@@ -488,7 +518,10 @@ document.addEventListener("click",()=>{
             modalMc: "Rejoignez les 4 chaînes et Discord pour accéder au compte Minecraft (si vous ne rejoignez pas, le compte ne s'affichera pas).",
             modalSr: "Rejoignez les 4 chaînes et Discord pour accéder au compte Shadowrocket (si vous ne rejoignez pas, le compte ne s'affichera pas).",
             waitText: (sec) => `Patientez ${sec}s...`,
-            joinedText: "✓ Rejoint"
+            joinedText: "✓ Rejoint",
+            backSite: "← Retour au site",
+            redBtnMc: "Cliquez ici pour accéder au compte Minecraft",
+            redBtnSr: "Cliquez ici pour accéder au compte Shadowrocket"
         },
         de: {
             mcBtn: "KOSTENLOSE MINECRAFT-DOWNLOAD-ID HOLEN",
@@ -499,7 +532,10 @@ document.addEventListener("click",()=>{
             modalMc: "Tritt den 4 Kanälen und Discord bei, um zum Minecraft-Account zu gelangen (ohne Beitritt wird der Account nicht angezeigt).",
             modalSr: "Tritt den 4 Kanälen und Discord bei, um zum Shadowrocket-Account zu gelangen (ohne Beitritt wird der Account nicht angezeigt).",
             waitText: (sec) => `Warte ${sec}s...`,
-            joinedText: "✓ Beigetreten"
+            joinedText: "✓ Beigetreten",
+            backSite: "← Zurück zur Seite",
+            redBtnMc: "Hier klicken, um zum Minecraft-Account zu gelangen",
+            redBtnSr: "Hier klicken, um zum Shadowrocket-Account zu gelangen"
         },
         es: {
             mcBtn: "OBTENER ID GRATIS DE MINECRAFT",
@@ -510,7 +546,10 @@ document.addEventListener("click",()=>{
             modalMc: "Únete a los 4 canales y a Discord para ir a la cuenta de Minecraft (si no te unes, la cuenta no se mostrará).",
             modalSr: "Únete a los 4 canales y a Discord para ir a la cuenta de Shadowrocket (si no te unes, la cuenta no se mostrará).",
             waitText: (sec) => `Espera ${sec}s...`,
-            joinedText: "✓ Unido"
+            joinedText: "✓ Unido",
+            backSite: "← Volver al sitio",
+            redBtnMc: "Haz clic aquí para ir a la cuenta de Minecraft",
+            redBtnSr: "Haz clic aquí para ir a la cuenta de Shadowrocket"
         },
         ru: {
             mcBtn: "ПОЛУЧИТЬ БЕСПЛАТНЫЙ ID ДЛЯ MINECRAFT",
@@ -521,7 +560,10 @@ document.addEventListener("click",()=>{
             modalMc: "Вступите в 4 канала и Discord, чтобы перейти к аккаунту Minecraft (если не вступите, аккаунт не отобразится).",
             modalSr: "Вступите в 4 канала и Discord, чтобы перейти к аккаунту Shadowrocket (если не вступите, аккаунт не отобразится).",
             waitText: (sec) => `Ждите ${sec} сек...`,
-            joinedText: "✓ Вступил"
+            joinedText: "✓ Вступил",
+            backSite: "← Назад на сайт",
+            redBtnMc: "Нажмите здесь, чтобы перейти к аккаунту Minecraft",
+            redBtnSr: "Нажмите здесь, чтобы перейти к аккаунту Shadowrocket"
         },
         ja: {
             mcBtn: "無料MinecraftダウンロードIDを取得",
@@ -532,7 +574,10 @@ document.addEventListener("click",()=>{
             modalMc: "Minecraftアカウントへ進むには4つのチャンネルとDiscordに参加してください（参加しない場合、アカウントは表示されません）。",
             modalSr: "Shadowrocketアカウントへ進むには4つのチャンネルとDiscordに参加してください（参加しない場合、アカウントは表示されません）。",
             waitText: (sec) => `${sec}秒お待ちください...`,
-            joinedText: "✓ 参加済み"
+            joinedText: "✓ 参加済み",
+            backSite: "← サイトに戻る",
+            redBtnMc: "Minecraftアカウントへ進むにはここをクリック",
+            redBtnSr: "Shadowrocketアカウントへ進むにはここをクリック"
         }
     };
 
@@ -560,6 +605,18 @@ document.addEventListener("click",()=>{
         try {
             localStorage.setItem(STORAGE_JOIN_KEY, JSON.stringify([...set]));
         } catch (e) {}
+    }
+
+    function refreshRedAccountButton() {
+        const d = CUR_LANGS[getActiveLang()] || CUR_LANGS.en;
+        const joinedSet = getJoinedSet();
+        const allCompleted = REQUIRED_TARGETS.every((key) => joinedSet.has(key));
+        const box = document.getElementById("kurd0o-red-account-box");
+        const btn = document.getElementById("kurd0o-red-account-btn");
+        if (!box || !btn) return;
+
+        btn.innerText = currentSelectedApp === "shadowrocket" ? d.redBtnSr : d.redBtnMc;
+        box.style.display = allCompleted ? "block" : "none";
     }
 
     function paintTargetButton(targetKey) {
@@ -607,34 +664,40 @@ document.addEventListener("click",()=>{
                 delete countdowns[targetKey];
                 saveJoinedTarget(targetKey);
                 paintTargetButton(targetKey);
+                refreshRedAccountButton();
             }
         }, 1000);
     };
 
-    window.openChannelsModal = function (type) {
-        const d = CUR_LANGS[getActiveLang()] || CUR_LANGS.en;
-        const isSr = type === "shadowrocket";
-        document.getElementById("modal-channels-title").innerText = isSr ? "Shadowrocket" : "Minecraft";
-        document.getElementById("modal-channels-sub").innerText = isSr ? d.modalSr : d.modalMc;
-        ["ch1", "ch2", "ch3", "ch4", "discord"].forEach(paintTargetButton);
-        document.getElementById("kurd0o-channels-modal").style.display = "flex";
+    window.openJoinPageView = function (type) {
+        currentSelectedApp = type === "shadowrocket" ? "shadowrocket" : "minecraft";
+        document.getElementById("kurd0o-main-step-view").style.display = "none";
+        document.getElementById("kurd0o-join-page-view").style.display = "block";
+        syncCurLang();
+        window.scrollTo({ top: document.getElementById("sec-current-step").offsetTop - 12, behavior: "smooth" });
     };
 
-    window.closeChannelsModal = function () {
-        document.getElementById("kurd0o-channels-modal").style.display = "none";
+    window.backToMainSiteView = function () {
+        document.getElementById("kurd0o-join-page-view").style.display = "none";
+        document.getElementById("kurd0o-main-step-view").style.display = "block";
     };
 
     function syncCurLang() {
         const d = CUR_LANGS[getActiveLang()] || CUR_LANGS.en;
+        const isSr = currentSelectedApp === "shadowrocket";
+
         document.getElementById("btn-mc-free").innerText = d.mcBtn;
         document.getElementById("btn-sr-free").innerText = d.srBtn;
         document.getElementById("guide-appstore-title").innerText = d.guideTitle;
         document.getElementById("strict-id-warning").innerText = d.warning;
         document.getElementById("step1-appstore").innerHTML = d.step1;
 
-        const isSr = document.getElementById("modal-channels-title").innerText === "Shadowrocket";
-        document.getElementById("modal-channels-sub").innerText = isSr ? d.modalSr : d.modalMc;
-        ["ch1", "ch2", "ch3", "ch4", "discord"].forEach(paintTargetButton);
+        document.getElementById("join-page-title").innerText = isSr ? "Shadowrocket" : "Minecraft";
+        document.getElementById("join-page-sub").innerText = isSr ? d.modalSr : d.modalMc;
+        document.getElementById("btn-back-site").innerText = d.backSite;
+
+        REQUIRED_TARGETS.forEach(paintTargetButton);
+        refreshRedAccountButton();
     }
 
     document.addEventListener("click", () => setTimeout(syncCurLang, 0));
@@ -642,4 +705,3 @@ document.addEventListener("click",()=>{
     syncCurLang();
 })();
 </script>
-
