@@ -527,4 +527,216 @@ document.addEventListener("click",()=>{
     syncCurLang();
 })();
 </script>
+<!-- المرحلة الحالية: صورة Minecraft + أزرار الحصول على ID + دليل App Store والتحذير -->
+<section id="sec-current-step" style="max-width:480px;margin:0 auto;padding:8px 16px 32px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#111827;">
+
+    <!-- صورة Minecraft -->
+    <img src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=900&q=75"
+         alt="Minecraft Adventure"
+         style="width:100%;height:215px;object-fit:cover;border-radius:10px;display:block;margin-bottom:18px;box-shadow:0 4px 14px rgba(0,0,0,0.08);">
+
+    <!-- زر أخضر: Minecraft -->
+    <button type="button" onclick="openChannelsModal('minecraft')"
+            style="width:100%;border:none;border-radius:14px;padding:15px 16px;margin-bottom:12px;background:linear-gradient(135deg,#16a34a,#15803d);color:#ffffff;font-size:15px;font-weight:800;line-height:1.35;text-align:center;cursor:pointer;box-shadow:0 6px 16px rgba(22,163,74,0.28);display:flex;align-items:center;justify-content:center;gap:8px;">
+        <span>🍏</span>
+        <span id="btn-mc-free">GET FREE MINECRAFT DOWNLOAD ID</span>
+    </button>
+
+    <!-- زر أزرق: Shadowrocket -->
+    <button type="button" onclick="openChannelsModal('shadowrocket')"
+            style="width:100%;border:none;border-radius:14px;padding:15px 16px;margin-bottom:26px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#ffffff;font-size:15px;font-weight:800;line-height:1.35;text-align:center;cursor:pointer;box-shadow:0 6px 16px rgba(37,99,235,0.28);display:flex;align-items:center;justify-content:center;gap:8px;">
+        <span>🚀</span>
+        <span id="btn-sr-free">GET FREE SHADOWROCKET DOWNLOAD ID</span>
+    </button>
+
+    <!-- عنوان دليل تسجيل الدخول الآمن في App Store -->
+    <h2 style="font-size:21px;font-weight:700;line-height:1.35;margin-bottom:16px;display:flex;align-items:center;gap:8px;">
+        <span>🛡️</span>
+        <span id="guide-appstore-title">Hướng Dẫn Đăng Nhập App Store An Toàn</span>
+    </h2>
+
+    <!-- صندوق التحذير المحدد -->
+    <div style="background:#fff1f2;border-left:4px solid #f43f5e;border-radius:0 12px 12px 0;padding:15px 16px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,0.04);font-size:14.5px;line-height:1.65;color:#be123c;font-weight:700;">
+        <p id="strict-id-warning">
+            ĐẶC BIỆT LƯU Ý: KHI SỬ DỤNG ID CHIA SẺ, TUYỆT ĐỐI KHÔNG ĐĂNG NHẬP VÀO CÀI ĐẶT (ICLOUD) CỦA MÁY. CHỈ ĐĂNG NHẬP TẠI APP STORE! TẢI XONG PHẢI ĐĂNG XUẤT NGAY!
+        </p>
+    </div>
+
+    <!-- الخطوة الأولى -->
+    <ul style="list-style:disc;padding-inline-start:20px;font-size:15px;line-height:1.65;color:#1f2937;">
+        <li id="step1-appstore"><strong>Bước 1:</strong> Mở ứng dụng App Store trên...</li>
+    </ul>
+
+</section>
+
+<!-- نافذة القنوات الأربع والديسكور فقط -->
+<div id="kurd0o-channels-modal" onclick="closeChannelsModal()"
+     style="display:none;position:fixed;inset:0;background:rgba(15,23,42,0.62);z-index:120;align-items:center;justify-content:center;padding:16px;">
+    <div onclick="event.stopPropagation()"
+         style="width:100%;max-width:390px;background:#ffffff;border:1px solid #e5e7eb;border-radius:16px;padding:18px;box-shadow:0 20px 40px rgba(0,0,0,0.22);color:#111827;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <h3 id="modal-channels-title" style="font-size:16px;font-weight:800;margin:0;">القنوات والديسكور</h3>
+            <button type="button" onclick="closeChannelsModal()"
+                    style="background:#f1f5f9;border:none;border-radius:8px;width:30px;height:30px;font-size:15px;font-weight:700;cursor:pointer;color:#111827;">✕</button>
+        </div>
+
+        <p id="modal-channels-sub" style="font-size:13.5px;color:#374151;margin-bottom:14px;line-height:1.6;font-weight:600;"></p>
+
+        <div style="display:flex;flex-direction:column;gap:9px;">
+            <a href="https://t.me/kurd0o1" target="_blank"
+               style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;text-decoration:none;color:#111827;font-size:13.5px;font-weight:700;">
+                <span>📢 kurd0o1</span>
+                <span>↗</span>
+            </a>
+
+            <a href="https://t.me/Kurd0o2" target="_blank"
+               style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;text-decoration:none;color:#111827;font-size:13.5px;font-weight:700;">
+                <span>📢 Kurd0o2</span>
+                <span>↗</span>
+            </a>
+
+            <a href="https://t.me/Kurd0o3" target="_blank"
+               style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;text-decoration:none;color:#111827;font-size:13.5px;font-weight:700;">
+                <span>📢 Kurd0o3</span>
+                <span>↗</span>
+            </a>
+
+            <a href="https://t.me/Kurd0o4" target="_blank"
+               style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;text-decoration:none;color:#111827;font-size:13.5px;font-weight:700;">
+                <span>📢 Kurd0o4</span>
+                <span>↗</span>
+            </a>
+
+            <a href="https://discord.gg/Tn4U989mmz" target="_blank"
+               style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-radius:10px;background:#eef2ff;border:1px solid #c7d2fe;text-decoration:none;color:#1e1b4b;font-size:13.5px;font-weight:800;">
+                <span>🎮 Discord</span>
+                <span>↗</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    const CUR_LANGS = {
+        en: {
+            mcBtn: "GET FREE MINECRAFT DOWNLOAD ID",
+            srBtn: "GET FREE SHADOWROCKET DOWNLOAD ID",
+            guideTitle: "Safe App Store Sign-In Guide",
+            warning: "SPECIAL NOTE: WHEN USING A SHARED ID, NEVER SIGN IN TO DEVICE SETTINGS (ICLOUD). SIGN IN ONLY IN THE APP STORE! SIGN OUT IMMEDIATELY AFTER DOWNLOADING!",
+            step1: "<strong>Step 1:</strong> Open the App Store app on...",
+            modalMc: "Join the 4 channels and Discord to go to the Minecraft account (if you don't join them, the account will not appear).",
+            modalSr: "Join the 4 channels and Discord to go to the Shadowrocket account (if you don't join them, the account will not appear)."
+        },
+        ar: {
+            mcBtn: "احصل على ID تحميل ماينكرافت مجاناً",
+            srBtn: "احصل على ID تحميل شادوروكيت مجاناً",
+            guideTitle: "دليل تسجيل الدخول الآمن في App Store",
+            warning: "تنبيه خاص جداً: عند استخدام حساب مشارك، يُمنع نهائياً تسجيل الدخول في إعدادات الجهاز (iCloud). سجّل الدخول فقط داخل App Store! وسجّل الخروج فوراً بعد التحميل!",
+            step1: "<strong>الخطوة 1:</strong> افتح تطبيق App Store على...",
+            modalMc: "انضم للقنوات الأربعة والديسكورد للانتقال إلى حساب ماينكرافت (إذا لم تنضم إليهم فلن يظهر لك الحساب).",
+            modalSr: "انضم للقنوات الأربعة والديسكورد للانتقال إلى حساب شادوركوت (إذا لم تنضم إليهم فلن يظهر لك الحساب)."
+        },
+        ku: {
+            mcBtn: "ID یێ داگرتنا ماینكرافتێ بێ بەرامبەر وەرگرە",
+            srBtn: "ID یێ داگرتنا شادورۆکێتێ بێ بەرامبەر وەرگرە",
+            guideTitle: "رێبەرێ چوونا ژوور یا پاراستی د App Store دا",
+            warning: "تێبینیەکا گەلەك تایبەت: دەمێ هژمارا هەڤپشك بکاردئینی، ب چ شێوەیەکی د رێکخستنێن ئامێری (iCloud) دا نەچە ژوور. بتنێ د App Store دا بچە ژوور! پشتی داگرتنێ هەر دێ دەربکەڤە!",
+            step1: "<strong>پێنگاڤا 1:</strong> ئەپڵیکەیشنا App Store ل سەر... ڤەکە",
+            modalMc: "بۆ چوونا سەر هژمارا ماینكرافتێ پشکداری ٤ کەناڵان و دیسکۆردێ ببە (ئەگەر پشکداری نەبی هژمار بۆ تە دیار نابیت).",
+            modalSr: "بۆ چوونا سەر هژمارا شادورۆکێتێ پشکداری ٤ کەناڵان و دیسکۆردێ ببە (ئەگەر پشکداری نەبی هژمار بۆ تە دیار نابیت)."
+        },
+        vi: {
+            mcBtn: "LẤY ID TẢI MINECRAFT MIỄN PHÍ",
+            srBtn: "LẤY ID TẢI SHADOWROCKET MIỄN PHÍ",
+            guideTitle: "Hướng Dẫn Đăng Nhập App Store An Toàn",
+            warning: "ĐẶC BIỆT LƯU Ý: KHI SỬ DỤNG ID CHIA SẺ, TUYỆT ĐỐI KHÔNG ĐĂNG NHẬP VÀO CÀI ĐẶT (ICLOUD) CỦA MÁY. CHỈ ĐĂNG NHẬP TẠI APP STORE! TẢI XONG PHẢI ĐĂNG XUẤT NGAY!",
+            step1: "<strong>Bước 1:</strong> Mở ứng dụng App Store trên...",
+            modalMc: "Hãy tham gia 4 kênh và Discord để chuyển đến tài khoản Minecraft (nếu chưa tham gia thì tài khoản sẽ không hiển thị).",
+            modalSr: "Hãy tham gia 4 kênh và Discord để chuyển đến tài khoản Shadowrocket (nếu chưa tham gia thì tài khoản sẽ không hiển thị)."
+        },
+        tr: {
+            mcBtn: "ÜCRETSİZ MINECRAFT İNDİRME ID'Sİ AL",
+            srBtn: "ÜCRETSİZ SHADOWROCKET İNDİRME ID'Sİ AL",
+            guideTitle: "Güvenli App Store Giriş Rehberi",
+            warning: "ÖZEL NOT: PAYLAŞIMLI ID KULLANIRKEN CİHAZ AYARLARINA (ICLOUD) KESİNLİKLE GİRİŞ YAPMAYIN. YALNIZCA APP STORE'A GİRİŞ YAPIN! İNDİRME BİTER BİTMEZ HEMEN ÇIKIŞ YAPIN!",
+            step1: "<strong>Adım 1:</strong> Cihazınızda App Store uygulamasını açın...",
+            modalMc: "Minecraft hesabına geçmek için 4 kanala ve Discord'a katılın (katılmazsanız hesap görünmez).",
+            modalSr: "Shadowrocket hesabına geçmek için 4 kanala ve Discord'a katılın (katılmazsanız hesap görünmez)."
+        },
+        fr: {
+            mcBtn: "OBTENIR UN ID MINECRAFT GRATUIT",
+            srBtn: "OBTENIR UN ID SHADOWROCKET GRATUIT",
+            guideTitle: "Guide de Connexion Sécurisée à l'App Store",
+            warning: "REMARQUE SPÉCIALE : LORS DE L'UTILISATION D'UN ID PARTAGÉ, NE VOUS CONNECTEZ JAMAIS AUX RÉGLAGES DE L'APPAREIL (ICLOUD). CONNECTEZ-VOUS UNIQUEMENT DANS L'APP STORE ! DÉCONNECTEZ-VOUS IMMÉDIATEMENT APRÈS LE TÉLÉCHARGEMENT !",
+            step1: "<strong>Étape 1 :</strong> Ouvrez l'application App Store sur...",
+            modalMc: "Rejoignez les 4 chaînes et Discord pour accéder au compte Minecraft (si vous ne rejoignez pas, le compte ne s'affichera pas).",
+            modalSr: "Rejoignez les 4 chaînes et Discord pour accéder au compte Shadowrocket (si vous ne rejoignez pas, le compte ne s'affichera pas)."
+        },
+        de: {
+            mcBtn: "KOSTENLOSE MINECRAFT-DOWNLOAD-ID HOLEN",
+            srBtn: "KOSTENLOSE SHADOWROCKET-DOWNLOAD-ID HOLEN",
+            guideTitle: "Anleitung für sicheren App-Store-Login",
+            warning: "BESONDERER HINWEIS: BEI VERWENDUNG EINER GETEILTEN ID AUF KEINEN FALL IN DEN GERÄTEEINSTELLUNGEN (ICLOUD) ANMELDEN. NUR IM APP STORE ANMELDEN! NACH DEM DOWNLOAD SOFORT ABMELDEN!",
+            step1: "<strong>Schritt 1:</strong> Öffne die App Store-App auf...",
+            modalMc: "Tritt den 4 Kanälen und Discord bei, um zum Minecraft-Account zu gelangen (ohne Beitritt wird der Account nicht angezeigt).",
+            modalSr: "Tritt den 4 Kanälen und Discord bei, um zum Shadowrocket-Account zu gelangen (ohne Beitritt wird der Account nicht angezeigt)."
+        },
+        es: {
+            mcBtn: "OBTENER ID GRATIS DE MINECRAFT",
+            srBtn: "OBTENER ID GRATIS DE SHADOWROCKET",
+            guideTitle: "Guía Segura para Iniciar Sesión en App Store",
+            warning: "NOTA ESPECIAL: AL USAR UN ID COMPARTIDO, NO INICIES SESIÓN EN LOS AJUSTES DEL DISPOSITIVO (ICLOUD). ¡INICIA SESIÓN SOLO EN APP STORE! ¡CIERRA SESIÓN DE INMEDIATO AL DESCARGAR!",
+            step1: "<strong>Paso 1:</strong> Abre la app App Store en...",
+            modalMc: "Únete a los 4 canales y a Discord para ir a la cuenta de Minecraft (si no te unes, la cuenta no se mostrará).",
+            modalSr: "Únete a los 4 canales y a Discord para ir a la cuenta de Shadowrocket (si no te unes, la cuenta no se mostrará)."
+        },
+        ru: {
+            mcBtn: "ПОЛУЧИТЬ БЕСПЛАТНЫЙ ID ДЛЯ MINECRAFT",
+            srBtn: "ПОЛУЧИТЬ БЕСПЛАТНЫЙ ID ДЛЯ SHADOWROCKET",
+            guideTitle: "Руководство по безопасному входу в App Store",
+            warning: "ОСОБОЕ ПРИМЕЧАНИЕ: ПРИ ИСПОЛЬЗОВАНИИ ОБЩЕГО ID КАТЕГОРИЧЕСКИ НЕ ВХОДИТЕ В НАСТРОЙКИ УСТРОЙСТВА (ICLOUD). ВХОДИТЕ ТОЛЬКО В APP STORE! СРАЗУ ВЫЙДИТЕ ПОСЛЕ ЗАГРУЗКИ!",
+            step1: "<strong>Шаг 1:</strong> Откройте приложение App Store на...",
+            modalMc: "Вступите в 4 канала и Discord, чтобы перейти к аккаунту Minecraft (если не вступите, аккаунт не отобразится).",
+            modalSr: "Вступите в 4 канала и Discord, чтобы перейти к аккаунту Shadowrocket (если не вступите, аккаунт не отобразится)."
+        },
+        ja: {
+            mcBtn: "無料MinecraftダウンロードIDを取得",
+            srBtn: "無料ShadowrocketダウンロードIDを取得",
+            guideTitle: "安全なApp Storeサインインガイド",
+            warning: "特別注意事項：共有IDを使用する場合、端末の設定（iCloud）には絶対にサインインしないでください。App Storeでのみサインインしてください！ダウンロード後はすぐにサインアウトしてください！",
+            step1: "<strong>ステップ1：</strong> 端末でApp Storeアプリを開きます...",
+            modalMc: "Minecraftアカウントへ進むには4つのチャンネルとDiscordに参加してください（参加しない場合、アカウントは表示されません）。",
+            modalSr: "Shadowrocketアカウントへ進むには4つのチャンネルとDiscordに参加してください（参加しない場合、アカウントは表示されません）。"
+        }
+    };
+
+    window.openChannelsModal = function (type) {
+        const lang = document.documentElement.getAttribute("lang") || "en";
+        const d = CUR_LANGS[lang] || CUR_LANGS.en;
+        const isSr = type === "shadowrocket";
+        document.getElementById("modal-channels-title").innerText = isSr ? "Shadowrocket" : "Minecraft";
+        document.getElementById("modal-channels-sub").innerText = isSr ? d.modalSr : d.modalMc;
+        document.getElementById("kurd0o-channels-modal").style.display = "flex";
+    };
+
+    window.closeChannelsModal = function () {
+        document.getElementById("kurd0o-channels-modal").style.display = "none";
+    };
+
+    function syncCurLang() {
+        const htmlLang = document.documentElement.getAttribute("lang") || "en";
+        const d = CUR_LANGS[htmlLang] || CUR_LANGS.en;
+        document.getElementById("btn-mc-free").innerText = d.mcBtn;
+        document.getElementById("btn-sr-free").innerText = d.srBtn;
+        document.getElementById("guide-appstore-title").innerText = d.guideTitle;
+        document.getElementById("strict-id-warning").innerText = d.warning;
+        document.getElementById("step1-appstore").innerHTML = d.step1;
+    }
+
+    document.addEventListener("click", () => setTimeout(syncCurLang, 0));
+    window.addEventListener("DOMContentLoaded", syncCurLang);
+    syncCurLang();
+})();
+</script>
 
