@@ -56,9 +56,11 @@ a.blue{color:#2563eb;font-weight:700;text-decoration:none}
 .join-view-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
 .btn-back-site{background:#f1f5f9;border:1px solid #cbd5e1;border-radius:10px;padding:6px 12px;font-size:12.5px;font-weight:700;cursor:pointer;color:#111827}
 .join-list{display:flex;flex-direction:column;gap:9px}
-.kurd-join-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;color:#111827;font-size:13.5px;font-weight:700;cursor:pointer;text-align:start}
+.kurd-join-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;color:#111827;font-size:13.5px;font-weight:700;cursor:pointer;text-align:start;transition:all .2s ease}
 .kurd-join-btn.discord-btn{background:#eef2ff;border-color:#c7d2fe;color:#1e1b4b;font-weight:800}
-.join-status{font-size:12px;font-weight:800;white-space:nowrap}
+.kurd-join-btn.joined{background:#dcfce7;border-color:#16a34a;color:#14532d}
+.join-status{font-size:12.5px;font-weight:800;white-space:nowrap}
+.kurd-join-btn.joined .join-status{color:#15803d;font-size:13px}
 .red-account-box{display:none;margin-top:16px}
 .red-account-box.show{display:block}
 .red-account-btn{display:block;width:100%;box-sizing:border-box;text-align:center;background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;padding:14px 16px;border-radius:12px;font-size:14.5px;font-weight:800;text-decoration:none;box-shadow:0 6px 18px rgba(220,38,38,.32)}
@@ -904,12 +906,19 @@ function updateJoinButtonsUI(){
     const target=btn.getAttribute("data-target");
     const statusEl=btn.querySelector(".join-status");
     if(!statusEl)return;
+
+    btn.classList.remove("joined");
+
     if(countdowns[target]){
       statusEl.textContent=d.waitText(countdowns[target]);
+      statusEl.style.color="#d97706";
     }else if(map[target]){
-      statusEl.textContent=d.joinedText;
+      statusEl.textContent=d.joinedText||"✓ Joined";
+      statusEl.style.color="#15803d";
+      btn.classList.add("joined");
     }else{
       statusEl.textContent="↗";
+      statusEl.style.color="";
     }
   });
 
