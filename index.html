@@ -50,7 +50,7 @@
         .lang-pill {
             font-size: 12px;
             font-weight: 700;
-            padding: 4px 10px;
+            padding: 5px 11px;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
             background: #f8fafc;
@@ -59,19 +59,19 @@
         }
         .lang-dropdown {
             display: none;
-            position: absolute;
-            top: 100%;
+            position: fixed;
+            top: 56px;
             left: 50%;
             transform: translateX(-50%);
-            margin-top: 6px;
-            width: 185px;
-            max-height: 260px;
+            width: 215px;
+            max-height: 290px;
             overflow-y: auto;
             background: #ffffff;
             border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-            z-index: 50;
+            border-radius: 12px;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
+            padding: 6px;
+            z-index: 60;
         }
         .lang-dropdown.show {
             display: block;
@@ -81,11 +81,14 @@
             text-align: left;
             background: none;
             border: none;
-            padding: 8px 12px;
+            padding: 9px 12px;
+            border-radius: 8px;
             font-size: 13px;
             color: #1f2937;
             cursor: pointer;
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         .lang-option:hover {
             background: #f1f5f9;
@@ -189,16 +192,16 @@
         <div class="lang-wrap">
             <button class="lang-pill" onclick="toggleLangDropdown(event)" id="lang-current">🇬🇧 EN ⌄</button>
             <div id="lang-dropdown" class="lang-dropdown" onclick="event.stopPropagation()">
-                <button class="lang-option" onclick="applyLang('en', '🇬🇧 EN ⌄')">English</button>
-                <button class="lang-option" onclick="applyLang('ar', '🇸🇦 AR ⌄')">العربية</button>
+                <button class="lang-option" onclick="applyLang('en', '🇬🇧 EN ⌄')">🇬🇧 English</button>
+                <button class="lang-option" onclick="applyLang('ar', '🇸🇦 AR ⌄')">🇸🇦 العربية</button>
                 <button class="lang-option" onclick="applyLang('ku', 'KU ⌄')">کوردی (Badînî)</button>
-                <button class="lang-option" onclick="applyLang('vi', '🇻🇳 VI ⌄')">Tiếng Việt</button>
-                <button class="lang-option" onclick="applyLang('tr', '🇹🇷 TR ⌄')">Türkçe</button>
-                <button class="lang-option" onclick="applyLang('fr', '🇫🇷 FR ⌄')">Français</button>
-                <button class="lang-option" onclick="applyLang('de', '🇩🇪 DE ⌄')">Deutsch</button>
-                <button class="lang-option" onclick="applyLang('es', '🇪🇸 ES ⌄')">Español</button>
-                <button class="lang-option" onclick="applyLang('ru', '🇷🇺 RU ⌄')">Русский</button>
-                <button class="lang-option" onclick="applyLang('ja', '🇯🇵 JA ⌄')">日本語</button>
+                <button class="lang-option" onclick="applyLang('vi', '🇻🇳 VI ⌄')">🇻🇳 Tiếng Việt</button>
+                <button class="lang-option" onclick="applyLang('tr', '🇹🇷 TR ⌄')">🇹🇷 Türkçe</button>
+                <button class="lang-option" onclick="applyLang('fr', '🇫🇷 FR ⌄')">🇫🇷 Français</button>
+                <button class="lang-option" onclick="applyLang('de', '🇩🇪 DE ⌄')">🇩🇪 Deutsch</button>
+                <button class="lang-option" onclick="applyLang('es', '🇪🇸 ES ⌄')">🇪🇸 Español</button>
+                <button class="lang-option" onclick="applyLang('ru', '🇷🇺 RU ⌄')">🇷🇺 Русский</button>
+                <button class="lang-option" onclick="applyLang('ja', '🇯🇵 JA ⌄')">🇯🇵 日本語</button>
             </div>
         </div>
 
