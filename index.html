@@ -1202,3 +1202,386 @@ applyLang(localStorage.getItem(LANG_KEY)||"en");
 </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Step by Step Guide & Sign-In Visuals</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#ffffff;color:#111827;overflow-x:hidden}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#fff;border-bottom:1px solid #f3f4f6;position:sticky;top:0;z-index:30}
+.brand{font-weight:800;font-size:20px;color:#be185d;letter-spacing:-.5px;text-decoration:none}
+.lang-wrap{position:relative}
+.lang-pill{font-size:12px;font-weight:700;padding:5px 11px;border:1px solid #e5e7eb;border-radius:9px;background:#f9fafb;cursor:pointer;color:#111827}
+.lang-dropdown{display:none;position:absolute;top:100%;inset-inline-end:0;margin-top:6px;width:190px;max-height:280px;overflow-y:auto;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 28px rgba(17,24,39,.12);z-index:50}
+.lang-dropdown.show{display:block}
+.lang-option{width:100%;text-align:start;background:none;border:none;padding:9px 12px;font-size:13px;color:#1f2937;cursor:pointer;display:block}
+.lang-option:hover{background:#f3f4f6}
+.container{max-width:480px;margin:0 auto;padding:28px 18px 48px}
+.header-row{display:flex;align-items:flex-start;gap:16px;margin-bottom:26px}
+.step-badge{width:46px;height:46px;border-radius:14px;background:#fdf2f8;color:#be185d;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.header-text{flex:1}
+.kicker{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#be185d;margin-bottom:6px}
+h1{font-size:27px;line-height:1.25;font-weight:800;color:#1f2937;margin-bottom:10px}
+.subtitle{font-size:15.5px;line-height:1.6;color:#6b7280}
+.steps-list{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}
+.step-card{background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:20px 18px;box-shadow:0 4px 16px rgba(17,24,39,.03);display:flex;align-items:flex-start;gap:15px}
+.step-num{width:34px;height:34px;border-radius:10px;background:#f5f3ff;color:#7c3aed;font-weight:800;font-size:14.5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.step-body h2{font-size:17.5px;font-weight:800;color:#1f2937;margin-bottom:8px}
+.step-body p{font-size:15px;line-height:1.65;color:#4b5563}
+.step-body strong{color:#1f2937;font-weight:700}
+
+.visual-section{background:#f8fafc;border:1px solid #e5e7eb;border-radius:22px;padding:20px 16px}
+.visual-heading{display:flex;align-items:center;gap:8px;font-size:19px;font-weight:800;color:#1f2937;margin-bottom:8px}
+.visual-lead{font-size:14.5px;line-height:1.6;color:#4b5563;margin-bottom:18px}
+.figure-block{margin-bottom:22px}
+.figure-block:last-child{margin-bottom:0}
+.figure-frame{position:relative;border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;background:#fff;box-shadow:0 6px 18px rgba(17,24,39,.05)}
+.figure-frame img{width:100%;height:auto;display:block;cursor:pointer}
+.zoom-pill{position:absolute;bottom:12px;inset-inline-end:12px;background:rgba(31,41,55,.88);color:#fff;border:none;border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;backdrop-filter:blur(4px)}
+.zoom-pill:hover{background:#111827}
+.figure-caption{text-align:center;font-size:14px;font-weight:600;color:#4b5563;margin-top:10px}
+
+.lightbox{display:none;position:fixed;inset:0;background:rgba(15,23,42,.9);z-index:100;align-items:center;justify-content:center;padding:16px}
+.lightbox.open{display:flex}
+.lightbox-inner{position:relative;max-width:94vw;max-height:90vh;display:flex;flex-direction:column;align-items:center;gap:10px}
+.lightbox-inner img{max-width:100%;max-height:82vh;border-radius:12px;box-shadow:0 20px 45px rgba(0,0,0,.5)}
+.lightbox-close{background:#fff;color:#111827;border:none;border-radius:999px;padding:8px 18px;font-size:13.5px;font-weight:800;cursor:pointer}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="#" class="brand">Kurd0o</a>
+  <div class="lang-wrap">
+    <button type="button" class="lang-pill" onclick="toggleLangDropdown(event)" id="lang-current">🇬🇧 EN ⌄</button>
+    <div id="lang-dropdown" class="lang-dropdown" onclick="event.stopPropagation()">
+      <button type="button" class="lang-option" onclick="applyLang('en')">English</button>
+      <button type="button" class="lang-option" onclick="applyLang('ar')">العربية</button>
+      <button type="button" class="lang-option" onclick="applyLang('ku')">کوردی (Badînî)</button>
+      <button type="button" class="lang-option" onclick="applyLang('vi')">Tiếng Việt</button>
+      <button type="button" class="lang-option" onclick="applyLang('tr')">Türkçe</button>
+      <button type="button" class="lang-option" onclick="applyLang('fr')">Français</button>
+      <button type="button" class="lang-option" onclick="applyLang('de')">Deutsch</button>
+      <button type="button" class="lang-option" onclick="applyLang('es')">Español</button>
+      <button type="button" class="lang-option" onclick="applyLang('ru')">Русский</button>
+      <button type="button" class="lang-option" onclick="applyLang('ja')">日本語</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="header-row">
+    <div class="step-badge">02</div>
+    <div class="header-text">
+      <div class="kicker" id="kicker-txt">STEP BY STEP</div>
+      <h1 id="main-title">How to sign in and download the game</h1>
+      <p class="subtitle" id="main-sub">Follow these exact 3 steps before using the account.</p>
+    </div>
+  </div>
+
+  <div class="steps-list">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h2 id="s1-title">Open App Store</h2>
+        <p id="s1-desc">After reading the guide, get the account at the bottom of the page and sign in only inside the App Store.</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h2 id="s2-title">Search for the game name</h2>
+        <p id="s2-desc">Search directly for the app name using the search bar. No need to go to <strong>Purchased</strong>.</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h2 id="s3-title">Sign out after downloading</h2>
+        <p id="s3-desc">If the game still shows a price, check before confirming to avoid unintended charges. Once downloaded, <strong>sign out of the account from App Store</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="visual-section">
+    <div class="visual-heading">
+      <span>🖼️</span>
+      <span id="vis-heading">View sign-in guide images</span>
+    </div>
+    <p class="visual-lead" id="vis-lead">The illustrations below are shown in full. Scroll down to view each image in turn.</p>
+
+    <div class="figure-block">
+      <div class="figure-frame">
+        <img id="img-fig-1" src="https://placehold.co/760x980/f8fafc/334155?text=Figure+1+-+App+Store+Sign-In+Guide" alt="Figure 1" onclick="openLightbox(this.src)">
+        <button type="button" class="zoom-pill" onclick="openLightbox(document.getElementById('img-fig-1').src)">
+          <span>🔍</span>
+          <span class="zoom-label">Tap to zoom</span>
+        </button>
+      </div>
+      <div class="figure-caption" id="cap-fig-1">Figure 1 – View sign-in guide image</div>
+    </div>
+
+    <div class="figure-block">
+      <div class="figure-frame">
+        <img id="img-fig-2" src="https://placehold.co/760x540/f8fafc/334155?text=Figure+2+-+Other+Options+%26+Do+Not+Upgrade" alt="Figure 2" onclick="openLightbox(this.src)">
+        <button type="button" class="zoom-pill" onclick="openLightbox(document.getElementById('img-fig-2').src)">
+          <span>🔍</span>
+          <span class="zoom-label">Tap to zoom</span>
+        </button>
+      </div>
+      <div class="figure-caption" id="cap-fig-2">Figure 2 – View sign-in guide image</div>
+    </div>
+  </section>
+</main>
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-inner" onclick="event.stopPropagation()">
+    <img id="lightbox-img" src="" alt="Zoomed preview">
+    <button type="button" class="lightbox-close" onclick="closeLightbox()" id="lightbox-close-btn">✕ Close</button>
+  </div>
+</div>
+
+<script>
+const LANG_KEY = "site_language";
+const LANG_LABELS = {
+  en:"🇬🇧 EN ⌄", ar:"🇸🇦 AR ⌄", ku:"KU ⌄", vi:"🇻🇳 VI ⌄", tr:"🇹🇷 TR ⌄",
+  fr:"🇫🇷 FR ⌄", de:"🇩🇪 DE ⌄", es:"🇪🇸 ES ⌄", ru:"🇷🇺 RU ⌄", ja:"🇯🇵 JA ⌄"
+};
+
+const T = {
+  en:{
+    dir:"ltr",
+    kicker:"STEP BY STEP",
+    title:"How to sign in and download the game",
+    sub:"Follow these exact 3 steps before using the account.",
+    s1t:"Open App Store",
+    s1d:"After reading the guide, get the account at the bottom of the page and sign in only inside the App Store.",
+    s2t:"Search for the game name",
+    s2d:"Search directly for the app name using the search bar. No need to go to <strong>Purchased</strong>.",
+    s3t:"Sign out after downloading",
+    s3d:"If the game still shows a price, check before confirming to avoid unintended charges. Once downloaded, <strong>sign out of the account from App Store</strong>.",
+    visHeading:"View sign-in guide images",
+    visLead:"The illustrations below are shown in full. Scroll down to view each image in turn.",
+    zoom:"Tap to zoom",
+    close:"✕ Close",
+    cap1:"Figure 1 – View sign-in guide image",
+    cap2:"Figure 2 – View sign-in guide image"
+  },
+  ar:{
+    dir:"rtl",
+    kicker:"خطوة بخطوة",
+    title:"طريقة تسجيل الدخول وتحميل اللعبة",
+    sub:"نفّذ هذه الخطوات الثلاث بدقة قبل استخدام الحساب.",
+    s1t:"افتح App Store",
+    s1d:"بعد قراءة الدليل، احصل على الحساب أسفل الصفحة وسجّل الدخول فقط داخل App Store.",
+    s2t:"ابحث عن اسم اللعبة",
+    s2d:"ابحث مباشرة عن اسم التطبيق باستخدام شريط البحث. لا حاجة للدخول إلى قسم <strong>المشتريات (Purchased)</strong>.",
+    s3t:"سجّل الخروج بعد التحميل",
+    s3d:"إذا كانت اللعبة لا تزال تعرض سعراً، تحقّق قبل التأكيد لتجنب أي دفع غير مقصود. وبعد انتهاء التحميل، <strong>سجّل الخروج من الحساب داخل App Store</strong>.",
+    visHeading:"عرض صور دليل تسجيل الدخول",
+    visLead:"الصور التوضيحية بالأسفل معروضة بالكامل. اسحب للأسفل لمشاهدة كل صورة بالترتيب.",
+    zoom:"اضغط للتكبير",
+    close:"✕ إغلاق",
+    cap1:"الشكل 1 – عرض صورة دليل تسجيل الدخول",
+    cap2:"الشكل 2 – عرض صورة دليل تسجيل الدخول"
+  },
+  ku:{
+    dir:"rtl",
+    kicker:"هەنگاڤ ب هەنگاڤ",
+    title:"چاوانیا چوونا ژۆر و داگرتنا یاریێ",
+    sub:"ئەڤ هەر ٣ هەنگاڤان ب دروستی بجھ بینە بەریا بکارئینانا هژمارێ.",
+    s1t:"App Store ڤەکە",
+    s1d:"پشتی خواندنا رێنمایێ، هژمارێ ل دوماهیا پەڕی ببە و بتنێ د ناڤ App Store دا بچە ژۆر.",
+    s2t:"ل ناڤێ یاریێ بگەڕێ",
+    s2d:"ئێکسەر ب رێکا بارێ لێگەڕینێ ل ناڤێ ئەپێ بگەڕێ. پێدڤی ناکەت بچییە د بەشێ <strong>Purchased</strong> دا.",
+    s3t:"پشتی داگرتنێ دەربکەڤە",
+    s3d:"ئەگەر یاریێ هێشتا نرخ نیشان دا، بەریا پشتڕاستکرنێ بپشکنە دا پارە ب خەلەتی نەچیت. پشتی داگرتنێ، <strong>ژ هژمارێ د ناڤ App Store دا دەربکەڤە</strong>.",
+    visHeading:"بینینا وێنەیێن رێنماییا چوونا ژۆر",
+    visLead:"وێنەیێن دیارکری ل خوارێ ب تەمامی دیارن. بڕۆ خوارێ دا هەر وێنەیەکێ ب رێز ببینی.",
+    zoom:"بکە دا مەزن ببیت",
+    close:"✕ گرتن",
+    cap1:"شێوەیێ 1 – بینینا وێنەیێ رێنماییا چوونا ژۆر",
+    cap2:"شێوەیێ 2 – بینینا وێنەیێ رێنماییا چوونا ژۆر"
+  },
+  vi:{
+    dir:"ltr",
+    kicker:"LÀM THEO TỪNG BƯỚC",
+    title:"Cách đăng nhập và tải game",
+    sub:"Thực hiện đúng 3 bước sau trước khi sử dụng tài khoản.",
+    s1t:"Mở App Store",
+    s1d:"Sau khi đọc hướng dẫn, lấy tài khoản ở cuối trang và chỉ đăng nhập trong App Store.",
+    s2t:"Tìm tên game",
+    s2d:"Tìm trực tiếp tên ứng dụng bằng thanh tìm kiếm. Không cần vào mục <strong>Đã mua</strong>.",
+    s3t:"Tải xong thì đăng xuất",
+    s3d:"Nếu game còn hiển thị giá, hãy kiểm tra trước khi xác nhận để tránh thanh toán ngoài ý muốn. Sau khi tải xong, <strong>đăng xuất tài khoản khỏi App Store</strong>.",
+    visHeading:"Xem hình hướng dẫn đăng nhập",
+    visLead:"Các hình minh họa bên dưới được hiển thị đầy đủ. Kéo xuống để xem lần lượt từng hình.",
+    zoom:"Chạm để phóng to",
+    close:"✕ Đóng",
+    cap1:"Hình 1 – Xem hình hướng dẫn đăng nhập",
+    cap2:"Hình 2 – Xem hình hướng dẫn đăng nhập"
+  },
+  tr:{
+    dir:"ltr",
+    kicker:"ADIM ADIM",
+    title:"Giriş yapma ve oyunu indirme",
+    sub:"Hesabı kullanmadan önce şu 3 adımı tam olarak uygulayın.",
+    s1t:"App Store'u açın",
+    s1d:"Rehberi okuduktan sonra sayfanın sonundaki hesabı alın ve yalnızca App Store içinde giriş yapın.",
+    s2t:"Oyun adını arayın",
+    s2d:"Arama çubuğunu kullanarak uygulama adını doğrudan arayın. <strong>Satın Alınanlar</strong> bölümüne gerek yok.",
+    s3t:"İndirdikten sonra çıkış yapın",
+    s3d:"Oyun hâlâ fiyat gösteriyorsa istenmeyen ödemeleri önlemek için onaylamadan önce kontrol edin. İndirme bitince <strong>App Store'dan çıkış yapın</strong>.",
+    visHeading:"Giriş rehberi görsellerini görüntüle",
+    visLead:"Aşağıdaki görseller tam olarak gösterilmektedir. Her görseli sırayla görmek için aşağı kaydırın.",
+    zoom:"Yakınlaştırmak için dokun",
+    close:"✕ Kapat",
+    cap1:"Şekil 1 – Giriş rehberi görselini görüntüle",
+    cap2:"Şekil 2 – Giriş rehberi görselini görüntüle"
+  },
+  fr:{
+    dir:"ltr",
+    kicker:"ÉTAPE PAR ÉTAPE",
+    title:"Comment se connecter et télécharger le jeu",
+    sub:"Suivez exactement ces 3 étapes avant d'utiliser le compte.",
+    s1t:"Ouvrir l'App Store",
+    s1d:"Après avoir lu le guide, récupérez le compte en bas de la page et connectez-vous uniquement dans l'App Store.",
+    s2t:"Rechercher le nom du jeu",
+    s2d:"Recherchez directement le nom de l'application via la barre de recherche. Inutile d'aller dans <strong>Achats</strong>.",
+    s3t:"Se déconnecter après le téléchargement",
+    s3d:"Si un prix s'affiche encore, vérifiez avant de confirmer pour éviter tout paiement imprévu. Une fois téléchargé, <strong>déconnectez-vous du compte dans l'App Store</strong>.",
+    visHeading:"Voir les images du guide de connexion",
+    visLead:"Les illustrations ci-dessous sont affichées en entier. Faites défiler pour voir chaque image.",
+    zoom:"Appuyer pour zoomer",
+    close:"✕ Fermer",
+    cap1:"Figure 1 – Voir l'image du guide de connexion",
+    cap2:"Figure 2 – Voir l'image du guide de connexion"
+  },
+  de:{
+    dir:"ltr",
+    kicker:"SCHRITT FÜR SCHRITT",
+    title:"Anmelden und Spiel herunterladen",
+    sub:"Befolgen Sie genau diese 3 Schritte, bevor Sie den Account nutzen.",
+    s1t:"App Store öffnen",
+    s1d:"Holen Sie sich nach dem Lesen der Anleitung den Account am Seitenende und melden Sie sich nur im App Store an.",
+    s2t:"Spielnamen suchen",
+    s2d:"Suchen Sie den App-Namen direkt über die Suchleiste. Sie müssen nicht zu <strong>Gekauft</strong> gehen.",
+    s3t:"Nach dem Download abmelden",
+    s3d:"Wenn noch ein Preis angezeigt wird, prüfen Sie vor der Bestätigung, um ungewollte Zahlungen zu vermeiden. Nach dem Download <strong>im App Store vom Account abmelden</strong>.",
+    visHeading:"Bilder zur Anmeldeanleitung ansehen",
+    visLead:"Die Abbildungen unten werden vollständig angezeigt. Scrollen Sie nach unten, um jedes Bild zu sehen.",
+    zoom:"Zum Zoomen tippen",
+    close:"✕ Schließen",
+    cap1:"Abbildung 1 – Bild zur Anmeldeanleitung ansehen",
+    cap2:"Abbildung 2 – Bild zur Anmeldeanleitung ansehen"
+  },
+  es:{
+    dir:"ltr",
+    kicker:"PASO A PASO",
+    title:"Cómo iniciar sesión y descargar el juego",
+    sub:"Sigue exactamente estos 3 pasos antes de usar la cuenta.",
+    s1t:"Abre la App Store",
+    s1d:"Después de leer la guía, obtén la cuenta al final de la página e inicia sesión solo dentro de la App Store.",
+    s2t:"Busca el nombre del juego",
+    s2d:"Busca directamente el nombre de la aplicación usando la barra de búsqueda. No hace falta ir a <strong>Comprado</strong>.",
+    s3t:"Cierra sesión al descargar",
+    s3d:"Si el juego aún muestra un precio, revisa antes de confirmar para evitar cargos no deseados. Una vez descargado, <strong>cierra sesión de la cuenta en App Store</strong>.",
+    visHeading:"Ver imágenes de la guía de inicio de sesión",
+    visLead:"Las ilustraciones de abajo se muestran completas. Desplázate para ver cada imagen en orden.",
+    zoom:"Toca para ampliar",
+    close:"✕ Cerrar",
+    cap1:"Figura 1 – Ver imagen de la guía de inicio de sesión",
+    cap2:"Figura 2 – Ver imagen de la guía de inicio de sesión"
+  },
+  ru:{
+    dir:"ltr",
+    kicker:"ШАГ ЗА ШАГОМ",
+    title:"Как войти и скачать игру",
+    sub:"Выполните ровно эти 3 шага перед использованием аккаунта.",
+    s1t:"Откройте App Store",
+    s1d:"После прочтения инструкции возьмите аккаунт внизу страницы и входите только внутри App Store.",
+    s2t:"Найдите название игры",
+    s2d:"Ищите название приложения напрямую через строку поиска. Заходить в раздел <strong>Покупки</strong> не нужно.",
+    s3t:"Выйдите после загрузки",
+    s3d:"Если у игры всё ещё отображается цена, проверьте перед подтверждением, чтобы избежать случайной оплаты. После загрузки <strong>выйдите из аккаунта в App Store</strong>.",
+    visHeading:"Смотреть изображения инструкции входа",
+    visLead:"Иллюстрации ниже показаны полностью. Прокрутите вниз, чтобы посмотреть каждое изображение по очереди.",
+    zoom:"Нажмите для увеличения",
+    close:"✕ Закрыть",
+    cap1:"Рис. 1 – Смотреть изображение инструкции входа",
+    cap2:"Рис. 2 – Смотреть изображение инструкции входа"
+  },
+  ja:{
+    dir:"ltr",
+    kicker:"ステップガイド",
+    title:"サインインとゲームのダウンロード方法",
+    sub:"アカウントを使用する前に、次の3つの手順を正確に行ってください。",
+    s1t:"App Storeを開く",
+    s1d:"ガイドを読んだ後、ページ下部からアカウントを取得し、App Store内のみでサインインしてください。",
+    s2t:"ゲーム名を検索",
+    s2d:"検索バーからアプリ名を直接検索してください。<strong>購入済み</strong>を開く必要はありません。",
+    s3t:"ダウンロード後にサインアウト",
+    s3d:"価格が表示されたままの場合は、意図しない課金を防ぐため確定前に確認してください。ダウンロード完了後、<strong>App Storeからアカウントをサインアウト</strong>してください。",
+    visHeading:"サインイン案内画像を見る",
+    visLead:"下のイラストは全体が表示されています。下にスクロールして各画像を順番にご覧ください。",
+    zoom:"タップして拡大",
+    close:"✕ 閉じる",
+    cap1:"図 1 – サインイン案内画像を見る",
+    cap2:"図 2 – サインイン案内画像を見る"
+  }
+};
+
+function toggleLangDropdown(e){
+  e.stopPropagation();
+  document.getElementById("lang-dropdown").classList.toggle("show");
+}
+
+document.addEventListener("click",()=>{
+  document.getElementById("lang-dropdown").classList.remove("show");
+});
+
+function openLightbox(src){
+  if(!src) return;
+  document.getElementById("lightbox-img").src = src;
+  document.getElementById("lightbox").classList.add("open");
+}
+
+function closeLightbox(){
+  document.getElementById("lightbox").classList.remove("open");
+}
+
+function applyLang(lang){
+  const d = T[lang] || T.en;
+  localStorage.setItem(LANG_KEY, lang);
+  document.documentElement.lang = lang;
+  document.documentElement.dir = d.dir;
+  document.getElementById("lang-current").textContent = LANG_LABELS[lang] || "🇬🇧 EN ⌄";
+  document.getElementById("lang-dropdown").classList.remove("show");
+
+  document.getElementById("kicker-txt").textContent = d.kicker;
+  document.getElementById("main-title").textContent = d.title;
+  document.getElementById("main-sub").textContent = d.sub;
+  document.getElementById("s1-title").textContent = d.s1t;
+  document.getElementById("s1-desc").innerHTML = d.s1d;
+  document.getElementById("s2-title").textContent = d.s2t;
+  document.getElementById("s2-desc").innerHTML = d.s2d;
+  document.getElementById("s3-title").textContent = d.s3t;
+  document.getElementById("s3-desc").innerHTML = d.s3d;
+
+  document.getElementById("vis-heading").textContent = d.visHeading;
+  document.getElementById("vis-lead").textContent = d.visLead;
+  document.getElementById("cap-fig-1").textContent = d.cap1;
+  document.getElementById("cap-fig-2").textContent = d.cap2;
+  document.getElementById("lightbox-close-btn").textContent = d.close;
+  document.querySelectorAll(".zoom-label").forEach(el => el.textContent = d.zoom);
+}
+
+applyLang(localStorage.getItem(LANG_KEY) || "en");
+</script>
+</body>
+</html>
