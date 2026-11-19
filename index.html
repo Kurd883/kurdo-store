@@ -323,10 +323,10 @@ document.addEventListener("click",()=>{
 
 </body>
 </html>
-<!-- المرحلة الحالية: صورة Minecraft + أزرار ID + دليل App Store والتحذير + عرض مستقل للقنوات والديسكور والزر الأحمر -->
+<!-- المرحلة الحالية: صورة Minecraft + أزرار ID + دليل App Store والتحذير + عرض مستقل للقنوات والديسكور مع تجديد كل 5 دقائق وإعادة ضبط عند الضغط/التحديث -->
 <section id="sec-current-step" style="max-width:480px;margin:0 auto;padding:8px 16px 32px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#111827;">
 
-    <!-- المحتوى الأساسي للموقع في هذا القسم (يختفي عند الدخول لواجهة القنوات المستقلة ويعود عند الرجوع) -->
+    <!-- المحتوى الأساسي للموقع في هذا القسم -->
     <div id="kurd0o-main-step-view">
         <!-- صورة Minecraft -->
         <img src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=900&q=75"
@@ -366,7 +366,7 @@ document.addEventListener("click",()=>{
         </ul>
     </div>
 
-    <!-- واجهة القنوات الأربع والديسكور المستقلة (تظهر عند الضغط على Minecraft أو Shadowrocket) -->
+    <!-- واجهة القنوات الأربع والديسكور المستقلة -->
     <div id="kurd0o-join-page-view" style="display:none;background:#ffffff;border:1px solid #e5e7eb;border-radius:16px;padding:18px;box-shadow:0 12px 28px rgba(15,23,42,0.08);">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;">
             <h3 id="join-page-title" style="font-size:17px;font-weight:800;margin:0;color:#111827;">Minecraft</h3>
@@ -416,7 +416,7 @@ document.addEventListener("click",()=>{
             </button>
         </div>
 
-        <!-- الزر الأحمر الذي يظهر بالأسفل فقط بعد إكمال الخطوات الخمس (4 قنوات + ديسكور) -->
+        <!-- الزر الأحمر الذي يظهر بالأسفل فقط بعد إكمال الخطوات الخمس -->
         <div id="kurd0o-red-account-box" style="display:none;margin-top:16px;">
             <a id="kurd0o-red-account-btn"
                href="https://kurd3.github.io/KurdoAccounts/"
@@ -432,7 +432,8 @@ document.addEventListener("click",()=>{
 
 <script>
 (function () {
-    const STORAGE_JOIN_KEY = "kurd0o_joined_targets_v1";
+    const STORAGE_JOIN_KEY = "kurd0o_joined_targets_v2";
+    const FIVE_MINUTES_MS = 5 * 60 * 1000;
     const REQUIRED_TARGETS = ["ch1", "ch2", "ch3", "ch4", "discord"];
     const timers = {};
     const countdowns = {};
@@ -590,27 +591,53 @@ document.addEventListener("click",()=>{
         return CUR_LANGS[htmlLang] ? htmlLang : "en";
     }
 
-    function getJoinedSet() {
+    function readValidJoinedMap() {
+        const now = Date.now();
+        const validMap = {};
         try {
-            const raw = JSON.parse(localStorage.getItem(STORAGE_JOIN_KEY) || "[]");
-            return new Set(Array.isArray(raw) ? raw : []);
-        } catch (e) {
-            return new Set();
-        }
+            const raw = JSON.parse(localStorage.getItem(STORAGE_JOIN_KEY) || "{}");
+            if (raw && typeof raw === "object") {
+                for (const key of REQUIRED_TARGETS) {
+                    const ts = raw[key];
+                    if (typeof ts === "number" && (now - ts) < FIVE_MINUTES_MS) {
+                        validMap[key] = ts;
+                    }
+                }
+            }
+            localStorage.setItem(STORAGE_JOIN_KEY, JSON.stringify(validMap));
+        } catch (e) {}
+        return validMap;
+    }
+
+    function resetAllJoins() {
+        Object.keys(timers).forEach((k) => {
+            clearInterval(timers[k]);
+            delete timers[k];
+            delete countdowns[k];
+        });
+        try {
+            localStorage.removeItem(STORAGE_JOIN_KEY);
+        } catch (e) {}
+        REQUIRED_TARGETS.forEach(paintTargetButton);
+        refreshRedAccountButton();
     }
 
     function saveJoinedTarget(targetKey) {
-        const set = getJoinedSet();
-        set.add(targetKey);
+        const map = readValidJoinedMap();
+        map[targetKey] = Date.now();
         try {
-            localStorage.setItem(STORAGE_JOIN_KEY, JSON.stringify([...set]));
+            localStorage.setItem(STORAGE_JOIN_KEY, JSON.stringify(map));
         } catch (e) {}
+    }
+
+    function isTargetJoined(targetKey) {
+        const map = readValidJoinedMap();
+        return typeof map[targetKey] === "number";
     }
 
     function refreshRedAccountButton() {
         const d = CUR_LANGS[getActiveLang()] || CUR_LANGS.en;
-        const joinedSet = getJoinedSet();
-        const allCompleted = REQUIRED_TARGETS.every((key) => joinedSet.has(key));
+        const allCompleted = REQUIRED_TARGETS.every((key) => isTargetJoined(key));
         const box = document.getElementById("kurd0o-red-account-box");
         const btn = document.getElementById("kurd0o-red-account-btn");
         if (!box || !btn) return;
@@ -624,7 +651,7 @@ document.addEventListener("click",()=>{
         if (!btn) return;
         const statusEl = btn.querySelector(".join-status");
         const d = CUR_LANGS[getActiveLang()] || CUR_LANGS.en;
-        const joinedSet = getJoinedSet();
+        const isDiscord = targetKey === "discord";
 
         if (typeof countdowns[targetKey] === "number") {
             btn.style.background = "#fefce8";
@@ -634,12 +661,15 @@ document.addEventListener("click",()=>{
             return;
         }
 
-        if (joinedSet.has(targetKey)) {
+        if (isTargetJoined(targetKey)) {
             btn.style.background = "#dcfce7";
             btn.style.borderColor = "#22c55e";
             btn.style.color = "#166534";
             if (statusEl) statusEl.innerText = d.joinedText;
         } else {
+            btn.style.background = isDiscord ? "#eef2ff" : "#f8fafc";
+            btn.style.borderColor = isDiscord ? "#c7d2fe" : "#e2e8f0";
+            btn.style.color = isDiscord ? "#1e1b4b" : "#111827";
             if (statusEl) statusEl.innerText = "↗";
         }
     }
@@ -671,6 +701,7 @@ document.addEventListener("click",()=>{
 
     window.openJoinPageView = function (type) {
         currentSelectedApp = type === "shadowrocket" ? "shadowrocket" : "minecraft";
+        resetAllJoins();
         document.getElementById("kurd0o-main-step-view").style.display = "none";
         document.getElementById("kurd0o-join-page-view").style.display = "block";
         syncCurLang();
@@ -678,6 +709,7 @@ document.addEventListener("click",()=>{
     };
 
     window.backToMainSiteView = function () {
+        resetAllJoins();
         document.getElementById("kurd0o-join-page-view").style.display = "none";
         document.getElementById("kurd0o-main-step-view").style.display = "block";
     };
@@ -700,8 +732,17 @@ document.addEventListener("click",()=>{
         refreshRedAccountButton();
     }
 
+    setInterval(() => {
+        REQUIRED_TARGETS.forEach(paintTargetButton);
+        refreshRedAccountButton();
+    }, 5000);
+
     document.addEventListener("click", () => setTimeout(syncCurLang, 0));
-    window.addEventListener("DOMContentLoaded", syncCurLang);
+    window.addEventListener("DOMContentLoaded", () => {
+        resetAllJoins();
+        syncCurLang();
+    });
+    resetAllJoins();
     syncCurLang();
 })();
 </script>
