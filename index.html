@@ -96,7 +96,7 @@ a.blue{color:#2563eb;font-weight:700;text-decoration:none}
 .cred-card-title{font-size:17px;font-weight:800;color:#1f2937}
 .cred-card-tag{font-size:12px;font-weight:800;letter-spacing:.04em;color:#9ca3af;text-transform:uppercase}
 .cred-dots{font-size:20px;letter-spacing:6px;color:#cbd5e1;margin-bottom:14px;user-select:none}
-.cred-copy-btn{width:100%;border:none;border-radius:14px;padding:13px 16px;background:#db2777;color:#fff;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s ease}
+.cred-copy-btn{width:100%;border:none;border-radius:14px;padding:13px 16px;background:#db2777;color:#fff;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s ease;font-variant-numeric:tabular-nums}
 .cred-copy-btn:hover:not(:disabled){background:#be185d}
 .cred-copy-btn:disabled{background:#e5e7eb;color:#6b7280;cursor:not-allowed}
 .session-footer-note{margin-top:8px;font-size:13.5px;line-height:1.6;color:#6b7280;font-weight:500}
@@ -131,7 +131,7 @@ a.blue{color:#2563eb;font-weight:700;text-decoration:none}
 <a href="#" class="brand" onclick="backToMainSiteView();return false;">Kurd0o</a>
 <div id="side-drawer" class="side-drawer" onclick="event.stopPropagation()">
 <a id="drawer-buy" class="drawer-link" href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer">Buy Apple Accounts</a>
-<a id="drawer-contact" class="drawer-link" href="https://t.me/yousifmziri" target="_blank" rel="noopener noreferrer">Contact & Inquiries</a>
+<a id="drawer-contact" class="drawer-link" href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer">Contact & Inquiries</a>
 </div>
 </div>
 <div class="lang-wrap">
@@ -150,7 +150,7 @@ a.blue{color:#2563eb;font-weight:700;text-decoration:none}
 </div>
 </div>
 <div class="icons">
-<a class="icon-link" href="https://t.me/yousifmziri" target="_blank" rel="noopener noreferrer" title="Telegram">👤</a>
+<a class="icon-link" href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" title="Telegram">👤</a>
 <a class="icon-link" href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" title="Accounts">🛒</a>
 <span>🔍</span>
 </div>
@@ -219,7 +219,7 @@ a.blue{color:#2563eb;font-weight:700;text-decoration:none}
 <div class="app-icon">🚀</div>
 <div>
 <div style="font-size:18px;font-weight:800;color:#111827;line-height:1.2;">Shadowrocket</div>
-<div style="font-size:12px;color:#6b7280;margin-top:2px;">Shadow Launch Technology Limited</div>
+<div style="font-size:12px;color:#6b7280;margin-top:2px;">Kurd0o Store</div>
 <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" id="c5-app-btn" class="app-btn">Open</a>
 </div>
 </div>
@@ -282,7 +282,7 @@ a.blue{color:#2563eb;font-weight:700;text-decoration:none}
 <p id="comm-desc">For detailed announcements, join Kurd0o's channels right now to get daily Free ID alerts!!!</p>
 <ul>
 <li id="comm-li-tiktok">🎵 TikTok: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a></li>
-<li id="comm-li-discord">🎮 Discord: <a href="https://discord.gg/phswvsevd" target="_blank" rel="noopener noreferrer" class="blue">Join Discord</a></li>
+<li id="comm-li-discord">🎮 Discord: <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">Join Discord</a></li>
 <li id="comm-li-telegram">✈️ Telegram: <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a></li>
 <li id="comm-li-shop">🛍️ Buy / Store: <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a></li>
 </ul>
@@ -327,7 +327,7 @@ a.blue{color:#2563eb;font-weight:700;text-decoration:none}
 </div>
 
 <div id="kurd0o-red-account-box" class="red-account-box">
-<button type="button" id="kurd0o-red-account-btn" onclick="openStepGuideView()" class="red-account-btn">
+<button type="button" id="kurd0o-red-account-btn" onclick="openStepGuideView(false)" class="red-account-btn">
 Click here to go to the account
 </button>
 </div>
@@ -471,6 +471,7 @@ const ACCOUNTS_DATA={
 
 const STORAGE_JOIN_KEY="kurd0o_joined_targets_v2";
 const GUIDE_PERSIST_KEY="kurd0o_guide_session_v1";
+const COPY_COOLDOWN_KEY="kurd0o_copy_cooldowns_v1";
 const FIVE_MINUTES_MS=5*60*1000;
 const REQUIRED_TARGETS=["ch1","ch2","ch3","ch4","discord"];
 const timers={};
@@ -558,7 +559,7 @@ en:{
   commTitle:"Kurd0o Community",
   commDesc:"For detailed announcements, join Kurd0o's channels right now to get daily Free ID alerts!!!",
   commTikTok:'🎵 TikTok: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
-  commDiscord:'🎮 Discord: <a href="https://discord.gg/phswvsevd" target="_blank" rel="noopener noreferrer" class="blue">Join Discord</a>',
+  commDiscord:'🎮 Discord: <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">Join Discord</a>',
   commTelegram:'✈️ Telegram: <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>',
   commShop:'🛍️ Buy / Store: <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>'
 },
@@ -635,7 +636,7 @@ ar:{
   commTitle:"مجتمع Kurd0o",
   commDesc:"لمعرفة تفاصيل الإشعارات، ادخل الآن إلى قنوات Kurd0o لتصلك تنبيهات الحسابات المجانية يومياً!!!",
   commTikTok:'🎵 تيك توك: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
-  commDiscord:'🎮 ديسكورد: <a href="https://discord.gg/phswvsevd" target="_blank" rel="noopener noreferrer" class="blue">انضم للديسكورد</a>',
+  commDiscord:'🎮 ديسكورد: <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">انضم للديسكورد</a>',
   commTelegram:'✈️ قناة تيليغرام: <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>',
   commShop:'🛍️ الشراء / المتجر: <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>'
 },
@@ -712,7 +713,7 @@ ku:{
   commTitle:"کۆمەڵگەها Kurd0o",
   commDesc:"بۆ زانینا هویرکاریێن راگەهاندنان، نوکە بچە د کەناڵێن Kurd0o دا دا رۆژانە ئاگەهداریێن IDـێن بێ بەرامبەر بۆ تە بهێن!!!",
   commTikTok:'🎵 تیک تۆک: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
-  commDiscord:'🎮 دیسکۆرد: <a href="https://discord.gg/phswvsevd" target="_blank" rel="noopener noreferrer" class="blue">بەژداربوون د دیسکۆردی دا</a>',
+  commDiscord:'🎮 دیسکۆرد: <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">بەژداربوون د دیسکۆردی دا</a>',
   commTelegram:'✈️ کەناڵا تێلیگرامێ: <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>',
   commShop:'🛍️ کڕین / فرۆشگەهـ: <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>'
 },
@@ -789,7 +790,7 @@ vi:{
   commTitle:"Cộng đồng Kurd0o",
   commDesc:"Để xem thông báo chi tiết, hãy tham gia ngay các kênh của Kurd0o để nhận thông báo ID miễn phí hằng ngày!!!",
   commTikTok:'🎵 TikTok: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
-  commDiscord:'🎮 Discord: <a href="https://discord.gg/phswvsevd" target="_blank" rel="noopener noreferrer" class="blue">Tham gia Discord</a>',
+  commDiscord:'🎮 Discord: <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">Tham gia Discord</a>',
   commTelegram:'✈️ Telegram: <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>',
   commShop:'🛍️ Mua / Cửa hàng: <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>'
 },
@@ -866,7 +867,7 @@ tr:{
   commTitle:"Kurd0o Topluluğu",
   commDesc:"Detaylı duyurular ve günlük Ücretsiz ID uyarıları için hemen Kurd0o kanallarına katılın!!!",
   commTikTok:'🎵 TikTok: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
-  commDiscord:'🎮 Discord: <a href="https://discord.gg/phswvsevd" target="_blank" rel="noopener noreferrer" class="blue">Discord\'a Katıl</a>',
+  commDiscord:'🎮 Discord: <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">Discord\'a Katıl</a>',
   commTelegram:'✈️ Telegram: <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>',
   commShop:'🛍️ Satın Al / Mağaza: <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>'
 },
@@ -943,7 +944,7 @@ fr:{
   commTitle:"Communauté Kurd0o",
   commDesc:"Pour les annonces détaillées et les alertes d'ID gratuits quotidiennes, rejoignez les canaux Kurd0o maintenant !!!",
   commTikTok:'🎵 TikTok : <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
-  commDiscord:'🎮 Discord : <a href="https://discord.gg/phswvsevd" target="_blank" rel="noopener noreferrer" class="blue">Rejoindre Discord</a>',
+  commDiscord:'🎮 Discord : <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">Rejoindre Discord</a>',
   commTelegram:'✈️ Telegram : <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>',
   commShop:'🛍️ Acheter / Boutique : <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>'
 },
@@ -1020,7 +1021,7 @@ de:{
   commTitle:"Kurd0o Community",
   commDesc:"Für Ankündigungen und tägliche Gratis-ID-Infos tritt jetzt den Kurd0o-Kanälen bei!!!",
   commTikTok:'🎵 TikTok: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
-  commDiscord:'🎮 Discord: <a href="https://discord.gg/phswvsevd" target="_blank" rel="noopener noreferrer" class="blue">Discord beitreten</a>',
+  commDiscord:'🎮 Discord: <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">Discord beitreten</a>',
   commTelegram:'✈️ Telegram: <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>',
   commShop:'🛍️ Kaufen / Shop: <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>'
 },
@@ -1097,7 +1098,7 @@ es:{
   commTitle:"Comunidad Kurd0o",
   commDesc:"Para anuncios detallados y avisos diarios de ID gratis, únete ahora a los canales de Kurd0o!!!",
   commTikTok:'🎵 TikTok: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
-  commDiscord:'🎮 Discord: <a href="https://discord.gg/phswvsevd" target="_blank" rel="noopener noreferrer" class="blue">Unirse a Discord</a>',
+  commDiscord:'🎮 Discord: <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">Unirse a Discord</a>',
   commTelegram:'✈️ Telegram: <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>',
   commShop:'🛍️ Comprar / Tienda: <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>'
 },
@@ -1174,7 +1175,7 @@ ru:{
   commTitle:"Сообщество Kurd0o",
   commDesc:"Чтобы получать анонсы и ежедневные уведомления о бесплатных ID, подпишитесь на каналы Kurd0o прямо сейчас!!!",
   commTikTok:'🎵 TikTok: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
-  commDiscord:'🎮 Discord: <a href="https://discord.gg/phswvsevd" target="_blank" rel="noopener noreferrer" class="blue">Войти в Discord</a>',
+  commDiscord:'🎮 Discord: <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">Войти в Discord</a>',
   commTelegram:'✈️ Telegram: <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>',
   commShop:'🛍️ Купить / Магазин: <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>'
 },
@@ -1251,7 +1252,7 @@ ja:{
   commTitle:"Kurd0oコミュニティ",
   commDesc:"詳しいお知らせや毎日の無料ID通知を受け取るには、今すぐKurd0oチャンネルに参加してください！！！",
   commTikTok:'🎵 TikTok: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
-  commDiscord:'🎮 Discord: <a href="https://discord.gg/phswvsevd" target="_blank" rel="noopener noreferrer" class="blue">Discordに参加</a>',
+  commDiscord:'🎮 Discord: <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">Discordに参加</a>',
   commTelegram:'✈️ Telegram: <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>',
   commShop:'🛍️ 購入 / ストア: <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>'
 }
@@ -1286,6 +1287,38 @@ function getValidGuideSessionState(){
     return null;
   }catch{
     return null;
+  }
+}
+
+function saveCopyCooldownMap(mapObj){
+  try{
+    localStorage.setItem(COPY_COOLDOWN_KEY, JSON.stringify(mapObj));
+  }catch{}
+}
+
+function clearCopyCooldowns(){
+  try{
+    localStorage.removeItem(COPY_COOLDOWN_KEY);
+  }catch{}
+}
+
+function getStoredCopyCooldowns(){
+  try{
+    const raw = JSON.parse(localStorage.getItem(COPY_COOLDOWN_KEY) || "{}");
+    const now = Date.now();
+    const cleaned = {};
+    const seconds = {email:0, password:0};
+    ["email", "password"].forEach((key)=>{
+      const endAt = Number(raw[key] || 0);
+      if(endAt > now){
+        cleaned[key] = endAt;
+        seconds[key] = Math.ceil((endAt - now) / 1000);
+      }
+    });
+    saveCopyCooldownMap(cleaned);
+    return seconds;
+  }catch{
+    return {email:0, password:0};
   }
 }
 
@@ -1370,6 +1403,7 @@ function handleJoinTarget(target,url){
 function openJoinPageView(appType){
   currentSelectedApp=appType;
   clearGuideSessionState();
+  clearCopyCooldowns();
   const lang=localStorage.getItem(LANG_KEY)||"en";
   const d=T[lang]||T.en;
 
@@ -1400,6 +1434,7 @@ function openStepGuideView(isRestore){
 
 function backToJoinView(){
   clearGuideSessionState();
+  clearCopyCooldowns();
   document.getElementById("kurd0o-step-guide-view").classList.remove("active");
   document.getElementById("kurd0o-join-page-view").classList.add("active");
   window.scrollTo({top:0,behavior:"smooth"});
@@ -1407,6 +1442,7 @@ function backToJoinView(){
 
 function backToMainSiteView(){
   clearGuideSessionState();
+  clearCopyCooldowns();
   document.getElementById("kurd0o-join-page-view").classList.remove("active");
   document.getElementById("kurd0o-step-guide-view").classList.remove("active");
   document.getElementById("kurd0o-main-site-content").style.display="block";
@@ -1429,6 +1465,7 @@ function updateSessionTimerUI(){
     if(timerEl)timerEl.textContent=d.sesExpired;
     if(guideActive){
       clearGuideSessionState();
+      clearCopyCooldowns();
       backToMainSiteView();
     }
   }else{
@@ -1469,20 +1506,55 @@ function closeCredModal(){
   document.getElementById("kurd0o-copy-modal").classList.remove("open");
 }
 
-function startCredCooldown(type){
+function runCooldownTicker(type, endAt){
   if(copyIntervals[type])clearInterval(copyIntervals[type]);
-  copyCooldowns[type]=COPY_COOLDOWN_SEC;
-  updateCredButtonsUI();
 
-  copyIntervals[type]=setInterval(()=>{
-    copyCooldowns[type]-=1;
-    if(copyCooldowns[type]<=0){
-      copyCooldowns[type]=0;
+  const tick = ()=>{
+    const remSec = Math.max(0, Math.ceil((endAt - Date.now()) / 1000));
+    copyCooldowns[type] = remSec;
+    if(remSec <= 0){
       clearInterval(copyIntervals[type]);
       delete copyIntervals[type];
+      try{
+        const map = JSON.parse(localStorage.getItem(COPY_COOLDOWN_KEY) || "{}");
+        delete map[type];
+        saveCopyCooldownMap(map);
+      }catch{}
     }
     updateCredButtonsUI();
-  },1000);
+  };
+
+  tick();
+  if(Date.now() < endAt){
+    copyIntervals[type] = setInterval(tick, 500);
+  }
+}
+
+function startCredCooldown(type){
+  const endAt = Date.now() + COPY_COOLDOWN_SEC * 1000;
+  let currentStored = {};
+  try{
+    currentStored = JSON.parse(localStorage.getItem(COPY_COOLDOWN_KEY) || "{}");
+  }catch{}
+  currentStored[type] = endAt;
+  saveCopyCooldownMap(currentStored);
+  runCooldownTicker(type, endAt);
+}
+
+function restoreCredCooldowns(){
+  let raw = {};
+  try{
+    raw = JSON.parse(localStorage.getItem(COPY_COOLDOWN_KEY) || "{}");
+  }catch{}
+  const initialSec = getStoredCopyCooldowns();
+  ["email", "password"].forEach((type)=>{
+    if(initialSec[type] > 0 && raw[type]){
+      runCooldownTicker(type, Number(raw[type]));
+    }else{
+      copyCooldowns[type] = 0;
+    }
+  });
+  updateCredButtonsUI();
 }
 
 function confirmCredCopy(){
@@ -1634,13 +1706,17 @@ function applyLang(lang){
   updateCredButtonsUI();
 }
 
-setInterval(updateSessionTimerUI,1000);
-applyLang(localStorage.getItem(LANG_KEY)||"en");
-
 const savedGuide=getValidGuideSessionState();
 if(savedGuide){
   currentSelectedApp=savedGuide.app;
   sessionEndAt=savedGuide.endAt;
+}
+
+setInterval(updateSessionTimerUI,1000);
+applyLang(localStorage.getItem(LANG_KEY)||"en");
+restoreCredCooldowns();
+
+if(savedGuide){
   openStepGuideView(true);
 }
 </script>
