@@ -495,3 +495,164 @@
     syncC2Lang();
 })();
 </script>
+<!-- تكملة الصورة الثالثة (Survival & Creative) -->
+<section id="sec-continuation-3" style="max-width:480px;margin:0 auto;padding:8px 16px 32px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#111827;">
+
+    <!-- قسم Survival -->
+    <h2 style="font-size:21px;font-weight:700;line-height:1.35;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+        <span>🏕️</span>
+        <span id="c3-surv-title">Survival – Sinh Tồn Và Khám Phá</span>
+    </h2>
+
+    <p id="c3-surv-p1" style="font-size:15px;line-height:1.65;color:#1f2937;margin-bottom:14px;">
+        <strong>Survival</strong> là chế độ phù hợp nhất nếu bạn muốn cảm nhận trọn vẹn yếu tố phiêu lưu của Minecraft. Ban đầu, bạn gần như không sở hữu bất cứ thứ gì. Bạn phải tự thu thập gỗ, tìm thức ăn, khai thác khoáng sản và chế tạo những công cụ đầu tiên.
+    </p>
+
+    <p id="c3-surv-p2" style="font-size:15px;line-height:1.65;color:#1f2937;margin-bottom:16px;">
+        Khi màn đêm buông xuống, mọi thứ bắt đầu trở nên nguy hiểm hơn. Zombie, Skeleton, Spider và đặc biệt là Creeper có thể xuất hiện quanh khu vực của bạn. Vì vậy, một trong những mục tiêu quan trọng trong ngày đầu tiên là chuẩn bị một nơi trú ẩn an toàn.
+    </p>
+
+    <div style="background:#f8fafc;border-left:4px solid #16a34a;border-radius:0 12px 12px 0;padding:15px 16px;margin-bottom:24px;box-shadow:0 2px 10px rgba(0,0,0,0.04);font-size:14.5px;line-height:1.6;color:#1f2937;">
+        <p id="c3-tip-box">🔥 <strong>Mẹo cho người mới:</strong> Đừng dành cả ngày đầu tiên để khám phá quá xa. Hãy ưu tiên gỗ, thức ăn, công cụ và một nơi trú ẩn trước khi trời tối.</p>
+    </div>
+
+    <!-- قسم Creative -->
+    <h2 style="font-size:21px;font-weight:700;line-height:1.35;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+        <span>🏰</span>
+        <span id="c3-crea-title">Creative – Thỏa Sức Xây Dựng</span>
+    </h2>
+
+    <p id="c3-crea-p1" style="font-size:15px;line-height:1.65;color:#1f2937;margin-bottom:14px;">
+        Nếu Survival là cuộc phiêu lưu sinh tồn thì <strong>Creative</strong> lại giống như một sân chơi sáng tạo khổng lồ. Từ những block đơn giản, người chơi có thể tạo ra:
+    </p>
+
+    <ul style="list-style:disc;padding-inline-start:20px;font-size:15px;line-height:1.65;color:#1f2937;">
+        <li id="c3-crea-li1" style="margin-bottom:10px;">🏙️ Nhà hiện đại, biệt thự, thành phố.</li>
+        <li id="c3-crea-li2">🏰 Lâu đài khổng lồ, công trình fantasy.</li>
+    </ul>
+
+</section>
+
+<script>
+(function () {
+    const C3_LANGS = {
+        en: {
+            survTitle: "Survival – Survival and Exploration",
+            survP1: "<strong>Survival</strong> is the best mode if you want to experience the full adventure side of Minecraft. At the start, you have almost nothing. You gather wood, find food, mine resources, and craft your first tools.",
+            survP2: "When night falls, things get more dangerous. Zombies, Skeletons, Spiders, and especially Creepers can spawn around you, so securing a safe shelter on day one is essential.",
+            tipBox: "🔥 <strong>Beginner Tip:</strong> Don't spend your entire first day wandering too far. Prioritize wood, food, tools, and shelter before nightfall.",
+            creaTitle: "Creative – Limitless Building",
+            creaP1: "If Survival is about surviving the wild, <strong>Creative</strong> is like a massive sandbox for building. From simple blocks, players can create:",
+            creaLi1: "🏙️ Modern houses, villas, and cities.",
+            creaLi2: "🏰 Giant castles and fantasy builds."
+        },
+        ar: {
+            survTitle: "Survival – البقاء والاستكشاف",
+            survP1: "وضع <strong>Survival</strong> هو الأنسب إذا أردت عيش روح المغامرة الكاملة في ماينكرافت؛ تبدأ تقريباً بلا شيء وتجمع الخشب والطعام وتستخرج الموارد وتصنع أدواتك الأولى.",
+            survP2: "عندما يحل الليل تصبح الأمور أخطر؛ فقد تظهر الزومبي والهياكل العظمية والعناكب وخاصة الكريبر حولك، لذلك من المهم تأمين مأوى آمن في اليوم الأول.",
+            tipBox: "🔥 <strong>نصيحة للمبتدئين:</strong> لا تقضِ يومك الأول كاملاً في الابتعاد كثيراً؛ اجعل الأولوية للخشب والطعام والأدوات والمأوى قبل حلول الظلام.",
+            creaTitle: "Creative – حرية البناء والإبداع",
+            creaP1: "إذا كان Survival مغامرة للبقاء، فإن <strong>Creative</strong> مساحة إبداع واسعة للبناء؛ فمن الكتل البسيطة يمكن للاعب إنشاء:",
+            creaLi1: "🏙️ منازل حديثة وفيلات ومدناً.",
+            creaLi2: "🏰 قلاعاً ضخمة ومبانٍ خيالية."
+        },
+        ku: {
+            survTitle: "Survival – مانەوە و گەڕیان",
+            survP1: "شێوازێ <strong>Survival</strong> هەرە گونجایە ئەگەر تە بڤێت تاما سەرکێشیا راستەقینە یا ماینكرافتێ ببینی؛ ل دەستپێکێ تە چ نینە و تو داران کۆم دکەی، خوارنێ دبینی، کانزایان دەردێخی و ئامێرێن خۆ یێن ئێکێ چێدکەی.",
+            survP2: "دەمێ شەڤ دهێت تشت مەترسیدارتر دبن؛ زۆمبی، سکیلێتن، جاڵجاڵۆك و ب تایبەت کریپەر ل دەوروبەرا تە پەیدا دبن، لەوما چێکرنا جهەکێ پاراستی د رۆژا ئێکێ دا گەلەك گرنگە.",
+            tipBox: "🔥 <strong>شیرەت بۆ دەستپێکەران:</strong> هەمی رۆژا ئێکێ ب دویرکەفتنا زێدە ڤە نەبۆرینە؛ بەری شەڤ بهێت دار، خوارن، ئامێر و جهێ ڤەحەواندنێ د پێشینەیێ دا بهێلە.",
+            creaTitle: "Creative – ئازادیا ئاڤاکرنێ",
+            creaP1: "ئەگەر Survival سەرکێشیا مانەوەیێ بیت، <strong>Creative</strong> گۆڕەپانەکا مەزنە بۆ ئاڤاکرنێ؛ ژ بلۆکێن سادە یاریزان دشیێت چێبکەت:",
+            creaLi1: "🏙️ خانیێن مودێرن، ڤێلا و باژێڕان.",
+            creaLi2: "🏰 قەڵایێن مەزن و ئاڤاهیێن خەیالی."
+        },
+        vi: {
+            survTitle: "Survival – Sinh Tồn Và Khám Phá",
+            survP1: "<strong>Survival</strong> là chế độ phù hợp nhất nếu bạn muốn cảm nhận trọn vẹn yếu tố phiêu lưu của Minecraft. Ban đầu, bạn gần như không sở hữu bất cứ thứ gì. Bạn phải tự thu thập gỗ, tìm thức ăn, khai thác khoáng sản và chế tạo những công cụ đầu tiên.",
+            survP2: "Khi màn đêm buông xuống, mọi thứ bắt đầu trở nên nguy hiểm hơn. Zombie, Skeleton, Spider và đặc biệt là Creeper có thể xuất hiện quanh khu vực của bạn. Vì vậy, một trong những mục tiêu quan trọng trong ngày đầu tiên là chuẩn bị một nơi trú ẩn an toàn.",
+            tipBox: "🔥 <strong>Mẹo cho người mới:</strong> Đừng dành cả ngày đầu tiên để khám phá quá xa. Hãy ưu tiên gỗ, thức ăn, công cụ và một nơi trú ẩn trước khi trời tối.",
+            creaTitle: "Creative – Thỏa Sức Xây Dựng",
+            creaP1: "Nếu Survival là cuộc phiêu lưu sinh tồn thì <strong>Creative</strong> lại giống như một sân chơi sáng tạo khổng lồ. Từ những block đơn giản, người chơi có thể tạo ra:",
+            creaLi1: "🏙️ Nhà hiện đại, biệt thự, thành phố.",
+            creaLi2: "🏰 Lâu đài khổng lồ, công trình fantasy."
+        },
+        tr: {
+            survTitle: "Survival – Hayatta Kalma ve Keşif",
+            survP1: "<strong>Survival</strong>, Minecraft'ın macera yönünü tam anlamıyla yaşamak istiyorsan en uygun moddur. Başlangıçta neredeyse hiçbir şeyin yoktur; odun toplar, yiyecek bulur, maden çıkarır ve ilk araçlarını üretirsin.",
+            survP2: "Gece çöktüğünde her şey daha tehlikeli hale gelir. Etrafında Zombi, İskelet, Örümcek ve özellikle Creeper belirebilir; bu yüzden ilk gün güvenli bir barınak hazırlamak önemlidir.",
+            tipBox: "🔥 <strong>Yeni Başlayanlara İpucu:</strong> İlk gününün tamamını çok uzağa giderek geçirme. Karanlık çökmeden önce odun, yiyecek, alet ve barınağa öncelik ver.",
+            creaTitle: "Creative – Sınırsız İnşa",
+            creaP1: "Survival hayatta kalma macerasıysa, <strong>Creative</strong> devasa bir inşa alanı gibidir. Basit bloklardan şunları yapabilirsin:",
+            creaLi1: "🏙️ Modern evler, villalar ve şehirler.",
+            creaLi2: "🏰 Dev kaleler ve fantastik yapılar."
+        },
+        fr: {
+            survTitle: "Survival – Survie et Exploration",
+            survP1: "<strong>Survival</strong> est le mode idéal pour vivre l'aventure complète de Minecraft. Au début, vous n'avez presque rien : vous récoltez du bois, trouvez de la nourriture, minez et fabriquez vos premiers outils.",
+            survP2: "À la nuit tombée, le danger augmente. Zombies, Squelettes, Araignées et surtout Creepers peuvent apparaître autour de vous, d'où l'importance d'un abri sûr dès le premier jour.",
+            tipBox: "🔥 <strong>Astuce débutant :</strong> Ne passez pas toute votre première journée à aller trop loin. Donnez la priorité au bois, à la nourriture, aux outils et à un abri avant la nuit.",
+            creaTitle: "Creative – Construction Libre",
+            creaP1: "Si Survival est une aventure de survie, <strong>Creative</strong> est un immense espace de création. À partir de simples blocs, vous pouvez construire :",
+            creaLi1: "🏙️ Maisons modernes, villas et villes.",
+            creaLi2: "🏰 Châteaux géants et créations fantastiques."
+        },
+        de: {
+            survTitle: "Survival – Überleben und Erkunden",
+            survP1: "<strong>Survival</strong> ist der richtige Modus, wenn du das volle Abenteuer von Minecraft erleben willst. Am Anfang hast du fast nichts: Du sammelst Holz, findest Essen, baust Erze ab und craftest erste Werkzeuge.",
+            survP2: "Wenn es dunkel wird, steigt die Gefahr. Zombies, Skelette, Spinnen und vor allem Creeper können auftauchen, weshalb ein sicherer Unterschlupf am ersten Tag entscheidend ist.",
+            tipBox: "🔥 <strong>Tipp für Einsteiger:</strong> Verbringe nicht den ganzen ersten Tag damit, zu weit zu laufen. Priorisiere Holz, Essen, Werkzeuge und einen Unterschlupf vor Einbruch der Dunkelheit.",
+            creaTitle: "Creative – Grenzenloses Bauen",
+            creaP1: "Während Survival ein Überlebensabenteuer ist, bietet <strong>Creative</strong> eine riesige Bauwelt. Aus einfachen Blöcken entstehen:",
+            creaLi1: "🏙️ Moderne Häuser, Villen und Städte.",
+            creaLi2: "🏰 Riesige Burgen und Fantasy-Bauwerke."
+        },
+        es: {
+            survTitle: "Survival – Supervivencia y Exploración",
+            survP1: "<strong>Survival</strong> es el modo ideal para vivir la aventura completa de Minecraft. Al principio casi no tienes nada: recolectas madera, buscas comida, extraes minerales y creas tus primeras herramientas.",
+            survP2: "Cuando cae la noche, el peligro aumenta. Zombis, Esqueletos, Arañas y sobre todo Creepers pueden aparecer cerca, por lo que tener un refugio seguro el primer día es clave.",
+            tipBox: "🔥 <strong>Consejo inicial:</strong> No pases todo el primer día alejándote demasiado. Prioriza madera, comida, herramientas y refugio antes de que oscurezca.",
+            creaTitle: "Creative – Construcción sin Límites",
+            creaP1: "Si Survival es sobrevivir a la aventura, <strong>Creative</strong> es un enorme espacio de creación. Con simples bloques puedes levantar:",
+            creaLi1: "🏙️ Casas modernas, villas y ciudades.",
+            creaLi2: "🏰 Castillos gigantes y construcciones de fantasía."
+        },
+        ru: {
+            survTitle: "Survival – Выживание и исследование",
+            survP1: "<strong>Survival</strong> — лучший режим для полного погружения в приключения Minecraft. В начале у вас почти ничего нет: вы добываете дерево, еду, руду и делаете первые инструменты.",
+            survP2: "С наступлением ночи становится опаснее: рядом могут появиться зомби, скелеты, пауки и особенно криперы, поэтому важно заранее сделать укрытие в первый день.",
+            tipBox: "🔥 <strong>Совет новичкам:</strong> Не уходите слишком далеко в первый день. Сначала добудьте дерево, еду, инструменты и укрытие до темноты.",
+            creaTitle: "Creative – Свобода строительства",
+            creaP1: "Если Survival — это выживание, то <strong>Creative</strong> — огромный простор для творчества. Из простых блоков можно построить:",
+            creaLi1: "🏙️ Современные дома, виллы и города.",
+            creaLi2: "🏰 Огромные замки и фэнтези-постройки."
+        },
+        ja: {
+            survTitle: "Survival – サバイバルと探索",
+            survP1: "<strong>Survival</strong> はMinecraftの冒険を存分に味わうためのモードです。最初はほぼ何もない状態から、木や食料を集め、鉱石を掘り、最初の道具を作ります。",
+            survP2: "夜になると危険が増します。ゾンビ、スケルトン、クモ、特にクリーパーが近くに現れることがあるため、初日に安全な拠点を作ることが大切です。",
+            tipBox: "🔥 <strong>初心者向けヒント：</strong> 初日に遠くへ行きすぎないようにしましょう。暗くなる前に木・食料・道具・拠点を優先してください。",
+            creaTitle: "Creative – 自由な建築",
+            creaP1: "Survivalがサバイバルの冒険なら、<strong>Creative</strong> は広大な建築の場です。シンプルなブロックから次のようなものを作れます：",
+            creaLi1: "🏙️ モダンな家、別荘、街並み。",
+            creaLi2: "🏰 巨大な城やファンタジー建築。"
+        }
+    };
+
+    function syncC3Lang() {
+        const htmlLang = document.documentElement.getAttribute("lang") || "en";
+        const d = C3_LANGS[htmlLang] || C3_LANGS.en;
+        document.getElementById("c3-surv-title").innerText = d.survTitle;
+        document.getElementById("c3-surv-p1").innerHTML = d.survP1;
+        document.getElementById("c3-surv-p2").innerHTML = d.survP2;
+        document.getElementById("c3-tip-box").innerHTML = d.tipBox;
+        document.getElementById("c3-crea-title").innerText = d.creaTitle;
+        document.getElementById("c3-crea-p1").innerHTML = d.creaP1;
+        document.getElementById("c3-crea-li1").innerHTML = d.creaLi1;
+        document.getElementById("c3-crea-li2").innerHTML = d.creaLi2;
+    }
+
+    document.addEventListener("click", () => setTimeout(syncC3Lang, 0));
+    window.addEventListener("DOMContentLoaded", syncC3Lang);
+    syncC3Lang();
+})();
+</script>
