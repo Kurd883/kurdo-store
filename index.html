@@ -1077,3 +1077,265 @@ applyLang(localStorage.getItem(LANG_KEY)||"en");
 </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account Access & Step-by-Step Guide</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f8f7fc;color:#111827;overflow-x:hidden}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#fff;border-bottom:1px solid #ece9f5;position:sticky;top:0;z-index:30}
+.brand{font-weight:800;font-size:20px;color:#7c3aed;letter-spacing:-.5px;text-decoration:none}
+.lang-wrap{position:relative}
+.lang-pill{font-size:12px;font-weight:700;padding:5px 11px;border:1px solid #ddd6fe;border-radius:9px;background:#f5f3ff;cursor:pointer;color:#4c1d95}
+.lang-dropdown{display:none;position:absolute;top:100%;inset-inline-end:0;margin-top:6px;width:190px;max-height:280px;overflow-y:auto;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 28px rgba(17,24,39,.14);z-index:50}
+.lang-dropdown.show{display:block}
+.lang-option{width:100%;text-align:start;background:none;border:none;padding:9px 12px;font-size:13px;color:#1f2937;cursor:pointer;display:block}
+.lang-option:hover{background:#f5f3ff}
+.container{max-width:480px;margin:0 auto;padding:24px 16px 40px}
+.step-badge{display:inline-block;background:#ede9fe;color:#7c3aed;font-weight:800;font-size:13px;padding:6px 12px;border-radius:10px;margin-bottom:10px}
+.kicker{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#8b5cf6;margin-bottom:6px}
+h1{font-size:28px;line-height:1.25;font-weight:800;color:#111827;margin-bottom:10px}
+.subtitle{font-size:15px;line-height:1.6;color:#4b5563;margin-bottom:22px}
+.steps-list{display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
+.step-card{background:#fff;border:1px solid #ede9f5;border-radius:18px;padding:18px;box-shadow:0 6px 20px rgba(124,58,237,.05);display:flex;align-items:flex-start;gap:14px}
+.step-num{width:34px;height:34px;border-radius:10px;background:#ede9fe;color:#7c3aed;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.step-body h2{font-size:17px;font-weight:800;color:#111827;margin-bottom:6px}
+.step-body p{font-size:14.5px;line-height:1.65;color:#374151}
+.account-box{background:#fff;border:1px solid #ddd6fe;border-radius:18px;padding:18px;box-shadow:0 8px 24px rgba(124,58,237,.08)}
+.account-box h3{font-size:16px;font-weight:800;color:#111827;margin-bottom:12px}
+.cred-row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#f8f7fc;border:1px solid #ece9f5;border-radius:12px;padding:11px 13px;margin-bottom:10px}
+.cred-label{font-size:12px;font-weight:700;color:#6b7280}
+.cred-val{font-size:14px;font-weight:800;color:#111827;word-break:break-all}
+.copy-btn{background:#7c3aed;color:#fff;border:none;border-radius:8px;padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0}
+.copy-btn:hover{background:#6d28d9}
+.warn-note{margin-top:12px;background:#fff1f2;border-inline-start:4px solid #f43f5e;border-radius:0 10px 10px 0;padding:12px 14px;font-size:13.5px;line-height:1.6;color:#9f1239;font-weight:700}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="#" class="brand">Kurd0o</a>
+  <div class="lang-wrap">
+    <button type="button" class="lang-pill" onclick="toggleLangDropdown(event)" id="lang-current">🇬🇧 EN ⌄</button>
+    <div id="lang-dropdown" class="lang-dropdown" onclick="event.stopPropagation()">
+      <button type="button" class="lang-option" onclick="applyLang('en')">English</button>
+      <button type="button" class="lang-option" onclick="applyLang('ar')">العربية</button>
+      <button type="button" class="lang-option" onclick="applyLang('ku')">کوردی (Badînî)</button>
+      <button type="button" class="lang-option" onclick="applyLang('vi')">Tiếng Việt</button>
+      <button type="button" class="lang-option" onclick="applyLang('tr')">Türkçe</button>
+      <button type="button" class="lang-option" onclick="applyLang('fr')">Français</button>
+      <button type="button" class="lang-option" onclick="applyLang('de')">Deutsch</button>
+      <button type="button" class="lang-option" onclick="applyLang('es')">Español</button>
+      <button type="button" class="lang-option" onclick="applyLang('ru')">Русский</button>
+      <button type="button" class="lang-option" onclick="applyLang('ja')">日本語</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="step-badge">02</div>
+  <div class="kicker" id="kicker-txt">STEP BY STEP</div>
+  <h1 id="main-title">How to sign in and download the game</h1>
+  <p class="subtitle" id="main-sub">Follow these exact 3 steps before using the account.</p>
+
+  <div class="steps-list">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h2 id="s1-title">Open App Store</h2>
+        <p id="s1-desc">After reading the guide, get the account below and sign in only inside the App Store.</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h2 id="s2-title">Search for the game name</h2>
+        <p id="s2-desc">Search directly for the app name using the search bar. No need to go to Purchased.</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h2 id="s3-title">Sign out after downloading</h2>
+        <p id="s3-desc">If the game still shows a price, check before confirming to avoid unintended charges. Once downloaded, sign out of the account from App Store.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="account-box">
+    <h3 id="acc-box-title">Shared App Store Account</h3>
+    <div class="cred-row">
+      <div>
+        <div class="cred-label" id="lbl-id">Apple ID</div>
+        <div class="cred-val" id="val-id">shared-id@kurd0o.example</div>
+      </div>
+      <button type="button" class="copy-btn" onclick="copyText('val-id', this)" id="btn-copy-1">Copy</button>
+    </div>
+    <div class="cred-row">
+      <div>
+        <div class="cred-label" id="lbl-pass">Password</div>
+        <div class="cred-val" id="val-pass">Kurd0o#2026</div>
+      </div>
+      <button type="button" class="copy-btn" onclick="copyText('val-pass', this)" id="btn-copy-2">Copy</button>
+    </div>
+    <div class="warn-note" id="warn-txt">
+      NEVER SIGN IN TO DEVICE SETTINGS (ICLOUD). SIGN IN ONLY INSIDE THE APP STORE AND SIGN OUT RIGHT AFTER DOWNLOADING!
+    </div>
+  </div>
+</main>
+
+<script>
+const LANG_KEY = "site_language";
+const LANG_LABELS = {
+  en:"🇬🇧 EN ⌄", ar:"🇸🇦 AR ⌄", ku:"KU ⌄", vi:"🇻🇳 VI ⌄", tr:"🇹🇷 TR ⌄",
+  fr:"🇫🇷 FR ⌄", de:"🇩🇪 DE ⌄", es:"🇪🇸 ES ⌄", ru:"🇷🇺 RU ⌄", ja:"🇯🇵 JA ⌄"
+};
+
+const T = {
+  en:{
+    dir:"ltr", kicker:"STEP BY STEP", title:"How to sign in and download the game",
+    sub:"Follow these exact 3 steps before using the account.",
+    s1t:"Open App Store", s1d:"After reading the guide, get the account below and sign in only inside the App Store.",
+    s2t:"Search for the game name", s2d:"Search directly for the app name using the search bar. No need to go to Purchased.",
+    s3t:"Sign out after downloading", s3d:"If the game still shows a price, check before confirming to avoid unintended charges. Once downloaded, sign out of the account from App Store.",
+    accTitle:"Shared App Store Account", lblId:"Apple ID", lblPass:"Password", copy:"Copy", copied:"Copied!",
+    warn:"NEVER SIGN IN TO DEVICE SETTINGS (ICLOUD). SIGN IN ONLY INSIDE THE APP STORE AND SIGN OUT RIGHT AFTER DOWNLOADING!"
+  },
+  ar:{
+    dir:"rtl", kicker:"خطوة بخطوة", title:"طريقة تسجيل الدخول وتحميل اللعبة",
+    sub:"نفّذ هذه الخطوات الثلاث بدقة قبل استخدام الحساب.",
+    s1t:"افتح App Store", s1d:"بعد قراءة الدليل، خذ الحساب بالأسفل وسجّل الدخول فقط داخل تطبيق App Store.",
+    s2t:"ابحث عن اسم اللعبة", s2d:"ابحث مباشرة عن اسم التطبيق عبر شريط البحث، ولا حاجة للدخول إلى «المشتريات» (Purchased).",
+    s3t:"سجّل الخروج بعد التحميل", s3d:"إذا كانت اللعبة لا تزال تعرض سعراً، تحقّق قبل التأكيد لتجنب أي دفع غير مقصود. وبعد انتهاء التحميل، سجّل الخروج من الحساب داخل App Store.",
+    accTitle:"حساب App Store المشارك", lblId:"معرّف أبل (Apple ID)", lblPass:"كلمة المرور", copy:"نسخ", copied:"تم النسخ!",
+    warn:"يُمنع منعاً باتاً تسجيل الدخول في إعدادات الجهاز (iCloud). سجّل الدخول فقط داخل App Store وسجّل الخروج فوراً بعد التحميل!"
+  },
+  ku:{
+    dir:"rtl", kicker:"هەنگاڤ ب هەنگاڤ", title:"چاوانیا چوونا ژۆر و داگرتنا یاریێ",
+    sub:"ئەڤ هەر ٣ هەنگاڤان ب دروستی بجھ بینە بەریا بکارئینانا هژمارێ.",
+    s1t:"App Store ڤەکە", s1d:"پشتی خواندنا رێنمایێ، هژمارێ ژ خوارێ ببە و بتنێ د ناڤ App Store دا بچە ژۆر.",
+    s2t:"ل ناڤێ یاریێ بگەڕێ", s2d:"ئێکسەر ب رێکا بارێ لێگەڕینێ ل ناڤێ ئەپێ بگەڕێ، پێدڤی ناکەت بچییە د Purchased دا.",
+    s3t:"پشتی داگرتنێ دەربکەڤە", s3d:"ئەگەر یاریێ هێشتا نرخ نیشان دا، بەریا پشتڕاستکرنێ بپشکنە دا پارە ب خەلەتی نەچیت. پشتی داگرتنێ، ژ App Store دەربکەڤە.",
+    accTitle:"هژمارا هەڤپشک یا App Store", lblId:"Apple ID", lblPass:"پاسۆرد", copy:"کۆپی", copied:"هاتە کۆپی!",
+    warn:"ب چ رەنگەکێ نەچە د Settingsـا ئامیرێ خۆ (iCloud). بتنێ د ناڤ App Store دا بچە ژۆر و پشتی داگرتنێ ئێکسەر دەربکەڤە!"
+  },
+  vi:{
+    dir:"ltr", kicker:"LÀM THEO TỪNG BƯỚC", title:"Cách đăng nhập và tải game",
+    sub:"Thực hiện đúng 3 bước sau trước khi sử dụng tài khoản.",
+    s1t:"Mở App Store", s1d:"Sau khi đọc hướng dẫn, lấy tài khoản bên dưới và chỉ đăng nhập trong App Store.",
+    s2t:"Tìm tên game", s2d:"Tìm trực tiếp tên ứng dụng bằng thanh tìm kiếm. Không cần vào mục Đã mua.",
+    s3t:"Tải xong thì đăng xuất", s3d:"Nếu game còn hiển thị giá, hãy kiểm tra trước khi xác nhận để tránh thanh toán ngoài ý muốn. Sau khi tải xong, đăng xuất tài khoản khỏi App Store.",
+    accTitle:"Tài khoản App Store dùng chung", lblId:"Apple ID", lblPass:"Mật khẩu", copy:"Sao chép", copied:"Đã chép!",
+    warn:"TUYỆT ĐỐI KHÔNG ĐĂNG NHẬP VÀO CÀI ĐẶT THIẾT BỊ (ICLOUD). CHỈ ĐĂNG NHẬP TRONG APP STORE VÀ ĐĂNG XUẤT NGAY SAU KHI TẢI!"
+  },
+  tr:{
+    dir:"ltr", kicker:"ADIM ADIM", title:"Giriş yapma ve oyunu indirme",
+    sub:"Hesabı kullanmadan önce şu 3 adımı tam olarak uygulayın.",
+    s1t:"App Store'u açın", s1d:"Rehberi okuduktan sonra aşağıdaki hesabı alın ve yalnızca App Store içinde giriş yapın.",
+    s2t:"Oyun adını arayın", s2d:"Arama çubuğunu kullanarak uygulama adını doğrudan arayın. Satın Alınanlar bölümüne gerek yok.",
+    s3t:"İndirdikten sonra çıkış yapın", s3d:"Oyun hâlâ fiyat gösteriyorsa istenmeyen ödemeleri önlemek için onaylamadan önce kontrol edin. İndirme bitince App Store'dan çıkış yapın.",
+    accTitle:"Paylaşımlı App Store Hesabı", lblId:"Apple ID", lblPass:"Şifre", copy:"Kopyala", copied:"Kopyalandı!",
+    warn:"ASLA CİHAZ AYARLARINA (ICLOUD) GİRİŞ YAPMAYIN. SADECE APP STORE'A GİRİN VE İNDİRİNDEN HEMEN SONRA ÇIKIŞ YAPIN!"
+  },
+  fr:{
+    dir:"ltr", kicker:"ÉTAPE PAR ÉTAPE", title:"Connexion et téléchargement du jeu",
+    sub:"Suivez ces 3 étapes exactes avant d'utiliser le compte.",
+    s1t:"Ouvrir l'App Store", s1d:"Après avoir lu le guide, récupérez le compte ci-dessous et connectez-vous uniquement dans l'App Store.",
+    s2t:"Rechercher le nom du jeu", s2d:"Cherchez directement le nom de l'app via la barre de recherche. Pas besoin d'aller dans Achats.",
+    s3t:"Déconnexion après téléchargement", s3d:"Si un prix s'affiche encore, vérifiez avant de confirmer pour éviter tout paiement imprévu. Une fois téléchargé, déconnectez-vous de l'App Store.",
+    accTitle:"Compte App Store partagé", lblId:"Identifiant Apple", lblPass:"Mot de passe", copy:"Copier", copied:"Copié !",
+    warn:"NE VOUS CONNECTEZ JAMAIS AUX RÉGLAGES DE L'APPAREIL (ICLOUD). CONNECTEZ-VOUS UNIQUEMENT DANS L'APP STORE ET DÉCONNECTEZ-VOUS JUSTE APRÈS !"
+  },
+  de:{
+    dir:"ltr", kicker:"SCHRITT FÜR SCHRITT", title:"Anmelden und Spiel herunterladen",
+    sub:"Führen Sie vor der Nutzung des Accounts genau diese 3 Schritte aus.",
+    s1t:"App Store öffnen", s1d:"Lesen Sie die Anleitung, holen Sie den Account unten und melden Sie sich nur im App Store an.",
+    s2t:"Spielnamen suchen", s2d:"Suchen Sie den App-Namen direkt über die Suchleiste. „Gekauft“ ist nicht nötig.",
+    s3t:"Nach dem Download abmelden", s3d:"Wenn noch ein Preis angezeigt wird, prüfen Sie vor dem Bestätigen, um ungewollte Zahlungen zu vermeiden. Danach im App Store abmelden.",
+    accTitle:"Geteilter App-Store-Account", lblId:"Apple-ID", lblPass:"Passwort", copy:"Kopieren", copied:"Kopiert!",
+    warn:"NIEMALS IN DEN GERÄTEEINSTELLUNGEN (ICLOUD) ANMELDEN. NUR IM APP STORE ANMELDEN UND DIREKT NACH DEM DOWNLOAD ABMELDEN!"
+  },
+  es:{
+    dir:"ltr", kicker:"PASO A PASO", title:"Cómo iniciar sesión y descargar el juego",
+    sub:"Sigue estos 3 pasos exactos antes de usar la cuenta.",
+    s1t:"Abre la App Store", s1d:"Tras leer la guía, toma la cuenta de abajo e inicia sesión solo dentro de la App Store.",
+    s2t:"Busca el nombre del juego", s2d:"Busca directamente el nombre de la app en la barra de búsqueda. No hace falta ir a Comprado.",
+    s3t:"Cierra sesión al descargar", s3d:"Si el juego aún muestra un precio, revisa antes de confirmar para evitar cargos no deseados. Al terminar, cierra sesión en App Store.",
+    accTitle:"Cuenta compartida de App Store", lblId:"Apple ID", lblPass:"Contraseña", copy:"Copiar", copied:"¡Copiado!",
+    warn:"NUNCA INICIES SESIÓN EN AJUSTES DEL DISPOSITIVO (ICLOUD). INICIA SESIÓN SOLO EN APP STORE Y CIÉRRALA AL TERMINAR!"
+  },
+  ru:{
+    dir:"ltr", kicker:"ШАГ ЗА ШАГОМ", title:"Вход и загрузка игры",
+    sub:"Выполните эти 3 шага перед использованием аккаунта.",
+    s1t:"Откройте App Store", s1d:"Прочитав инструкцию, возьмите аккаунт ниже и входите только внутри App Store.",
+    s2t:"Найдите название игры", s2d:"Введите название приложения напрямую в строке поиска. В «Покупки» заходить не нужно.",
+    s3t:"Выйдите после загрузки", s3d:"Если у игры всё ещё указана цена, проверьте перед подтверждением, чтобы избежать случайной оплаты. После загрузки выйдите из аккаунта в App Store.",
+    accTitle:"Общий аккаунт App Store", lblId:"Apple ID", lblPass:"Пароль", copy:"Копировать", copied:"Скопировано!",
+    warn:"НИКОГДА НЕ ВХОДИТЕ В НАСТРОЙКАХ УСТРОЙСТВА (ICLOUD). ВХОДИТЕ ТОЛЬКО В APP STORE И СРАЗУ ВЫХОДИТЕ ПОСЛЕ ЗАГРУЗКИ!"
+  },
+  ja:{
+    dir:"ltr", kicker:"ステップガイド", title:"サインインとゲームのダウンロード方法",
+    sub:"アカウントを使う前に、以下の3つの手順を正確に行ってください。",
+    s1t:"App Storeを開く", s1d:"ガイドを読んだら下のアカウントを使い、App Store内のみでサインインしてください。",
+    s2t:"ゲーム名を検索", s2d:"検索バーからアプリ名を直接検索してください。「購入済み」を開く必要はありません。",
+    s3t:"ダウンロード後にサインアウト", s3d:"価格が表示されている場合は、意図しない請求を防ぐため確定前に確認してください。完了後、App Storeからサインアウトしてください。",
+    accTitle:"共有App Storeアカウント", lblId:"Apple ID", lblPass:"パスワード", copy:"コピー", copied:"コピー完了！",
+    warn:"端末設定（iCLOUD）には絶対にサインインしないでください。APP STOREのみにサインインし、ダウンロード後すぐにサインアウトしてください！"
+  }
+};
+
+function toggleLangDropdown(e){
+  e.stopPropagation();
+  document.getElementById("lang-dropdown").classList.toggle("show");
+}
+
+document.addEventListener("click",()=>{
+  document.getElementById("lang-dropdown").classList.remove("show");
+});
+
+function copyText(id, btn){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const lang = localStorage.getItem(LANG_KEY) || "en";
+  const d = T[lang] || T.en;
+  navigator.clipboard.writeText(el.textContent.trim()).then(()=>{
+    const prev = btn.textContent;
+    btn.textContent = d.copied;
+    setTimeout(()=>{ btn.textContent = d.copy || prev; }, 1400);
+  });
+}
+
+function applyLang(lang){
+  const d = T[lang] || T.en;
+  localStorage.setItem(LANG_KEY, lang);
+  document.documentElement.lang = lang;
+  document.documentElement.dir = d.dir;
+  document.getElementById("lang-current").textContent = LANG_LABELS[lang] || "🇬🇧 EN ⌄";
+  document.getElementById("lang-dropdown").classList.remove("show");
+
+  document.getElementById("kicker-txt").textContent = d.kicker;
+  document.getElementById("main-title").textContent = d.title;
+  document.getElementById("main-sub").textContent = d.sub;
+  document.getElementById("s1-title").textContent = d.s1t;
+  document.getElementById("s1-desc").textContent = d.s1d;
+  document.getElementById("s2-title").textContent = d.s2t;
+  document.getElementById("s2-desc").textContent = d.s2d;
+  document.getElementById("s3-title").textContent = d.s3t;
+  document.getElementById("s3-desc").textContent = d.s3d;
+  document.getElementById("acc-box-title").textContent = d.accTitle;
+  document.getElementById("lbl-id").textContent = d.lblId;
+  document.getElementById("lbl-pass").textContent = d.lblPass;
+  document.getElementById("btn-copy-1").textContent = d.copy;
+  document.getElementById("btn-copy-2").textContent = d.copy;
+  document.getElementById("warn-txt").textContent = d.warn;
+}
+
+applyLang(localStorage.getItem(LANG_KEY) || "en");
+</script>
+</body>
+</html>
