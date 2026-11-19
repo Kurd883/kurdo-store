@@ -1,658 +1,452 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" id="html-root">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minecraft iOS - Detailed Review & How to Download on iPhone & iPad</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: #ffffff;
-            color: #111827;
-            overflow-x: hidden;
-        }
-        .topbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 16px;
-            background: #ffffff;
-            border-bottom: 1px solid #f1f5f9;
-            position: sticky;
-            top: 0;
-            z-index: 30;
-        }
-        .left-group {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            position: relative;
-        }
-        .menu-btn {
-            background: none;
-            border: none;
-            font-size: 19px;
-            cursor: pointer;
-            color: #111827;
-            padding: 4px 6px;
-        }
-        .brand {
-            font-weight: 800;
-            font-size: 20px;
-            color: #f43f5e;
-            letter-spacing: -0.5px;
-            text-decoration: none;
-        }
-        .lang-wrap {
-            position: relative;
-        }
-        .lang-pill {
-            font-size: 12px;
-            font-weight: 700;
-            padding: 5px 11px;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            background: #f8fafc;
-            cursor: pointer;
-            color: #111827;
-        }
-        .lang-dropdown {
-            display: none;
-            position: fixed;
-            top: 56px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 215px;
-            max-height: 290px;
-            overflow-y: auto;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
-            padding: 6px;
-            z-index: 60;
-        }
-        .lang-dropdown.show {
-            display: block;
-        }
-        .lang-option {
-            width: 100%;
-            text-align: left;
-            background: none;
-            border: none;
-            padding: 9px 12px;
-            border-radius: 8px;
-            font-size: 13px;
-            color: #1f2937;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .lang-option:hover {
-            background: #f1f5f9;
-        }
-        .side-drawer {
-            display: none;
-            position: fixed;
-            top: 56px;
-            left: 16px;
-            right: 16px;
-            max-width: 300px;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
-            padding: 10px;
-            z-index: 60;
-        }
-        .side-drawer.show {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .drawer-link {
-            display: block;
-            padding: 11px 14px;
-            border-radius: 9px;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 700;
-            color: #111827;
-            background: #f8fafc;
-            border: 1px solid #f1f5f9;
-            text-align: start;
-        }
-        .drawer-link:hover {
-            background: #f1f5f9;
-        }
-        .icons {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            font-size: 17px;
-            color: #1e293b;
-        }
-        .icon-link {
-            text-decoration: none;
-            color: #1e293b;
-        }
-        .container {
-            max-width: 480px;
-            margin: 0 auto;
-            padding: 0 16px 32px;
-        }
-        .banner {
-            width: 100%;
-            height: 210px;
-            object-fit: cover;
-            display: block;
-            margin: 12px 0 18px;
-            border-radius: 4px;
-        }
-        h1 {
-            font-size: 26px;
-            line-height: 1.25;
-            font-weight: 700;
-            color: #111827;
-            margin-bottom: 18px;
-        }
-        .callout-blue {
-            background: #f8fafc;
-            border-left: 4px solid #1d4ed8;
-            border-radius: 0 12px 12px 0;
-            padding: 18px 16px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-            font-size: 15px;
-            line-height: 1.65;
-            color: #1f2937;
-        }
-        .callout-blue p {
-            margin-bottom: 14px;
-        }
-        .callout-blue p:last-child {
-            margin-bottom: 0;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minecraft iOS - Detailed Review & How to Download on iPhone & iPad</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#fff;color:#111827;overflow-x:hidden}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#fff;border-bottom:1px solid #f1f5f9;position:sticky;top:0;z-index:30}
+.left-group{display:flex;align-items:center;gap:14px;position:relative}
+.menu-btn{background:none;border:none;font-size:19px;cursor:pointer;color:#111827;padding:4px 6px}
+.brand{font-weight:800;font-size:20px;color:#f43f5e;letter-spacing:-.5px;text-decoration:none}
+.lang-wrap{position:relative}
+.lang-pill{font-size:12px;font-weight:700;padding:4px 10px;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc;cursor:pointer;color:#111827}
+.lang-dropdown{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:6px;width:185px;max-height:260px;overflow-y:auto;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 10px 25px rgba(0,0,0,.12);z-index:50}
+.lang-dropdown.show{display:block}
+.lang-option{width:100%;text-align:left;background:none;border:none;padding:8px 12px;font-size:13px;color:#1f2937;cursor:pointer;display:block}
+.lang-option:hover{background:#f1f5f9}
+.side-drawer{display:none;position:fixed;top:56px;left:16px;right:16px;max-width:300px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.16);padding:10px;z-index:60}
+.side-drawer.show{display:flex;flex-direction:column;gap:8px}
+.drawer-link{display:block;padding:11px 14px;border-radius:9px;text-decoration:none;font-size:13px;font-weight:700;color:#111827;background:#f8fafc;border:1px solid #f1f5f9;text-align:start}
+.drawer-link:hover{background:#f1f5f9}
+.icons{display:flex;align-items:center;gap:14px;font-size:17px;color:#1e293b}
+.icon-link{text-decoration:none;color:#1e293b}
+.container{max-width:480px;margin:0 auto;padding:0 16px 32px}
+.banner{width:100%;height:210px;object-fit:cover;display:block;margin:12px 0 18px;border-radius:4px}
+h1{font-size:26px;line-height:1.25;font-weight:700;color:#111827;margin-bottom:18px}
+h2{font-size:21px;font-weight:700;line-height:1.35;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+p,li{font-size:15px;line-height:1.65;color:#1f2937}
+.callout-blue{background:#f8fafc;border-left:4px solid #1d4ed8;border-radius:0 12px 12px 0;padding:18px 16px;box-shadow:0 2px 10px rgba(0,0,0,.04);margin-bottom:20px}
+.callout-blue p{margin-bottom:14px}
+.callout-blue p:last-child{margin-bottom:0}
+.tip-box{background:#f8fafc;border-left:4px solid #16a34a;border-radius:0 12px 12px 0;padding:15px 16px;margin-bottom:24px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+ul{list-style:disc;padding-inline-start:20px;margin-bottom:16px}
+li{margin-bottom:10px}
+img{width:100%;height:215px;object-fit:cover;border-radius:4px;display:block;margin-bottom:16px}
+section{margin-bottom:32px}
+</style>
 </head>
 <body>
 
-    <header class="topbar">
-        <div class="left-group">
-            <button class="menu-btn" onclick="toggleDrawer(event)" aria-label="Menu">☰</button>
-            <a href="#" class="brand">Kurd0o</a>
+<header class="topbar">
+  <div class="left-group">
+    <button class="menu-btn" onclick="toggleDrawer(event)" aria-label="Menu">☰</button>
+    <a href="#" class="brand">Kurd0o</a>
 
-            <div id="side-drawer" class="side-drawer" onclick="event.stopPropagation()">
-                <a id="drawer-buy" class="drawer-link" href="https://kurd3.github.io/KurdoAccounts/" target="_blank">Buy Apple Accounts</a>
-                <a id="drawer-contact" class="drawer-link" href="https://t.me/yousifmziri" target="_blank">Contact & Inquiries</a>
-            </div>
-        </div>
+    <div id="side-drawer" class="side-drawer" onclick="event.stopPropagation()">
+      <a id="drawer-buy" class="drawer-link" href="https://kurd3.github.io/KurdoAccounts/" target="_blank">Buy Apple Accounts</a>
+      <a id="drawer-contact" class="drawer-link" href="https://t.me/yousifmziri" target="_blank">Contact & Inquiries</a>
+    </div>
+  </div>
 
-        <div class="lang-wrap">
-            <button class="lang-pill" onclick="toggleLangDropdown(event)" id="lang-current">🇬🇧 EN ⌄</button>
-            <div id="lang-dropdown" class="lang-dropdown" onclick="event.stopPropagation()">
-                <button class="lang-option" onclick="applyLang('en', '🇬🇧 EN ⌄')">🇬🇧 English</button>
-                <button class="lang-option" onclick="applyLang('ar', '🇸🇦 AR ⌄')">🇸🇦 العربية</button>
-                <button class="lang-option" onclick="applyLang('ku', 'KU ⌄')">کوردی (Badînî)</button>
-                <button class="lang-option" onclick="applyLang('vi', '🇻🇳 VI ⌄')">🇻🇳 Tiếng Việt</button>
-                <button class="lang-option" onclick="applyLang('tr', '🇹🇷 TR ⌄')">🇹🇷 Türkçe</button>
-                <button class="lang-option" onclick="applyLang('fr', '🇫🇷 FR ⌄')">🇫🇷 Français</button>
-                <button class="lang-option" onclick="applyLang('de', '🇩🇪 DE ⌄')">🇩🇪 Deutsch</button>
-                <button class="lang-option" onclick="applyLang('es', '🇪🇸 ES ⌄')">🇪🇸 Español</button>
-                <button class="lang-option" onclick="applyLang('ru', '🇷🇺 RU ⌄')">🇷🇺 Русский</button>
-                <button class="lang-option" onclick="applyLang('ja', '🇯🇵 JA ⌄')">🇯🇵 日本語</button>
-            </div>
-        </div>
+  <div class="lang-wrap">
+    <button class="lang-pill" onclick="toggleLangDropdown(event)" id="lang-current">🇬🇧 EN ⌄</button>
+    <div id="lang-dropdown" class="lang-dropdown" onclick="event.stopPropagation()">
+      <button class="lang-option" onclick="applyLang('en','🇬🇧 EN ⌄')">English</button>
+      <button class="lang-option" onclick="applyLang('ar','🇸🇦 AR ⌄')">العربية</button>
+      <button class="lang-option" onclick="applyLang('ku','KU ⌄')">کوردی (Badînî)</button>
+      <button class="lang-option" onclick="applyLang('vi','🇻🇳 VI ⌄')">Tiếng Việt</button>
+      <button class="lang-option" onclick="applyLang('tr','🇹🇷 TR ⌄')">Türkçe</button>
+      <button class="lang-option" onclick="applyLang('fr','🇫🇷 FR ⌄')">Français</button>
+      <button class="lang-option" onclick="applyLang('de','🇩🇪 DE ⌄')">Deutsch</button>
+      <button class="lang-option" onclick="applyLang('es','🇪🇸 ES ⌄')">Español</button>
+      <button class="lang-option" onclick="applyLang('ru','🇷🇺 RU ⌄')">Русский</button>
+      <button class="lang-option" onclick="applyLang('ja','🇯🇵 JA ⌄')">日本語</button>
+    </div>
+  </div>
 
-        <div class="icons">
-            <a class="icon-link" href="https://t.me/yousifmziri" target="_blank" title="Telegram">👤</a>
-            <a class="icon-link" href="https://kurd3.github.io/KurdoAccounts/" target="_blank" title="Accounts">🛒</a>
-            <span>🔍</span>
-        </div>
-    </header>
+  <div class="icons">
+    <a class="icon-link" href="https://t.me/yousifmziri" target="_blank" title="Telegram">👤</a>
+    <a class="icon-link" href="https://kurd3.github.io/KurdoAccounts/" target="_blank" title="Accounts">🛒</a>
+    <span>🔍</span>
+  </div>
+</header>
 
-    <main class="container">
-        <img class="banner" src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=900&q=75" alt="Minecraft iOS">
+<main class="container">
 
-        <h1 id="page-h1">Minecraft iOS – Detailed Review &amp; How to Download on iPhone &amp; iPad</h1>
+  <img class="banner" src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=900&q=75" alt="Minecraft iOS">
 
-        <div class="callout-blue">
-            <p id="p-1">Some games you download, play for a few days, and forget. Others keep pulling you back time after time even after hundreds of hours.</p>
-            <p id="p-2"><strong>Minecraft iOS</strong> is one of them.</p>
-            <p id="p-3">Without needing hyper-realistic graphics or over-the-top effects, Minecraft stands out with <strong>freedom, creativity, and a vast world</strong> to explore.</p>
-        </div>
-    </main>
+  <h1 id="page-h1">Minecraft iOS – Detailed Review & How to Download on iPhone & iPad</h1>
 
-    <script>
-        const TEXTS = {
-            en: {
-                dir: "ltr",
-                buy: "Buy Apple Accounts",
-                contact: "Contact & Inquiries",
-                h1: "Minecraft iOS – Detailed Review & How to Download on iPhone & iPad",
-                p1: "Some games you download, play for a few days, and forget. Others keep pulling you back time after time even after hundreds of hours.",
-                p2: "<strong>Minecraft iOS</strong> is one of them.",
-                p3: "Without needing hyper-realistic graphics or over-the-top effects, Minecraft stands out with <strong>freedom, creativity, and a vast world</strong> to explore."
-            },
-            ar: {
-                dir: "rtl",
-                buy: "لشراء حسابات أبل",
-                contact: "للتواصل واستفسار",
-                h1: "ماينكرافت iOS – مراجعة تفصيلية وطريقة التحميل على iPhone و iPad",
-                p1: "هناك ألعاب تحملها وتلعبها لأيام ثم تنساها، وهناك ألعاب تعود إليها مراراً وتكراراً رغم قضاء مئات الساعات في تجربتها.",
-                p2: "<strong>ماينكرافت iOS</strong> واحدة من تلك الألعاب.",
-                p3: "دون الحاجة إلى رسوميات فائقة الواقعية أو مؤثرات مبالغ فيها، تحافظ ماينكرافت على جاذبيتها بفضل <strong>الحرية والإبداع وعالم واسع</strong> للاستكشاف."
-            },
-            ku: {
-                dir: "rtl",
-                buy: "بۆ کڕینا هژمارێن Apple",
-                contact: "بۆ پەیوەندی و پسیارکرنێ",
-                h1: "Minecraft iOS – شرۆڤەیا هویر و چاوانیا داگرتنێ ل iPhone و iPad",
-                p1: "هندەك یاری هەنە پشتی چەند رۆژان ژ بیردچن، بەلێ هندەك یاری هەنە سەرەڕای سەدەها دەمژمێران هەر دزڤڕییێ ڤە.",
-                p2: "<strong>Minecraft iOS</strong> ئێك ژ وان یارییانە.",
-                p3: "بێی پێدڤی ب گرافیکێن زێدە ئاڵۆز بیت، ماینكرافت ب <strong>ئازادی، داهێنان و جیهانەکا بەرفرەهـ</strong> بۆ گەڕیانێ سەرنجا هەمییان رادکێشیت."
-            },
-            vi: {
-                dir: "ltr",
-                buy: "Mua tài khoản Apple",
-                contact: "Liên hệ & giải đáp",
-                h1: "Minecraft iOS – Review Chi Tiết, Cách Tải Trên iPhone & iPad",
-                p1: "Có những tựa game bạn tải về, chơi vài ngày rồi quên mất. Nhưng cũng có những trò chơi khiến bạn quay lại hết lần này đến lần khác dù đã dành hàng trăm giờ trải nghiệm.",
-                p2: "<strong>Minecraft iOS</strong> chính là một trong số đó.",
-                p3: "Không cần đồ họa siêu thực hay những hiệu ứng quá hoành tráng, Minecraft vẫn tạo nên sức hút riêng nhờ <strong>sự tự do, khả năng sáng tạo và một thế giới rộng lớn</strong> để khám phá."
-            },
-            tr: {
-                dir: "ltr",
-                buy: "Apple Hesapları Satın Al",
-                contact: "İletişim ve Soru",
-                h1: "Minecraft iOS – Detaylı İnceleme ve iPhone & iPad İndirme Rehberi",
-                p1: "Bazı oyunları indirip birkaç gün oynar ve unutursunuz; bazıları ise yüzlerce saat sonra bile sizi tekrar tekrar geri getirir.",
-                p2: "<strong>Minecraft iOS</strong> tam olarak bunlardan biridir.",
-                p3: "Abartılı efektlere veya gerçeküstü grafiklere gerek kalmadan Minecraft, <strong>özgürlüğü, yaratıcılığı ve keşfedilecek geniş dünyasıyla</strong> öne çıkar."
-            },
-            fr: {
-                dir: "ltr",
-                buy: "Acheter des comptes Apple",
-                contact: "Contact et questions",
-                h1: "Minecraft iOS – Avis Détaillé et Téléchargement sur iPhone & iPad",
-                p1: "Certains jeux s'oublient après quelques jours, tandis que d'autres vous rappellent encore et encore après des centaines d'heures.",
-                p2: "<strong>Minecraft iOS</strong> en fait partie.",
-                p3: "Sans graphismes irréalistes ni effets excessifs, Minecraft séduit par sa <strong>liberté, sa créativité et son vaste monde</strong> à explorer."
-            },
-            de: {
-                dir: "ltr",
-                buy: "Apple-Accounts kaufen",
-                contact: "Kontakt & Fragen",
-                h1: "Minecraft iOS – Ausführliches Review & Download auf iPhone & iPad",
-                p1: "Manche Spiele vergisst man nach wenigen Tagen, andere spielt man auch nach hunderten Stunden immer wieder gern.",
-                p2: "<strong>Minecraft iOS</strong> gehört genau dazu.",
-                p3: "Ganz ohne überladene Effekte begeistert Minecraft durch <strong>Freiheit, Kreativität und eine riesige Welt</strong> zum Entdecken."
-            },
-            es: {
-                dir: "ltr",
-                buy: "Comprar cuentas de Apple",
-                contact: "Contacto y consultas",
-                h1: "Minecraft iOS – Reseña Detallada y Cómo Descargar en iPhone y iPad",
-                p1: "Hay juegos que olvidas en unos días y otros a los que vuelves una y otra vez tras cientos de horas.",
-                p2: "<strong>Minecraft iOS</strong> es uno de ellos.",
-                p3: "Sin gráficos irreales ni efectos exagerados, Minecraft destaca por su <strong>libertad, creatividad y un mundo enorme</strong> por explorar."
-            },
-            ru: {
-                dir: "ltr",
-                buy: "Купить аккаунты Apple",
-                contact: "Связь и вопросы",
-                h1: "Minecraft iOS – Подробный обзор и загрузка на iPhone и iPad",
-                p1: "Одни игры забываются через пару дней, а к другим возвращаешься снова и снова даже после сотен часов.",
-                p2: "<strong>Minecraft iOS</strong> — одна из таких игр.",
-                p3: "Без лишних эффектов Minecraft привлекает <strong>свободой, творчеством и огромным миром</strong> для исследования."
-            },
-            ja: {
-                dir: "ltr",
-                buy: "Appleアカウントを購入",
-                contact: "お問い合わせ・質問",
-                h1: "Minecraft iOS – 詳細レビューとiPhone・iPadでのダウンロード方法",
-                p1: "数日で忘れてしまうゲームもあれば、何百時間遊んでも何度も戻ってきたくなるゲームもあります。",
-                p2: "<strong>Minecraft iOS</strong> はまさにそんな作品です。",
-                p3: "派手な演出がなくても、<strong>自由度・創造性・広大な世界</strong>によって多くの人を惹きつけます。"
-            }
-        };
+  <div class="callout-blue">
+    <p id="p-1">Some games you download, play for a few days, and forget. Others keep pulling you back time after time even after hundreds of hours.</p>
+    <p id="p-2"><strong>Minecraft iOS</strong> is one of them.</p>
+    <p id="p-3">Without needing hyper-realistic graphics or over-the-top effects, Minecraft stands out with <strong>freedom, creativity, and a vast world</strong> to explore.</p>
+  </div>
 
-        function toggleLangDropdown(e) {
-            e.stopPropagation();
-            document.getElementById("side-drawer").classList.remove("show");
-            document.getElementById("lang-dropdown").classList.toggle("show");
-        }
+  <section id="sec-continuation-2">
+    <h2><span>🎮</span><span id="c2-title-text">What Makes Minecraft iOS So Engaging?</span></h2>
 
-        function toggleDrawer(e) {
-            e.stopPropagation();
-            document.getElementById("lang-dropdown").classList.remove("show");
-            document.getElementById("side-drawer").classList.toggle("show");
-        }
+    <img src="https://images.pexels.com/photos/7915357/pexels-photo-7915357.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Minecraft gameplay">
 
-        function applyLang(code, label) {
-            const t = TEXTS[code] || TEXTS.en;
-            document.getElementById("html-root").setAttribute("lang", code);
-            document.getElementById("html-root").setAttribute("dir", t.dir);
-            document.getElementById("lang-current").innerText = label;
-            document.getElementById("drawer-buy").innerText = t.buy;
-            document.getElementById("drawer-contact").innerText = t.contact;
-            document.getElementById("page-h1").innerText = t.h1;
-            document.getElementById("p-1").innerHTML = t.p1;
-            document.getElementById("p-2").innerHTML = t.p2;
-            document.getElementById("p-3").innerHTML = t.p3;
-            document.getElementById("lang-dropdown").classList.remove("show");
-        }
+    <p id="c2-p1">Minecraft on iPhone and iPad brings the familiar Minecraft sandbox experience right to your mobile device.</p>
 
-        document.addEventListener("click", () => {
-            document.getElementById("lang-dropdown").classList.remove("show");
-            document.getElementById("side-drawer").classList.remove("show");
-        });
-    </script>
+    <p id="c2-p2">The best part of the game is that it <strong>does not force players down a single fixed path</strong>. As soon as you create a world, you decide your own adventure.</p>
+
+    <ul>
+      <li id="c2-li1">🌲 Want to build a house? Start chopping trees and gathering resources.</li>
+      <li id="c2-li2">🗺️ Want to explore? Gear up and hit the road.</li>
+      <li id="c2-li3">💎 Want to find diamonds? Craft a pickaxe and start mining deep underground.</li>
+    </ul>
+
+    <p id="c2-p3">Or if you just want to relax, you can build a cozy house by the coast, run a farm, and enjoy the Minecraft world your own way.</p>
+  </section>
+
+  <section id="sec-continuation-3">
+    <h2><span>🏕️</span><span id="c3-surv-title">Survival – Survival and Exploration</span></h2>
+
+    <p id="c3-surv-p1"><strong>Survival</strong> is the best mode if you want to experience the full adventure side of Minecraft. At the start, you have almost nothing. You gather wood, find food, mine resources, and craft your first tools.</p>
+
+    <p id="c3-surv-p2">When night falls, things get more dangerous. Zombies, Skeletons, Spiders, and especially Creepers can spawn around you, so securing a safe shelter on day one is essential.</p>
+
+    <div class="tip-box">
+      <p id="c3-tip-box">🔥 <strong>Beginner Tip:</strong> Don't spend your entire first day wandering too far. Prioritize wood, food, tools, and shelter before nightfall.</p>
+    </div>
+
+    <h2><span>🏰</span><span id="c3-crea-title">Creative – Limitless Building</span></h2>
+
+    <p id="c3-crea-p1">If Survival is about surviving the wild, <strong>Creative</strong> is like a massive sandbox for building. From simple blocks, players can create:</p>
+
+    <ul>
+      <li id="c3-crea-li1">🏙️ Modern houses, villas, and cities.</li>
+      <li id="c3-crea-li2">🏰 Giant castles and fantasy builds.</li>
+    </ul>
+  </section>
+
+</main>
+
+<script>
+const LANG_KEY = "site_language";
+const LANG_LABELS = {
+  en:"🇬🇧 EN ⌄", ar:"🇸🇦 AR ⌄", ku:"KU ⌄", vi:"🇻🇳 VI ⌄",
+  tr:"🇹🇷 TR ⌄", fr:"🇫🇷 FR ⌄", de:"🇩🇪 DE ⌄",
+  es:"🇪🇸 ES ⌄", ru:"🇷🇺 RU ⌄", ja:"🇯🇵 JA ⌄"
+};
+
+const TEXTS = {
+en:{
+dir:"ltr",
+buy:"Buy Apple Accounts",
+contact:"Contact & Inquiries",
+h1:"Minecraft iOS – Detailed Review & How to Download on iPhone & iPad",
+p1:"Some games you download, play for a few days, and forget. Others keep pulling you back time after time even after hundreds of hours.",
+p2:"<strong>Minecraft iOS</strong> is one of them.",
+p3:"Without needing hyper-realistic graphics or over-the-top effects, Minecraft stands out with <strong>freedom, creativity, and a vast world</strong> to explore.",
+c2title:"What Makes Minecraft iOS So Engaging?",
+c2p1:"Minecraft on iPhone and iPad brings the familiar Minecraft sandbox experience right to your mobile device.",
+c2p2:"The best part of the game is that it <strong>does not force players down a single fixed path</strong>. As soon as you create a world, you decide your own adventure.",
+c2li1:"🌲 Want to build a house? Start chopping trees and gathering resources.",
+c2li2:"🗺️ Want to explore? Gear up and hit the road.",
+c2li3:"💎 Want to find diamonds? Craft a pickaxe and start mining deep underground.",
+c2p3:"Or if you just want to relax, you can build a cozy house by the coast, run a farm, and enjoy the Minecraft world your own way.",
+survTitle:"Survival – Survival and Exploration",
+survP1:"<strong>Survival</strong> is the best mode if you want to experience the full adventure side of Minecraft. At the start, you have almost nothing. You gather wood, find food, mine resources, and craft your first tools.",
+survP2:"When night falls, things get more dangerous. Zombies, Skeletons, Spiders, and especially Creepers can spawn around you, so securing a safe shelter on day one is essential.",
+tipBox:"🔥 <strong>Beginner Tip:</strong> Don't spend your entire first day wandering too far. Prioritize wood, food, tools, and shelter before nightfall.",
+creaTitle:"Creative – Limitless Building",
+creaP1:"If Survival is about surviving the wild, <strong>Creative</strong> is like a massive sandbox for building. From simple blocks, players can create:",
+creaLi1:"🏙️ Modern houses, villas, and cities.",
+creaLi2:"🏰 Giant castles and fantasy builds."
+},
+
+ar:{
+dir:"rtl",
+buy:"لشراء حسابات أبل",
+contact:"للتواصل واستفسار",
+h1:"ماينكرافت iOS – مراجعة تفصيلية وطريقة التحميل على iPhone و iPad",
+p1:"هناك ألعاب تحملها وتلعبها لأيام ثم تنساها، وهناك ألعاب تعود إليها مراراً وتكراراً رغم قضاء مئات الساعات في تجربتها.",
+p2:"<strong>ماينكرافت iOS</strong> واحدة من تلك الألعاب.",
+p3:"دون الحاجة إلى رسوميات فائقة الواقعية أو مؤثرات مبالغ فيها، تحافظ ماينكرافت على جاذبيتها بفضل <strong>الحرية والإبداع وعالم واسع</strong> للاستكشاف.",
+c2title:"ما الذي يجعل ماينكرافت iOS ممتعة ومميزة؟",
+c2p1:"تقدم ماينكرافت على iPhone و iPad تجربة اللعب الحر (Sandbox) المألوفة مباشرة على هاتفك.",
+c2p2:"أكثر ما يميز اللعبة أنها <strong>لا تجبر اللاعب على مسار واحد ثابت</strong>؛ فبمجرد إنشاء العالم يمكنك تحديد مغامرتك بنفسك.",
+c2li1:"🌲 تريد بناء منزل؟ ابدأ بقطع الأشجار وجمع الموارد.",
+c2li2:"🗺️ تريد الاستكشاف؟ جهّز معداتك وانطلق في الرحلة.",
+c2li3:"💎 تريد العثور على الألماس؟ اصنع معولاً وابدأ بالحفر عميقاً تحت الأرض.",
+c2p3:"أو إذا كنت تفضل الاسترخاء، يمكنك بناء منزل قرب البحر وإنشاء مزرعة والاستمتاع بعالم ماينكرافت بطريقتك الخاصة.",
+survTitle:"Survival – البقاء والاستكشاف",
+survP1:"وضع <strong>Survival</strong> هو الأنسب إذا أردت عيش روح المغامرة الكاملة في ماينكرافت؛ تبدأ تقريباً بلا شيء وتجمع الخشب والطعام وتستخرج الموارد وتصنع أدواتك الأولى.",
+survP2:"عندما يحل الليل تصبح الأمور أخطر؛ فقد تظهر الزومبي والهياكل العظمية والعناكب وخاصة الكريبر حولك، لذلك من المهم تأمين مأوى آمن في اليوم الأول.",
+tipBox:"🔥 <strong>نصيحة للمبتدئين:</strong> لا تقضِ يومك الأول كاملاً في الابتعاد كثيراً؛ اجعل الأولوية للخشب والطعام والأدوات والمأوى قبل حلول الظلام.",
+creaTitle:"Creative – حرية البناء والإبداع",
+creaP1:"إذا كان Survival مغامرة للبقاء، فإن <strong>Creative</strong> مساحة إبداع واسعة للبناء؛ فمن الكتل البسيطة يمكن للاعب إنشاء:",
+creaLi1:"🏙️ منازل حديثة وفيلات ومدناً.",
+creaLi2:"🏰 قلاعاً ضخمة ومبانٍ خيالية."
+},
+
+ku:{
+dir:"rtl",
+buy:"بۆ کڕینا هژمارێن Apple",
+contact:"بۆ پەیوەندی و پسیارکرنێ",
+h1:"Minecraft iOS – شرۆڤەیا هویر و چاوانیا داگرتنێ ل iPhone و iPad",
+p1:"هندەك یاری هەنە پشتی چەند رۆژان ژ بیردچن، بەلێ هندەك یاری هەنە سەرەڕای سەدەها دەمژمێران هەر دزڤڕییێ ڤە.",
+p2:"<strong>Minecraft iOS</strong> ئێك ژ وان یارییانە.",
+p3:"بێی پێدڤی ب گرافیکێن زێدە ئاڵۆز بیت، ماینكرافت ب <strong>ئازادی، داهێنان و جیهانەکا بەرفرەهـ</strong> بۆ گەڕیانێ سەرنجا هەمییان رادکێشیت.",
+c2title:"چ دکەت کو Minecraft iOS هندی خۆش و سەرنجراکێش بیت؟",
+c2p1:"ماینكرافت ل iPhone و iPad ئەزموونا ئازاد یا ماینكرافتێ راستەوخۆ دئینیتە سەر مۆبایلا تە.",
+c2p2:"تشتێ هەرە تایبەت ئەوە کو <strong>یاریزانێ ناچار ناکەت ب رێکەکا دیاریکری بچیت</strong>؛ هەر دەمێ جیهانێ چێکەی تو ب خۆ سەرکێشیا خۆ دیار دکەی.",
+c2li1:"🌲 دڤێت خانیەکێ چێکەی؟ دەست ب بڕینا داران و کۆمکرنا کەرەستان بکە.",
+c2li2:"🗺️ دڤێت بگەڕیی؟ خۆ ئامادە بکە و بکەڤە رێ.",
+c2li3:"💎 دڤێت ئەڵماسێ ببینی؟ تێڤرەکێ چێکە و ب کویراتی د ناڤ ئەردی دا هەڵکۆڵە.",
+c2p3:"یان ئەگەر تە بڤێت بهێنڤەدانا خۆ ببەی، دشیێ خانیەکێ ل سەر لێڤا دەریایێ چێکەی، زەڤیەکێ دروست بکەی و ب شێوازێ خۆ چێژێ ژ جیهانا ماینكرافتێ ببینی.",
+survTitle:"Survival – مانەوە و گەڕیان",
+survP1:"شێوازێ <strong>Survival</strong> هەرە گونجایە ئەگەر تە بڤێت تاما سەرکێشیا راستەقینە یا ماینكرافتێ ببینی؛ ل دەستپێکێ تە چ نینە و تو داران کۆم دکەی، خوارنێ دبینی، کانزایان دەردێخی و ئامێرێن خۆ یێن ئێکێ چێدکەی.",
+survP2:"دەمێ شەڤ دهێت تشت مەترسیدارتر دبن؛ زۆمبی، سکیلێتن، جاڵجاڵۆك و ب تایبەت کریپەر ل دەوروبەرا تە پەیدا دبن، لەوما چێکرنا جهەکێ پاراستی د رۆژا ئێکێ دا گەلەك گرنگە.",
+tipBox:"🔥 <strong>شیرەت بۆ دەستپێکەران:</strong> هەمی رۆژا ئێکێ ب دویرکەفتنا زێدە ڤە نەبۆرینە؛ بەری شەڤ بهێت دار، خوارن، ئامێر و جهێ ڤەحەواندنێ د پێشینەیێ دا بهێلە.",
+creaTitle:"Creative – ئازادیا ئاڤاکرنێ",
+creaP1:"ئەگەر Survival سەرکێشیا مانەوەیێ بیت، <strong>Creative</strong> گۆڕەپانەکا مەزنە بۆ ئاڤاکرنێ؛ ژ بلۆکێن سادە یاریزان دشیێت چێبکەت:",
+creaLi1:"🏙️ خانیێن مودێرن، ڤێلا و باژێڕان.",
+creaLi2:"🏰 قەڵایێن مەزن و ئاڤاهیێن خەیالی."
+},
+
+vi:{
+dir:"ltr",
+buy:"Mua tài khoản Apple",
+contact:"Liên hệ & giải đáp",
+h1:"Minecraft iOS – Review Chi Tiết, Cách Tải Trên iPhone & iPad",
+p1:"Có những tựa game bạn tải về, chơi vài ngày rồi quên mất. Nhưng cũng có những trò chơi khiến bạn quay lại hết lần này đến lần khác dù đã dành hàng trăm giờ trải nghiệm.",
+p2:"<strong>Minecraft iOS</strong> chính là một trong số đó.",
+p3:"Không cần đồ họa siêu thực hay những hiệu ứng quá hoành tráng, Minecraft vẫn tạo nên sức hút riêng nhờ <strong>sự tự do, khả năng sáng tạo và một thế giới rộng lớn</strong> để khám phá.",
+c2title:"Minecraft iOS Có Gì Hấp Dẫn?",
+c2p1:"Minecraft trên iPhone và iPad mang đến trải nghiệm sandbox quen thuộc của Minecraft ngay trên thiết bị di động.",
+c2p2:"Điểm đặc biệt nhất của trò chơi là <strong>không ép người chơi phải đi theo một con đường cố định</strong>. Ngay sau khi tạo thế giới, bạn có thể tự quyết định cuộc phiêu lưu của mình.",
+c2li1:"🌲 Bạn muốn xây nhà? Hãy bắt đầu chặt cây và thu thập tài nguyên.",
+c2li2:"🗺️ Bạn muốn khám phá? Hãy chuẩn bị trang bị và lên đường.",
+c2li3:"💎 Bạn muốn tìm kim cương? Hãy chế tạo cuốc và bắt đầu đào sâu xuống lòng đất.",
+c2p3:"Hoặc nếu chỉ muốn thư giãn, bạn hoàn toàn có thể xây một căn nhà bên bờ biển, làm trang trại và tận hưởng thế giới Minecraft theo cách riêng.",
+survTitle:"Survival – Sinh Tồn Và Khám Phá",
+survP1:"<strong>Survival</strong> là chế độ phù hợp nhất nếu bạn muốn cảm nhận trọn vẹn yếu tố phiêu lưu của Minecraft. Ban đầu, bạn gần như không sở hữu bất cứ thứ gì. Bạn phải tự thu thập gỗ, tìm thức ăn, khai thác khoáng sản và chế tạo những công cụ đầu tiên.",
+survP2:"Khi màn đêm buông xuống, mọi thứ bắt đầu trở nên nguy hiểm hơn. Zombie, Skeleton, Spider và đặc biệt là Creeper có thể xuất hiện quanh khu vực của bạn. Vì vậy, một trong những mục tiêu quan trọng trong ngày đầu tiên là chuẩn bị một nơi trú ẩn an toàn.",
+tipBox:"🔥 <strong>Mẹo cho người mới:</strong> Đừng dành cả ngày đầu tiên để khám phá quá xa. Hãy ưu tiên gỗ, thức ăn, công cụ và một nơi trú ẩn trước khi trời tối.",
+creaTitle:"Creative – Thỏa Sức Xây Dựng",
+creaP1:"Nếu Survival là cuộc phiêu lưu sinh tồn thì <strong>Creative</strong> lại giống như một sân chơi sáng tạo khổng lồ. Từ những block đơn giản, người chơi có thể tạo ra:",
+creaLi1:"🏙️ Nhà hiện đại, biệt thự, thành phố.",
+creaLi2:"🏰 Lâu đài khổng lồ, công trình fantasy."
+},
+
+tr:{
+dir:"ltr",
+buy:"Apple Hesapları Satın Al",
+contact:"İletişim ve Soru",
+h1:"Minecraft iOS – Detaylı İnceleme ve iPhone & iPad İndirme Rehberi",
+p1:"Bazı oyunları indirip birkaç gün oynar ve unutursunuz; bazıları ise yüzlerce saat sonra bile sizi tekrar tekrar geri getirir.",
+p2:"<strong>Minecraft iOS</strong> tam olarak bunlardan biridir.",
+p3:"Abartılı efektlere veya gerçeküstü grafiklere gerek kalmadan Minecraft, <strong>özgürlüğü, yaratıcılığı ve keşfedilecek geniş dünyasıyla</strong> öne çıkar.",
+c2title:"Minecraft iOS'u Cazip Kılan Nedir?",
+c2p1:"iPhone ve iPad'deki Minecraft, tanıdık sandbox deneyimini doğrudan mobil cihazınıza getirir.",
+c2p2:"Oyunun en özel yanı, oyuncuları <strong>tek bir sabit yola zorlamamasıdır</strong>. Dünyayı oluşturur oluşturmaz kendi maceranıza karar verebilirsiniz.",
+c2li1:"🌲 Ev yapmak mı istiyorsun? Ağaç kesmeye ve kaynak toplamaya başla.",
+c2li2:"🗺️ Keşfetmek mi istiyorsun? Ekipmanını hazırla ve yola çık.",
+c2li3:"💎 Elmas mı bulmak istiyorsun? Kazma üret ve yerin derinliklerine kazmaya başla.",
+c2p3:"Ya da sadece rahatlamak istersen sahilde bir ev yapabilir, çiftlik kurabilir ve Minecraft dünyasının tadını kendi tarzında çıkarabilirsin.",
+survTitle:"Survival – Hayatta Kalma ve Keşif",
+survP1:"<strong>Survival</strong>, Minecraft'ın macera yönünü tam anlamıyla yaşamak istiyorsan en uygun moddur. Başlangıçta neredeyse hiçbir şeyin yoktur; odun toplar, yiyecek bulur, maden çıkarır ve ilk araçlarını üretirsin.",
+survP2:"Gece çöktüğünde her şey daha tehlikeli hale gelir. Etrafında Zombi, İskelet, Örümcek ve özellikle Creeper belirebilir; bu yüzden ilk gün güvenli bir barınak hazırlamak önemlidir.",
+tipBox:"🔥 <strong>Yeni Başlayanlara İpucu:</strong> İlk gününün tamamını çok uzağa giderek geçirme. Karanlık çökmeden önce odun, yiyecek, alet ve barınağa öncelik ver.",
+creaTitle:"Creative – Sınırsız İnşa",
+creaP1:"Survival hayatta kalma macerasıysa, <strong>Creative</strong> devasa bir inşa alanı gibidir. Basit bloklardan şunları yapabilirsin:",
+creaLi1:"🏙️ Modern evler, villalar ve şehirler.",
+creaLi2:"🏰 Dev kaleler ve fantastik yapılar."
+},
+
+fr:{
+dir:"ltr",
+buy:"Acheter des comptes Apple",
+contact:"Contact et questions",
+h1:"Minecraft iOS – Avis Détaillé et Téléchargement sur iPhone & iPad",
+p1:"Certains jeux s'oublient après quelques jours, tandis que d'autres vous rappellent encore et encore après des centaines d'heures.",
+p2:"<strong>Minecraft iOS</strong> en fait partie.",
+p3:"Sans graphismes irréalistes ni effets excessifs, Minecraft séduit par sa <strong>liberté, sa créativité et son vaste monde</strong> à explorer.",
+c2title:"Qu'est-ce qui rend Minecraft iOS si captivant ?",
+c2p1:"Minecraft sur iPhone et iPad apporte l'expérience sandbox familière directement sur votre appareil mobile.",
+c2p2:"Ce qui le rend unique, c'est qu'il <strong>n'impose aucun chemin fixe</strong>. Dès la création du monde, vous choisissez votre propre aventure.",
+c2li1:"🌲 Envie de construire une maison ? Commencez par couper du bois et récolter des ressources.",
+c2li2:"🗺️ Envie d'explorer ? Préparez votre équipement et partez à l'aventure.",
+c2li3:"💎 Envie de trouver des diamants ? Fabriquez une pioche et creusez en profondeur.",
+c2p3:"Ou si vous voulez simplement vous détendre, construisez une maison au bord de la mer, créez une ferme et profitez de Minecraft à votre façon.",
+survTitle:"Survival – Survie et Exploration",
+survP1:"<strong>Survival</strong> est le mode idéal pour vivre l'aventure complète de Minecraft. Au début, vous n'avez presque rien : vous récoltez du bois, trouvez de la nourriture, minez et fabriquez vos premiers outils.",
+survP2:"À la nuit tombée, le danger augmente. Zombies, Squelettes, Araignées et surtout Creepers peuvent apparaître autour de vous, d'où l'importance d'un abri sûr dès le premier jour.",
+tipBox:"🔥 <strong>Astuce débutant :</strong> Ne passez pas toute votre première journée à aller trop loin. Donnez la priorité au bois, à la nourriture, aux outils et à un abri avant la nuit.",
+creaTitle:"Creative – Construction Libre",
+creaP1:"Si Survival est une aventure de survie, <strong>Creative</strong> est un immense espace de création. À partir de simples blocs, vous pouvez construire :",
+creaLi1:"🏙️ Maisons modernes, villas et villes.",
+creaLi2:"🏰 Châteaux géants et créations fantastiques."
+},
+
+de:{
+dir:"ltr",
+buy:"Apple-Accounts kaufen",
+contact:"Kontakt & Fragen",
+h1:"Minecraft iOS – Ausführliches Review & Download auf iPhone & iPad",
+p1:"Manche Spiele vergisst man nach wenigen Tagen, andere spielt man auch nach hunderten Stunden immer wieder gern.",
+p2:"<strong>Minecraft iOS</strong> gehört genau dazu.",
+p3:"Ganz ohne überladene Effekte begeistert Minecraft durch <strong>Freiheit, Kreativität und eine riesige Welt</strong> zum Entdecken.",
+c2title:"Was macht Minecraft iOS so spannend?",
+c2p1:"Minecraft für iPhone und iPad bringt das vertraute Sandbox-Erlebnis direkt auf dein Mobilgerät.",
+c2p2:"Das Besondere ist, dass es <strong>keinen festen Weg vorgibt</strong>. Sobald du eine Welt erstellst, bestimmst du dein Abenteuer selbst.",
+c2li1:"🌲 Du willst ein Haus bauen? Fang an, Bäume zu fällen und Rohstoffe zu sammeln.",
+c2li2:"🗺️ Du willst erkunden? Rüste dich aus und mach dich auf den Weg.",
+c2li3:"💎 Du willst Diamanten finden? Stelle eine Spitzhacke her und grabe tief unter der Erde.",
+c2p3:"Oder wenn du einfach entspannen möchtest, baue ein Haus am Meer, lege eine Farm an und genieße Minecraft ganz nach deinem Geschmack.",
+survTitle:"Survival – Überleben und Erkunden",
+survP1:"<strong>Survival</strong> ist der richtige Modus, wenn du das volle Abenteuer von Minecraft erleben willst. Am Anfang hast du fast nichts: Du sammelst Holz, findest Essen, baust Erze ab und craftest erste Werkzeuge.",
+survP2:"Wenn es dunkel wird, steigt die Gefahr. Zombies, Skelette, Spinnen und vor allem Creeper können auftauchen, weshalb ein sicherer Unterschlupf am ersten Tag entscheidend ist.",
+tipBox:"🔥 <strong>Tipp für Einsteiger:</strong> Verbringe nicht den ganzen ersten Tag damit, zu weit zu laufen. Priorisiere Holz, Essen, Werkzeuge und einen Unterschlupf vor Einbruch der Dunkelheit.",
+creaTitle:"Creative – Grenzenloses Bauen",
+creaP1:"Während Survival ein Überlebensabenteuer ist, bietet <strong>Creative</strong> eine riesige Bauwelt. Aus einfachen Blöcken entstehen:",
+creaLi1:"🏙️ Moderne Häuser, Villen und Städte.",
+creaLi2:"🏰 Riesige Burgen und Fantasy-Bauwerke."
+},
+
+es:{
+dir:"ltr",
+buy:"Comprar cuentas de Apple",
+contact:"Contacto y consultas",
+h1:"Minecraft iOS – Reseña Detallada y Cómo Descargar en iPhone y iPad",
+p1:"Hay juegos que olvidas en unos días y otros a los que vuelves una y otra vez tras cientos de horas.",
+p2:"<strong>Minecraft iOS</strong> es uno de ellos.",
+p3:"Sin gráficos irreales ni efectos exagerados, Minecraft destaca por su <strong>libertad, creatividad y un mundo enorme</strong> por explorar.",
+c2title:"¿Qué hace tan atractivo a Minecraft iOS?",
+c2p1:"Minecraft en iPhone y iPad lleva la experiencia sandbox clásica directamente a tu dispositivo móvil.",
+c2p2:"Lo mejor del juego es que <strong>no obliga a seguir un camino fijo</strong>. Al crear un mundo, tú decides tu propia aventura.",
+c2li1:"🌲 ¿Quieres construir una casa? Empieza talando árboles y reuniendo recursos.",
+c2li2:"🗺️ ¿Quieres explorar? Prepara tu equipo y sal de viaje.",
+c2li3:"💎 ¿Quieres encontrar diamantes? Fabrica un pico y empieza a cavar bajo tierra.",
+c2p3:"O si solo quieres relajarte, puedes levantar una casa junto a la costa, hacer una granja y disfrutar de Minecraft a tu manera.",
+survTitle:"Survival – Supervivencia y Exploración",
+survP1:"<strong>Survival</strong> es el modo ideal para vivir la aventura completa de Minecraft. Al principio casi no tienes nada: recolectas madera, buscas comida, extraes minerales y creas tus primeras herramientas.",
+survP2:"Cuando cae la noche, el peligro aumenta. Zombis, Esqueletos, Arañas y sobre todo Creepers pueden aparecer cerca, por lo que tener un refugio seguro el primer día es clave.",
+tipBox:"🔥 <strong>Consejo inicial:</strong> No pases todo el primer día alejándote demasiado. Prioriza madera, comida, herramientas y refugio antes de que oscurezca.",
+creaTitle:"Creative – Construcción sin Límites",
+creaP1:"Si Survival es sobrevivir a la aventura, <strong>Creative</strong> es un enorme espacio de creación. Con simples bloques puedes levantar:",
+creaLi1:"🏙️ Casas modernas, villas y ciudades.",
+creaLi2:"🏰 Castillos gigantes y construcciones de fantasía."
+},
+
+ru:{
+dir:"ltr",
+buy:"Купить аккаунты Apple",
+contact:"Связь и вопросы",
+h1:"Minecraft iOS – Подробный обзор и загрузка на iPhone и iPad",
+p1:"Одни игры забываются через пару дней, а к другим возвращаешься снова и снова даже после сотен часов.",
+p2:"<strong>Minecraft iOS</strong> — одна из таких игр.",
+p3:"Без лишних эффектов Minecraft привлекает <strong>свободой, творчеством и огромным миром</strong> для исследования.",
+c2title:"Чем привлекателен Minecraft на iOS?",
+c2p1:"Minecraft на iPhone и iPad переносит знакомый мир-песочницу прямо на ваше мобильное устройство.",
+c2p2:"Главная особенность игры в том, что она <strong>не заставляет идти по заданному пути</strong>. Создав мир, вы сами выбираете приключение.",
+c2li1:"🌲 Хотите построить дом? Начните рубить деревья и собирать ресурсы.",
+c2li2:"🗺️ Хотите исследовать мир? Подготовьте снаряжение и отправляйтесь в путь.",
+c2li3:"💎 Хотите найти алмазы? Скрафтите кирку и копайте вглубь.",
+c2p3:"А если хочется отдохнуть, можно построить домик у моря, завести ферму и играть в Minecraft в своём ритме.",
+survTitle:"Survival – Выживание и исследование",
+survP1:"<strong>Survival</strong> — лучший режим для полного погружения в приключения Minecraft. В начале у вас почти ничего нет: вы добываете дерево, еду, руду и делаете первые инструменты.",
+survP2:"С наступлением ночи становится опаснее: рядом могут появиться зомби, скелеты, пауки и особенно криперы, поэтому важно заранее сделать укрытие в первый день.",
+tipBox:"🔥 <strong>Совет новичкам:</strong> Не уходите слишком далеко в первый день. Сначала добудьте дерево, еду, инструменты и укрытие до темноты.",
+creaTitle:"Creative – Свобода строительства",
+creaP1:"Если Survival — это выживание, то <strong>Creative</strong> — огромный простор для творчества. Из простых блоков можно построить:",
+creaLi1:"🏙️ Современные дома, виллы и города.",
+creaLi2:"🏰 Огромные замки и фэнтези-постройки."
+},
+
+ja:{
+dir:"ltr",
+buy:"Appleアカウントを購入",
+contact:"お問い合わせ・質問",
+h1:"Minecraft iOS – 詳細レビューとiPhone・iPadでのダウンロード方法",
+p1:"数日で忘れてしまうゲームもあれば、何百時間遊んでも何度も戻ってきたくなるゲームもあります。",
+p2:"<strong>Minecraft iOS</strong> はまさにそんな作品です。",
+p3:"派手な演出がなくても、<strong>自由度・創造性・広大な世界</strong>によって多くの人を惹きつけます。",
+c2title:"Minecraft iOSのどんなところが魅力？",
+c2p1:"iPhoneやiPadのMinecraftは、おなじみのサンドボックス体験をモバイル端末でそのまま楽しめます。",
+c2p2:"一番の特徴は、<strong>決められた一本道を強制されないこと</strong>。ワールドを作ったら、冒険はあなたの自由です。",
+c2li1:"🌲 家を建てたい？木を切って素材を集めるところから始めましょう。",
+c2li2:"🗺️ 探索したい？装備を整えて旅に出ましょう。",
+c2li3:"💎 ダイヤを探したい？ツルハシを作って地中深く掘り進めましょう。",
+c2p3:"のんびり過ごしたいときは、海辺に家を建てて農場を作り、自分だけのスタイルでMinecraftを楽しめます。",
+survTitle:"Survival – サバイバルと探索",
+survP1:"<strong>Survival</strong> はMinecraftの冒険を存分に味わうためのモードです。最初はほぼ何もない状態から、木や食料を集め、鉱石を掘り、最初の道具を作ります。",
+survP2:"夜になると危険が増します。ゾンビ、スケルトン、クモ、特にクリーパーが近くに現れることがあるため、初日に安全な拠点を作ることが大切です。",
+tipBox:"🔥 <strong>初心者向けヒント：</strong> 初日に遠くへ行きすぎないようにしましょう。暗くなる前に木・食料・道具・拠点を優先してください。",
+creaTitle:"Creative – 自由な建築",
+creaP1:"Survivalがサバイバルの冒険なら、<strong>Creative</strong> は広大な建築の場です。シンプルなブロックから次のようなものを作れます：",
+creaLi1:"🏙️ モダンな家、別荘、街並み。",
+creaLi2:"🏰 巨大な城やファンタジー建築。"
+}
+};
+
+function applyLang(code, save = true){
+  const t = TEXTS[code] || TEXTS.en;
+  document.getElementById("html-root").setAttribute("lang", code);
+  document.getElementById("html-root").setAttribute("dir", t.dir);
+  document.getElementById("lang-current").innerText = LANG_LABELS[code] || LANG_LABELS.en;
+
+  document.getElementById("drawer-buy").innerText = t.buy;
+  document.getElementById("drawer-contact").innerText = t.contact;
+  document.getElementById("page-h1").innerText = t.h1;
+  document.getElementById("p-1").innerHTML = t.p1;
+  document.getElementById("p-2").innerHTML = t.p2;
+  document.getElementById("p-3").innerHTML = t.p3;
+
+  document.getElementById("c2-title-text").innerText = t.c2title;
+  document.getElementById("c2-p1").innerHTML = t.c2p1;
+  document.getElementById("c2-p2").innerHTML = t.c2p2;
+  document.getElementById("c2-li1").innerHTML = t.c2li1;
+  document.getElementById("c2-li2").innerHTML = t.c2li2;
+  document.getElementById("c2-li3").innerHTML = t.c2li3;
+  document.getElementById("c2-p3").innerHTML = t.c2p3;
+
+  document.getElementById("c3-surv-title").innerText = t.survTitle;
+  document.getElementById("c3-surv-p1").innerHTML = t.survP1;
+  document.getElementById("c3-surv-p2").innerHTML = t.survP2;
+  document.getElementById("c3-tip-box").innerHTML = t.tipBox;
+  document.getElementById("c3-crea-title").innerText = t.creaTitle;
+  document.getElementById("c3-crea-p1").innerHTML = t.creaP1;
+  document.getElementById("c3-crea-li1").innerHTML = t.creaLi1;
+  document.getElementById("c3-crea-li2").innerHTML = t.creaLi2;
+
+  if(save){
+    try{ localStorage.setItem(LANG_KEY, code); }catch(e){}
+  }
+
+  document.getElementById("lang-dropdown").classList.remove("show");
+}
+
+function toggleLangDropdown(e){
+  e.stopPropagation();
+  document.getElementById("side-drawer").classList.remove("show");
+  document.getElementById("lang-dropdown").classList.toggle("show");
+}
+
+function toggleDrawer(e){
+  e.stopPropagation();
+  document.getElementById("lang-dropdown").classList.remove("show");
+  document.getElementById("side-drawer").classList.toggle("show");
+}
+
+document.addEventListener("click", () => {
+  document.getElementById("lang-dropdown").classList.remove("show");
+  document.getElementById("side-drawer").classList.remove("show");
+});
+
+(function initLang(){
+  let saved = "en";
+  try{ saved = localStorage.getItem(LANG_KEY) || "en"; }catch(e){}
+  applyLang(saved, false);
+})();
+</script>
 
 </body>
 </html>
-<!-- تكملة الصورة (Minecraft iOS Có Gì Hấp Dẫn?) -->
-<section id="sec-continuation-2" style="max-width:480px;margin:0 auto;padding:8px 16px 32px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#111827;">
-    <h2 id="c2-title" style="font-size:21px;font-weight:700;line-height:1.35;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
-        <span>🎮</span>
-        <span id="c2-title-text">What Makes Minecraft iOS So Engaging?</span>
-    </h2>
-
-    <img src="https://images.pexels.com/photos/7915357/pexels-photo-7915357.jpeg?auto=compress&cs=tinysrgb&w=900"
-         onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22420%22><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22><stop offset=%220%25%22 stop-color=%22%2338bdf8%22/><stop offset=%2265%25%22 stop-color=%22%23bae6fd%22/><stop offset=%2265%25%22 stop-color=%22%2322c55e%22/><stop offset=%2276%25%22 stop-color=%22%2316a34a%22/><stop offset=%2276%25%22 stop-color=%22%2378350f%22/><stop offset=%22100%25%22 stop-color=%22%23451a03%22/></linearGradient></defs><rect width=%22800%22 height=%22420%22 fill=%22url(%23g)%22/><rect x=%22110%22 y=%22170%22 width=%2245%22 height=%22105%22 fill=%22%23713f12%22/><rect x=%2275%22 y=%22115%22 width=%22115%22 height=%2265%22 fill=%22%2315803d%22/><rect x=%22530%22 y=%22195%22 width=%22140%22 height=%2280%22 fill=%22%2392400e%22/><polygon points=%22515,195 600,140 685,195%22 fill=%22%23b45309%22/><rect x=%22585%22 y=%22230%22 width=%2230%22 height=%2245%22 fill=%22%23451a03%22/><text x=%22400%22 y=%2275%22 font-family=%22sans-serif%22 font-size=%2232%22 font-weight=%22bold%22 fill=%22%23ffffff%22 text-anchor=%22middle%22>MINECRAFT iOS</text></svg>';"
-         alt="Minecraft gameplay"
-         style="width:100%;height:215px;object-fit:cover;border-radius:4px;display:block;margin-bottom:16px;">
-
-    <p id="c2-p1" style="font-size:15px;line-height:1.65;color:#1f2937;margin-bottom:14px;">
-        Minecraft on iPhone and iPad brings the familiar Minecraft sandbox experience right to your mobile device.
-    </p>
-
-    <p id="c2-p2" style="font-size:15px;line-height:1.65;color:#1f2937;margin-bottom:14px;">
-        The best part of the game is that it <strong>does not force players down a single fixed path</strong>. As soon as you create a world, you decide your own adventure.
-    </p>
-
-    <ul style="list-style:disc;padding-inline-start:20px;font-size:15px;line-height:1.65;color:#1f2937;margin-bottom:16px;">
-        <li id="c2-li1" style="margin-bottom:10px;">🌲 Want to build a house? Start chopping trees and gathering resources.</li>
-        <li id="c2-li2" style="margin-bottom:10px;">🗺️ Want to explore? Gear up and hit the road.</li>
-        <li id="c2-li3">💎 Want to find diamonds? Craft a pickaxe and start mining deep underground.</li>
-    </ul>
-
-    <p id="c2-p3" style="font-size:15px;line-height:1.65;color:#1f2937;">
-        Or if you just want to relax, you can build a cozy house by the coast, run a farm, and enjoy the Minecraft world your own way.
-    </p>
-</section>
-
-<script>
-(function () {
-    const C2_LANGS = {
-        en: {
-            title: "What Makes Minecraft iOS So Engaging?",
-            p1: "Minecraft on iPhone and iPad brings the familiar Minecraft sandbox experience right to your mobile device.",
-            p2: "The best part of the game is that it <strong>does not force players down a single fixed path</strong>. As soon as you create a world, you decide your own adventure.",
-            li1: "🌲 Want to build a house? Start chopping trees and gathering resources.",
-            li2: "🗺️ Want to explore? Gear up and hit the road.",
-            li3: "💎 Want to find diamonds? Craft a pickaxe and start mining deep underground.",
-            p3: "Or if you just want to relax, you can build a cozy house by the coast, run a farm, and enjoy the Minecraft world your own way."
-        },
-        ar: {
-            title: "ما الذي يجعل ماينكرافت iOS ممتعة ومميزة؟",
-            p1: "تقدم ماينكرافت على iPhone و iPad تجربة اللعب الحر (Sandbox) المألوفة مباشرة على هاتفك.",
-            p2: "أكثر ما يميز اللعبة أنها <strong>لا تجبر اللاعب على مسار واحد ثابت</strong>؛ فبمجرد إنشاء العالم يمكنك تحديد مغامرتك بنفسك.",
-            li1: "🌲 تريد بناء منزل؟ ابدأ بقطع الأشجار وجمع الموارد.",
-            li2: "🗺️ تريد الاستكشاف؟ جهّز معداتك وانطلق في الرحلة.",
-            li3: "💎 تريد العثور على الألماس؟ اصنع معولاً وابدأ بالحفر عميقاً تحت الأرض.",
-            p3: "أو إذا كنت تفضل الاسترخاء، يمكنك بناء منزل قرب البحر وإنشاء مزرعة والاستمتاع بعالم ماينكرافت بطريقتك الخاصة."
-        },
-        ku: {
-            title: "چ دکەت کو Minecraft iOS هندی خۆش و سەرنجراکێش بیت؟",
-            p1: "ماینكرافت ل iPhone و iPad ئەزموونا ئازاد یا ماینكرافتێ راستەوخۆ دئینیتە سەر مۆبایلا تە.",
-            p2: "تشتێ هەرە تایبەت ئەوە کو <strong>یاریزانێ ناچار ناکەت ب رێکەکا دیاریکری بچیت</strong>؛ هەر دەمێ جیهانێ چێکەی تو ب خۆ سەرکێشیا خۆ دیار دکەی.",
-            li1: "🌲 دڤێت خانیەکێ چێکەی؟ دەست ب بڕینا داران و کۆمکرنا کەرەستان بکە.",
-            li2: "🗺️ دڤێت بگەڕیی؟ خۆ ئامادە بکە و بکەڤە رێ.",
-            li3: "💎 دڤێت ئەڵماسێ ببینی؟ تێڤرەکێ چێکە و ب کویراتی د ناڤ ئەردی دا هەڵکۆڵە.",
-            p3: "یان ئەگەر تە بڤێت بهێنڤەدانا خۆ ببەی، دشیێ خانیەکێ ل سەر لێڤا دەریایێ چێکەی، زەڤیەکێ دروست بکەی و ب شێوازێ خۆ چێژێ ژ جیهانا ماینكرافتێ ببینی."
-        },
-        vi: {
-            title: "Minecraft iOS Có Gì Hấp Dẫn?",
-            p1: "Minecraft trên iPhone và iPad mang đến trải nghiệm sandbox quen thuộc của Minecraft ngay trên thiết bị di động.",
-            p2: "Điểm đặc biệt nhất của trò chơi là <strong>không ép người chơi phải đi theo một con đường cố định</strong>. Ngay sau khi tạo thế giới, bạn có thể tự quyết định cuộc phiêu lưu của mình.",
-            li1: "🌲 Bạn muốn xây nhà? Hãy bắt đầu chặt cây và thu thập tài nguyên.",
-            li2: "🗺️ Bạn muốn khám phá? Hãy chuẩn bị trang bị và lên đường.",
-            li3: "💎 Bạn muốn tìm kim cương? Hãy chế tạo cuốc và bắt đầu đào sâu xuống lòng đất.",
-            p3: "Hoặc nếu chỉ muốn thư giãn, bạn hoàn toàn có thể xây một căn nhà bên bờ biển, làm trang trại và tận hưởng thế giới Minecraft theo cách riêng."
-        },
-        tr: {
-            title: "Minecraft iOS'u Cazip Kılan Nedir?",
-            p1: "iPhone ve iPad'deki Minecraft, tanıdık sandbox deneyimini doğrudan mobil cihazınıza getirir.",
-            p2: "Oyunun en özel yanı, oyuncuları <strong>tek bir sabit yola zorlamamasıdır</strong>. Dünyayı oluşturur oluşturmaz kendi maceranıza karar verebilirsiniz.",
-            li1: "🌲 Ev yapmak mı istiyorsun? Ağaç kesmeye ve kaynak toplamaya başla.",
-            li2: "🗺️ Keşfetmek mi istiyorsun? Ekipmanını hazırla ve yola çık.",
-            li3: "💎 Elmas mı bulmak istiyorsun? Kazma üret ve yerin derinliklerine kazmaya başla.",
-            p3: "Ya da sadece rahatlamak istersen sahilde bir ev yapabilir, çiftlik kurabilir ve Minecraft dünyasının tadını kendi tarzında çıkarabilirsin."
-        },
-        fr: {
-            title: "Qu'est-ce qui rend Minecraft iOS si captivant ?",
-            p1: "Minecraft sur iPhone et iPad apporte l'expérience sandbox familière directement sur votre appareil mobile.",
-            p2: "Ce qui le rend unique, c'est qu'il <strong>n'impose aucun chemin fixe</strong>. Dès la création du monde, vous choisissez votre propre aventure.",
-            li1: "🌲 Envie de construire une maison ? Commencez par couper du bois et récolter des ressources.",
-            li2: "🗺️ Envie d'explorer ? Préparez votre équipement et partez à l'aventure.",
-            li3: "💎 Envie de trouver des diamants ? Fabriquez une pioche et creusez en profondeur.",
-            p3: "Ou si vous voulez simplement vous détendre, construisez une maison au bord de la mer, créez une ferme et profitez de Minecraft à votre façon."
-        },
-        de: {
-            title: "Was macht Minecraft iOS so spannend?",
-            p1: "Minecraft für iPhone und iPad bringt das vertraute Sandbox-Erlebnis direkt auf dein Mobilgerät.",
-            p2: "Das Besondere ist, dass es <strong>keinen festen Weg vorgibt</strong>. Sobald du eine Welt erstellst, bestimmst du dein Abenteuer selbst.",
-            li1: "🌲 Du willst ein Haus bauen? Fang an, Bäume zu fällen und Rohstoffe zu sammeln.",
-            li2: "🗺️ Du willst erkunden? Rüste dich aus und mach dich auf den Weg.",
-            li3: "💎 Du willst Diamanten finden? Stelle eine Spitzhacke her und grabe tief unter der Erde.",
-            p3: "Oder wenn du einfach entspannen möchtest, baue ein Haus am Meer, lege eine Farm an und genieße Minecraft ganz nach deinem Geschmack."
-        },
-        es: {
-            title: "¿Qué hace tan atractivo a Minecraft iOS?",
-            p1: "Minecraft en iPhone y iPad lleva la experiencia sandbox clásica directamente a tu dispositivo móvil.",
-            p2: "Lo mejor del juego es que <strong>no obliga a seguir un camino fijo</strong>. Al crear un mundo, tú decides tu propia aventura.",
-            li1: "🌲 ¿Quieres construir una casa? Empieza talando árboles y reuniendo recursos.",
-            li2: "🗺️ ¿Quieres explorar? Prepara tu equipo y sal de viaje.",
-            li3: "💎 ¿Quieres encontrar diamantes? Fabrica un pico y empieza a cavar bajo tierra.",
-            p3: "O si solo quieres relajarte, puedes levantar una casa junto a la costa, hacer una granja y disfrutar de Minecraft a tu manera."
-        },
-        ru: {
-            title: "Чем привлекателен Minecraft на iOS?",
-            p1: "Minecraft на iPhone и iPad переносит знакомый мир-песочницу прямо на ваше мобильное устройство.",
-            p2: "Главная особенность игры в том, что она <strong>не заставляет идти по заданному пути</strong>. Создав мир, вы сами выбираете приключение.",
-            li1: "🌲 Хотите построить дом? Начните рубить деревья и собирать ресурсы.",
-            li2: "🗺️ Хотите исследовать мир? Подготовьте снаряжение и отправляйтесь в путь.",
-            li3: "💎 Хотите найти алмазы? Скрафтите кирку и копайте вглубь.",
-            p3: "А если хочется отдохнуть, можно построить домик у моря, завести ферму и играть в Minecraft в своём ритме."
-        },
-        ja: {
-            title: "Minecraft iOSのどんなところが魅力？",
-            p1: "iPhoneやiPadのMinecraftは、おなじみのサンドボックス体験をモバイル端末でそのまま楽しめます。",
-            p2: "一番の特徴は、<strong>決められた一本道を強制されないこと</strong>。ワールドを作ったら、冒険はあなたの自由です。",
-            li1: "🌲 家を建てたい？木を切って素材を集めるところから始めましょう。",
-            li2: "🗺️ 探索したい？装備を整えて旅に出ましょう。",
-            li3: "💎 ダイヤを探したい？ツルハシを作って地中深く掘り進めましょう。",
-            p3: "のんびり過ごしたいときは、海辺に家を建てて農場を作り、自分だけのスタイルでMinecraftを楽しめます。"
-        }
-    };
-
-    function syncC2Lang() {
-        const htmlLang = document.documentElement.getAttribute("lang") || "en";
-        const d = C2_LANGS[htmlLang] || C2_LANGS.en;
-        document.getElementById("c2-title-text").innerText = d.title;
-        document.getElementById("c2-p1").innerHTML = d.p1;
-        document.getElementById("c2-p2").innerHTML = d.p2;
-        document.getElementById("c2-li1").innerHTML = d.li1;
-        document.getElementById("c2-li2").innerHTML = d.li2;
-        document.getElementById("c2-li3").innerHTML = d.li3;
-        document.getElementById("c2-p3").innerHTML = d.p3;
-    }
-
-    document.addEventListener("click", () => setTimeout(syncC2Lang, 0));
-    window.addEventListener("DOMContentLoaded", syncC2Lang);
-    syncC2Lang();
-})();
-</script>
-<!-- تكملة الصورة الثالثة (Survival & Creative) -->
-<section id="sec-continuation-3" style="max-width:480px;margin:0 auto;padding:8px 16px 32px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#111827;">
-
-    <!-- قسم Survival -->
-    <h2 style="font-size:21px;font-weight:700;line-height:1.35;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
-        <span>🏕️</span>
-        <span id="c3-surv-title">Survival – Sinh Tồn Và Khám Phá</span>
-    </h2>
-
-    <p id="c3-surv-p1" style="font-size:15px;line-height:1.65;color:#1f2937;margin-bottom:14px;">
-        <strong>Survival</strong> là chế độ phù hợp nhất nếu bạn muốn cảm nhận trọn vẹn yếu tố phiêu lưu của Minecraft. Ban đầu, bạn gần như không sở hữu bất cứ thứ gì. Bạn phải tự thu thập gỗ, tìm thức ăn, khai thác khoáng sản và chế tạo những công cụ đầu tiên.
-    </p>
-
-    <p id="c3-surv-p2" style="font-size:15px;line-height:1.65;color:#1f2937;margin-bottom:16px;">
-        Khi màn đêm buông xuống, mọi thứ bắt đầu trở nên nguy hiểm hơn. Zombie, Skeleton, Spider và đặc biệt là Creeper có thể xuất hiện quanh khu vực của bạn. Vì vậy, một trong những mục tiêu quan trọng trong ngày đầu tiên là chuẩn bị một nơi trú ẩn an toàn.
-    </p>
-
-    <div style="background:#f8fafc;border-left:4px solid #16a34a;border-radius:0 12px 12px 0;padding:15px 16px;margin-bottom:24px;box-shadow:0 2px 10px rgba(0,0,0,0.04);font-size:14.5px;line-height:1.6;color:#1f2937;">
-        <p id="c3-tip-box">🔥 <strong>Mẹo cho người mới:</strong> Đừng dành cả ngày đầu tiên để khám phá quá xa. Hãy ưu tiên gỗ, thức ăn, công cụ và một nơi trú ẩn trước khi trời tối.</p>
-    </div>
-
-    <!-- قسم Creative -->
-    <h2 style="font-size:21px;font-weight:700;line-height:1.35;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
-        <span>🏰</span>
-        <span id="c3-crea-title">Creative – Thỏa Sức Xây Dựng</span>
-    </h2>
-
-    <p id="c3-crea-p1" style="font-size:15px;line-height:1.65;color:#1f2937;margin-bottom:14px;">
-        Nếu Survival là cuộc phiêu lưu sinh tồn thì <strong>Creative</strong> lại giống như một sân chơi sáng tạo khổng lồ. Từ những block đơn giản, người chơi có thể tạo ra:
-    </p>
-
-    <ul style="list-style:disc;padding-inline-start:20px;font-size:15px;line-height:1.65;color:#1f2937;">
-        <li id="c3-crea-li1" style="margin-bottom:10px;">🏙️ Nhà hiện đại, biệt thự, thành phố.</li>
-        <li id="c3-crea-li2">🏰 Lâu đài khổng lồ, công trình fantasy.</li>
-    </ul>
-
-</section>
-
-<script>
-(function () {
-    const C3_LANGS = {
-        en: {
-            survTitle: "Survival – Survival and Exploration",
-            survP1: "<strong>Survival</strong> is the best mode if you want to experience the full adventure side of Minecraft. At the start, you have almost nothing. You gather wood, find food, mine resources, and craft your first tools.",
-            survP2: "When night falls, things get more dangerous. Zombies, Skeletons, Spiders, and especially Creepers can spawn around you, so securing a safe shelter on day one is essential.",
-            tipBox: "🔥 <strong>Beginner Tip:</strong> Don't spend your entire first day wandering too far. Prioritize wood, food, tools, and shelter before nightfall.",
-            creaTitle: "Creative – Limitless Building",
-            creaP1: "If Survival is about surviving the wild, <strong>Creative</strong> is like a massive sandbox for building. From simple blocks, players can create:",
-            creaLi1: "🏙️ Modern houses, villas, and cities.",
-            creaLi2: "🏰 Giant castles and fantasy builds."
-        },
-        ar: {
-            survTitle: "Survival – البقاء والاستكشاف",
-            survP1: "وضع <strong>Survival</strong> هو الأنسب إذا أردت عيش روح المغامرة الكاملة في ماينكرافت؛ تبدأ تقريباً بلا شيء وتجمع الخشب والطعام وتستخرج الموارد وتصنع أدواتك الأولى.",
-            survP2: "عندما يحل الليل تصبح الأمور أخطر؛ فقد تظهر الزومبي والهياكل العظمية والعناكب وخاصة الكريبر حولك، لذلك من المهم تأمين مأوى آمن في اليوم الأول.",
-            tipBox: "🔥 <strong>نصيحة للمبتدئين:</strong> لا تقضِ يومك الأول كاملاً في الابتعاد كثيراً؛ اجعل الأولوية للخشب والطعام والأدوات والمأوى قبل حلول الظلام.",
-            creaTitle: "Creative – حرية البناء والإبداع",
-            creaP1: "إذا كان Survival مغامرة للبقاء، فإن <strong>Creative</strong> مساحة إبداع واسعة للبناء؛ فمن الكتل البسيطة يمكن للاعب إنشاء:",
-            creaLi1: "🏙️ منازل حديثة وفيلات ومدناً.",
-            creaLi2: "🏰 قلاعاً ضخمة ومبانٍ خيالية."
-        },
-        ku: {
-            survTitle: "Survival – مانەوە و گەڕیان",
-            survP1: "شێوازێ <strong>Survival</strong> هەرە گونجایە ئەگەر تە بڤێت تاما سەرکێشیا راستەقینە یا ماینكرافتێ ببینی؛ ل دەستپێکێ تە چ نینە و تو داران کۆم دکەی، خوارنێ دبینی، کانزایان دەردێخی و ئامێرێن خۆ یێن ئێکێ چێدکەی.",
-            survP2: "دەمێ شەڤ دهێت تشت مەترسیدارتر دبن؛ زۆمبی، سکیلێتن، جاڵجاڵۆك و ب تایبەت کریپەر ل دەوروبەرا تە پەیدا دبن، لەوما چێکرنا جهەکێ پاراستی د رۆژا ئێکێ دا گەلەك گرنگە.",
-            tipBox: "🔥 <strong>شیرەت بۆ دەستپێکەران:</strong> هەمی رۆژا ئێکێ ب دویرکەفتنا زێدە ڤە نەبۆرینە؛ بەری شەڤ بهێت دار، خوارن، ئامێر و جهێ ڤەحەواندنێ د پێشینەیێ دا بهێلە.",
-            creaTitle: "Creative – ئازادیا ئاڤاکرنێ",
-            creaP1: "ئەگەر Survival سەرکێشیا مانەوەیێ بیت، <strong>Creative</strong> گۆڕەپانەکا مەزنە بۆ ئاڤاکرنێ؛ ژ بلۆکێن سادە یاریزان دشیێت چێبکەت:",
-            creaLi1: "🏙️ خانیێن مودێرن، ڤێلا و باژێڕان.",
-            creaLi2: "🏰 قەڵایێن مەزن و ئاڤاهیێن خەیالی."
-        },
-        vi: {
-            survTitle: "Survival – Sinh Tồn Và Khám Phá",
-            survP1: "<strong>Survival</strong> là chế độ phù hợp nhất nếu bạn muốn cảm nhận trọn vẹn yếu tố phiêu lưu của Minecraft. Ban đầu, bạn gần như không sở hữu bất cứ thứ gì. Bạn phải tự thu thập gỗ, tìm thức ăn, khai thác khoáng sản và chế tạo những công cụ đầu tiên.",
-            survP2: "Khi màn đêm buông xuống, mọi thứ bắt đầu trở nên nguy hiểm hơn. Zombie, Skeleton, Spider và đặc biệt là Creeper có thể xuất hiện quanh khu vực của bạn. Vì vậy, một trong những mục tiêu quan trọng trong ngày đầu tiên là chuẩn bị một nơi trú ẩn an toàn.",
-            tipBox: "🔥 <strong>Mẹo cho người mới:</strong> Đừng dành cả ngày đầu tiên để khám phá quá xa. Hãy ưu tiên gỗ, thức ăn, công cụ và một nơi trú ẩn trước khi trời tối.",
-            creaTitle: "Creative – Thỏa Sức Xây Dựng",
-            creaP1: "Nếu Survival là cuộc phiêu lưu sinh tồn thì <strong>Creative</strong> lại giống như một sân chơi sáng tạo khổng lồ. Từ những block đơn giản, người chơi có thể tạo ra:",
-            creaLi1: "🏙️ Nhà hiện đại, biệt thự, thành phố.",
-            creaLi2: "🏰 Lâu đài khổng lồ, công trình fantasy."
-        },
-        tr: {
-            survTitle: "Survival – Hayatta Kalma ve Keşif",
-            survP1: "<strong>Survival</strong>, Minecraft'ın macera yönünü tam anlamıyla yaşamak istiyorsan en uygun moddur. Başlangıçta neredeyse hiçbir şeyin yoktur; odun toplar, yiyecek bulur, maden çıkarır ve ilk araçlarını üretirsin.",
-            survP2: "Gece çöktüğünde her şey daha tehlikeli hale gelir. Etrafında Zombi, İskelet, Örümcek ve özellikle Creeper belirebilir; bu yüzden ilk gün güvenli bir barınak hazırlamak önemlidir.",
-            tipBox: "🔥 <strong>Yeni Başlayanlara İpucu:</strong> İlk gününün tamamını çok uzağa giderek geçirme. Karanlık çökmeden önce odun, yiyecek, alet ve barınağa öncelik ver.",
-            creaTitle: "Creative – Sınırsız İnşa",
-            creaP1: "Survival hayatta kalma macerasıysa, <strong>Creative</strong> devasa bir inşa alanı gibidir. Basit bloklardan şunları yapabilirsin:",
-            creaLi1: "🏙️ Modern evler, villalar ve şehirler.",
-            creaLi2: "🏰 Dev kaleler ve fantastik yapılar."
-        },
-        fr: {
-            survTitle: "Survival – Survie et Exploration",
-            survP1: "<strong>Survival</strong> est le mode idéal pour vivre l'aventure complète de Minecraft. Au début, vous n'avez presque rien : vous récoltez du bois, trouvez de la nourriture, minez et fabriquez vos premiers outils.",
-            survP2: "À la nuit tombée, le danger augmente. Zombies, Squelettes, Araignées et surtout Creepers peuvent apparaître autour de vous, d'où l'importance d'un abri sûr dès le premier jour.",
-            tipBox: "🔥 <strong>Astuce débutant :</strong> Ne passez pas toute votre première journée à aller trop loin. Donnez la priorité au bois, à la nourriture, aux outils et à un abri avant la nuit.",
-            creaTitle: "Creative – Construction Libre",
-            creaP1: "Si Survival est une aventure de survie, <strong>Creative</strong> est un immense espace de création. À partir de simples blocs, vous pouvez construire :",
-            creaLi1: "🏙️ Maisons modernes, villas et villes.",
-            creaLi2: "🏰 Châteaux géants et créations fantastiques."
-        },
-        de: {
-            survTitle: "Survival – Überleben und Erkunden",
-            survP1: "<strong>Survival</strong> ist der richtige Modus, wenn du das volle Abenteuer von Minecraft erleben willst. Am Anfang hast du fast nichts: Du sammelst Holz, findest Essen, baust Erze ab und craftest erste Werkzeuge.",
-            survP2: "Wenn es dunkel wird, steigt die Gefahr. Zombies, Skelette, Spinnen und vor allem Creeper können auftauchen, weshalb ein sicherer Unterschlupf am ersten Tag entscheidend ist.",
-            tipBox: "🔥 <strong>Tipp für Einsteiger:</strong> Verbringe nicht den ganzen ersten Tag damit, zu weit zu laufen. Priorisiere Holz, Essen, Werkzeuge und einen Unterschlupf vor Einbruch der Dunkelheit.",
-            creaTitle: "Creative – Grenzenloses Bauen",
-            creaP1: "Während Survival ein Überlebensabenteuer ist, bietet <strong>Creative</strong> eine riesige Bauwelt. Aus einfachen Blöcken entstehen:",
-            creaLi1: "🏙️ Moderne Häuser, Villen und Städte.",
-            creaLi2: "🏰 Riesige Burgen und Fantasy-Bauwerke."
-        },
-        es: {
-            survTitle: "Survival – Supervivencia y Exploración",
-            survP1: "<strong>Survival</strong> es el modo ideal para vivir la aventura completa de Minecraft. Al principio casi no tienes nada: recolectas madera, buscas comida, extraes minerales y creas tus primeras herramientas.",
-            survP2: "Cuando cae la noche, el peligro aumenta. Zombis, Esqueletos, Arañas y sobre todo Creepers pueden aparecer cerca, por lo que tener un refugio seguro el primer día es clave.",
-            tipBox: "🔥 <strong>Consejo inicial:</strong> No pases todo el primer día alejándote demasiado. Prioriza madera, comida, herramientas y refugio antes de que oscurezca.",
-            creaTitle: "Creative – Construcción sin Límites",
-            creaP1: "Si Survival es sobrevivir a la aventura, <strong>Creative</strong> es un enorme espacio de creación. Con simples bloques puedes levantar:",
-            creaLi1: "🏙️ Casas modernas, villas y ciudades.",
-            creaLi2: "🏰 Castillos gigantes y construcciones de fantasía."
-        },
-        ru: {
-            survTitle: "Survival – Выживание и исследование",
-            survP1: "<strong>Survival</strong> — лучший режим для полного погружения в приключения Minecraft. В начале у вас почти ничего нет: вы добываете дерево, еду, руду и делаете первые инструменты.",
-            survP2: "С наступлением ночи становится опаснее: рядом могут появиться зомби, скелеты, пауки и особенно криперы, поэтому важно заранее сделать укрытие в первый день.",
-            tipBox: "🔥 <strong>Совет новичкам:</strong> Не уходите слишком далеко в первый день. Сначала добудьте дерево, еду, инструменты и укрытие до темноты.",
-            creaTitle: "Creative – Свобода строительства",
-            creaP1: "Если Survival — это выживание, то <strong>Creative</strong> — огромный простор для творчества. Из простых блоков можно построить:",
-            creaLi1: "🏙️ Современные дома, виллы и города.",
-            creaLi2: "🏰 Огромные замки и фэнтези-постройки."
-        },
-        ja: {
-            survTitle: "Survival – サバイバルと探索",
-            survP1: "<strong>Survival</strong> はMinecraftの冒険を存分に味わうためのモードです。最初はほぼ何もない状態から、木や食料を集め、鉱石を掘り、最初の道具を作ります。",
-            survP2: "夜になると危険が増します。ゾンビ、スケルトン、クモ、特にクリーパーが近くに現れることがあるため、初日に安全な拠点を作ることが大切です。",
-            tipBox: "🔥 <strong>初心者向けヒント：</strong> 初日に遠くへ行きすぎないようにしましょう。暗くなる前に木・食料・道具・拠点を優先してください。",
-            creaTitle: "Creative – 自由な建築",
-            creaP1: "Survivalがサバイバルの冒険なら、<strong>Creative</strong> は広大な建築の場です。シンプルなブロックから次のようなものを作れます：",
-            creaLi1: "🏙️ モダンな家、別荘、街並み。",
-            creaLi2: "🏰 巨大な城やファンタジー建築。"
-        }
-    };
-
-    function syncC3Lang() {
-        const htmlLang = document.documentElement.getAttribute("lang") || "en";
-        const d = C3_LANGS[htmlLang] || C3_LANGS.en;
-        document.getElementById("c3-surv-title").innerText = d.survTitle;
-        document.getElementById("c3-surv-p1").innerHTML = d.survP1;
-        document.getElementById("c3-surv-p2").innerHTML = d.survP2;
-        document.getElementById("c3-tip-box").innerHTML = d.tipBox;
-        document.getElementById("c3-crea-title").innerText = d.creaTitle;
-        document.getElementById("c3-crea-p1").innerHTML = d.creaP1;
-        document.getElementById("c3-crea-li1").innerHTML = d.creaLi1;
-        document.getElementById("c3-crea-li2").innerHTML = d.creaLi2;
-    }
-
-    document.addEventListener("click", () => setTimeout(syncC3Lang, 0));
-    window.addEventListener("DOMContentLoaded", syncC3Lang);
-    syncC3Lang();
-})();
-</script>
