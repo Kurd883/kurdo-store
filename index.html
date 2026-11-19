@@ -1,629 +1,111 @@
 <!DOCTYPE html>
-<html lang="vi" id="html-root">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ID APPLE FREE - Kurd0oAccounts</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Minecraft iOS - Review Chi Tiết, Cách Tải Trên iPhone & iPad</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
-            background-color: #080705;
-            background-image: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.14) 0%, transparent 55%);
-            color: #F3F4F6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #ffffff;
+            color: #111827;
         }
-        .gold-grad { background: linear-gradient(135deg, #B8860B, #F5D77F, #C59B27); }
-        .gold-text { background: linear-gradient(135deg, #FFF3C4, #E5BE52, #B8860B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .card-gold { background: #12100C; border: 1px solid rgba(212, 175, 55, 0.28); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6); }
-        .box-dark { background: #191610; border: 1px solid rgba(212, 175, 55, 0.18); }
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: #ffffff;
+            border-bottom: 1px solid #f1f5f9;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .brand {
+            font-weight: 800;
+            font-size: 20px;
+            color: #f43f5e;
+            letter-spacing: -0.5px;
+        }
+        .lang-pill {
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: #f8fafc;
+        }
+        .icons {
+            display: flex;
+            gap: 14px;
+            font-size: 17px;
+            color: #1e293b;
+        }
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0 16px 32px;
+        }
+        .banner {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+            margin: 12px 0 18px;
+            border-radius: 4px;
+        }
+        h1 {
+            font-size: 26px;
+            line-height: 1.25;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 18px;
+        }
+        .callout-blue {
+            background: #f8fafc;
+            border-left: 4px solid #1d4ed8;
+            border-radius: 0 12px 12px 0;
+            padding: 18px 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+            font-size: 15px;
+            line-height: 1.65;
+            color: #1f2937;
+        }
+        .callout-blue p {
+            margin-bottom: 14px;
+        }
+        .callout-blue p:last-child {
+            margin-bottom: 0;
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body>
 
-    <!-- Top Bar + Language Selector مثل الصور -->
-    <header class="sticky top-0 z-30 bg-[#0d0b08]/95 backdrop-blur border-b border-amber-500/20 px-4 py-2.5">
-        <div class="max-w-md mx-auto flex items-center justify-between gap-2">
-            <div class="flex items-center gap-2">
-                <button onclick="goTopOrHome()" class="text-amber-300 text-base px-1"><i class="fa-solid fa-bars"></i></button>
-                <a href="https://t.me/Kurd0o1" target="_blank" class="flex items-center gap-1.5 font-extrabold text-sm gold-text">
-                    <i class="fa-solid fa-crown text-amber-400"></i>
-                    <span>Kurd0oAccounts</span>
-                </a>
-            </div>
-
-            <div class="relative">
-                <button onclick="toggleLangs()" class="flex items-center gap-1.5 bg-amber-500/15 border border-amber-400/35 text-amber-200 px-2.5 py-1 rounded-lg text-xs font-bold">
-                    <span id="lang-btn-label">VI / AR / KU</span>
-                    <i class="fa-solid fa-chevron-down text-[10px]"></i>
-                </button>
-                <div id="lang-dropdown" class="hidden absolute left-0 mt-1.5 w-44 bg-[#15120d] border border-amber-500/35 rounded-xl shadow-2xl py-1 text-xs z-50">
-                    <button onclick="setLang('vi')" class="w-full text-right px-3 py-1.5 hover:bg-amber-500/20 text-amber-200 font-semibold">🇻🇳 Tiếng Việt (VI)</button>
-                    <button onclick="setLang('ar')" class="w-full text-right px-3 py-1.5 hover:bg-amber-500/20 text-slate-200">🇸🇦 العربية</button>
-                    <button onclick="setLang('ku')" class="w-full text-right px-3 py-1.5 hover:bg-amber-500/20 text-slate-200">kurdish (Badînî)</button>
-                    <button onclick="setLang('en')" class="w-full text-right px-3 py-1.5 hover:bg-amber-500/20 text-slate-200">🇬🇧 English</button>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-3 text-amber-200/80 text-sm">
-                <i class="fa-regular fa-user"></i>
-                <i class="fa-solid fa-cart-shopping"></i>
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
+    <header class="topbar">
+        <div style="display:flex;align-items:center;gap:14px;">
+            <span style="font-size:19px;">☰</span>
+            <span class="brand">Kurd0o</span>
+        </div>
+        <span class="lang-pill">🇻🇳 VI ⌄</span>
+        <div class="icons">
+            <span>👤</span>
+            <span>🛒</span>
+            <span>🔍</span>
         </div>
     </header>
 
-    <main class="max-w-md w-full mx-auto px-4 py-4 space-y-4 flex-1">
+    <main class="container">
+        <img class="banner" src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=900&q=75" alt="Minecraft iOS">
 
-        <!-- بوابة القنوات الخمس (تظهر فوراً عند الضغط على زر ماينكرافت أو شادوروكت) -->
-        <section id="gate-modal" class="hidden card-gold rounded-2xl p-4 space-y-3 border-2 border-amber-400/60">
-            <div class="flex items-center justify-between">
-                <span id="gate-target-label" class="text-xs font-extrabold px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-300"></span>
-                <button onclick="closeGate()" class="text-xs text-rose-300 font-bold">✕</button>
-            </div>
-            <p id="t-gate-msg" class="text-xs text-amber-200 font-bold">⚠️ الانضمام للقنوات الأربع في تليجرام وسيرفر الديسكورد (5 ثوانٍ لكل رابط):</p>
-            <div class="w-full bg-black/70 rounded-full h-2 overflow-hidden">
-                <div id="gate-progress-bar" class="gold-grad h-full transition-all duration-300" style="width: 0%"></div>
-            </div>
-            <div class="flex justify-between text-[11px] text-amber-200/80">
-                <span id="t-gate-pct-lbl">التقدم</span>
-                <span id="gate-progress-txt" class="font-bold text-amber-300">0% (0/5)</span>
-            </div>
+        <h1>Minecraft iOS – Review Chi Tiết, Cách Tải Trên iPhone &amp; iPad</h1>
 
-            <div class="space-y-2">
-                <a href="https://t.me/Kurd0o1" target="_blank" onclick="startGateTimer(1)" class="flex items-center justify-between px-3 py-2.5 box-dark rounded-xl text-xs font-bold">
-                    <span>Kurd0o1 (Telegram)</span>
-                    <span id="g-badge-1" class="text-amber-400"><i class="fa-brands fa-telegram"></i></span>
-                </a>
-                <a href="https://t.me/Kurd0o2" target="_blank" onclick="startGateTimer(2)" class="flex items-center justify-between px-3 py-2.5 box-dark rounded-xl text-xs font-bold">
-                    <span>Kurd0o2 (Telegram)</span>
-                    <span id="g-badge-2" class="text-amber-400"><i class="fa-brands fa-telegram"></i></span>
-                </a>
-                <a href="https://t.me/Kurd0o3" target="_blank" onclick="startGateTimer(3)" class="flex items-center justify-between px-3 py-2.5 box-dark rounded-xl text-xs font-bold">
-                    <span>Kurd0o3 (Telegram)</span>
-                    <span id="g-badge-3" class="text-amber-400"><i class="fa-brands fa-telegram"></i></span>
-                </a>
-                <a href="https://t.me/Kurd0o4" target="_blank" onclick="startGateTimer(4)" class="flex items-center justify-between px-3 py-2.5 box-dark rounded-xl text-xs font-bold">
-                    <span>Kurd0o4 (Telegram)</span>
-                    <span id="g-badge-4" class="text-amber-400"><i class="fa-brands fa-telegram"></i></span>
-                </a>
-                <a href="https://discord.gg/Tn4U989mmz" target="_blank" onclick="startGateTimer(5)" class="flex items-center justify-between px-3 py-2.5 box-dark rounded-xl text-xs font-bold">
-                    <span>Kurd0o Discord</span>
-                    <span id="g-badge-5" class="text-indigo-400"><i class="fa-brands fa-discord"></i></span>
-                </a>
-            </div>
-
-            <button id="gate-complete-btn" onclick="unlockAndJumpToAccount()" class="hidden w-full py-3 gold-grad text-slate-950 font-extrabold text-xs rounded-xl shadow-lg">
-                <span id="t-gate-unlock-btn">✓ فتح الحساب والتعليمات الآن</span>
-            </button>
-        </section>
-
-        <!-- الصفحة الكاملة بنفس ترتيب الصور 20 -->
-        <article id="main-article" class="card-gold rounded-2xl p-4 space-y-4 text-xs leading-relaxed">
-
-            <h1 id="t-main-h1" class="text-lg font-extrabold gold-text">ID APPLE FREE - Chia sẻ ID Apple Miễn Phí Tại Kurd0oAccounts</h1>
-
-            <div class="rounded-xl overflow-hidden border border-amber-500/30">
-                <img src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=900&q=75" alt="ID Apple Share Free" class="w-full h-44 object-cover">
-            </div>
-
-            <div class="flex items-center gap-2 text-[11px] text-amber-300 font-bold">
-                <i class="fa-brands fa-apple text-sm"></i>
-                <span>KURD0OACCOUNTS / Hướng dẫn App Store</span>
-            </div>
-
-            <div>
-                <h2 id="t-guide-h2" class="text-base font-extrabold text-white mb-1">Hướng dẫn nhận và sử dụng tài khoản</h2>
-                <p id="t-guide-sub" class="text-slate-300">Đọc quy định, làm theo các bước hướng dẫn rồi nhận tài khoản ở cuối trang.</p>
-            </div>
-
-            <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
-                <div class="box-dark rounded-xl py-2 px-1"><span class="font-extrabold text-amber-300">1</span> <span id="t-pill1">Đọc lưu ý</span></div>
-                <div class="box-dark rounded-xl py-2 px-1"><span class="font-extrabold text-amber-300">2</span> <span id="t-pill2">Xem cách làm</span></div>
-                <div class="box-dark rounded-xl py-2 px-1"><span class="font-extrabold text-amber-300">3</span> <span id="t-pill3">Sao chép</span></div>
-            </div>
-
-            <!-- أزرار الاختيار السريع مثل الصور -->
-            <div class="grid grid-cols-2 gap-2">
-                <button onclick="scrollToEl('sec-01')" class="box-dark py-2.5 px-3 rounded-xl font-bold text-amber-200 flex items-center justify-center gap-1.5"><i class="fa-solid fa-shield-halved text-amber-400"></i> <span id="t-b-rules">Quy định</span></button>
-                <button onclick="scrollToEl('sec-02')" class="box-dark py-2.5 px-3 rounded-xl font-bold text-amber-200 flex items-center justify-center gap-1.5"><i class="fa-solid fa-mobile-screen text-amber-400"></i> <span id="t-b-login">Đăng nhập</span></button>
-                <button onclick="scrollToEl('sec-03')" class="box-dark py-2.5 px-3 rounded-xl font-bold text-amber-200 flex items-center justify-center gap-1.5"><i class="fa-solid fa-triangle-exclamation text-amber-400"></i> <span id="t-b-fix">Xử lý lỗi</span></button>
-                <button onclick="scrollToEl('sec-04')" class="box-dark py-2.5 px-3 rounded-xl font-bold text-amber-200 flex items-center justify-center gap-1.5"><i class="fa-solid fa-circle-info text-amber-400"></i> <span id="t-b-more">Hướng dẫn thêm</span></button>
-            </div>
-
-            <!-- أزرار ماينكرافت وشادوروكت التي تفتح البوابة الخماسية -->
-            <div class="space-y-2">
-                <button onclick="triggerGate('minecraft')" class="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-lg transition">
-                    <i class="fa-solid fa-cube"></i>
-                    <span id="t-btn-mc-main">Nhận tài khoản MINECRAFT</span>
-                </button>
-                <button onclick="triggerGate('shadowrocket')" class="w-full py-3 px-4 rounded-xl gold-grad text-slate-950 font-extrabold text-xs flex items-center justify-center gap-2 shadow-lg transition">
-                    <i class="fa-solid fa-rocket"></i>
-                    <span id="t-btn-sr-main">Nhận tài khoản SHADOWROCKET</span>
-                </button>
-            </div>
-
-            <!-- 01 Quy định bắt buộc -->
-            <div id="sec-01" class="box-dark rounded-2xl p-3.5 space-y-2.5">
-                <div class="flex items-start gap-2.5">
-                    <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-300 font-extrabold flex items-center justify-center shrink-0">01</span>
-                    <div>
-                        <p class="text-[10px] font-bold text-amber-400">ĐỌC TRƯỚC KHI SỬ DỤNG</p>
-                        <h3 id="t-01-h" class="text-sm font-extrabold text-white">Quy định bắt buộc</h3>
-                        <p id="t-01-sub" class="text-slate-400 text-[11px]">Đây là những điều quan trọng nhất để tránh lỗi tài khoản.</p>
-                    </div>
-                </div>
-
-                <div class="rounded-xl p-3 bg-emerald-950/40 border border-emerald-500/30 text-emerald-200">
-                    <p id="t-01-ok"><i class="fa-solid fa-check ml-1"></i> Chỉ đăng nhập trong App Store để tìm và tải ứng dụng. Không sử dụng tài khoản tại mục iCloud trong Cài đặt.</p>
-                </div>
-
-                <div class="rounded-xl p-3 bg-rose-950/35 border border-rose-500/30 text-rose-200 space-y-1">
-                    <p id="t-01-no-h" class="font-bold text-rose-300">⊖ Không được thực hiện</p>
-                    <ul id="t-01-list" class="list-disc pr-4 space-y-1 text-[11px]">
-                        <li>Đăng nhập trong Cài đặt (Settings) hoặc iCloud.</li>
-                        <li>Thêm số điện thoại, email xác minh hoặc thông tin cá nhân.</li>
-                        <li>Đổi mật khẩu, email bảo mật hay bất kỳ thông tin tài khoản nào.</li>
-                        <li>Chia sẻ tài khoản, mật khẩu hoặc liên kết lấy tài khoản ra ngoài.</li>
-                    </ul>
-                </div>
-
-                <p id="t-01-warn" class="text-[11px] text-amber-300/90 bg-amber-500/10 rounded-xl p-2.5">
-                    ▲ Sử dụng sai hướng dẫn có thể khiến tài khoản bị hạn chế hoặc khóa.
-                </p>
-            </div>
-
-            <!-- 02 Cách đăng nhập và tải game -->
-            <div id="sec-02" class="box-dark rounded-2xl p-3.5 space-y-2.5">
-                <div class="flex items-start gap-2.5">
-                    <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-300 font-extrabold flex items-center justify-center shrink-0">02</span>
-                    <div>
-                        <p class="text-[10px] font-bold text-amber-400">LÀM THEO TỪNG BƯỚC</p>
-                        <h3 id="t-02-h" class="text-sm font-extrabold text-white">Cách đăng nhập và tải game</h3>
-                        <p id="t-02-sub" class="text-slate-400 text-[11px]">Thực hiện đúng 3 bước sau trước khi sử dụng tài khoản.</p>
-                    </div>
-                </div>
-
-                <div class="space-y-2">
-                    <div class="bg-black/45 border border-amber-500/15 rounded-xl p-2.5">
-                        <p id="t-02-s1h" class="font-bold text-amber-300">1. Mở App Store</p>
-                        <p id="t-02-s1p" class="text-[11px] text-slate-300">Sau khi mở khóa tài khoản ở cuối trang, chỉ đăng nhập trong App Store.</p>
-                    </div>
-                    <div class="bg-black/45 border border-amber-500/15 rounded-xl p-2.5">
-                        <p id="t-02-s2h" class="font-bold text-amber-300">2. Tìm tên game / app</p>
-                        <p id="t-02-s2p" class="text-[11px] text-slate-300">Tìm trực tiếp Minecraft hoặc Shadowrocket bằng thanh tìm kiếm.</p>
-                    </div>
-                    <div class="bg-black/45 border border-amber-500/15 rounded-xl p-2.5">
-                        <p id="t-02-s3h" class="font-bold text-amber-300">3. Tải xong thì đăng xuất</p>
-                        <p id="t-02-s3p" class="text-[11px] text-slate-300">Sau khi tải xong, đăng xuất tài khoản khỏi App Store ngay.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 03 Xử lý lỗi thường gặp -->
-            <div id="sec-03" class="box-dark rounded-2xl p-3.5 space-y-2.5">
-                <div class="flex items-start gap-2.5">
-                    <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-300 font-extrabold flex items-center justify-center shrink-0">03</span>
-                    <div>
-                        <p class="text-[10px] font-bold text-amber-400">KHI CẦN HỖ TRỢ</p>
-                        <h3 id="t-03-h" class="text-sm font-extrabold text-white">Xử lý lỗi thường gặp</h3>
-                        <p id="t-03-sub" class="text-slate-400 text-[11px]">Làm theo 3 bước dưới đây khi gặp sự cố.</p>
-                    </div>
-                </div>
-
-                <div class="space-y-2 text-[11px] text-slate-300">
-                    <div class="bg-black/45 border border-amber-500/15 rounded-xl p-2.5">
-                        <p id="t-03-f1h" class="font-bold text-amber-300">1. Kiểm tra App Store</p>
-                        <p id="t-03-f1p">Đăng nhập đúng trong App Store, không vào Cài đặt hoặc iCloud.</p>
-                    </div>
-                    <div class="bg-black/45 border border-amber-500/15 rounded-xl p-2.5">
-                        <p id="t-03-f2h" class="font-bold text-amber-300">2. Thử lại</p>
-                        <p id="t-03-f2p">Khởi động lại máy hoặc đợi vài phút rồi thử lại.</p>
-                    </div>
-                    <div class="bg-black/45 border border-amber-500/15 rounded-xl p-2.5">
-                        <p id="t-03-f3h" class="font-bold text-amber-300">3. Lỗi không xác định / Disabled</p>
-                        <p id="t-03-f3p">Thử đăng nhập lại 5 - 15 lần trong App Store hoặc xem cập nhật mới.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 04 Hướng dẫn bổ sung -->
-            <div id="sec-04" class="box-dark rounded-2xl p-3.5 space-y-2">
-                <div class="flex items-start gap-2.5">
-                    <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-300 font-extrabold flex items-center justify-center shrink-0">04</span>
-                    <div>
-                        <p class="text-[10px] font-bold text-amber-400">CÓ THỂ CẦN SAU KHI TẢI</p>
-                        <h3 id="t-04-h" class="text-sm font-extrabold text-white">Hướng dẫn bổ sung</h3>
-                        <p id="t-04-p" class="text-slate-300 text-[11px]">Đăng xuất App Store khi hoàn tất và hạn chế lỗi game/app bị thu hồi hoặc khóa.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 05 Nhận tài khoản App Store (تُفتح بعد إتمام القنوات الخمس) -->
-            <div id="sec-05" class="box-dark rounded-2xl p-3.5 space-y-3 border border-amber-400/50">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-2">
-                        <span class="w-7 h-7 rounded-lg gold-grad text-slate-950 font-extrabold flex items-center justify-center">05</span>
-                        <div>
-                            <p class="text-[10px] font-bold text-amber-400">SAU KHI ĐỌC HƯỚNG DẪN</p>
-                            <h3 id="t-05-h" class="text-sm font-extrabold text-white">Nhận tài khoản App Store</h3>
-                        </div>
-                    </div>
-                    <span id="acc-session-clock" class="font-mono text-xs bg-amber-500/15 text-amber-300 px-2 py-0.5 rounded">10:00</span>
-                </div>
-
-                <div id="locked-credentials-box" class="bg-amber-500/10 border border-amber-400/30 rounded-xl p-3 text-center space-y-2">
-                    <p id="t-locked-msg" class="text-xs font-bold text-amber-300">🔒 اضغط على زر MINECRAFT أو SHADOWROCKET وأكمل الروابط الخمسة لإظهار الإيميل والباسوورد.</p>
-                    <button onclick="triggerGate('minecraft')" class="px-4 py-2 gold-grad text-slate-950 font-extrabold rounded-xl text-xs">
-                        <span id="t-locked-cta">فتح البوابة الآن</span>
-                    </button>
-                </div>
-
-                <div id="unlocked-credentials-box" class="hidden space-y-3">
-                    <div>
-                        <div class="flex justify-between text-[11px] text-amber-300 font-bold mb-1">
-                            <span>Tài khoản Apple</span>
-                            <span>EMAIL</span>
-                        </div>
-                        <div class="flex items-center justify-between bg-black/60 border border-amber-500/25 rounded-xl px-3 py-2">
-                            <span id="final-email" dir="ltr" class="font-mono text-xs text-white select-all">⏳⏳tomorrow⏳⏳</span>
-                            <button onclick="copyFinal('final-email', this)" class="bg-amber-500 text-slate-950 font-extrabold px-3 py-1 rounded-lg text-[11px]"><span class="cp-txt">Sao chép</span></button>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="flex justify-between text-[11px] text-amber-300 font-bold mb-1">
-                            <span>Mật khẩu</span>
-                            <span>PASSWORD</span>
-                        </div>
-                        <div class="flex items-center justify-between bg-black/60 border border-amber-500/25 rounded-xl px-3 py-2">
-                            <span id="final-pass" dir="ltr" class="font-mono text-xs text-white select-all">⏳⏳غدا/سباهي⏳⏳</span>
-                            <button onclick="copyFinal('final-pass', this)" class="bg-amber-500 text-slate-950 font-extrabold px-3 py-1 rounded-lg text-[11px]"><span class="cp-txt">Sao chép</span></button>
-                        </div>
-                    </div>
-
-                    <p id="t-expire-note" class="text-[11px] text-slate-400 text-center">Liên kết có hiệu lực 10 phút sau khi mở.</p>
-                </div>
-            </div>
-
-            <!-- Liên hệ và nhận thông báo مثل الصورة الأخيرة -->
-            <div class="box-dark rounded-2xl p-3.5 space-y-2.5 text-center">
-                <p class="text-[10px] font-bold text-amber-400">CẦN TRỢ GIÚP?</p>
-                <h3 id="t-help-h" class="text-sm font-extrabold text-white">Liên hệ và nhận thông báo</h3>
-                <p id="t-help-p" class="text-[11px] text-slate-300">Gặp lỗi hoặc cần cập nhật thông tin? Tham gia Discord hoặc liên hệ Telegram.</p>
-                <div class="grid grid-cols-2 gap-2 pt-1">
-                    <a href="https://discord.gg/Tn4U989mmz" target="_blank" class="py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl text-xs">Discord Kurd0o ↗</a>
-                    <a href="https://t.me/yousifmziri" target="_blank" class="py-2.5 gold-grad text-slate-950 font-extrabold rounded-xl text-xs">@yousifmziri ↗</a>
-                </div>
-            </div>
-
-        </article>
+        <div class="callout-blue">
+            <p>Có những tựa game bạn tải về, chơi vài ngày rồi quên mất. Nhưng cũng có những trò chơi khiến bạn quay lại hết lần này đến lần khác dù đã dành hàng trăm giờ trải nghiệm.</p>
+            <p><strong>Minecraft iOS</strong> chính là một trong số đó.</p>
+            <p>Không cần đồ họa siêu thực hay những hiệu ứng quá hoành tráng, Minecraft vẫn tạo nên sức hút riêng nhờ <strong>sự tự do, khả năng sáng tạo và một thế giới rộng lớn</strong> để khám phá.</p>
+        </div>
     </main>
 
-    <footer class="text-center text-[11px] text-amber-100/50 py-3">
-        © 2026 Kurd0oAccounts
-    </footer>
-    <script>
-        const ACCOUNT_ITEMS = {
-            minecraft: {
-                label: { vi: "MINECRAFT ID", ar: "حساب ماينكرافت", ku: "هژمارا MINECRAFT", en: "MINECRAFT ID" },
-                email: "⏳⏳tomorrow⏳⏳",
-                pass: "⏳⏳غدا/سباهي⏳⏳"
-            },
-            shadowrocket: {
-                label: { vi: "SHADOWROCKET ID", ar: "حساب شادوروكت", ku: "هژمارا SHADOWROCKET", en: "SHADOWROCKET ID" },
-                email: "⏳⏳tomorrow⏳⏳",
-                pass: "⏳⏳غدا/سباهي⏳⏳"
-            }
-        };
-
-        const I18N = {
-            vi: {
-                dir: "ltr", lang: "vi", btn: "🇻🇳 VI",
-                mainH1: "ID APPLE FREE - Chia sẻ ID Apple Miễn Phí Tại Kurd0oAccounts",
-                guideH2: "Hướng dẫn nhận và sử dụng tài khoản",
-                guideSub: "Đọc quy định, làm theo các bước hướng dẫn rồi nhận tài khoản ở cuối trang.",
-                pill1: "Đọc lưu ý", pill2: "Xem cách làm", pill3: "Sao chép",
-                bRules: "Quy định", bLogin: "Đăng nhập", bFix: "Xử lý lỗi", bMore: "Hướng dẫn thêm",
-                btnMc: "Nhận tài khoản MINECRAFT", btnSr: "Nhận tài khoản SHADOWROCKET",
-                s01H: "Quy định bắt buộc", s01Sub: "Đây là những điều quan trọng nhất để tránh lỗi tài khoản.",
-                s01Ok: "✓ Chỉ đăng nhập trong App Store để tìm và tải ứng dụng. Không sử dụng tài khoản tại mục iCloud trong Cài đặt.",
-                s01NoH: "⊖ Không được thực hiện",
-                s01List: [
-                    "Đăng nhập trong Cài đặt (Settings) hoặc iCloud.",
-                    "Thêm số điện thoại, email xác minh hoặc thông tin cá nhân.",
-                    "Đổi mật khẩu, email bảo mật hay bất kỳ thông tin tài khoản nào.",
-                    "Chia sẻ tài khoản, mật khẩu hoặc liên kết lấy tài khoản ra ngoài."
-                ],
-                s01Warn: "▲ Sử dụng sai hướng dẫn có thể khiến tài khoản bị hạn chế hoặc khóa.",
-                s02H: "Cách đăng nhập và tải game", s02Sub: "Thực hiện đúng 3 bước sau trước khi sử dụng tài khoản.",
-                s02S1H: "1. Mở App Store", s02S1P: "Sau khi mở khóa tài khoản ở cuối trang, chỉ đăng nhập trong App Store.",
-                s02S2H: "2. Tìm tên game / app", s02S2P: "Tìm trực tiếp Minecraft hoặc Shadowrocket bằng thanh tìm kiếm.",
-                s02S3H: "3. Tải xong thì đăng xuất", s02S3P: "Sau khi tải xong, đăng xuất tài khoản khỏi App Store ngay.",
-                s03H: "Xử lý lỗi thường gặp", s03Sub: "Làm theo 3 bước dưới đây khi gặp sự cố.",
-                s03F1H: "1. Kiểm tra App Store", s03F1P: "Đăng nhập đúng trong App Store, không vào Cài đặt hoặc iCloud.",
-                s03F2H: "2. Thử lại", s03F2P: "Khởi động lại máy hoặc đợi vài phút rồi thử lại.",
-                s03F3H: "3. Lỗi không xác định / Disabled", s03F3P: "Thử đăng nhập lại 5 - 15 lần trong App Store hoặc xem cập nhật mới.",
-                s04H: "Hướng dẫn bổ sung", s04P: "Đăng xuất App Store khi hoàn tất và hạn chế lỗi game/app bị thu hồi hoặc khóa.",
-                s05H: "Nhận tài khoản App Store",
-                lockedMsg: "🔒 Nhấn MINECRAFT hoặc SHADOWROCKET và hoàn tất 5 kênh để mở khóa tài khoản.",
-                lockedCta: "Mở cổng 5 kênh",
-                gateMsg: "⚠️ Tham gia 4 kênh Telegram và máy chủ Discord (5 giây mỗi liên kết):",
-                gatePctLbl: "Tiến độ", gateUnlockBtn: "✓ Mở khóa tài khoản ngay",
-                expireNote: "Liên kết có hiệu lực 10 phút sau khi mở.",
-                helpH: "Liên hệ và nhận thông báo",
-                helpP: "Gặp lỗi hoặc cần cập nhật thông tin? Tham gia Discord hoặc liên hệ Telegram.",
-                copy: "Sao chép", copied: "Đã sao chép"
-            },
-            ar: {
-                dir: "rtl", lang: "ar", btn: "🇸🇦 عربي",
-                mainH1: "ID APPLE FREE - مشاركة حسابات App Store مجاناً عبر Kurd0oAccounts",
-                guideH2: "إرشادات استلام واستخدام الحساب",
-                guideSub: "اقرأ القواعد واتبع الخطوات ثم استلم بيانات الحساب في الأسفل.",
-                pill1: "اقرأ التنبيه", pill2: "طريقة الدخول", pill3: "نسخ",
-                bRules: "القواعد", bLogin: "الدخول", bFix: "حل الأخطاء", bMore: "إرشادات إضافية",
-                btnMc: "الحصول على حساب MINECRAFT", btnSr: "الحصول على حساب SHADOWROCKET",
-                s01H: "القواعد الإلزامية", s01Sub: "أهم التعليمات لتجنب مشاكل الحساب.",
-                s01Ok: "✓ سجل الدخول داخل App Store فقط للبحث والتحميل، ولا تستخدم الحساب في iCloud أو الإعدادات.",
-                s01NoH: "⊖ يُمنع نهائياً",
-                s01List: [
-                    "تسجيل الدخول في الإعدادات (Settings) أو iCloud.",
-                    "إضافة رقم هاتف أو بريد تحقق أو معلومات شخصية.",
-                    "تغيير كلمة المرور أو بريد الأمان أو أي بيانات للحساب.",
-                    "مشاركة الحساب أو كلمة المرور أو نشر الرابط خارجياً."
-                ],
-                s01Warn: "▲ مخالفة التعليمات قد تؤدي إلى تقييد أو قفل الحساب.",
-                s02H: "طريقة تسجيل الدخول والتحميل", s02Sub: "اتبع الخطوات الثلاث بدقة قبل الاستخدام.",
-                s02S1H: "1. افتح App Store", s02S1P: "بعد فتح الحساب في الأسفل، سجل الدخول داخل App Store فقط.",
-                s02S2H: "2. ابحث عن اسم اللعبة أو التطبيق", s02S2P: "ابحث مباشرة عن Minecraft أو Shadowrocket في شريط البحث.",
-                s02S3H: "3. سجل الخروج بعد التحميل", s02S3P: "بعد انتهاء التحميل سجل الخروج من الحساب فوراً.",
-                s03H: "حلول الأخطاء الشائعة", s03Sub: "اتبع الخطوات التالية عند حدوث مشكلة.",
-                s03F1H: "1. تحقق من App Store", s03F1P: "تأكد من الدخول داخل App Store وليس iCloud أو الإعدادات.",
-                s03F2H: "2. أعد المحاولة", s03F2P: "أعد تشغيل الجهاز أو انتظر بضع دقائق ثم أعد المحاولة.",
-                s03F3H: "3. خطأ غير معروف / الحساب معطل", s03F3P: "جرّب تسجيل الدخول 5 إلى 15 مرة داخل App Store أو راجع التحديثات.",
-                s04H: "إرشادات إضافية", s04P: "سجل الخروج بعد التحميل وراجع إعدادات App Store لتقليل احتمالية سحب التطبيق.",
-                s05H: "استلام حساب App Store",
-                lockedMsg: "🔒 اضغط على MINECRAFT أو SHADOWROCKET وأكمل الروابط الخمسة لإظهار الحساب.",
-                lockedCta: "فتح البوابة الخماسية",
-                gateMsg: "⚠️ اشترك في قنوات التليجرام الأربع وسيرفر الديسكورد (5 ثوانٍ لكل رابط):",
-                gatePctLbl: "نسبة الإنجاز", gateUnlockBtn: "✓ فتح الحساب الآن",
-                expireNote: "الجلسة صالحة لمدة 10 دقائق بعد الفتح.",
-                helpH: "التواصل والتنبيهات",
-                helpP: "واجهت مشكلة أو تريد التحديثات؟ انضم إلى الديسكورد أو تواصل عبر تليجرام.",
-                copy: "نسخ", copied: "تم النسخ"
-            },
-            ku: {
-                dir: "rtl", lang: "ku", btn: "Badînî",
-                mainH1: "ID APPLE FREE - هەژمارێن App Store بێ بەرامبەر ل Kurd0oAccounts",
-                guideH2: "رێنماییێن وەرگرتن و بکارئینانا هژمارێ",
-                guideSub: "یاسایان بخوینە، هەنگاڤان جێبەجێ بکە و ل دوماهیێ هژمارێ وەرگرە.",
-                pill1: "تێبینی", pill2: "چوونا ژوورێ", pill3: "کۆپی",
-                bRules: "یاسا", bLogin: "چوون", bFix: "چارەسەری", bMore: "رێنمایی زێدە",
-                btnMc: "وەرگرتنا هژمارا MINECRAFT", btnSr: "وەرگرتنا هژمارا SHADOWROCKET",
-                s01H: "یاسایا سەرەکی", s01Sub: "خاڵێن گرنگ دا هژمار نەهێتە گرتن یان تێکچوون.",
-                s01Ok: "✓ بتنێ د ناڤ App Store دا چوونا ژوورێ بکە، هەرگیز د iCloud یان Settings دا نەچە ژوورێ.",
-                s01NoH: "⊖ ب چ شێوەیەکێ نەهێتە کرن",
-                s01List: [
-                    "چوونا ژوورێ د Settings یان iCloud دا.",
-                    "زێدەکرنا ژمارا مۆبایلێ، ئیمەیلێ پشتراستکرنێ یان زانیارییێن کەسی.",
-                    "گوهۆڕینا پاسۆردێ یان ئیمەیلا پاراستنێ.",
-                    "بەلاڤکرنا هژمارێ و پاسۆردێ ل دەرڤە."
-                ],
-                s01Warn: "▲ پێگیری نەکرن ب رێنمایان دبیتە ئەگەرێ راوەستاندن یان قفلکرنا هژمارێ.",
-                s02H: "چاوا بچییە ژوورێ و یاریێ داگری؟", s02Sub: "ڤان 3 هەنگاڤان ب دروستی جێبەجێ بکە.",
-                s02S1H: "1. App Store ڤەکە", s02S1P: "پشتی ڤەکرنا هژمارێ ل خوارێ، بتنێ د ناڤ App Store دا بچە ژوورێ.",
-                s02S2H: "2. ل ناڤێ یاریێ یان ئەپێ بگەڕێ", s02S2P: "راستەوخۆ ل Minecraft یان Shadowrocket بگەڕێ و داگرە.",
-                s02S3H: "3. پشتی داگرتنێ دەربکەڤە", s02S3P: "پشتی داگرتنێ دەستبجێ ژ هژمارێ دەربکەڤە (Sign Out).",
-                s03H: "چارەسەرییا خەڵەتییان", s03Sub: "دەمێ خەڵەتی چێدبیت ڤان هەنگاڤان تاقی بکە.",
-                s03F1H: "1. App Store بپشکنە", s03F1P: "د App Store دا بچە ژوورێ نەک د iCloud یان Settings دا.",
-                s03F2H: "2. دووبارە تاقی بکە", s03F2P: "مۆبایلێ Restart بکە یان چەند خولەکان چاڤەڕێ بە.",
-                s03F3H: "3. خەڵەتیا نەدیار / Disabled", s03F3P: "5 تا 15 جاران د App Store دا دووبارە هەوڵ بدە یان نووکرنێ ببینە.",
-                s04H: "رێنماییێن زێدە", s04P: "پشتی داگرتنێ دەربکەڤە و رێکخستنێن App Store ب گونجایی بهێلە دا ئەپ نەهێتە گرتن.",
-                s05H: "وەرگرتنا هژمارا App Store",
-                lockedMsg: "🔒 ل MINECRAFT یان SHADOWROCKET بدە و 5 کەناڵان تەواو بکە دا هژمار دیار ببیت.",
-                lockedCta: "ڤەکرنا دەروازەیا 5 کەناڵان",
-                gateMsg: "⚠️ دڤێت ل 4 کەناڵێن تلیگرام و ديسکۆردێ ببە ئەندام (5 چرکە بۆ هەر ئێکێ):",
-                gatePctLbl: "رێژا تەواوکرنێ", gateUnlockBtn: "✓ ڤەکرنا هژمارێ نوکە",
-                expireNote: "پشتی ڤەکرنێ بۆ 10 خولەکان کارا دمینیت.",
-                helpH: "پەیوەندی و ئاگەهداری",
-                helpP: "ئاریشەیەک هەیە یان نووکرن دڤێت؟ پەیوەندیێ ب ديسکۆرد یان تلیگرامێ بکە.",
-                copy: "کۆپی", copied: "کۆپی بوو"
-            },
-            en: {
-                dir: "ltr", lang: "en", btn: "🇬🇧 EN",
-                mainH1: "ID APPLE FREE - Free Shared App Store IDs at Kurd0oAccounts",
-                guideH2: "How to get and use the account",
-                guideSub: "Read the rules, follow the steps, then get the account credentials at the bottom.",
-                pill1: "Read notes", pill2: "How to login", pill3: "Copy",
-                bRules: "Rules", bLogin: "Login", bFix: "Fixes", bMore: "More guide",
-                btnMc: "Get MINECRAFT Account", btnSr: "Get SHADOWROCKET Account",
-                s01H: "Mandatory rules", s01Sub: "Important rules to prevent account issues.",
-                s01Ok: "✓ Sign in inside App Store only to search and download. Never use the account in iCloud or Settings.",
-                s01NoH: "⊖ Do not perform",
-                s01List: [
-                    "Sign in inside Settings or iCloud.",
-                    "Add a phone number, verification email, or personal info.",
-                    "Change password, security email, or any account details.",
-                    "Share account credentials or external links."
-                ],
-                s01Warn: "▲ Violating instructions may restrict or lock the account.",
-                s02H: "How to sign in and download", s02Sub: "Follow all 3 steps carefully before using.",
-                s02S1H: "1. Open App Store", s02S1P: "After unlocking below, sign in inside App Store only.",
-                s02S2H: "2. Search game or app", s02S2P: "Search directly for Minecraft or Shadowrocket in the search bar.",
-                s02S3H: "3. Sign out after download", s02S3P: "Sign out of the account right after finishing the download.",
-                s03H: "Common error fixes", s03Sub: "Follow these steps if an error occurs.",
-                s03F1H: "1. Check App Store", s03F1P: "Make sure you sign in inside App Store, not iCloud or Settings.",
-                s03F2H: "2. Try again", s03F2P: "Restart your device or wait a few minutes and try again.",
-                s03F3H: "3. Unknown error / Disabled", s03F3P: "Retry signing in 5–15 times in App Store or check updates.",
-                s04H: "Additional guide", s04P: "Sign out after downloading and keep App Store settings proper to reduce revokes.",
-                s05H: "Get App Store Account",
-                lockedMsg: "🔒 Tap MINECRAFT or SHADOWROCKET and complete all 5 channels to reveal the credentials.",
-                lockedCta: "Open 5-Channel Gate",
-                gateMsg: "⚠️ Join all 4 Telegram channels and Discord server (5 seconds per link):",
-                gatePctLbl: "Progress", gateUnlockBtn: "✓ Unlock Account Now",
-                expireNote: "Session stays valid for 10 minutes after unlocking.",
-                helpH: "Support & updates",
-                helpP: "Need help or updates? Join Discord or message on Telegram.",
-                copy: "Copy", copied: "Copied"
-            }
-        };
-
-        let curLang = "vi";
-        let curTarget = "minecraft";
-        let gateDone = { 1: false, 2: false, 3: false, 4: false, 5: false };
-        let gateCounting = { 1: false, 2: false, 3: false, 4: false, 5: false };
-        let clockTimer = null;
-
-        function toggleLangs() {
-            document.getElementById("lang-dropdown").classList.toggle("hidden");
-        }
-
-        function setLang(code) {
-            curLang = code;
-            const t = I18N[code];
-            document.getElementById("html-root").setAttribute("dir", t.dir);
-            document.getElementById("html-root").setAttribute("lang", t.lang);
-            document.getElementById("lang-btn-label").innerText = t.btn;
-            document.getElementById("lang-dropdown").classList.add("hidden");
-
-            document.getElementById("t-main-h1").innerText = t.mainH1;
-            document.getElementById("t-guide-h2").innerText = t.guideH2;
-            document.getElementById("t-guide-sub").innerText = t.guideSub;
-            document.getElementById("t-pill1").innerText = t.pill1;
-            document.getElementById("t-pill2").innerText = t.pill2;
-            document.getElementById("t-pill3").innerText = t.pill3;
-            document.getElementById("t-b-rules").innerText = t.bRules;
-            document.getElementById("t-b-login").innerText = t.bLogin;
-            document.getElementById("t-b-fix").innerText = t.bFix;
-            document.getElementById("t-b-more").innerText = t.bMore;
-            document.getElementById("t-btn-mc-main").innerText = t.btnMc;
-            document.getElementById("t-btn-sr-main").innerText = t.btnSr;
-            document.getElementById("t-01-h").innerText = t.s01H;
-            document.getElementById("t-01-sub").innerText = t.s01Sub;
-            document.getElementById("t-01-ok").innerHTML = `<i class="fa-solid fa-check ml-1"></i> ${t.s01Ok.replace(/^✓\s*/, "")}`;
-            document.getElementById("t-01-no-h").innerText = t.s01NoH;
-            document.getElementById("t-01-list").innerHTML = t.s01List.map(x => `<li>${x}</li>`).join("");
-            document.getElementById("t-01-warn").innerText = t.s01Warn;
-            document.getElementById("t-02-h").innerText = t.s02H;
-            document.getElementById("t-02-sub").innerText = t.s02Sub;
-            document.getElementById("t-02-s1h").innerText = t.s02S1H;
-            document.getElementById("t-02-s1p").innerText = t.s02S1P;
-            document.getElementById("t-02-s2h").innerText = t.s02S2H;
-            document.getElementById("t-02-s2p").innerText = t.s02S2P;
-            document.getElementById("t-02-s3h").innerText = t.s02S3H;
-            document.getElementById("t-02-s3p").innerText = t.s02S3P;
-            document.getElementById("t-03-h").innerText = t.s03H;
-            document.getElementById("t-03-sub").innerText = t.s03Sub;
-            document.getElementById("t-03-f1h").innerText = t.s03F1H;
-            document.getElementById("t-03-f1p").innerText = t.s03F1P;
-            document.getElementById("t-03-f2h").innerText = t.s03F2H;
-            document.getElementById("t-03-f2p").innerText = t.s03F2P;
-            document.getElementById("t-03-f3h").innerText = t.s03F3H;
-            document.getElementById("t-03-f3p").innerText = t.s03F3P;
-            document.getElementById("t-04-h").innerText = t.s04H;
-            document.getElementById("t-04-p").innerText = t.s04P;
-            document.getElementById("t-05-h").innerText = t.s05H;
-            document.getElementById("t-locked-msg").innerText = t.lockedMsg;
-            document.getElementById("t-locked-cta").innerText = t.lockedCta;
-            document.getElementById("t-gate-msg").innerText = t.gateMsg;
-            document.getElementById("t-gate-pct-lbl").innerText = t.gatePctLbl;
-            document.getElementById("t-gate-unlock-btn").innerText = t.gateUnlockBtn;
-            document.getElementById("t-expire-note").innerText = t.expireNote;
-            document.getElementById("t-help-h").innerText = t.helpH;
-            document.getElementById("t-help-p").innerText = t.helpP;
-
-            document.querySelectorAll(".cp-txt").forEach(el => el.innerText = t.copy);
-            document.getElementById("gate-target-label").innerText = ACCOUNT_ITEMS[curTarget].label[curLang];
-        }
-
-        function triggerGate(target) {
-            curTarget = target;
-            document.getElementById("gate-target-label").innerText = ACCOUNT_ITEMS[target].label[curLang];
-            document.getElementById("gate-modal").classList.remove("hidden");
-            document.getElementById("gate-modal").scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-
-        function closeGate() {
-            document.getElementById("gate-modal").classList.add("hidden");
-        }
-
-        function startGateTimer(num) {
-            if (gateDone[num] || gateCounting[num]) return;
-            gateCounting[num] = true;
-            let s = 5;
-            const badge = document.getElementById("g-badge-" + num);
-            badge.innerHTML = `<span class="font-mono text-amber-300">${s}s</span>`;
-            const iv = setInterval(() => {
-                s--;
-                if (s > 0) {
-                    badge.innerHTML = `<span class="font-mono text-amber-300">${s}s</span>`;
-                } else {
-                    clearInterval(iv);
-                    gateCounting[num] = false;
-                    gateDone[num] = true;
-                    badge.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i>`;
-                    updateGateBar();
-                }
-            }, 1000);
-        }
-
-        function updateGateBar() {
-            const count = Object.values(gateDone).filter(Boolean).length;
-            const pct = (count / 5) * 100;
-            document.getElementById("gate-progress-bar").style.width = pct + "%";
-            document.getElementById("gate-progress-txt").innerText = `${pct}% (${count}/5)`;
-            if (count === 5) {
-                document.getElementById("gate-complete-btn").classList.remove("hidden");
-            }
-        }
-
-        function unlockAndJumpToAccount() {
-            const item = ACCOUNT_ITEMS[curTarget];
-            document.getElementById("final-email").innerText = item.email;
-            document.getElementById("final-pass").innerText = item.pass;
-
-            document.getElementById("gate-modal").classList.add("hidden");
-            document.getElementById("locked-credentials-box").classList.add("hidden");
-            document.getElementById("unlocked-credentials-box").classList.remove("hidden");
-
-            runClock(600);
-            document.getElementById("sec-05").scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-
-        function runClock(sec) {
-            if (clockTimer) clearInterval(clockTimer);
-            let rem = sec;
-            const el = document.getElementById("acc-session-clock");
-            const draw = () => {
-                const m = String(Math.floor(rem / 60)).padStart(2, "0");
-                const s = String(rem % 60).padStart(2, "0");
-                el.innerText = `${m}:${s}`;
-            };
-            draw();
-            clockTimer = setInterval(() => {
-                if (rem <= 0) { clearInterval(clockTimer); return; }
-                rem--;
-                draw();
-            }, 1000);
-        }
-
-        function copyFinal(id, btn) {
-            const txt = document.getElementById(id).innerText;
-            const sp = btn.querySelector(".cp-txt");
-            navigator.clipboard.writeText(txt).then(() => {
-                sp.innerText = I18N[curLang].copied;
-                setTimeout(() => { sp.innerText = I18N[curLang].copy; }, 1500);
-            });
-        }
-
-        function scrollToEl(id) {
-            document.getElementById(id).scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-
-        function goTopOrHome() {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-    </script>
 </body>
 </html>
