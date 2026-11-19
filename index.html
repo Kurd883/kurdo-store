@@ -1,195 +1,444 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ku" dir="rtl" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KurdoStore | وجهتك الموثوقة للحسابات الرقمية</title>
+    <title>Kurd0oAccounts | Cyber Gold</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --bg-color: #0d0d0d;
-            --card-bg: #161616;
-            --gold: #d4af37;
-            --gold-light: #f3e5ab;
-            --text-main: #ffffff;
-            --text-muted: #a0a0a0;
-            --border-gold: rgba(212, 175, 55, 0.3);
-        }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800&display=swap');
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #070604;
+            background-image: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.16) 0%, transparent 60%);
+            color: #F8FAFC;
         }
-        header {
-            text-align: center;
-            margin: 30px 0;
-            border-bottom: 1px solid var(--border-gold);
-            padding-bottom: 20px;
-            width: 100%;
-            max-width: 800px;
-        }
-        header h1 {
-            color: var(--gold);
-            font-size: 2.2rem;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
-        }
-        header p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-        .container {
-            width: 100%;
-            max-width: 1000px;
-            flex: 1;
-        }
-        .section-title {
-            color: var(--gold);
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            border-right: 4px solid var(--gold);
-            padding-right: 10px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-gold);
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
-        }
-        .card img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-bottom: 1px solid var(--border-gold);
-        }
-        .card-content {
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 6px;
-            color: var(--text-main);
-        }
-        .card-title-en {
-            font-size: 0.9rem;
-            color: var(--gold);
-            margin-bottom: 8px;
-            direction: ltr;
-            text-align: right;
-        }
-        .card-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            flex: 1;
-            line-height: 1.4;
-        }
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .price {
-            color: var(--gold-light);
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-        .buy-btn {
-            background-color: var(--gold);
-            color: #000;
-            padding: 8px 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: background-color 0.2s;
-        }
-        .buy-btn:hover {
-            background-color: var(--gold-light);
-        }
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px 0;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            width: 100%;
-        }
+        .gold-bg { background: linear-gradient(135deg, #B8860B, #F5D77F, #C59B27); }
+        .gold-text { background: linear-gradient(135deg, #FFF1B8, #E5BE52, #B8860B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gold-card { background: rgba(17, 15, 11, 0.94); border: 1px solid rgba(212, 175, 55, 0.32); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55); }
+        .soft-box { background: rgba(25, 22, 16, 0.9); border: 1px solid rgba(212, 175, 55, 0.2); }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between items-center p-4">
 
-    <header>
-        <h1>KurdoStore</h1>
-        <p>وجهتك الموثوقة للحسابات الرقمية والألعاب الأصلية | Your Trusted Digital Store</p>
+    <!-- الهيدر وقائمة اللغات -->
+    <header class="w-full max-w-md mx-auto pt-2">
+        <div class="flex items-center justify-between gap-2 mb-4">
+            <a href="https://t.me/Kurd0o1" target="_blank" class="flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 px-3 py-1.5 rounded-xl text-amber-300 text-xs font-bold">
+                <i class="fa-solid fa-crown text-amber-400"></i>
+                <span>Kurd0oAccounts</span>
+            </a>
+
+            <!-- قائمة اختيار اللغة مثل الصور -->
+            <div class="relative">
+                <button onclick="toggleLangMenu()" class="flex items-center gap-2 bg-amber-500/15 border border-amber-400/40 px-3 py-1.5 rounded-xl text-xs font-bold text-amber-200">
+                    <span id="current-lang-label">Badînî</span>
+                    <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                </button>
+                <div id="lang-menu" class="hidden absolute left-0 mt-1.5 w-36 bg-[#14110c] border border-amber-500/40 rounded-xl shadow-2xl overflow-hidden z-40 text-xs">
+                    <button onclick="selectLang('ku')" class="w-full text-right px-3 py-2 hover:bg-amber-500/20 text-amber-200 font-semibold">Badînî (کوردی)</button>
+                    <button onclick="selectLang('ar')" class="w-full text-right px-3 py-2 hover:bg-amber-500/20 text-slate-200">العربية</button>
+                    <button onclick="selectLang('en')" class="w-full text-right px-3 py-2 hover:bg-amber-500/20 text-slate-200">English</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mb-4">
+            <h1 id="t-hero-title" class="text-xl font-extrabold gold-text mb-1">ID APPLE FREE - هەژمارێن بێ بەرامبەر</h1>
+            <p id="t-hero-sub" class="text-xs text-amber-100/70">رێنماییان بخوینە، هەلبژێرە و هژمارێ ل دوماهیێ وەرگرە</p>
+        </div>
     </header>
 
-    <div class="container">
-        <h2 class="section-title">الحسابات المتوفرة حالياً / Available Accounts</h2>
-        <div id="products-grid" class="grid">
-            
-            <!-- المنتج الأول: توم ريدر + ماينكرافت -->
-            <div class="card">
-                <img src="https://i.ibb.co/GQWp5cfd/IMG-2882.jpg" alt="Apple ID (Tomb Raider + Minecraft)">
-                <div class="card-content">
-                    <div class="card-title">حساب Apple ID (توم ريدر + ماينكرافت)</div>
-                    <div class="card-title-en">Apple ID (Tomb Raider + Minecraft)</div>
-                    <div class="card-desc">حساب أبل ستور مشحون ومشتراة فيه الألعاب الأصلية بالكامل</div>
-                    <div class="card-footer">
-                        <div class="price">4$</div>
-                        <a href="https://t.me/yousifmziri?text=مرحباً، أريد شراء حساب Apple ID (توم ريدر + ماينكرافت) - Hello, I want to buy Apple ID (Tomb Raider + Minecraft)" target="_blank" class="buy-btn">شراء / Buy</a>
+    <main class="w-full max-w-md mx-auto flex-1 flex flex-col gap-4">
+
+        <!-- 1. واجهة اختيار Minecraft و Shadowrocket مثل الصور -->
+        <section id="home-section" class="gold-card rounded-2xl p-4 space-y-4">
+            <div class="soft-box rounded-xl p-3 text-center">
+                <p id="t-steps-pill" class="text-xs font-bold text-amber-300">1. هەلبژێرە • 2. پێنج کەناڵان جۆین بکە • 3. هژمارێ کۆپی بکە</p>
+            </div>
+
+            <!-- أزرار ماينكرافت وشادوروكت الرئيسية -->
+            <div class="space-y-2.5">
+                <button onclick="openGateFor('minecraft')" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-700 to-emerald-500 hover:from-emerald-600 hover:to-emerald-400 text-white font-extrabold text-xs shadow-lg flex items-center justify-between transition">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-cube text-base"></i> <span id="t-btn-mc">وەرگرتنا ID بۆ داگرتنا MINECRAFT</span></span>
+                    <span class="text-[10px] bg-black/25 px-2 py-0.5 rounded-md">FREE</span>
+                </button>
+
+                <button onclick="openGateFor('shadowrocket')" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-500 hover:brightness-105 text-slate-950 font-extrabold text-xs shadow-lg flex items-center justify-between transition">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-rocket text-base"></i> <span id="t-btn-sr">وەرگرتنا ID بۆ داگرتنا SHADOWROCKET</span></span>
+                    <span class="text-[10px] bg-black/15 px-2 py-0.5 rounded-md">VIP</span>
+                </button>
+            </div>
+
+            <!-- شروحات ومميزات سريعة مثل الصور -->
+            <div class="soft-box rounded-xl p-3.5 space-y-2 text-xs text-slate-300 leading-relaxed">
+                <h2 id="t-about-mc" class="font-extrabold text-amber-300 text-sm">🎮 Minecraft iOS</h2>
+                <p id="t-about-mc-p">هەژمارا ماينكرافت بۆ ئایفۆن و ئایپاد ب شێوازێ Survival، Creative، Add-On و Texture Packs بێ بەرامبەر.</p>
+                <h2 id="t-about-sr" class="font-extrabold text-amber-300 text-sm pt-1">🚀 Shadowrocket</h2>
+                <p id="t-about-sr-p">ئەپڵیکەیشنا Shadowrocket بۆ رێکخستنا پڕۆکسی و تۆڕێ ب شێوەیەکێ خێرا و رێکخستی لسەر iOS.</p>
+            </div>
+        </section>
+
+        <!-- 2. بوابة القنوات الخمس (تظهر مباشرة عند ضغط ماينكرافت أو شادوروكت) -->
+        <section id="gate-section" class="hidden gold-card rounded-2xl p-4 space-y-4">
+            <div class="flex items-center justify-between">
+                <span id="gate-category-tag" class="text-xs font-extrabold px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-400/30"></span>
+                <button onclick="goHome()" class="text-xs text-amber-200/80 hover:text-amber-300"><i class="fa-solid fa-arrow-right"></i> <span id="t-back">زڤڕین</span></button>
+            </div>
+
+            <div class="soft-box rounded-xl p-3 text-xs">
+                <p id="t-gate-alert" class="font-bold text-amber-300 mb-1">⚠️ دڤێت ل هەر 4 کەناڵێن تلیگرام و ديسکۆردێ ببە ئەندام (هەر ئێك 5 چرکا):</p>
+                <div class="w-full bg-black/60 rounded-full h-2 mt-2 overflow-hidden">
+                    <div id="gate-bar" class="gold-bg h-full transition-all duration-300" style="width: 0%"></div>
+                </div>
+                <div class="flex justify-between text-[11px] text-amber-200/80 mt-1.5">
+                    <span id="t-prog-text">رێژا تەواوکرنێ</span>
+                    <span id="gate-count" class="font-bold text-amber-300">0% (0/5)</span>
+                </div>
+            </div>
+
+            <!-- القنوات الـ 4 تليجرام + 1 ديسكورد -->
+            <div class="space-y-2">
+                <a href="https://t.me/Kurd0o1" target="_blank" onclick="clickChannel(1)" id="link-1" class="flex items-center justify-between px-3.5 py-3 soft-box rounded-xl hover:border-amber-400 transition">
+                    <span class="text-xs font-bold text-slate-100">Kurd0o1 (Telegram)</span>
+                    <span id="badge-1" class="text-xs text-amber-400"><i class="fa-brands fa-telegram"></i></span>
+                </a>
+                <a href="https://t.me/Kurd0o2" target="_blank" onclick="clickChannel(2)" id="link-2" class="flex items-center justify-between px-3.5 py-3 soft-box rounded-xl hover:border-amber-400 transition">
+                    <span class="text-xs font-bold text-slate-100">Kurd0o2 (Telegram)</span>
+                    <span id="badge-2" class="text-xs text-amber-400"><i class="fa-brands fa-telegram"></i></span>
+                </a>
+                <a href="https://t.me/Kurd0o3" target="_blank" onclick="clickChannel(3)" id="link-3" class="flex items-center justify-between px-3.5 py-3 soft-box rounded-xl hover:border-amber-400 transition">
+                    <span class="text-xs font-bold text-slate-100">Kurd0o3 (Telegram)</span>
+                    <span id="badge-3" class="text-xs text-amber-400"><i class="fa-brands fa-telegram"></i></span>
+                </a>
+                <a href="https://t.me/Kurd0o4" target="_blank" onclick="clickChannel(4)" id="link-4" class="flex items-center justify-between px-3.5 py-3 soft-box rounded-xl hover:border-amber-400 transition">
+                    <span class="text-xs font-bold text-slate-100">Kurd0o4 (Telegram)</span>
+                    <span id="badge-4" class="text-xs text-amber-400"><i class="fa-brands fa-telegram"></i></span>
+                </a>
+                <a href="https://discord.gg/Tn4U989mmz" target="_blank" onclick="clickChannel(5)" id="link-5" class="flex items-center justify-between px-3.5 py-3 soft-box rounded-xl hover:border-amber-400 transition">
+                    <span class="text-xs font-bold text-slate-100">Kurd0o Discord</span>
+                    <span id="badge-5" class="text-xs text-indigo-400"><i class="fa-brands fa-discord"></i></span>
+                </a>
+            </div>
+
+            <button id="open-vault-btn" onclick="openVault()" class="hidden w-full py-3 gold-bg text-slate-950 font-extrabold text-xs rounded-xl shadow-lg">
+                <i class="fa-solid fa-lock-open"></i> <span id="t-open-vault">خەزینە ڤەبوو • دیتنا هژمارێ و رێنماییان</span>
+            </button>
+        </section>
+
+        <!-- 3. صفحة الإرشادات والخطوات والحساب مثل ترتيب الصور 20 -->
+        <section id="vault-section" class="hidden gold-card rounded-2xl p-4 space-y-4 text-xs leading-relaxed">
+            <div class="flex items-center justify-between border-b border-amber-500/20 pb-2.5">
+                <span id="vault-cat-label" class="font-extrabold text-amber-300 text-sm"></span>
+                <span id="vault-timer" class="font-mono text-xs bg-amber-500/15 text-amber-300 px-2.5 py-1 rounded-lg">10:00</span>
+            </div>
+
+            <!-- 01 القواعد الإلزامية -->
+            <div class="soft-box rounded-xl p-3.5 space-y-1.5">
+                <div class="flex items-center gap-2 font-extrabold text-amber-300">
+                    <span class="px-2 py-0.5 rounded bg-amber-500/20 text-[11px]">01</span>
+                    <span id="t-s01-title">یاسایا سەرەکی (قواعد إلزامية)</span>
+                </div>
+                <p id="t-s01-p" class="text-emerald-300 font-semibold">✓ بتنێ د ناڤ App Store دا چوونا ژوورێ بکە، هەرگیز د Settings یان iCloud دا نەچە ژوورێ.</p>
+                <p id="t-s01-no" class="text-rose-300">✕ پاسۆردێ نەگوهۆڕە، ژمارە یان ئیمەیلێ زێدە نەکە، و پشتی داگرتنێ دەستبجێ Sign Out بکە.</p>
+            </div>
+
+            <!-- 02 خطوات تسجيل الدخول والتحميل -->
+            <div class="soft-box rounded-xl p-3.5 space-y-1.5">
+                <div class="flex items-center gap-2 font-extrabold text-amber-300">
+                    <span class="px-2 py-0.5 rounded bg-amber-500/20 text-[11px]">02</span>
+                    <span id="t-s02-title">چاوا بچییە ژوورێ و داگری؟</span>
+                </div>
+                <p id="t-s02-p" class="text-slate-300">1. App Store ڤەکە و ب هژمارا ل خوارێ بچە ژوورێ. 2. ل ناڤ App Store ل یاریێ یان ئەپێ بگەڕێ و داگرە. 3. پشتی خلاس بوونێ Sign Out بکە.</p>
+            </div>
+
+            <!-- 03 حلول الأخطاء الشائعة -->
+            <div class="soft-box rounded-xl p-3.5 space-y-1.5">
+                <div class="flex items-center gap-2 font-extrabold text-amber-300">
+                    <span class="px-2 py-0.5 rounded bg-amber-500/20 text-[11px]">03</span>
+                    <span id="t-s03-title">چارەسەرییا خەڵەتییان</span>
+                </div>
+                <p id="t-s03-p" class="text-slate-300">ئەگەر خەڵەتی هات: مۆبایلێ Restart بکە و 5-15 جاران د App Store دا تاقی بکە، یان چەند خولەکان چاڤەڕێ بە.</p>
+            </div>
+
+            <!-- 04 نصائح تقليل سحب التطبيق وتسجيل الخروج -->
+            <div class="soft-box rounded-xl p-3.5 space-y-1.5">
+                <div class="flex items-center gap-2 font-extrabold text-amber-300">
+                    <span class="px-2 py-0.5 rounded bg-amber-500/20 text-[11px]">04</span>
+                    <span id="t-s04-title">پاراستنا ئەپێ و دەرکەفتن ژ هژمارێ</span>
+                </div>
+                <p id="t-s04-p" class="text-slate-300">د Settings &gt; App Store دا رێکخستنان ب گونجایی بهێلە و دەمێ خلاس بوونێ ژ ئەکاونتێ دەربکەڤە دا ئەپ نەهێتە گرتن.</p>
+            </div>
+
+            <!-- 05 استلام الإيميل والباسوورد -->
+            <div class="soft-box rounded-xl p-3.5 space-y-3 border border-amber-400/50">
+                <div class="flex items-center gap-2 font-extrabold text-amber-300">
+                    <span class="px-2 py-0.5 rounded bg-amber-500/20 text-[11px]">05</span>
+                    <span id="t-s05-title">وەرگرتنا هژمارا App Store</span>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] text-amber-300 font-bold mb-1">EMAIL / APPLE ID</label>
+                    <div class="flex items-center justify-between bg-black/70 border border-amber-500/25 rounded-xl px-3 py-2">
+                        <span id="acc-email" dir="ltr" class="font-mono text-xs text-white select-all">⏳⏳tomorrow⏳⏳</span>
+                        <button onclick="copyVal('acc-email', this)" class="bg-amber-500/20 text-amber-300 px-2.5 py-1 rounded-lg text-[11px] font-bold"><span class="cp-lbl">کۆپی</span></button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] text-amber-300 font-bold mb-1">PASSWORD</label>
+                    <div class="flex items-center justify-between bg-black/70 border border-amber-500/25 rounded-xl px-3 py-2">
+                        <span id="acc-pass" dir="ltr" class="font-mono text-xs text-white select-all">⏳⏳غدا/سباهي⏳⏳</span>
+                        <button onclick="copyVal('acc-pass', this)" class="bg-amber-500/20 text-amber-300 px-2.5 py-1 rounded-lg text-[11px] font-bold"><span class="cp-lbl">کۆپی</span></button>
                     </div>
                 </div>
             </div>
 
-            <!-- المنتج الثاني: ماينكرافت -->
-            <div class="card">
-                <img src="https://i.ibb.co/N6QFWMhy/IMG-1139.jpg" alt="Apple ID (Minecraft)">
-                <div class="card-content">
-                    <div class="card-title">حساب Apple ID (ماينكرافت)</div>
-                    <div class="card-title-en">Apple ID (Minecraft)</div>
-                    <div class="card-desc">حساب أبل ستور مشحون ومشتراة فيه الألعاب</div>
-                    <div class="card-footer">
-                        <div class="price">1$</div>
-                        <a href="https://t.me/yousifmziri?text=مرحباً، أريد شراء حساب Apple ID (ماينكرافت) - Hello, I want to buy Apple ID (Minecraft)" target="_blank" class="buy-btn">شراء / Buy</a>
-                    </div>
-                </div>
+            <div class="grid grid-cols-2 gap-2 pt-1">
+                <a href="https://t.me/yousifmziri" target="_blank" class="py-2.5 gold-bg text-slate-950 font-extrabold rounded-xl text-center">@yousifmziri</a>
+                <button onclick="goHome()" class="py-2.5 soft-box text-amber-300 font-bold rounded-xl text-center" id="t-home-btn">سەرەکی</button>
             </div>
+        </section>
 
-        </div>
-    </div>
+    </main>
 
-    <footer>
-        جميع الحقوق محفوظة &copy; KurdoStore 2026
+    <footer class="text-center text-[11px] text-amber-100/50 py-3">
+        &copy; 2026 Kurd0oAccounts
     </footer>
+    <script>
+        const ACCOUNTS = {
+            minecraft: {
+                tag: { ku: "Minecraft ID", ar: "حساب ماينكرافت", en: "Minecraft ID" },
+                email: "⏳⏳tomorrow⏳⏳",
+                pass: "⏳⏳غدا/سباهي⏳⏳"
+            },
+            shadowrocket: {
+                tag: { ku: "Shadowrocket ID", ar: "حساب شادوروكت", en: "Shadowrocket ID" },
+                email: "⏳⏳tomorrow⏳⏳",
+                pass: "⏳⏳غدا/سباهي⏳⏳"
+            }
+        };
+
+        const LANGS = {
+            ku: {
+                dir: "rtl", lang: "ku", label: "Badînî",
+                heroTitle: "ID APPLE FREE - هەژمارێن بێ بەرامبەر",
+                heroSub: "رێنماییان بخوینە، هەلبژێرە و هژمارێ ل دوماهیێ وەرگرە",
+                stepsPill: "1. هەلبژێرە • 2. پێنج کەناڵان جۆین بکە • 3. هژمارێ کۆپی بکە",
+                btnMc: "وەرگرتنا ID بۆ داگرتنا MINECRAFT",
+                btnSr: "وەرگرتنا ID بۆ داگرتنا SHADOWROCKET",
+                aboutMc: "🎮 Minecraft iOS",
+                aboutMcP: "هەژمارا ماينكرافت بۆ ئایفۆن و ئایپاد ب شێوازێ Survival، Creative، Add-On و Texture Packs بێ بەرامبەر.",
+                aboutSr: "🚀 Shadowrocket",
+                aboutSrP: "ئەپڵیکەیشنا Shadowrocket بۆ رێکخستنا پڕۆکسی و تۆڕێ ب شێوەیەکێ خێرا و رێکخستی لسەر iOS.",
+                back: "زڤڕین",
+                gateAlert: "⚠️ دڤێت ل هەر 4 کەناڵێن تلیگرام و ديسکۆردێ ببە ئەندام (هەر ئێك 5 چرکا):",
+                progText: "رێژا تەواوکرنێ",
+                openVault: "خەزینە ڤەبوو • دیتنا هژمارێ و رێنماییان",
+                s01Title: "01 • یاسایا سەرەکی",
+                s01P: "✓ بتنێ د ناڤ App Store دا چوونا ژوورێ بکە، هەرگیز د Settings یان iCloud دا نەچە ژوورێ.",
+                s01No: "✕ پاسۆردێ نەگوهۆڕە، زانیارییان زێدە نەکە، و پشتی داگرتنێ دەستبجێ Sign Out بکە.",
+                s02Title: "02 • چاوا بچییە ژوورێ و داگری؟",
+                s02P: "1. App Store ڤەکە و ب هژمارا ل خوارێ بچە ژوورێ. 2. ل ناڤ App Store ل یاریێ یان ئەپێ بگەڕێ و داگرە. 3. پشتی خلاس بوونێ Sign Out بکە.",
+                s03Title: "03 • چارەسەرییا خەڵەتییان",
+                s03P: "ئەگەر خەڵەتی هات: مۆبایلێ Restart بکە و 5-15 جاران د App Store دا تاقی بکە، یان چەند خولەکان چاڤەڕێ بە.",
+                s04Title: "04 • پاراستنا ئەپێ و دەرکەفتن",
+                s04P: "د Settings > App Store دا رێکخستنان ب گونجایی بهێلە و دەمێ خلاس بوونێ ژ ئەکاونتێ دەربکەڤە دا ئەپ نەهێتە گرتن.",
+                s05Title: "05 • وەرگرتنا هژمارا App Store",
+                homeBtn: "سەرەکی",
+                copy: "کۆپی", copied: "کۆپی بوو"
+            },
+            ar: {
+                dir: "rtl", lang: "ar", label: "العربية",
+                heroTitle: "ID APPLE FREE - حسابات مجانية",
+                heroSub: "اقرأ التعليمات، اختر الفئة، واحصل على الحساب في النهاية",
+                stepsPill: "1. اختر الفئة • 2. اشترك في 5 روابط • 3. انسخ الحساب",
+                btnMc: "الحصول على ID لتحميل MINECRAFT",
+                btnSr: "الحصول على ID لتحميل SHADOWROCKET",
+                aboutMc: "🎮 Minecraft iOS",
+                aboutMcP: "حساب ماينكرافت للآيفون والآيباد مع أنماط البقاء والإبداع والإضافات مجاناً.",
+                aboutSr: "🚀 Shadowrocket",
+                aboutSrP: "تطبيق Shadowrocket لإدارة الشبكة والبروكسي على أجهزة iOS بسرعة وسهولة.",
+                back: "رجوع",
+                gateAlert: "⚠️ يجب الانضمام للقنوات الأربع في تليجرام وسيرفر الديسكورد (5 ثوانٍ لكل رابط):",
+                progText: "نسبة الإنجاز",
+                openVault: "تم فتح الخزنة • عرض الحساب والتعليمات",
+                s01Title: "01 • القواعد الإلزامية",
+                s01P: "✓ سجل الدخول داخل App Store فقط، ولا تسجل أبداً في iCloud أو الإعدادات.",
+                s01No: "✕ لا تغير كلمة المرور أو تضف بيانات أمان، وسجل الخروج فوراً بعد التحميل.",
+                s02Title: "02 • طريقة تسجيل الدخول والتحميل",
+                s02P: "1. افتح App Store وسجل الدخول بالبيانات بالأسفل. 2. ابحث عن اللعبة أو التطبيق وحمله. 3. سجل الخروج بعد الانتهاء.",
+                s03Title: "03 • حلول الأخطاء الشائعة",
+                s03P: "عند ظهور خطأ: أعد تشغيل الجهاز وجرب في App Store من 5 إلى 15 مرة، أو انتظر بضع دقائق.",
+                s04Title: "04 • تقليل سحب التطبيق وتسجيل الخروج",
+                s04P: "راجع إعدادات App Store وسجل الخروج بعد التحميل لتقليل احتمالية قفل أو سحب التطبيق.",
+                s05Title: "05 • استلام حساب App Store",
+                homeBtn: "الرئيسية",
+                copy: "نسخ", copied: "تم النسخ"
+            },
+            en: {
+                dir: "ltr", lang: "en", label: "English",
+                heroTitle: "ID APPLE FREE - Shared Accounts",
+                heroSub: "Read the guide, choose your category, and unlock the credentials",
+                stepsPill: "1. Choose • 2. Join 5 Channels • 3. Copy Account",
+                btnMc: "GET ID FOR MINECRAFT",
+                btnSr: "GET ID FOR SHADOWROCKET",
+                aboutMc: "🎮 Minecraft iOS",
+                aboutMcP: "Minecraft for iPhone & iPad with Survival, Creative, Add-Ons & Texture Packs.",
+                aboutSr: "🚀 Shadowrocket",
+                aboutSrP: "Shadowrocket rule-based network and proxy utility for iOS devices.",
+                back: "Back",
+                gateAlert: "⚠️ Join all 4 Telegram channels and Discord server (5s per link):",
+                progText: "Progress",
+                openVault: "Vault Unlocked • View Account & Guide",
+                s01Title: "01 • Mandatory Rules",
+                s01P: "✓ Sign in inside App Store ONLY. Never sign in to iCloud or Settings.",
+                s01No: "✕ Do not change password or add recovery info, and sign out right after downloading.",
+                s02Title: "02 • How to Sign In & Download",
+                s02P: "1. Open App Store and sign in with the credentials below. 2. Search and download. 3. Sign out right after.",
+                s03Title: "03 • Common Error Fixes",
+                s03P: "If an error occurs: restart your device and retry 5–15 times in App Store, or wait a few minutes.",
+                s04Title: "04 • App Lock & Sign Out Tips",
+                s04P: "Check App Store settings and sign out after downloading to reduce app revocation issues.",
+                s05Title: "05 • Get App Store Account",
+                homeBtn: "Home",
+                copy: "Copy", copied: "Copied"
+            }
+        };
+
+        let curLang = "ku";
+        let curCat = "minecraft";
+        let doneMap = { 1: false, 2: false, 3: false, 4: false, 5: false };
+        let countingMap = { 1: false, 2: false, 3: false, 4: false, 5: false };
+        let vaultInterval = null;
+
+        function toggleLangMenu() {
+            document.getElementById("lang-menu").classList.toggle("hidden");
+        }
+
+        function selectLang(code) {
+            curLang = code;
+            const t = LANGS[code];
+            document.getElementById("html-root").setAttribute("dir", t.dir);
+            document.getElementById("html-root").setAttribute("lang", t.lang);
+            document.getElementById("current-lang-label").innerText = t.label;
+            document.getElementById("lang-menu").classList.add("hidden");
+
+            document.getElementById("t-hero-title").innerText = t.heroTitle;
+            document.getElementById("t-hero-sub").innerText = t.heroSub;
+            document.getElementById("t-steps-pill").innerText = t.stepsPill;
+            document.getElementById("t-btn-mc").innerText = t.btnMc;
+            document.getElementById("t-btn-sr").innerText = t.btnSr;
+            document.getElementById("t-about-mc").innerText = t.aboutMc;
+            document.getElementById("t-about-mc-p").innerText = t.aboutMcP;
+            document.getElementById("t-about-sr").innerText = t.aboutSr;
+            document.getElementById("t-about-sr-p").innerText = t.aboutSrP;
+            document.getElementById("t-back").innerText = t.back;
+            document.getElementById("t-gate-alert").innerText = t.gateAlert;
+            document.getElementById("t-prog-text").innerText = t.progText;
+            document.getElementById("t-open-vault").innerText = t.openVault;
+            document.getElementById("t-s01-title").innerText = t.s01Title;
+            document.getElementById("t-s01-p").innerText = t.s01P;
+            document.getElementById("t-s01-no").innerText = t.s01No;
+            document.getElementById("t-s02-title").innerText = t.s02Title;
+            document.getElementById("t-s02-p").innerText = t.s02P;
+            document.getElementById("t-s03-title").innerText = t.s03Title;
+            document.getElementById("t-s03-p").innerText = t.s03P;
+            document.getElementById("t-s04-title").innerText = t.s04Title;
+            document.getElementById("t-s04-p").innerText = t.s04P;
+            document.getElementById("t-s05-title").innerText = t.s05Title;
+            document.getElementById("t-home-btn").innerText = t.homeBtn;
+
+            document.querySelectorAll(".cp-lbl").forEach(el => el.innerText = t.copy);
+            document.getElementById("gate-category-tag").innerText = ACCOUNTS[curCat].tag[curLang];
+            document.getElementById("vault-cat-label").innerText = ACCOUNTS[curCat].tag[curLang];
+        }
+
+        function openGateFor(cat) {
+            curCat = cat;
+            document.getElementById("gate-category-tag").innerText = ACCOUNTS[cat].tag[curLang];
+            document.getElementById("home-section").classList.add("hidden");
+            document.getElementById("vault-section").classList.add("hidden");
+            document.getElementById("gate-section").classList.remove("hidden");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        function goHome() {
+            document.getElementById("gate-section").classList.add("hidden");
+            document.getElementById("vault-section").classList.add("hidden");
+            document.getElementById("home-section").classList.remove("hidden");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        function clickChannel(num) {
+            if (doneMap[num] || countingMap[num]) return;
+            countingMap[num] = true;
+            let sec = 5;
+            const badge = document.getElementById("badge-" + num);
+            badge.innerHTML = `<span class="font-mono text-amber-300">${sec}s</span>`;
+
+            const timer = setInterval(() => {
+                sec--;
+                if (sec > 0) {
+                    badge.innerHTML = `<span class="font-mono text-amber-300">${sec}s</span>`;
+                } else {
+                    clearInterval(timer);
+                    countingMap[num] = false;
+                    doneMap[num] = true;
+                    badge.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i>`;
+                    refreshGate();
+                }
+            }, 1000);
+        }
+
+        function refreshGate() {
+            const doneCount = Object.values(doneMap).filter(Boolean).length;
+            const pct = (doneCount / 5) * 100;
+            document.getElementById("gate-bar").style.width = pct + "%";
+            document.getElementById("gate-count").innerText = `${pct}% (${doneCount}/5)`;
+            if (doneCount === 5) {
+                document.getElementById("open-vault-btn").classList.remove("hidden");
+            }
+        }
+
+        function openVault() {
+            const acc = ACCOUNTS[curCat];
+            document.getElementById("vault-cat-label").innerText = acc.tag[curLang];
+            document.getElementById("acc-email").innerText = acc.email;
+            document.getElementById("acc-pass").innerText = acc.pass;
+
+            document.getElementById("gate-section").classList.add("hidden");
+            document.getElementById("vault-section").classList.remove("hidden");
+            startVaultClock(600);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        function startVaultClock(totalSec) {
+            if (vaultInterval) clearInterval(vaultInterval);
+            let left = totalSec;
+            const el = document.getElementById("vault-timer");
+            const render = () => {
+                const m = String(Math.floor(left / 60)).padStart(2, "0");
+                const s = String(left % 60).padStart(2, "0");
+                el.innerText = `${m}:${s}`;
+            };
+            render();
+            vaultInterval = setInterval(() => {
+                if (left <= 0) { clearInterval(vaultInterval); return; }
+                left--;
+                render();
+            }, 1000);
+        }
+
+        function copyVal(id, btn) {
+            const txt = document.getElementById(id).innerText;
+            const lbl = btn.querySelector(".cp-lbl");
+            navigator.clipboard.writeText(txt).then(() => {
+                lbl.innerText = LANGS[curLang].copied;
+                setTimeout(() => { lbl.innerText = LANGS[curLang].copy; }, 1500);
+            });
+        }
+    </script>
 </body>
 </html>
