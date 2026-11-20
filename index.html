@@ -380,7 +380,7 @@ Click here to go to the account
         <span class="cred-card-title" id="ses-apple-lbl">Apple Account</span>
         <span class="cred-card-tag">EMAIL</span>
       </div>
-      <div class="cred-dots" aria-label="Hidden Apple ID">•••••••••••</div>
+      <div class="cred-dots" id="sr-email-display" aria-label="Hidden Apple ID">•••••••••••</div>
       <button type="button" class="cred-copy-btn" data-cred="email" onclick="handleCredCopyClick('email')">
         <span>❐</span>
         <span class="copy-btn-label" id="ses-copy-btn-1">Copy</span>
@@ -392,7 +392,7 @@ Click here to go to the account
         <span class="cred-card-title" id="ses-pass-lbl">Password</span>
         <span class="cred-card-tag">PASSWORD</span>
       </div>
-      <div class="cred-dots" aria-label="Hidden Password">•••••••••••</div>
+      <div class="cred-dots" id="sr-pass-display" aria-label="Hidden Password">•••••••••••</div>
       <button type="button" class="cred-copy-btn" data-cred="password" onclick="handleCredCopyClick('password')">
         <span>❐</span>
         <span class="copy-btn-label" id="ses-copy-btn-2">Copy</span>
@@ -446,15 +446,81 @@ const ACCOUNTS_DATA={
     password:""
   },
   shadowrocket:{
-    email:"",
-    password:""
+    email:"carlosfordoxd64109@outlook.com",
+    password:"EDsQHS2XR6"
   }
 };
+
+const BOCCHI_API_URL="https://id.bocchi2b.top/api/index";
+
+const SHADOWROCKET_BOCCHI_ACCOUNTS=[
+  {country:"美国",email:"carlosfordoxd64109@outlook.com",id:1795204759,password:"EDsQHS2XR6",status:"正常",time:"2026-11-20 22:01:56"},
+  {country:"美国",email:"johnnykaiserxun28110@outlook.com",id:1795204759,password:"8faD4Ndktk",status:"正常",time:"2026-11-20 21:55:38"},
+  {country:"美国",email:"medwnz77@outlook.com",id:1795204759,password:"XfvFYYX7KC",status:"正常",time:"2026-11-20 22:06:10"},
+  {country:"美国",email:"wangjie086@163.com",id:1795204759,password:"ECMRqt4PawVT",status:"正常",time:"2026-11-20 22:00:01"},
+  {country:"美国",email:"haoyali123456@163.com",id:1795204759,password:"eKuCMRraP1B7",status:"正常",time:"2026-11-20 21:59:13"},
+  {country:"美国",email:"soonjjj@163.com",id:1795204759,password:"VwT5Qc23gJcg",status:"正常",time:"2026-11-20 21:59:06"},
+  {country:"美国",email:"ly901@163.com",id:1795204759,password:"6sNczzBXFSks",status:"正常",time:"2026-11-20 21:58:51"},
+  {country:"美国",email:"yexiaorusw@163.com",id:1795204759,password:"Mq2AhtC9ve5r",status:"正常",time:"2026-11-20 21:58:50"},
+  {country:"美国",email:"zhanghuan701206@163.com",id:1795204759,password:"DXAXk8gcQGXh",status:"正常",time:"2026-11-20 21:58:48"},
+  {country:"美国",email:"z106789631@163.com",id:1795204759,password:"nWxBWSNCe2DA",status:"正常",time:"2026-11-20 21:58:41"},
+  {country:"美国",email:"xiangjun007@163.com",id:1795204759,password:"CEruX2kAJXaP",status:"正常",time:"2026-11-20 21:58:07"},
+  {country:"美国",email:"lyong2016@163.com",id:1795204759,password:"vyvuzjpDFe7G",status:"正常",time:"2026-11-20 21:57:37"},
+  {country:"美国",email:"zyx33321@163.com",id:1795204759,password:"eS7fPA1YKHPN",status:"正常",time:"2026-11-20 21:56:52"},
+  {country:"美国",email:"ff121577@163.com",id:1795204759,password:"Nr4BUrbpEFzv",status:"正常",time:"2026-11-20 21:56:08"},
+  {country:"美国",email:"zcb201505@163.com",id:1795204759,password:"bmWS8zg9R75F",status:"正常",time:"2026-11-20 21:55:55"},
+  {country:"美国",email:"kgs9990@163.com",id:1795204759,password:"Kv8Xr2XsKFF9",status:"正常",time:"2026-11-20 21:55:50"},
+  {country:"美国",email:"hu101140@163.com",id:1795204759,password:"1hNSp8rFa8pb",status:"正常",time:"2026-11-20 21:55:13"},
+  {country:"美国",email:"xiaoyunshan66@163.com",id:1795204759,password:"4eA65W1KqFE6",status:"正常",time:"2026-11-20 21:54:50"},
+  {country:"英国",email:"MajeskeThigpen394@hotmail.com",id:1795204759,password:"hy4WCgaEsv",status:"正常",time:"2026-11-20 22:11:51"},
+  {country:"韩国",email:"JoelWoodrqu@outlook.com",id:1795204759,password:"B31zSgjxdy",status:"正常",time:"2026-11-20 21:01:28"},
+  {country:"日本",email:"LaytonFayed44953@outlook.com",id:1795204759,password:"zuW6EAuQUx",status:"正常",time:"2026-11-20 20:45:37"},
+  {country:"香港",email:"lienbay1988@gmail.com",id:1795204759,password:"826v2vrQ3q",status:"正常",time:"2026-11-20 21:30:33"},
+  {country:"台湾",email:"CaoileCzachor6200@hotmail.com",id:1795204759,password:"cDDz2gkkGW",status:"正常",time:"2026-11-20 22:12:42"},
+  {country:"美国",email:"BrianBryant1535@outlook.com",id:1795204759,password:"2X2arf4uAJ",status:"正常",time:"2026-11-20 21:38:27"},
+  {country:"香港",email:"WinesickleUreno0006@hotmail.com",id:1795204759,password:"eXKw4DCwnc",status:"正常",time:"2026-11-20 21:32:32"},
+  {country:"美国",email:"yz19890814@163.com",id:1795204759,password:"6WFqHHYGsQkN",status:"正常",time:"2026-11-20 22:14:45"},
+  {country:"美国",email:"taian0926@163.com",id:1795204759,password:"Vh5DtcKkdqr8",status:"正常",time:"2026-11-20 22:08:50"},
+  {country:"美国",email:"sonatawang@163.com",id:1795204759,password:"VWecqd91C3bH",status:"正常",time:"2026-11-20 22:08:03"},
+  {country:"美国",email:"lxh1661@163.com",id:1795204759,password:"7zwnUu2565Tf",status:"正常",time:"2026-11-20 22:07:41"},
+  {country:"美国",email:"myz234567@163.com",id:1795204759,password:"CaG8YvnHWhvm",status:"正常",time:"2026-11-20 22:02:31"},
+  {country:"美国",email:"zxl6022@163.com",id:1795204759,password:"rKVq2GGcpTt9",status:"正常",time:"2026-11-20 22:03:49"},
+  {country:"美国",email:"zww790527@163.com",id:1795204759,password:"4Fkme9d728SX",status:"正常",time:"2026-11-20 22:03:06"},
+  {country:"未知",email:"hvtnhj@163.com",id:1795204760,password:"pJx6ZyKdbJqS",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"nivoci@163.com",id:1795204760,password:"V1hK3YDWQeNN",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"kwopigk3809@163.com",id:1795204760,password:"Dd128c2e6",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"bradtnrosalbav39153@gmail.com",id:1795204760,password:"6jRNZT41Bm",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"robertwang380@gmail.com",id:1795204760,password:"fgKXq3uWA6",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"qgb477203@163.com",id:1795204760,password:"cZK7zCHkFF",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"michelleqmrwi3@gmail.com",id:1795204760,password:"gM7H6p96py",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"orprobeso50@outlook.com",id:1795204760,password:"6EJG1crZbk",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"stevensnjjt1@gmail.com",id:1795204760,password:"FP5a6bmVH4",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"qfpcwzp942@163.com",id:1795204760,password:"mxhp8mP9BJ",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"uchtredmagowandf5018@gmail.com",id:1795204760,password:"Y3B9gtum4K",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"leeloser@163.com",id:1795204760,password:"PK132AWneQ1u",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"lishushan56@163.com",id:1795204760,password:"EZg5PkaZVsUu",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"ancq61nufio@gmail.com",id:1795204760,password:"Ma3ZMvZu2w",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"qian2007495zhan@163.com",id:1795204760,password:"CkMNTrafY8",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"VedderEarlrbpjhf@gmail.com",id:1795204760,password:"4PdNahXmqR",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"sekqy64@163.com",id:1795204760,password:"t9N69WEcbMPK",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"miao838@163.com",id:1795204760,password:"kawkPV9yTus6",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"rowenawoodard246042b@icloud.com",id:1795204760,password:"BgW5juwnAt",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"PerezBettyzzd@gmail.com",id:1795204760,password:"98uXd9NR7w",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"cic7519@163.com",id:1795204760,password:"g3zyPwYvhyrz",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"owengkmkmoreno@hotmail.com",id:1795204760,password:"9dEHlMCu0026",status:"正常",time:"2026-11-20  "},
+  {country:"未知",email:"AllenMilliepyl879@gmail.com",id:1795204760,password:"44s41NP3MD5pf3",status:"正常",time:"2026-11-20  "},
+  {country:"美国",email:"qrr4619@163.com",id:1795204759,password:"JCc6C6Czc12N",status:"正常",time:"2026-11-20 22:06:41"},
+  {country:"美国",email:"tnl5575@163.com",id:1795204759,password:"5bKPAcrWDuZh",status:"正常",time:"2026-11-20 22:13:52"},
+  {country:"美国",email:"woaiszshouso163@163.com",id:1795204759,password:"9Qs1M61KRBvZ",status:"正常",time:"2026-11-20 22:06:31"},
+  {country:"美区",email:"majeskethigpen394@hotmail.com",id:1795204760,password:"hy4WCgaEsv",status:"正常",time:"检测时间：2026-11-21 02:54:38"},
+  {country:"美区",email:"laytonfayed44953@outlook.com",id:1795204760,password:"zuW6EAuQUx",status:"正常",time:"检测时间：2026-11-21 02:48:28"}
+];
 
 const STORAGE_JOIN_KEY="kurd0o_joined_targets_v2";
 const GUIDE_PERSIST_KEY="kurd0o_guide_session_v1";
 const COPY_COOLDOWN_KEY="kurd0o_copy_cooldowns_v1";
-const FIVE_MINUTES_MS=5*60*1000;
+const VIEW_STATE_KEY="kurd0o_active_view_state_v1";
+const CHANNEL_WAIT_SEC=5;
 const REQUIRED_TARGETS=["ch1","ch2","ch3","ch4","discord"];
 const timers={};
 const countdowns={};
@@ -466,315 +532,905 @@ let sessionEndAt=Date.now()+SESSION_DURATION_MS;
 let pendingCredType=null;
 const copyCooldowns={email:0,password:0};
 const copyIntervals={};
+let sessionTimerInterval=null;
 
-function toggleDrawer(e){
-  if(e)e.stopPropagation();
-  const d=document.getElementById("side-drawer");
-  if(d)d.classList.toggle("show");
+const T={
+en:{
+  dir:"ltr",buy:"Buy Apple Accounts",contact:"Contact & Inquiries",
+  h1:"Minecraft iOS – Detailed Review & How to Download on iPhone & iPad",
+  p1:"Some games you download, play for a few days, and forget. Others keep pulling you back time after time even after hundreds of hours.",
+  p2:"<strong>Minecraft iOS</strong> is one of them.",
+  p3:"Without needing hyper-realistic graphics or over-the-top effects, Minecraft stands out with <strong>freedom, creativity, and a vast world</strong> to explore.",
+  c2title:"What Makes Minecraft iOS So Engaging?",
+  c2p1:"Minecraft on iPhone and iPad brings the familiar Minecraft sandbox experience right to your mobile device.",
+  c2p2:"The best part of the game is that it <strong>does not force players down a single fixed path</strong>. As soon as you create a world, you decide your own adventure.",
+  c2li1:"🌲 Want to build a house? Start chopping trees and gathering resources.",
+  c2li2:"🗺️ Want to explore? Gear up and hit the road.",
+  c2li3:"💎 Want to find diamonds? Craft a pickaxe and start mining deep underground.",
+  c2p3:"Or if you just want to relax, you can build a cozy house by the coast, run a farm, and enjoy the Minecraft world your own way.",
+  c3survtitle:"Survival – Survival and Exploration",
+  c3survp1:"<strong>Survival</strong> is the best mode if you want to experience the full adventure side of Minecraft. At the start, you have almost nothing. You gather wood, find food, mine resources, and craft your first tools.",
+  c3survp2:"When night falls, things get more dangerous. Zombies, Skeletons, Spiders, and especially Creepers can spawn around you, so securing a safe shelter on day one is essential.",
+  c3tip:"🔥 <strong>Beginner Tip:</strong> Don't spend your entire first day wandering too far. Prioritize wood, food, tools, and shelter before nightfall.",
+  c3creatitle:"Creative – Limitless Building",
+  c3creap1:"If Survival is about surviving the wild, <strong>Creative</strong> is like a massive sandbox for building. From simple blocks, players can create:",
+  c3creali1:"🏙️ Modern houses, villas, and cities.",
+  c3creali2:"🏰 Giant castles and fantasy builds.",
+  c4devtitle:"Experience on iPhone & iPad",
+  c4devp1:"Minecraft has a version thoughtfully optimized for mobile devices. Moving, jumping, breaking blocks, placing blocks, and opening your inventory are all intuitive on a touch screen.",
+  c4devp2:"Especially on <strong>iPad</strong>, the larger display gives a much more comfortable view, making building structures and managing inventory noticeably more accurate.",
+  c4mkttitle:"Add-On, Map and Texture Pack",
+  c4mktp1:"Once you've played vanilla Minecraft for a while, there are still thousands of extra items to discover through the <strong>Minecraft Marketplace</strong>:",
+  c4mktli1:"<strong>Add-On:</strong> Adds new creatures, vehicles, items, and unique weapons.",
+  c4mktli2:"<strong>Map:</strong> Play Adventure, Horror, Puzzle, or Mini Game maps.",
+  c4mktli3:"<strong>Texture Pack:</strong> Completely refreshes the game's visual look, from blocks to the sky.",
+  c5warn:"⚠️ <strong>Note:</strong> If downloading content from outside (not via Marketplace), carefully check the source and compatibility with your game version to avoid errors.",
+  c5srtitle:"What Is the Shadowrocket App?",
+  c5appbtn:"Open",c5rating:"236 RATINGS",c5age:"AGE",c5years:"Years",c5rank:"CHART",c5util:"Utilities",c5whatsnew:"What's New >",
+  c5srp1:"Along with that, we also introduce <strong>Shadowrocket</strong> – an essential Utilities app for users in the Apple ecosystem.",
+  c5srp2:"It is a <strong>rule-based proxy utility</strong> that helps you manage network connections based on configuration rules. Key highlights:",
+  c5srli1:"🔒 Flexible network traffic management (Domain, CIDR, GeoIP...).",
+  c5srli2:"📊 Real-time network traffic monitoring.",
+  c6srli1:"🌐 Modern DNS support (DNS over HTTPS/TLS).",
+  c6srli2:"📲 Multi-platform support: iPhone, iPad, Mac, and Apple TV (requires iOS 13.0+).",
+  c6idtitle:"Get Free Game & App IDs (Or Buy Licensed Access)",
+  c6idp1:'Want to try <strong>Minecraft</strong> right away or download the <strong>Shadowrocket</strong> tool? Use the accounts shared free daily from Kurd0o, or buy a licensed account at <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">Shop Kurd0o</a> to own it permanently.',
+  btnmc:"GET FREE MINECRAFT DOWNLOAD ID",btnsr:"GET FREE SHADOWROCKET DOWNLOAD ID",
+  guidetitle:"Safe App Store Sign-In Guide",
+  strictwarn:"SPECIAL NOTE: WHEN USING A SHARED ID, NEVER SIGN IN TO DEVICE SETTINGS (ICLOUD). SIGN IN ONLY IN THE APP STORE! SIGN OUT IMMEDIATELY AFTER DOWNLOADING!",
+  step1:"<strong>Step 1:</strong> Open the App Store app on iPhone/iPad.",
+  step2:"<strong>Step 2:</strong> Tap the Avatar in the top-right corner. Scroll to the bottom and tap <strong>Sign Out</strong> of the old account.",
+  step3:"<strong>Step 3:</strong> Enter the ID and Password provided by Kurd0o.",
+  step4:"<strong>Step 4:</strong> If a security prompt appears, select “Other Options” → “Don’t Upgrade”.",
+  step5:"<strong>Step 5:</strong> Search for the game/app and download it. Once downloaded, go back to the Avatar and <strong>Sign Out</strong>.",
+  commtitle:"Kurd0o Community",
+  commdesc:"For detailed announcements, join Kurd0o's channels right now to get daily Free ID alerts!!!",
+  commtiktok:'🎵 TikTok: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
+  commdiscord:'🎮 Discord: <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">Join Discord</a>',
+  commtelegram:'✈️ Telegram: <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>',
+  commshop:'🛍️ Buy / Store: <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>',
+  backsite:"← Back to Site",
+  joinsub:"Join all 4 Telegram channels and Discord to unlock the account button:",
+  joined:"انضميت",redbtn:"Click here to go to the account",
+  backjoin:"← Back",gkicker:"STEP BY STEP",gtitle:"How to sign in and download the game",gsub:"Follow these exact 3 steps before using the account.",
+  gs1t:"Open App Store",gs1d:"After reading the guide, get the account at the bottom of the page and sign in only inside the App Store.",
+  gs2t:"Search for the game name",gs2d:"Search directly for the app name using the search bar. No need to go to <strong>Purchased</strong>.",
+  gs3t:"Sign out after downloading",gs3d:"If the game still shows a price, check before confirming to avoid unintended charges. Once downloaded, <strong>sign out of the account from App Store</strong>.",
+  sesactive:"Active session",sesleft:"left",sesexpired:"Session expired",
+  sesnotice:"🔒 Account and password are hidden. Each copy button has a 30-second cooldown. Read and agree to the notice when copying.",
+  sesapple:"Apple Account",sespass:"Password",sescopy:"Copy",
+  sesfooter:"⏳ Link is valid for 10 minutes after opening. If expired, get a new link from the official page.",
+  supkicker:"NEED HELP?",suptitle:"Contact and receive notifications",
+  supdesc:"Having trouble or need updates? Join Kurd0o's Discord. You can also watch content on TikTok.",
+  supdiscord:"Discord Kurd0o ↗",suptiktok:"TikTok Kurd0o ↗",
+  modaltitle:"Copy Notice",modaldesc:"Sign in only inside the App Store and sign out immediately after downloading. Agree to copy?",
+  modalcancel:"Cancel",modalconfirm:"Agree & Copy",copied:"Copied!"
+},
+ar:{
+  dir:"rtl",buy:"شراء حسابات أبل",contact:"التواصل والاستفسارات",
+  h1:"ماين كرافت iOS – مراجعة شاملة وطريقة التحميل على الآيفون والآيباد",
+  p1:"بعض الألعاب تحملها وتلعبها لأيام ثم تنساها، وأخرى تشدك إليها مراراً وتكراراً حتى بعد مئات الساعات.",
+  p2:"<strong>ماين كرافت iOS</strong> واحدة من هذه الألعاب.",
+  p3:"بدون الحاجة لرسوم فائقة الواقعية أو مؤثرات مبالغ فيها، تتميز ماين كرافت بـ <strong>الحرية والإبداع وعالم واسع</strong> للاستكشاف.",
+  c2title:"ما الذي يجعل ماين كرافت iOS ممتعة جداً؟",
+  c2p1:"ماين كرافت على الآيفون والآيباد تقدم تجربة عالم مفتوح مألوفة مباشرة على هاتفك.",
+  c2p2:"أجمل ما في اللعبة أنها <strong>لا تجبر اللاعب على مسار واحد ثابت</strong>؛ بمجرد إنشاء عالمك تبدأ مغامرتك بطريقتك.",
+  c2li1:"🌲 تريد بناء منزل؟ ابدأ بقطع الأشجار وجمع الموارد.",
+  c2li2:"🗺️ تريد الاستكشاف؟ جهّز أغراضك وانطلق في الرحلة.",
+  c2li3:"💎 تريد إيجاد الألماس؟ اصنع بيكاكس وابدأ بالحفر في الأعماق.",
+  c2p3:"وإذا أردت الاسترخاء فقط، يمكنك بناء منزل هادئ قرب الساحل وإدارة مزرعة والاستمتاع بعالم ماين كرافت بطريقتك.",
+  c3survtitle:"البقاء (Survival) – النجاة والاستكشاف",
+  c3survp1:"وضع <strong>البقاء</strong> هو الأفضل لتجربة جانب المغامرة الكامل في ماين كرافت. في البداية لا تملك شيئاً تقريباً، فتجمع الخشب وتبحث عن الطعام وتستخرج الموارد وتصنع أدواتك الأولى.",
+  c3survp2:"عند حلول الليل يصبح الأمر أخطر؛ إذ تظهر الزومبي والهياكل العظمية والعناكب وخاصة الكريبر حولك، لذلك تأمين مأوى آمن في اليوم الأول أمر ضروري.",
+  c3tip:"🔥 <strong>نصيحة للمبتدئين:</strong> لا تقضِ يومك الأول كاملاً في الابتعاد كثيراً؛ ركّز على الخشب والطعام والأدوات والمأوى قبل الليل.",
+  c3creatitle:"الإبداع (Creative) – بناء بلا حدود",
+  c3creap1:"إذا كان البقاء عن النجاة في البرية، فـ <strong>الإبداع</strong> أشبه بمساحة مفتوحة ضخمة للبناء. من كتل بسيطة يمكن للاعبين إنشاء:",
+  c3creali1:"🏙️ منازل حديثة وفيلات ومدن.",
+  c3creali2:"🏰 قلاع عملاقة ومبانٍ خيالية.",
+  c4devtitle:"التجربة على الآيفون والآيباد",
+  c4devp1:"تتوفر نسخة محسّنة بعناية للأجهزة المحمولة؛ فالحركة والقفز وكسر الكتل ووضعها وفتح الحقيبة جميعها سلسة على شاشة اللمس.",
+  c4devp2:"وخصوصاً على <strong>الآيباد</strong>، تمنحك الشاشة الأكبر رؤية أريح بكثير وتجعل البناء وإدارة الحقيبة أكثر دقة.",
+  c4mkttitle:"الإضافات والخرائط وحزم الملمس (Add-On, Map, Texture Pack)",
+  c4mktp1:"بعد لعب ماين كرافت الأساسية لفترة، هناك آلاف العناصر الإضافية عبر <strong>متجر ماين كرافت</strong>:",
+  c4mktli1:"<strong>Add-On:</strong> يضيف مخلوقات ومركبات وعناصر وأسلحة فريدة.",
+  c4mktli2:"<strong>Map:</strong> العب خرائط مغامرات أو رعب أو ألغاز أو ألعاب مصغّرة.",
+  c4mktli3:"<strong>Texture Pack:</strong> يجدد مظهر اللعبة بالكامل من الكتل وحتى السماء.",
+  c5warn:"⚠️ <strong>ملاحظة:</strong> عند تحميل محتوى من خارج المتجر الرسمي، تأكد جيداً من المصدر وتوافقه مع إصدار اللعبة لتجنب الأخطاء.",
+  c5srtitle:"ما هو تطبيق Shadowrocket؟",
+  c5appbtn:"فتح",c5rating:"236 تقييم",c5age:"العمر",c5years:"سنوات",c5rank:"التصنيف",c5util:"أدوات",c5whatsnew:"ما الجديد >",
+  c5srp1:"إلى جانب ذلك، نقدم لك <strong>Shadowrocket</strong> – أداة أساسية ضمن فئة الأدوات لمستخدمي نظام أبل.",
+  c5srp2:"هو أداة بروكسي تعتمد على القواعد لإدارة اتصالات الشبكة وفق إعدادات محددة. أبرز المزايا:",
+  c5srli1:"🔒 إدارة مرنة لحركة الشبكة (Domain, CIDR, GeoIP...).",
+  c5srli2:"📊 مراقبة فورية لحركة البيانات على الشبكة.",
+  c6srli1:"🌐 دعم حديث لـ DNS (DNS over HTTPS/TLS).",
+  c6srli2:"📲 دعم متعدد المنصات: iPhone و iPad و Mac و Apple TV (يتطلب iOS 13.0+).",
+  c6idtitle:"احصل على حسابات ألعاب وتطبيقات مجانية (أو اشترِ وصولاً مرخصاً)",
+  c6idp1:'تريد تجربة <strong>ماين كرافت</strong> فوراً أو تحميل أداة <strong>Shadowrocket</strong>؟ استخدم الحسابات المجانية اليومية من Kurd0o أو اشترِ حساباً مرخصاً من <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">متجر Kurd0o</a> لامتلاكه بشكل دائم.',
+  btnmc:"الحصول على ID ماين كرافت المجاني",btnsr:"الحصول على ID شادوروكيت المجاني",
+  guidetitle:"دليل تسجيل الدخول الآمن في App Store",
+  strictwarn:"ملاحظة مشددة: عند استخدام حساب مشترك، لا تسجّل الدخول أبداً في إعدادات الجهاز (iCloud). سجّل فقط داخل App Store! وسجّل الخروج فوراً بعد التحميل!",
+  step1:"<strong>الخطوة 1:</strong> افتح تطبيق App Store على الآيفون أو الآيباد.",
+  step2:"<strong>الخطوة 2:</strong> اضغط على صورة الحساب في الزاوية العلوية، ثم انزل للأسفل واضغط <strong>Sign Out</strong> للحساب القديم.",
+  step3:"<strong>الخطوة 3:</strong> أدخل البريد وكلمة المرور المقدمة من Kurd0o.",
+  step4:"<strong>الخطوة 4:</strong> إذا ظهرت نافذة أمان، اختر “Other Options” ثم “Don’t Upgrade”.",
+  step5:"<strong>الخطوة 5:</strong> ابحث عن اللعبة أو التطبيق وحمّله، وبعد الانتهاء ارجع لصورة الحساب وسجّل <strong>الخروج</strong>.",
+  commtitle:"مجتمع Kurd0o",
+  commdesc:"للاطلاع على الإعلانات التفصيلية، انضم إلى قنوات Kurd0o الآن للحصول على تنبيهات الحسابات المجانية اليومية!!!",
+  commtiktok:'🎵 تيك توك: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
+  commdiscord:'🎮 ديسكورد: <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">انضم إلى Discord</a>',
+  commtelegram:'✈️ تيليجرام: <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>',
+  commshop:'🛍️ الشراء / المتجر: <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>',
+  backsite:"→ العودة للموقع",
+  joinsub:"انضم إلى القنوات الأربع في تيليجرام وديسكورد لفتح زر الحساب:",
+  joined:"انضميت",redbtn:"اضغط هنا للذهاب إلى الحساب",
+  backjoin:"→ رجوع",gkicker:"خطوة بخطوة",gtitle:"كيفية تسجيل الدخول وتحميل اللعبة",gsub:"اتبع هذه الخطوات الثلاث بدقة قبل استخدام الحساب.",
+  gs1t:"افتح App Store",gs1d:"بعد قراءة الدليل، احصل على الحساب في أسفل الصفحة وسجّل الدخول داخل App Store فقط.",
+  gs2t:"ابحث عن اسم اللعبة",gs2d:"ابحث مباشرة عن اسم التطبيق في شريط البحث؛ لا حاجة للدخول إلى <strong>Purchased</strong>.",
+  gs3t:"سجّل الخروج بعد التحميل",gs3d:"إذا ظهر سعر للعبة فتأكد قبل التأكيد لتجنب أي رسوم غير مقصودة، وبعد التحميل <strong>سجّل الخروج من الحساب في App Store</strong>.",
+  sesactive:"الجلسة نشطة",sesleft:"متبقي",sesexpired:"انتهت الجلسة",
+  sesnotice:"🔒 الحساب وكلمة المرور مخفيان. لكل زر نسخ مهلة 30 ثانية. اقرأ التنبيه ووافق عليه عند النسخ.",
+  sesapple:"حساب أبل",sespass:"كلمة المرور",sescopy:"نسخ",
+  sesfooter:"⏳ الرابط صالح لمدة 10 دقائق من الفتح. إذا انتهت المدة احصل على رابط جديد من الصفحة الرسمية.",
+  supkicker:"تحتاج مساعدة؟",suptitle:"التواصل واستلام التنبيهات",
+  supdesc:"تواجه مشكلة أو تريد التحديثات؟ انضم إلى ديسكورد Kurd0o ويمكنك أيضاً متابعة المحتوى على تيك توك.",
+  supdiscord:"ديسكورد Kurd0o ↗",suptiktok:"تيك توك Kurd0o ↗",
+  modaltitle:"تنبيه النسخ",modaldesc:"سجّل الدخول داخل App Store فقط وسجّل الخروج فوراً بعد التحميل. هل توافق على النسخ؟",
+  modalcancel:"إلغاء",modalconfirm:"موافق ونسخ",copied:"تم النسخ!"
+},
+ku:{
+  dir:"rtl",buy:"کرینا ئەکاونتێن ئەپڵێ",contact:"پەیوەندی و پرسیار",
+  h1:"ماین کرێفت iOS – پێداچوونەوەی هویرکاری و چاوانیا داگرتنێ ل سەر iPhone و iPad",
+  p1:"هندەک یاری تو دادگری و چەند رۆژان دکەی و ژبیر دکەی، و هندەکێن دی هەر دکێشنە تە وەکی جارا ئێکێ هەتا پشتی سەدان دەمژمێران.",
+  p2:"<strong>ماین کرێفت iOS</strong> ئێک ژ وان یاریانە.",
+  p3:"بێی پێدڤی ب گرافیکێن زێدە راستی یان کارتێکرنێن زێدە هەبیت، ماین کرێفت ب <strong>ئازادی، داهێنان و جیهانەکا بەرفرەهـ</strong> دهێتە نیاسین.",
+  c2title:"چ وەدکەت ماین کرێفت iOS هندی دلڕاکێش بیت؟",
+  c2p1:"ماین کرێفت ل سەر ئایفۆن و ئایپادی سەرکێشیا جیهانا ڤەکری راستەوخۆ دئینیتە ناڤ ئامیرێ تە.",
+  c2p2:"خۆشترین تشت د یاریێ دا ئەوە کو <strong>تە نەچار ناکەت ل سەر ئێک رێک بچەی</strong>؛ هەر دەمێ تە جیهانەک چێکر تو ب خۆ بریارا سەرکێشیا خۆ ددەی.",
+  c2li1:"🌲 تە دڤێت خانەکێ چێکەی؟ دەست ب برینا داران و کۆمکرنا کەرەستان بکە.",
+  c2li2:"🗺️ تە دڤێت بگەریێ؟ خۆ ئامادە بکە و بکەڤە رێ.",
+  c2li3:"💎 تە دڤێت ئەڵماس ببینی؟ بیکاکسەکێ چێکە و د بن ئەردی دا هەڵکۆڵە.",
+  c2p3:"یان ئەگەر تە بڤێت بێهنڤەدەنەکێ بکەی، دشێی خانەکێ ئارام ل نێزیک کەناری چێکەی و ب رێکا خۆ چێژێ ژێ ببینی.",
+  c3survtitle:"مانەوە (Survival) – ژیان و گەریان",
+  c3survp1:"شێوازێ <strong>Survival</strong> باشترین رێکە ئەگەر تە بڤێت لایەنێ سەرکێشیێ یێ تمام د ماین کرێفت دا ببینی. ل دەستپێکێ تشتەکێ ئەوتۆ د دەستێ تە دا نینە؛ داران کۆم دکەی، خوارنێ دبینیی، کەرەستان دەردئێخی و ئامیرێن خۆ یێن ئێکێ چێدکەی.",
+  c3survp2:"دەمێ شەڤ دهێت تشت مەترسیتر دبن؛ زۆمبی، هەیکەلێن هەستی، جۆرێن پشیلان و ب تایبەت کریپەر ل دەوروبەرێ تە پەیدا دبن، لەوما چێکرنا جهەکێ پاراستی د رۆژا ئێکێ دا گەلەک گرنگە.",
+  c3tip:"🔥 <strong>شیرەتا دەستپێکێ:</strong> هەمی رۆژا ئێکێ ب دوور کەفتنێ ڤە نەبە؛ پێشینێ بدە دار، خوارن، ئامیر و جهێ مانەوێ بەری شەڤ بهێت.",
+  c3creatitle:"داهێنان (Creative) – ئاڤاکرنا بێ سنوور",
+  c3creap1:"ئەگەر Survival ل سەر مانەوێ بیت، <strong>Creative</strong> وەکی گۆڕەپانەکێ مەزنە بۆ ئاڤاکرنێ. ژ بلۆکێن سادە یاریزان دشێن چێکەن:",
+  c3creali1:"🏙️ خانێن مودێرن، ڤێلا و باژێر.",
+  c3creali2:"🏰 قەلەهێن مەزن و ئاڤاهیێن خەیالی.",
+  c4devtitle:"سەرکێشی ل سەر iPhone و iPad",
+  c4devp1:"ماین کرێفت وەشانەک هەیە ب رێکەک باش بۆ ئامیرێن مۆبایلێ هاتیە رێکخستن؛ لڤین، بازدان، شکاندنا بلۆکان و دانانا وان هەمی ل سەر شاشەیا لەمسێ ب ساناهینە.",
+  c4devp2:"ب تایبەت ل سەر <strong>iPad</strong>، شاشەیا مەزنتر دیتنەک گەلەک ئارامتر ددەت و ئاڤاکرنێ و رێکخستنا کەلوپەلان هویرتر لێ دکەت.",
+  c4mkttitle:"Add-On، Map و Texture Pack",
+  c4mktp1:"پشتی تو ماین کرێفتێ بۆ ماوەکێ دکەی، ب هزاران تشتێن زێدە هەنە د ناڤ <strong>Minecraft Marketplace</strong> دا:",
+  c4mktli1:"<strong>Add-On:</strong> بونەوەر، ترۆمبێل، کەلوپەل و چەکێن نوو زێدە دکەت.",
+  c4mktli2:"<strong>Map:</strong> نەخشەیێن سەرکێشی، ترسناک، مەتەلۆک یان یاریێن بچووک بکە.",
+  c4mktli3:"<strong>Texture Pack:</strong> شێوازێ یاریێ ب تەمامی نوو دکەت ژ بلۆکان هەتا ئەسمانی.",
+  c5warn:"⚠️ <strong>تێبینی:</strong> ئەگەر تە ژ دەرڤەی مارکێتێ تشتەک داگرت، ژێدەری و گونجاندنا وێ دگەل وەشانا یاریێ ب باشی بپشکنە دا خەلەتی چێنەبن.",
+  c5srtitle:"ئەپێ Shadowrocket چییە؟",
+  c5appbtn:"ڤەکرن",c5rating:"236 هەلسەنگاندن",c5age:"ژێ",c5years:"ساڵ",c5rank:"رێزبەندی",c5util:"ئامیر",c5whatsnew:"چێن نوو >",
+  c5srp1:"دگەل وێ، ئەم <strong>Shadowrocket</strong> ژی ددەینە نیاسین – ئەپەکێ گرنگێ دەستەیا Utilities بۆ بکارهێنەرێن ئەپڵێ.",
+  c5srp2:"ئەڤە ئامیرەکێ پرۆکسی یە ب پشتبەستن ب یاسا و رێنماییان بۆ رێکخستنا پەیوەندیێن ئینتەرنێتێ. خالێن سەرەکی:",
+  c5srli1:"🔒 رێکخستنا نەرم یا هاتنوچوونا ئینتەرنێتێ (Domain, CIDR, GeoIP...).",
+  c5srli2:"📊 چاودێریا راستەوخۆ یا ترافیکا ئینتەرنێتێ.",
+  c6srli1:"🌐 پشتەڤانیا نوو یا DNS (DNS over HTTPS/TLS).",
+  c6srli2:"📲 پشتەڤانیا پلاتفۆرمێن جۆراوجۆر: iPhone، iPad، Mac و Apple TV (پێدڤی ب iOS 13.0+ هەیە).",
+  c6idtitle:"ئەکاونتێن بێ بەرامبەر یێن یاری و ئەپان وەرگرە (یان بکرە)",
+  c6idp1:'تە دڤێت هەر نوو <strong>ماین کرێفت</strong> تاقی بکەی یان <strong>Shadowrocket</strong> دابگری؟ ئەکاونتێن بێ بەرامبەر یێن رۆژانە ژ Kurd0o بکاربینە، یان ژ <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">فرۆشگەها Kurd0o</a> بکرە دا هەر بۆ تە بمینیت.',
+  btnmc:"وەرگرتنا ID ماین کرێفت بێ بەرامبەر",btnsr:"وەرگرتنا ID شادورۆکێت بێ بەرامبەر",
+  guidetitle:"رێنمایا چوونا ژۆرێ یا پاراستی د App Store دا",
+  strictwarn:"تێبینیا توند: دەمێ ئەکاونتەکێ هەڤپشک بکاردئینی، چ جاران د رێکخستنێن ئامیرێ (iCloud) دا نەچە ژۆرێ. بتنێ د ناڤ App Store دا بچە ژۆرێ! و پشتی داگرتنێ ئێکسەر دەرکەڤە!",
+  step1:"<strong>گاڤا 1:</strong> ئەپێ App Store ل سەر iPhone یان iPad ڤەکە.",
+  step2:"<strong>گاڤا 2:</strong> ل سەر وێنێ ئەکاونتی ل سەری راستێ بکوتە، بچە خوارێ و <strong>Sign Out</strong> بکە بۆ ئەکاونتێ کەڤن.",
+  step3:"<strong>گاڤا 3:</strong> ئیمەیل و پاسۆردا ژ لایێ Kurd0o هاتیە دان بنڤیسە.",
+  step4:"<strong>گاڤا 4:</strong> ئەگەر پەیاما سکیوریتیێ هات، “Other Options” هەلبژێرە پاشی “Don’t Upgrade”.",
+  step5:"<strong>گاڤا 5:</strong> ل ناڤێ یاریێ یان ئەپی بگەڕێ و دابگرە، پشتی داگرتنێ بزڤرە ل سەر وێنێ ئەکاونتی و <strong>Sign Out</strong> بکە.",
+  commtitle:"جڤاکا Kurd0o",
+  commdesc:"بۆ زانینا ئاگەهداریێن هویر، هەر نوو ببە ئەندام د کەناڵێن Kurd0o دا دا ئاگەهداریێن رۆژانە یێن ID بێ بەرامبەر ب گەهنە تە!!!",
+  commtiktok:'🎵 تیک تۆک: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
+  commdiscord:'🎮 دیسکۆرد: <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">ببە ئەندام د Discord دا</a>',
+  commtelegram:'✈️ تێلێگرام: <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>',
+  commshop:'🛍️ کرین / فرۆشگەهـ: <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>',
+  backsite:"→ زڤرین بۆ سایتێ",
+  joinsub:"ببە ئەندام د هەر 4 کەناڵێن تێلێگرام و دیسکۆردێ دا دا دوگمەیا ئەکاونتی ڤەبیت:",
+  joined:"انضميت",redbtn:"ل ڤێرێ بکوتە بۆ چوونە سەر ئەکاونتی",
+  backjoin:"→ زڤرین",gkicker:"گاڤ ب گاڤ",gtitle:"چاوانیا چوونا ژۆرێ و داگرتنا یاریێ",gsub:"ڤان هەر 3 گاڤان ب دروستی پەیرەو بکە بەری بکارئینانا ئەکاونتی.",
+  gs1t:"App Store ڤەکە",gs1d:"پشتی خواندنا رێنمایێ، ل بنێ لاپەرەی ئەکاونتی وەرگرە و بتنێ د ناڤ App Store دا بچە ژۆرێ.",
+  gs2t:"ل ناڤێ یاریێ بگەڕێ",gs2d:"راستەوخۆ د بارێ گەڕانێ دا ل ناڤێ ئەپی بگەڕێ؛ پێدڤی ناکەت بچییە <strong>Purchased</strong>.",
+  gs3t:"پشتی داگرتنێ دەربکەڤە",gs3d:"ئەگەر بهایێ یاریێ هێشتا دیار بوو، بەری پشتڕاستکرنێ بپشکنە دا پارە ب خەلەتی نەهێتە کێشان، و پشتی داگرتنێ <strong>ژ ئەکاونتی دەرکەڤە د App Store دا</strong>.",
+  sesactive:"سێشنا چالاکە",sesleft:"مایە",sesexpired:"سێشن ب دوماهیک هات",
+  sesnotice:"🔒 ئەکاونت و پاسۆرد د ڤەشارتینە. هەر دوگمەیەکا کۆپیێ 30 چرکە ل سەر هەنە. دەمێ کۆپی دکەی تێبینیێ بخوینە و رازی ببە.",
+  sesapple:"ئەکاونتێ ئەپڵێ",sespass:"پاسۆرد",sescopy:"کۆپی",
+  sesfooter:"⏳ لینک بۆ ماوێ 10 خولەکان پشتی ڤەکرنێ کارا دمینیت. ئەگەر ب دوماهیک هات لینکەکێ نوو ژ لاپەرێ فەرمی وەرگرە.",
+  supkicker:"پێدڤی ب هاریکاریێ هەیە؟",suptitle:"پەیوەندی و وەرگرتنا ئاگەهداریان",
+  supdesc:"ئەگەر کێشەیەک هەبوو یان پێدڤی ب نووکرنێ بوو، ببە ئەندام د دیسکۆردا Kurd0o دا و هەروەسا دشێی بەرهەمان د تیک تۆکی دا ببینی.",
+  supdiscord:"دیسکۆرد Kurd0o ↗",suptiktok:"تیک تۆک Kurd0o ↗",
+  modaltitle:"تێبینیا کۆپیێ",modaldesc:"بتنێ د ناڤ App Store دا بچە ژۆرێ و پشتی داگرتنێ ئێکسەر دەربکەڤە. رازی یی کۆپی بکەی؟",
+  modalcancel:"هەلوەشاندن",modalconfirm:"رازی مە و کۆپی بکە",copied:"هاتە کۆپی کرن!"
+},
+vi:{
+  dir:"ltr",buy:"Mua Tài Khoản Apple",contact:"Liên Hệ & Hỗ Trợ",
+  h1:"Minecraft iOS – Đánh Giá Chi Tiết & Cách Tải Trên iPhone và iPad",
+  p1:"Có những trò chơi bạn tải về, chơi vài ngày rồi quên. Có những trò chơi luôn kéo bạn quay lại dù đã chơi hàng trăm giờ.",
+  p2:"<strong>Minecraft iOS</strong> là một trong số đó.",
+  p3:"Không cần đồ họa siêu thực hay hiệu ứng phô trương, Minecraft nổi bật nhờ <strong>sự tự do, sáng tạo và thế giới rộng lớn</strong> để khám phá.",
+  c2title:"Điều Gì Khiến Minecraft iOS Cuốn Hút Đến Vậy?",
+  c2p1:"Minecraft trên iPhone và iPad mang trải nghiệm thế giới mở quen thuộc lên thiết bị di động của bạn.",
+  c2p2:"Điểm hay nhất là trò chơi <strong>không ép người chơi theo một lối đi cố định</strong>. Ngay khi tạo thế giới, bạn tự quyết định cuộc phiêu lưu của mình.",
+  c2li1:"🌲 Muốn dựng nhà? Hãy bắt đầu chặt cây và thu thập tài nguyên.",
+  c2li2:"🗺️ Muốn khám phá? Trang bị đồ và lên đường.",
+  c2li3:"💎 Muốn tìm kim cương? Chế tạo cúp và đào sâu xuống lòng đất.",
+  c2p3:"Hoặc nếu chỉ muốn thư giãn, bạn có thể làm một căn nhà nhỏ ven biển, làm nông trại và tận hưởng thế giới Minecraft theo cách riêng.",
+  c3survtitle:"Sinh Tồn (Survival) – Sống Sót và Khám Phá",
+  c3survp1:"<strong>Sinh tồn</strong> là chế độ phù hợp nhất nếu bạn muốn trải nghiệm trọn vẹn chất phiêu lưu của Minecraft. Lúc đầu bạn gần như không có gì; bạn nhặt gỗ, tìm thức ăn, khai thác tài nguyên và chế tạo công cụ đầu tiên.",
+  c3survp2:"Khi màn đêm buông xuống, mọi thứ nguy hiểm hơn. Zombie, Skeleton, Spider và đặc biệt là Creeper có thể xuất hiện quanh bạn, vì vậy dựng chỗ trú an toàn ngay ngày đầu là rất quan trọng.",
+  c3tip:"🔥 <strong>Mẹo cho người mới:</strong> Đừng dành cả ngày đầu đi quá xa. Hãy ưu tiên gỗ, thức ăn, công cụ và chỗ trú trước khi trời tối.",
+  c3creatitle:"Sáng Tạo (Creative) – Xây Dựng Không Giới Hạn",
+  c3creap1:"Nếu Sinh tồn là vượt qua thử thách hoang dã, thì <strong>Sáng tạo</strong> giống như một hộp cát khổng lồ để xây dựng. Từ những khối đơn giản, bạn có thể tạo ra:",
+  c3creali1:"🏙️ Nhà hiện đại, biệt thự và thành phố.",
+  c3creali2:"🏰 Lâu đài khổng lồ và công trình giả tưởng.",
+  c4devtitle:"Trải Nghiệm Trên iPhone & iPad",
+  c4devp1:"Minecraft có phiên bản tối ưu tốt cho thiết bị di động. Di chuyển, nhảy, phá khối, đặt khối và mở túi đồ đều trực quan trên màn hình cảm ứng.",
+  c4devp2:"Đặc biệt trên <strong>iPad</strong>, màn hình lớn giúp quan sát thoải mái hơn, xây dựng và quản lý kho đồ chính xác hơn rõ rệt.",
+  c4mkttitle:"Add-On, Map và Texture Pack",
+  c4mktp1:"Sau khi chơi bản gốc một thời gian, vẫn còn hàng nghìn nội dung mở rộng trên <strong>Minecraft Marketplace</strong>:",
+  c4mktli1:"<strong>Add-On:</strong> Thêm sinh vật, phương tiện, vật phẩm và vũ khí độc đáo.",
+  c4mktli2:"<strong>Map:</strong> Chơi bản đồ Phiêu lưu, Kinh dị, Giải đố hoặc Mini Game.",
+  c4mktli3:"<strong>Texture Pack:</strong> Làm mới hoàn toàn diện mạo trò chơi từ khối vuông đến bầu trời.",
+  c5warn:"⚠️ <strong>Lưu ý:</strong> Nếu tải nội dung bên ngoài Marketplace, hãy kiểm tra kỹ nguồn và độ tương thích với phiên bản game để tránh lỗi.",
+  c5srtitle:"Ứng Dụng Shadowrocket Là Gì?",
+  c5appbtn:"Mở",c5rating:"236 ĐÁNH GIÁ",c5age:"ĐỘ TUỔI",c5years:"Năm",c5rank:"XẾP HẠNG",c5util:"Tiện ích",c5whatsnew:"Có gì mới >",
+  c5srp1:"Cùng với đó, chúng tôi giới thiệu <strong>Shadowrocket</strong> – tiện ích quan trọng thuộc nhóm Utilities cho người dùng hệ sinh thái Apple.",
+  c5srp2:"Đây là tiện ích proxy dựa trên quy tắc giúp quản lý kết nối mạng theo cấu hình. Điểm nổi bật:",
+  c5srli1:"🔒 Quản lý lưu lượng mạng linh hoạt (Domain, CIDR, GeoIP...).",
+  c5srli2:"📊 Theo dõi lưu lượng mạng theo thời gian thực.",
+  c6srli1:"🌐 Hỗ trợ DNS hiện đại (DNS over HTTPS/TLS).",
+  c6srli2:"📲 Hỗ trợ đa nền tảng: iPhone, iPad, Mac và Apple TV (yêu cầu iOS 13.0+).",
+  c6idtitle:"Nhận ID Game & Ứng Dụng Miễn Phí (Hoặc Mua Quyền Bản Quyền)",
+  c6idp1:'Muốn trải nghiệm <strong>Minecraft</strong> ngay hoặc tải <strong>Shadowrocket</strong>? Hãy dùng tài khoản chia sẻ miễn phí hằng ngày từ Kurd0o hoặc mua tài khoản bản quyền tại <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">Cửa hàng Kurd0o</a> để sở hữu lâu dài.',
+  btnmc:"NHẬN ID TẢI MINECRAFT MIỄN PHÍ",btnsr:"NHẬN ID TẢI SHADOWROCKET MIỄN PHÍ",
+  guidetitle:"Hướng Dẫn Đăng Nhập App Store An Toàn",
+  strictwarn:"LƯU Ý ĐẶC BIỆT: KHI DÙNG TÀI KHOẢN DÙNG CHUNG, TUYỆT ĐỐI KHÔNG ĐĂNG NHẬP TRONG CÀI ĐẶT THIẾT BỊ (ICLOUD). CHỈ ĐĂNG NHẬP TRONG APP STORE! ĐĂNG XUẤT NGAY SAU KHI TẢI XONG!",
+  step1:"<strong>Bước 1:</strong> Mở ứng dụng App Store trên iPhone/iPad.",
+  step2:"<strong>Bước 2:</strong> Nhấn vào ảnh đại diện ở góc trên bên phải. Cuộn xuống dưới cùng và nhấn <strong>Sign Out</strong> tài khoản cũ.",
+  step3:"<strong>Bước 3:</strong> Nhập ID và Mật khẩu do Kurd0o cung cấp.",
+  step4:"<strong>Bước 4:</strong> Nếu có thông báo bảo mật, chọn “Other Options” → “Don’t Upgrade”.",
+  step5:"<strong>Bước 5:</strong> Tìm game/ứng dụng và tải về. Tải xong thì quay lại ảnh đại diện và <strong>Sign Out</strong>.",
+  commtitle:"Cộng Đồng Kurd0o",
+  commdesc:"Để xem thông báo chi tiết, hãy tham gia các kênh của Kurd0o ngay bây giờ để nhận thông báo ID miễn phí hằng ngày!!!",
+  commtiktok:'🎵 TikTok: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
+  commdiscord:'🎮 Discord: <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">Tham gia Discord</a>',
+  commtelegram:'✈️ Telegram: <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>',
+  commshop:'🛍️ Mua / Cửa hàng: <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>',
+  backsite:"← Quay lại trang",
+  joinsub:"Tham gia đủ 4 kênh Telegram và Discord để mở nút tài khoản:",
+  joined:"انضميت",redbtn:"Nhấn vào đây để đi tới tài khoản",
+  backjoin:"← Quay lại",gkicker:"TỪNG BƯỚC",gtitle:"Cách đăng nhập và tải trò chơi",gsub:"Làm theo đúng 3 bước này trước khi sử dụng tài khoản.",
+  gs1t:"Mở App Store",gs1d:"Sau khi đọc hướng dẫn, lấy tài khoản ở cuối trang và chỉ đăng nhập bên trong App Store.",
+  gs2t:"Tìm tên trò chơi",gs2d:"Tìm trực tiếp tên ứng dụng trên thanh tìm kiếm. Không cần vào <strong>Purchased</strong>.",
+  gs3t:"Đăng xuất sau khi tải xong",gs3d:"Nếu game vẫn hiện giá, hãy kiểm tra trước khi xác nhận để tránh phí ngoài ý muốn. Tải xong thì <strong>đăng xuất tài khoản khỏi App Store</strong>.",
+  sesactive:"Phiên đang hoạt động",sesleft:"còn lại",sesexpired:"Phiên đã hết hạn",
+  sesnotice:"🔒 Tài khoản và mật khẩu đang được ẩn. Mỗi nút sao chép có thời gian chờ 30 giây. Đọc và đồng ý lưu ý khi sao chép.",
+  sesapple:"Tài khoản Apple",sespass:"Mật khẩu",sescopy:"Sao chép",
+  sesfooter:"⏳ Liên kết có hiệu lực trong 10 phút sau khi mở. Nếu hết hạn, hãy lấy liên kết mới từ trang chính thức.",
+  supkicker:"CẦN HỖ TRỢ?",suptitle:"Liên hệ và nhận thông báo",
+  supdesc:"Gặp sự cố hoặc cần cập nhật? Tham gia Discord của Kurd0o. Bạn cũng có thể xem nội dung trên TikTok.",
+  supdiscord:"Discord Kurd0o ↗",suptiktok:"TikTok Kurd0o ↗",
+  modaltitle:"Lưu Ý Sao Chép",modaldesc:"Chỉ đăng nhập trong App Store và đăng xuất ngay sau khi tải xong. Bạn đồng ý sao chép?",
+  modalcancel:"Hủy",modalconfirm:"Đồng ý & Sao chép",copied:"Đã sao chép!"
+},
+tr:{
+  dir:"ltr",buy:"Apple Hesapları Satın Al",contact:"İletişim ve Sorular",
+  h1:"Minecraft iOS – Detaylı İnceleme ve iPhone ile iPad'e İndirme Rehberi",
+  p1:"Bazı oyunları indirir, birkaç gün oynar ve unutursunuz. Bazıları ise yüzlerce saat sonra bile sizi tekrar tekrar geri çağırır.",
+  p2:"<strong>Minecraft iOS</strong> bunlardan biridir.",
+  p3:"Aşırı gerçekçi grafiklere veya abartılı efektlere ihtiyaç duymadan Minecraft; <strong>özgürlük, yaratıcılık ve keşfedilecek uçsuz bucaksız bir dünya</strong> ile öne çıkar.",
+  c2title:"Minecraft iOS'u Bu Kadar Çekici Kılan Nedir?",
+  c2p1:"iPhone ve iPad'deki Minecraft, tanıdık sandbox deneyimini doğrudan mobil cihazınıza taşır.",
+  c2p2:"En güzel yanı, oyuncuyu <strong>tek bir sabit yola zorlamamasıdır</strong>. Dünyayı oluşturduğunuz an kendi maceranızı kendiniz seçersiniz.",
+  c2li1:"🌲 Ev mi yapmak istiyorsun? Ağaç kesmeye ve kaynak toplamaya başla.",
+  c2li2:"🗺️ Keşfetmek mi istiyorsun? Ekipmanını kuşan ve yola çık.",
+  c2li3:"💎 Elmas mı bulmak istiyorsun? Kazma üret ve derinlere in.",
+  c2p3:"Ya da sadece rahatlamak istiyorsan sahilde sakin bir ev yapıp çiftlik kurabilir ve Minecraft dünyasının tadını kendi tarzında çıkarabilirsin.",
+  c3survtitle:"Hayatta Kalma (Survival) – Yaşam ve Keşif",
+  c3survp1:"<strong>Survival</strong>, Minecraft'ın macera yönünü tam anlamıyla yaşamak istiyorsan en iyi moddur. Başlangıçta neredeyse hiçbir şeyin yoktur; odun toplar, yiyecek bulur, kaynak çıkarır ve ilk aletlerini üretirsin.",
+  c3survp2:"Gece çöktüğünde işler tehlikeli hale gelir. Zombiler, İskeletler, Örümcekler ve özellikle Creeper'lar etrafında doğabilir; bu yüzden ilk gün güvenli bir barınak ayarlamak şarttır.",
+  c3tip:"🔥 <strong>Yeni Başlayan İpucu:</strong> İlk gününün tamamını çok uzağa giderek harcama. Gece olmadan önce odun, yiyecek, alet ve barınağa öncelik ver.",
+  c3creatitle:"Yaratıcı (Creative) – Sınırsız İnşa",
+  c3creap1:"Survival vahşi doğada hayatta kalmaksa, <strong>Creative</strong> inşa etmek için devasa bir alandır. Basit bloklardan şunları yapabilirsin:",
+  c3creali1:"🏙️ Modern evler, villalar ve şehirler.",
+  c3creali2:"🏰 Dev kaleler ve fantastik yapılar.",
+  c4devtitle:"iPhone ve iPad Deneyimi",
+  c4devp1:"Minecraft, mobil cihazlar için özenle optimize edilmiş bir sürüme sahiptir. Hareket etmek, zıplamak, blok kırmak/yerleştirmek ve envanteri açmak dokunmatik ekranda sezgiseldir.",
+  c4devp2:"Özellikle <strong>iPad</strong>'de daha büyük ekran çok daha rahat bir görüş sağlar; yapı inşa etmek ve envanteri yönetmek belirgin şekilde daha isabetli olur.",
+  c4mkttitle:"Add-On, Map ve Texture Pack",
+  c4mktp1:"Klasik Minecraft'ı bir süre oynadıktan sonra <strong>Minecraft Marketplace</strong> üzerinden keşfedilecek binlerce ekstra içerik bulunur:",
+  c4mktli1:"<strong>Add-On:</strong> Yeni yaratıklar, araçlar, eşyalar ve özel silahlar ekler.",
+  c4mktli2:"<strong>Map:</strong> Macera, Korku, Bulmaca veya Mini Oyun haritaları oynayın.",
+  c4mktli3:"<strong>Texture Pack:</strong> Bloklardan gökyüzüne kadar oyunun görsel görünümünü tamamen yeniler.",
+  c5warn:"⚠️ <strong>Not:</strong> Marketplace dışından içerik indirirken hataları önlemek için kaynağı ve oyun sürümüyle uyumluluğunu dikkatle kontrol edin.",
+  c5srtitle:"Shadowrocket Uygulaması Nedir?",
+  c5appbtn:"Aç",c5rating:"236 DEĞERLENDİRME",c5age:"YAŞ",c5years:"Yıl",c5rank:"SIRA",c5util:"Araçlar",c5whatsnew:"Yenilikler >",
+  c5srp1:"Bununla birlikte, Apple ekosistemindeki kullanıcılar için önemli bir Utilities aracı olan <strong>Shadowrocket</strong>'i de tanıtıyoruz.",
+  c5srp2:"Yapılandırma kurallarına göre ağ bağlantılarını yönetmeye yardımcı olan kural tabanlı bir proxy aracıdır. Öne çıkanlar:",
+  c5srli1:"🔒 Esnek ağ trafiği yönetimi (Domain, CIDR, GeoIP...).",
+  c5srli2:"📊 Gerçek zamanlı ağ trafiği izleme.",
+  c6srli1:"🌐 Modern DNS desteği (DNS over HTTPS/TLS).",
+  c6srli2:"📲 Çoklu platform desteği: iPhone, iPad, Mac ve Apple TV (iOS 13.0+ gerektirir).",
+  c6idtitle:"Ücretsiz Oyun ve Uygulama ID'leri Alın (Veya Lisanslı Erişim Satın Alın)",
+  c6idp1:'<strong>Minecraft</strong>'ı hemen denemek veya <strong>Shadowrocket</strong> aracını indirmek mi istiyorsun? Kurd0o'nun günlük paylaştığı ücretsiz hesapları kullan veya kalıcı sahip olmak için <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">Kurd0o Mağaza</a>'dan lisanslı hesap al.',
+  btnmc:"ÜCRETSİZ MINECRAFT İNDİRME ID AL",btnsr:"ÜCRETSİZ SHADOWROCKET İNDİRME ID AL",
+  guidetitle:"Güvenli App Store Giriş Rehberi",
+  strictwarn:"ÖZEL NOT: PAYLAŞIMLI ID KULLANIRKEN ASLA CİHAZ AYARLARINA (ICLOUD) GİRİŞ YAPMAYIN. YALNIZCA APP STORE'A GİRİŞ YAPIN! İNDİRDİKTEN HEMEN SONRA ÇIKIŞ YAPIN!",
+  step1:"<strong>Adım 1:</strong> iPhone/iPad'de App Store uygulamasını açın.",
+  step2:"<strong>Adım 2:</strong> Sağ üstteki Avatar simgesine dokunun. En alta inip eski hesaptan <strong>Sign Out</strong> yapın.",
+  step3:"<strong>Adım 3:</strong> Kurd0o tarafından sağlanan ID ve Şifreyi girin.",
+  step4:"<strong>Adım 4:</strong> Güvenlik uyarısı çıkarsa “Other Options” → “Don’t Upgrade” seçin.",
+  step5:"<strong>Adım 5:</strong> Oyunu/uygulamayı arayıp indirin. İndirdikten sonra Avatar'a dönüp <strong>Sign Out</strong> yapın.",
+  commtitle:"Kurd0o Topluluğu",
+  commdesc:"Ayrıntılı duyurular ve günlük ücretsiz ID bildirimleri için hemen Kurd0o kanallarına katılın!!!",
+  commtiktok:'🎵 TikTok: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
+  commdiscord:'🎮 Discord: <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">Discord'a Katıl</a>',
+  commtelegram:'✈️ Telegram: <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>',
+  commshop:'🛍️ Satın Al / Mağaza: <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>',
+  backsite:"← Siteye Dön",
+  joinsub:"Hesap butonunu açmak için 4 Telegram kanalına ve Discord'a katılın:",
+  joined:"انضميت",redbtn:"Hesaba gitmek için buraya tıklayın",
+  backjoin:"← Geri",gkicker:"ADIM ADIM",gtitle:"Oyuna nasıl giriş yapılır ve indirilir",gsub:"Hesabı kullanmadan önce bu 3 adımı tam olarak izleyin.",
+  gs1t:"App Store'u Açın",gs1d:"Rehberi okuduktan sonra sayfanın altından hesabı alın ve yalnızca App Store içinde oturum açın.",
+  gs2t:"Oyun adını arayın",gs2d:"Arama çubuğundan doğrudan uygulama adını arayın. <strong>Purchased</strong> bölümüne gitmeye gerek yoktur.",
+  gs3t:"İndirdikten sonra çıkış yapın",gs3d:"Oyun hala ücretli görünüyorsa istenmeyen ücretlerden kaçınmak için onaylamadan önce kontrol edin. İndirdikten sonra <strong>hesaptan App Store üzerinden çıkış yapın</strong>.",
+  sesactive:"Oturum aktif",sesleft:"kaldı",sesexpired:"Oturum süresi doldu",
+  sesnotice:"🔒 Hesap ve şifre gizlidir. Her kopyalama butonunun 30 saniyelik bekleme süresi vardır. Kopyalarken notu okuyup kabul edin.",
+  sesapple:"Apple Hesabı",sespass:"Şifre",sescopy:"Kopyala",
+  sesfooter:"⏳ Bağlantı açıldıktan sonra 10 dakika geçerlidir. Süresi dolarsa resmi sayfadan yeni bağlantı alın.",
+  supkicker:"YARDIMA MI İHTİYACIN VAR?",suptitle:"İletişim ve bildirimler",
+  supdesc:"Sorun mu yaşıyorsun veya güncellemelere mi ihtiyacın var? Kurd0o Discord'una katıl. TikTok'taki içerikleri de izleyebilirsin.",
+  supdiscord:"Discord Kurd0o ↗",suptiktok:"TikTok Kurd0o ↗",
+  modaltitle:"Kopyalama Uyarısı",modaldesc:"Yalnızca App Store içinde giriş yapın ve indirdikten hemen sonra çıkış yapın. Kopyalamayı onaylıyor musunuz?",
+  modalcancel:"İptal",modalconfirm:"Kabul Et ve Kopyala",copied:"Kopyalandı!"
+}
+};
+
+function getCurrentLang(){
+  const saved=localStorage.getItem(LANG_KEY);
+  return T[saved]?saved:"en";
+}
+
+function setText(id,val){
+  const el=document.getElementById(id);
+  if(el) el.textContent=val;
+}
+
+function setHTML(id,val){
+  const el=document.getElementById(id);
+  if(el) el.innerHTML=val;
+}
+
+function applyLang(lang){
+  const code=T[lang]?lang:"en";
+  const d=T[code];
+  localStorage.setItem(LANG_KEY,code);
+  const htmlRoot=document.getElementById("html-root");
+  if(htmlRoot){
+    htmlRoot.lang=code;
+    htmlRoot.dir=d.dir;
+  }
+  setText("lang-current",LANG_LABELS[code]||"🇬🇧 EN ⌄");
+  setText("drawer-buy",d.buy);
+  setText("drawer-contact",d.contact);
+  setText("page-h1",d.h1);
+  setText("p-1",d.p1);
+  setHTML("p-2",d.p2);
+  setHTML("p-3",d.p3);
+  setText("c2-title-text",d.c2title);
+  setText("c2-p1",d.c2p1);
+  setHTML("c2-p2",d.c2p2);
+  setText("c2-li1",d.c2li1);
+  setText("c2-li2",d.c2li2);
+  setText("c2-li3",d.c2li3);
+  setText("c2-p3",d.c2p3);
+  setText("c3-surv-title",d.c3survtitle);
+  setHTML("c3-surv-p1",d.c3survp1);
+  setText("c3-surv-p2",d.c3survp2);
+  setHTML("c3-tip-box",d.c3tip);
+  setText("c3-crea-title",d.c3creatitle);
+  setHTML("c3-crea-p1",d.c3creap1);
+  setText("c3-crea-li1",d.c3creali1);
+  setText("c3-crea-li2",d.c3creali2);
+  setText("c4-dev-title",d.c4devtitle);
+  setText("c4-dev-p1",d.c4devp1);
+  setHTML("c4-dev-p2",d.c4devp2);
+  setText("c4-mkt-title",d.c4mkttitle);
+  setHTML("c4-mkt-p1",d.c4mktp1);
+  setHTML("c4-mkt-li1",d.c4mktli1);
+  setHTML("c4-mkt-li2",d.c4mktli2);
+  setHTML("c4-mkt-li3",d.c4mktli3);
+  setHTML("c5-warn-full",d.c5warn);
+  setText("c5-sr-title",d.c5srtitle);
+  setText("c5-app-btn",d.c5appbtn);
+  setText("c5-stat-rating-lbl",d.c5rating);
+  setText("c5-stat-age-lbl",d.c5age);
+  setText("c5-stat-age-sub",d.c5years);
+  setText("c5-stat-rank-lbl",d.c5rank);
+  setText("c5-stat-rank-sub",d.c5util);
+  setText("c5-whats-new",d.c5whatsnew);
+  setHTML("c5-sr-p1",d.c5srp1);
+  setHTML("c5-sr-p2",d.c5srp2);
+  setText("c5-sr-li1",d.c5srli1);
+  setText("c5-sr-li2",d.c5srli2);
+  setText("c6-sr-li1",d.c6srli1);
+  setText("c6-sr-li2",d.c6srli2);
+  setText("c6-id-title",d.c6idtitle);
+  setHTML("c6-id-p1",d.c6idp1);
+  setText("btn-mc-free",d.btnmc);
+  setText("btn-sr-free",d.btnsr);
+  setText("guide-appstore-title",d.guidetitle);
+  setText("strict-id-warning",d.strictwarn);
+  setHTML("as-step-1",d.step1);
+  setHTML("as-step-2",d.step2);
+  setHTML("as-step-3",d.step3);
+  setHTML("as-step-4",d.step4);
+  setHTML("as-step-5",d.step5);
+  setText("comm-title",d.commtitle);
+  setText("comm-desc",d.commdesc);
+  setHTML("comm-li-tiktok",d.commtiktok);
+  setHTML("comm-li-discord",d.commdiscord);
+  setHTML("comm-li-telegram",d.commtelegram);
+  setHTML("comm-li-shop",d.commshop);
+  setText("btn-back-site",d.backsite);
+  setText("join-page-sub",d.joinsub);
+  setText("kurd0o-red-account-btn",d.redbtn);
+  setText("btn-back-join",d.backjoin);
+  setText("g-kicker",d.gkicker);
+  setText("g-title",d.gtitle);
+  setText("g-sub",d.gsub);
+  setText("g-s1-t",d.gs1t);
+  setText("g-s1-d",d.gs1d);
+  setText("g-s2-t",d.gs2t);
+  setHTML("g-s2-d",d.gs2d);
+  setText("g-s3-t",d.gs3t);
+  setHTML("g-s3-d",d.gs3d);
+  setText("ses-active-txt",d.sesactive);
+  setText("ses-notice-txt",d.sesnotice);
+  setText("ses-apple-lbl",d.sesapple);
+  setText("ses-pass-lbl",d.sespass);
+  setText("ses-footer-txt",d.sesfooter);
+  setText("sup-kicker",d.supkicker);
+  setText("sup-title",d.suptitle);
+  setText("sup-desc",d.supdesc);
+  setText("sup-discord-txt",d.supdiscord);
+  setText("sup-tiktok-txt",d.suptiktok);
+  setText("cred-modal-title",d.modaltitle);
+  setText("cred-modal-desc",d.modaldesc);
+  setText("cred-modal-cancel",d.modalcancel);
+  setText("cred-modal-confirm",d.modalconfirm);
+
+  setText("join-page-title",currentSelectedApp==="shadowrocket"?"Shadowrocket":"Minecraft");
+  renderJoinedState();
+  renderShadowrocketCredentialsVisibility();
+  updateCopyButtonsUI();
+  updateSessionTimerDisplay();
+  closeDropdowns();
+}
+
+function closeDropdowns(){
+  const ld=document.getElementById("lang-dropdown");
+  const sd=document.getElementById("side-drawer");
+  if(ld) ld.classList.remove("show");
+  if(sd) sd.classList.remove("show");
 }
 
 function toggleLangDropdown(e){
-  if(e)e.stopPropagation();
-  const dd=document.getElementById("lang-dropdown");
-  if(dd)dd.classList.toggle("show");
+  e.stopPropagation();
+  const ld=document.getElementById("lang-dropdown");
+  const sd=document.getElementById("side-drawer");
+  if(sd) sd.classList.remove("show");
+  if(ld) ld.classList.toggle("show");
+}
+
+function toggleDrawer(e){
+  e.stopPropagation();
+  const sd=document.getElementById("side-drawer");
+  const ld=document.getElementById("lang-dropdown");
+  if(ld) ld.classList.remove("show");
+  if(sd) sd.classList.toggle("show");
 }
 
 document.addEventListener("click",function(){
-  const d=document.getElementById("side-drawer");
-  const dd=document.getElementById("lang-dropdown");
-  if(d)d.classList.remove("show");
-  if(dd)dd.classList.remove("show");
+  closeDropdowns();
 });
 
-function backToMainSiteView(){
-  const main=document.getElementById("kurd0o-main-site-content");
-  const join=document.getElementById("kurd0o-join-page-view");
-  const guide=document.getElementById("kurd0o-step-guide-view");
-  if(main)main.style.display="block";
-  if(join)join.classList.remove("active");
-  if(guide)guide.classList.remove("active");
+function saveViewState(viewName,appName){
+  try{
+    localStorage.setItem(VIEW_STATE_KEY,JSON.stringify({
+      view:viewName,
+      app:appName||currentSelectedApp
+    }));
+  }catch(e){}
 }
 
-function backToJoinView(){
-  const main=document.getElementById("kurd0o-main-site-content");
-  const join=document.getElementById("kurd0o-join-page-view");
-  const guide=document.getElementById("kurd0o-step-guide-view");
-  if(main)main.style.display="none";
-  if(guide)guide.classList.remove("active");
-  if(join)join.classList.add("active");
+function clearViewState(){
+  try{
+    localStorage.removeItem(VIEW_STATE_KEY);
+  }catch(e){}
 }
 
-function openJoinPageView(appType){
-  currentSelectedApp=appType||"minecraft";
-  const main=document.getElementById("kurd0o-main-site-content");
-  const join=document.getElementById("kurd0o-join-page-view");
-  const guide=document.getElementById("kurd0o-step-guide-view");
-  const title=document.getElementById("join-page-title");
-  if(main)main.style.display="none";
-  if(guide)guide.classList.remove("active");
-  if(join)join.classList.add("active");
-  if(title)title.textContent=currentSelectedApp==="shadowrocket"?"Shadowrocket":"Minecraft";
+function getJoinedTargets(){
+  try{
+    const raw=localStorage.getItem(STORAGE_JOIN_KEY);
+    const arr=raw?JSON.parse(raw):[];
+    return Array.isArray(arr)?arr:[];
+  }catch(e){
+    return [];
+  }
 }
 
-function openStepGuideView(skipCheck){
-  const main=document.getElementById("kurd0o-main-site-content");
-  const join=document.getElementById("kurd0o-join-page-view");
-  const guide=document.getElementById("kurd0o-step-guide-view");
-  if(main)main.style.display="none";
-  if(join)join.classList.remove("active");
-  if(guide)guide.classList.add("active");
-  if(typeof window.__syncShadowrocketUI==="function"){
-    window.__syncShadowrocketUI();
+function addJoinedTarget(target){
+  const list=getJoinedTargets();
+  if(!list.includes(target)){
+    list.push(target);
+    localStorage.setItem(STORAGE_JOIN_KEY,JSON.stringify(list));
+  }
+}
+
+function renderJoinedState(){
+  const joined=getJoinedTargets();
+  const d=T[getCurrentLang()];
+  document.querySelectorAll(".kurd-join-btn").forEach(btn=>{
+    const target=btn.getAttribute("data-target");
+    const statusEl=btn.querySelector(".join-status");
+    if(countdowns[target] && countdowns[target]>0){
+      btn.classList.remove("joined");
+      if(statusEl) statusEl.textContent=countdowns[target]+"s";
+    }else if(joined.includes(target)){
+      btn.classList.add("joined");
+      if(statusEl) statusEl.textContent=d.joined;
+    }else{
+      btn.classList.remove("joined");
+      if(statusEl) statusEl.textContent="↗";
+    }
+  });
+  const allJoined=REQUIRED_TARGETS.every(t=>joined.includes(t));
+  const redBox=document.getElementById("kurd0o-red-account-box");
+  if(redBox){
+    if(allJoined) redBox.classList.add("show");
+    else redBox.classList.remove("show");
   }
 }
 
 function handleJoinTarget(target,url){
-  if(url)window.open(url,"_blank","noopener,noreferrer");
-  const btn=document.querySelector('.kurd-join-btn[data-target="'+target+'"]');
-  if(btn){
-    btn.classList.add("joined");
-    const st=btn.querySelector(".join-status");
-    if(st)st.textContent="✓";
+  window.open(url,"_blank","noopener,noreferrer");
+  const joined=getJoinedTargets();
+  if(joined.includes(target)){
+    renderJoinedState();
+    return;
   }
-  const redBox=document.getElementById("kurd0o-red-account-box");
-  if(redBox)redBox.classList.add("show");
+  if(timers[target]) clearInterval(timers[target]);
+  countdowns[target]=CHANNEL_WAIT_SEC;
+  renderJoinedState();
+  timers[target]=setInterval(()=>{
+    countdowns[target]--;
+    if(countdowns[target]<=0){
+      clearInterval(timers[target]);
+      delete timers[target];
+      delete countdowns[target];
+      addJoinedTarget(target);
+    }
+    renderJoinedState();
+  },1000);
 }
 
-function handleCredCopyClick(credType){
-  pendingCredType=credType;
+function pickNextShadowrocketAccount(sourceList){
+  const valid=Array.isArray(sourceList)
+    ?sourceList.filter(item=>item&&item.email&&item.password&&(!item.status||item.status==="正常"))
+    :[];
+  if(valid.length===0) return;
+
+  const lastEmail=sessionStorage.getItem("sr_last_email")||"";
+  let pool=valid.filter(item=>item.email!==lastEmail);
+  if(pool.length===0) pool=valid;
+
+  const chosen=pool[Math.floor(Math.random()*pool.length)];
+  sessionStorage.setItem("sr_last_email",chosen.email);
+  ACCOUNTS_DATA.shadowrocket.email=chosen.email;
+  ACCOUNTS_DATA.shadowrocket.password=chosen.password;
+  renderShadowrocketCredentialsVisibility();
+}
+
+async function syncShadowrocketAccountFromBocchi(){
+  pickNextShadowrocketAccount(SHADOWROCKET_BOCCHI_ACCOUNTS);
+  try{
+    const res=await fetch(BOCCHI_API_URL+"?_="+Date.now(),{method:"GET",cache:"no-store"});
+    if(!res.ok) return;
+    const data=await res.json();
+    if(data&&Array.isArray(data.id)&&data.id.length>0){
+      pickNextShadowrocketAccount(data.id);
+    }
+  }catch(e){}
+}
+
+function renderShadowrocketCredentialsVisibility(){
+  const emailEl=document.getElementById("sr-email-display");
+  const passEl=document.getElementById("sr-pass-display");
+  if(!emailEl||!passEl) return;
+
+  if(currentSelectedApp==="shadowrocket"){
+    emailEl.textContent=ACCOUNTS_DATA.shadowrocket.email||"•••••••••••";
+    emailEl.style.letterSpacing="normal";
+    emailEl.style.fontSize="14.5px";
+    emailEl.style.fontWeight="700";
+    emailEl.style.color="#111827";
+    emailEl.style.userSelect="text";
+    emailEl.style.wordBreak="break-all";
+
+    passEl.textContent="•••••••••••";
+    passEl.style.letterSpacing="6px";
+    passEl.style.fontSize="20px";
+    passEl.style.fontWeight="400";
+    passEl.style.color="#cbd5e1";
+    passEl.style.userSelect="none";
+    passEl.style.wordBreak="normal";
+  }else{
+    emailEl.textContent="•••••••••••";
+    emailEl.style.letterSpacing="6px";
+    emailEl.style.fontSize="20px";
+    emailEl.style.fontWeight="400";
+    emailEl.style.color="#cbd5e1";
+    emailEl.style.userSelect="none";
+    emailEl.style.wordBreak="normal";
+
+    passEl.textContent="•••••••••••";
+    passEl.style.letterSpacing="6px";
+    passEl.style.fontSize="20px";
+    passEl.style.fontWeight="400";
+    passEl.style.color="#cbd5e1";
+    passEl.style.userSelect="none";
+    passEl.style.wordBreak="normal";
+  }
+}
+
+function openJoinPageView(appName){
+  currentSelectedApp=appName||"minecraft";
+  saveViewState("join",currentSelectedApp);
+
+  const mainEl=document.getElementById("kurd0o-main-site-content");
+  const joinEl=document.getElementById("kurd0o-join-page-view");
+  const guideEl=document.getElementById("kurd0o-step-guide-view");
+  if(mainEl) mainEl.style.display="none";
+  if(guideEl) guideEl.classList.remove("active");
+  if(joinEl) joinEl.classList.add("active");
+
+  setText("join-page-title",currentSelectedApp==="shadowrocket"?"Shadowrocket":"Minecraft");
+  renderJoinedState();
+  if(currentSelectedApp==="shadowrocket"){
+    syncShadowrocketAccountFromBocchi();
+  }else{
+    renderShadowrocketCredentialsVisibility();
+  }
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function backToMainSiteView(){
+  clearViewState();
+  const mainEl=document.getElementById("kurd0o-main-site-content");
+  const joinEl=document.getElementById("kurd0o-join-page-view");
+  const guideEl=document.getElementById("kurd0o-step-guide-view");
+  if(joinEl) joinEl.classList.remove("active");
+  if(guideEl) guideEl.classList.remove("active");
+  if(mainEl) mainEl.style.display="block";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function backToJoinView(){
+  saveViewState("join",currentSelectedApp);
+  const mainEl=document.getElementById("kurd0o-main-site-content");
+  const joinEl=document.getElementById("kurd0o-join-page-view");
+  const guideEl=document.getElementById("kurd0o-step-guide-view");
+  if(mainEl) mainEl.style.display="none";
+  if(guideEl) guideEl.classList.remove("active");
+  if(joinEl) joinEl.classList.add("active");
+  renderJoinedState();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function initSessionAndCooldowns(resetTimers){
+  if(resetTimers){
+    sessionEndAt=Date.now()+SESSION_DURATION_MS;
+    copyCooldowns.email=0;
+    copyCooldowns.password=0;
+    try{
+      localStorage.setItem(GUIDE_PERSIST_KEY,String(sessionEndAt));
+      localStorage.setItem(COPY_COOLDOWN_KEY,JSON.stringify(copyCooldowns));
+    }catch(e){}
+  }else{
+    try{
+      const savedEnd=Number(localStorage.getItem(GUIDE_PERSIST_KEY)||"0");
+      if(savedEnd>0){
+        sessionEndAt=savedEnd;
+      }else{
+        sessionEndAt=Date.now()+SESSION_DURATION_MS;
+        localStorage.setItem(GUIDE_PERSIST_KEY,String(sessionEndAt));
+      }
+    }catch(e){
+      sessionEndAt=Date.now()+SESSION_DURATION_MS;
+    }
+
+    try{
+      const savedCd=JSON.parse(localStorage.getItem(COPY_COOLDOWN_KEY)||"{}");
+      copyCooldowns.email=Number(savedCd.email||0);
+      copyCooldowns.password=Number(savedCd.password||0);
+    }catch(e){
+      copyCooldowns.email=0;
+      copyCooldowns.password=0;
+    }
+  }
+
+  startSessionCountdown();
+  ["email","password"].forEach(type=>{
+    if(copyIntervals[type]) clearInterval(copyIntervals[type]);
+    const remainingSec=Math.ceil((copyCooldowns[type]-Date.now())/1000);
+    if(remainingSec>0){
+      runCooldownTick(type);
+    }
+  });
+  updateCopyButtonsUI();
+}
+
+function startSessionCountdown(){
+  if(sessionTimerInterval) clearInterval(sessionTimerInterval);
+  updateSessionTimerDisplay();
+  sessionTimerInterval=setInterval(()=>{
+    updateSessionTimerDisplay();
+  },1000);
+}
+
+function updateSessionTimerDisplay(){
+  const timerEl=document.getElementById("ses-timer-txt");
+  if(!timerEl) return;
+  const d=T[getCurrentLang()];
+  const diffMs=sessionEndAt-Date.now();
+  if(diffMs<=0){
+    timerEl.textContent=d.sesexpired;
+    return;
+  }
+  const totalSec=Math.floor(diffMs/1000);
+  const mins=String(Math.floor(totalSec/60)).padStart(2,"0");
+  const secs=String(totalSec%60).padStart(2,"0");
+  timerEl.textContent=mins+":"+secs+" "+d.sesleft;
+}
+
+function runCooldownTick(type){
+  if(copyIntervals[type]) clearInterval(copyIntervals[type]);
+  updateCopyButtonsUI();
+  copyIntervals[type]=setInterval(()=>{
+    const rem=Math.ceil((copyCooldowns[type]-Date.now())/1000);
+    if(rem<=0){
+      clearInterval(copyIntervals[type]);
+      delete copyIntervals[type];
+      copyCooldowns[type]=0;
+      try{
+        localStorage.setItem(COPY_COOLDOWN_KEY,JSON.stringify(copyCooldowns));
+      }catch(e){}
+    }
+    updateCopyButtonsUI();
+  },1000);
+}
+
+function updateCopyButtonsUI(){
+  const d=T[getCurrentLang()];
+  ["email","password"].forEach(type=>{
+    const btn=document.querySelector('.cred-copy-btn[data-cred="'+type+'"]');
+    const lbl=btn?btn.querySelector(".copy-btn-label"):null;
+    if(!btn||!lbl) return;
+    const rem=Math.ceil((copyCooldowns[type]-Date.now())/1000);
+    if(rem>0){
+      btn.disabled=true;
+      lbl.textContent=d.sescopy+" ("+rem+"s)";
+    }else{
+      btn.disabled=false;
+      lbl.textContent=d.sescopy;
+    }
+  });
+}
+
+function handleCredCopyClick(type){
+  const rem=Math.ceil((copyCooldowns[type]-Date.now())/1000);
+  if(rem>0) return;
+  pendingCredType=type;
   const modal=document.getElementById("kurd0o-copy-modal");
-  if(modal)modal.classList.add("open");
+  if(modal) modal.classList.add("open");
 }
 
 function closeCredModal(){
   pendingCredType=null;
   const modal=document.getElementById("kurd0o-copy-modal");
-  if(modal)modal.classList.remove("open");
+  if(modal) modal.classList.remove("open");
 }
 
 function confirmCredCopy(){
   const type=pendingCredType;
   closeCredModal();
-  if(!type)return;
-  const entry=ACCOUNTS_DATA[currentSelectedApp]||ACCOUNTS_DATA.minecraft;
-  const val=type==="email"?(entry.email||""):(currentSelectedApp==="shadowrocket"?"":(entry.password||""));
-  if(!val)return;
-  if(navigator.clipboard&&navigator.clipboard.writeText){
-    navigator.clipboard.writeText(val).catch(function(){});
+  if(!type) return;
+
+  const acc=ACCOUNTS_DATA[currentSelectedApp]||ACCOUNTS_DATA.minecraft;
+  const val=type==="email"?acc.email:acc.password;
+  if(val && navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(val).catch(()=>{});
   }
+
+  copyCooldowns[type]=Date.now()+(COPY_COOLDOWN_SEC*1000);
+  try{
+    localStorage.setItem(COPY_COOLDOWN_KEY,JSON.stringify(copyCooldowns));
+  }catch(e){}
+
+  const btn=document.querySelector('.cred-copy-btn[data-cred="'+type+'"]');
+  const lbl=btn?btn.querySelector(".copy-btn-label"):null;
+  const d=T[getCurrentLang()];
+  if(lbl) lbl.textContent=d.copied;
+
+  setTimeout(()=>{
+    runCooldownTick(type);
+  },500);
 }
 
-function applyLang(lang){
-  const code=LANG_LABELS[lang]?lang:"en";
-  localStorage.setItem(LANG_KEY,code);
-  const pill=document.getElementById("lang-current");
-  if(pill)pill.textContent=LANG_LABELS[code];
-  const root=document.getElementById("html-root");
-  if(root){
-    root.setAttribute("lang",code);
-    root.setAttribute("dir",code==="ar"||code==="ku"?"rtl":"ltr");
-  }
+function openStepGuideView(resetSession){
+  saveViewState("guide",currentSelectedApp);
+  const mainEl=document.getElementById("kurd0o-main-site-content");
+  const joinEl=document.getElementById("kurd0o-join-page-view");
+  const guideEl=document.getElementById("kurd0o-step-guide-view");
+  if(mainEl) mainEl.style.display="none";
+  if(joinEl) joinEl.classList.remove("active");
+  if(guideEl) guideEl.classList.add("active");
+
+  initSessionAndCooldowns(Boolean(resetSession));
+  renderShadowrocketCredentialsVisibility();
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
-(function () {
-  const BASE_ORIGIN = "https://id.bocchi2b.top";
-  const CANDIDATE_URLS = [
-    BASE_ORIGIN + "/",
-    BASE_ORIGIN + "/api",
-    BASE_ORIGIN + "/api/list",
-    BASE_ORIGIN + "/api/accounts",
-    BASE_ORIGIN + "/data.json"
-  ];
+window.addEventListener("DOMContentLoaded",function(){
+  let restoredView=null;
+  try{
+    restoredView=JSON.parse(localStorage.getItem(VIEW_STATE_KEY)||"null");
+  }catch(e){
+    restoredView=null;
+  }
 
-  const ROTATION_INDEX_KEY = "kurd0o_shadowrocket_rot_idx_v1";
-  const LIVE_CACHE_KEY = "kurd0o_shadowrocket_live_cache_v1";
-  const EVERY_DAY_CHECK_MS = 6 * 60 * 60 * 1000;
+  if(restoredView && restoredView.app){
+    currentSelectedApp=restoredView.app;
+  }
 
-  const INITIAL_ACCOUNTS = [
-    { email: "carlosfordoxd64109@outlook.com", password: "EDsQHS2XR6", status: "正常" },
-    { email: "johnnykaiserxun28110@outlook.com", password: "8faD4Ndktk", status: "正常" },
-    { email: "medwnz77@outlook.com", password: "XfvFYYX7KC", status: "正常" },
-    { email: "wangjie086@163.com", password: "ECMRqt4PawVT", status: "正常" },
-    { email: "haoyali123456@163.com", password: "eKuCMRraP1B7", status: "正常" },
-    { email: "soonjjj@163.com", password: "VwT5Qc23gJcg", status: "正常" },
-    { email: "ly901@163.com", password: "6sNczzBXFSks", status: "正常" },
-    { email: "yexiaorusw@163.com", password: "Mq2AhtC9ve5r", status: "正常" },
-    { email: "zhanghuan701206@163.com", password: "DXAXk8gcQGXh", status: "正常" },
-    { email: "z106789631@163.com", password: "nWxBWSNCe2DA", status: "正常" },
-    { email: "xiangjun007@163.com", password: "CEruX2kAJXaP", status: "正常" },
-    { email: "lyong2016@163.com", password: "vyvuzjpDFe7G", status: "正常" },
-    { email: "zyx33321@163.com", password: "eS7fPA1YKHPN", status: "正常" },
-    { email: "ff121577@163.com", password: "Nr4BUrbpEFzv", status: "正常" },
-    { email: "zcb201505@163.com", password: "bmWS8zg9R75F", status: "正常" },
-    { email: "kgs9990@163.com", password: "Kv8Xr2XsKFF9", status: "正常" },
-    { email: "hu101140@163.com", password: "1hNSp8rFa8pb", status: "正常" },
-    { email: "xiaoyunshan66@163.com", password: "4eA65W1KqFE6", status: "正常" },
-    { email: "MajeskeThigpen394@hotmail.com", password: "hy4WCgaEsv", status: "正常" },
-    { email: "JoelWoodrqu@outlook.com", password: "B31zSgjxdy", status: "正常" },
-    { email: "LaytonFayed44953@outlook.com", password: "zuW6EAuQUx", status: "正常" },
-    { email: "lienbay1988@gmail.com", password: "826v2vrQ3q", status: "正常" },
-    { email: "CaoileCzachor6200@hotmail.com", password: "cDDz2gkkGW", status: "正常" },
-    { email: "BrianBryant1535@outlook.com", password: "2X2arf4uAJ", status: "正常" },
-    { email: "WinesickleUreno0006@hotmail.com", password: "eXKw4DCwnc", status: "正常" },
-    { email: "yz19890814@163.com", password: "6WFqHHYGsQkN", status: "正常" },
-    { email: "taian0926@163.com", password: "Vh5DtcKkdqr8", status: "正常" },
-    { email: "sonatawang@163.com", password: "VWecqd91C3bH", status: "正常" },
-    { email: "lxh1661@163.com", password: "7zwnUu2565Tf", status: "正常" },
-    { email: "myz234567@163.com", password: "CaG8YvnHWhvm", status: "正常" },
-    { email: "zxl6022@163.com", password: "rKVq2GGcpTt9", status: "正常" },
-    { email: "zww790527@163.com", password: "4Fkme9d728SX", status: "正常" }
-  ];
+  applyLang(getCurrentLang());
+  initSessionAndCooldowns(false);
 
-  let activePool = INITIAL_ACCOUNTS.slice();
-  let currentAccount = null;
-
-  function normalizeList(rawItems) {
-    const out = [];
-    const seen = new Set();
-    if (!Array.isArray(rawItems)) return out;
-
-    for (const item of rawItems) {
-      if (!item || typeof item !== "object") continue;
-      const email = String(item.email || item.account || item.username || "").trim();
-      const password = String(item.password || item.pass || item.pwd || "").trim();
-      if (email && email.includes("@") && !seen.has(email.toLowerCase())) {
-        seen.add(email.toLowerCase());
-        out.push({ email, password, status: item.status || "正常" });
-      }
+  if(restoredView && restoredView.view==="guide"){
+    const mainEl=document.getElementById("kurd0o-main-site-content");
+    const joinEl=document.getElementById("kurd0o-join-page-view");
+    const guideEl=document.getElementById("kurd0o-step-guide-view");
+    if(mainEl) mainEl.style.display="none";
+    if(joinEl) joinEl.classList.remove("active");
+    if(guideEl) guideEl.classList.add("active");
+    if(currentSelectedApp==="shadowrocket"){
+      syncShadowrocketAccountFromBocchi();
+    }else{
+      renderShadowrocketCredentialsVisibility();
     }
-    return out;
-  }
-
-  function extractFromText(text) {
-    if (!text) return [];
-    try {
-      const parsed = JSON.parse(text);
-      if (Array.isArray(parsed)) return normalizeList(parsed);
-      if (Array.isArray(parsed.id)) return normalizeList(parsed.id);
-      if (Array.isArray(parsed.data)) return normalizeList(parsed.data);
-      if (parsed.data && Array.isArray(parsed.data.id)) return normalizeList(parsed.data.id);
-    } catch (_) {}
-
-    const matches = text.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g) || [];
-    const seen = new Set();
-    const fallbackParsed = [];
-    for (const m of matches) {
-      const clean = m.trim();
-      if (!seen.has(clean.toLowerCase())) {
-        seen.add(clean.toLowerCase());
-        fallbackParsed.push({ email: clean, password: "", status: "正常" });
-      }
+  }else if(restoredView && restoredView.view==="join"){
+    const mainEl=document.getElementById("kurd0o-main-site-content");
+    const joinEl=document.getElementById("kurd0o-join-page-view");
+    const guideEl=document.getElementById("kurd0o-step-guide-view");
+    if(mainEl) mainEl.style.display="none";
+    if(guideEl) guideEl.classList.remove("active");
+    if(joinEl) joinEl.classList.add("active");
+    if(currentSelectedApp==="shadowrocket"){
+      syncShadowrocketAccountFromBocchi();
+    }else{
+      renderShadowrocketCredentialsVisibility();
     }
-    return fallbackParsed;
+  }else if(currentSelectedApp==="shadowrocket"){
+    syncShadowrocketAccountFromBocchi();
   }
-
-  async function fetchSingleUrl(url) {
-    const sep = url.includes("?") ? "&" : "?";
-    const target = `${url}${sep}_cb=${Date.now()}`;
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 4500);
-    try {
-      const resp = await fetch(target, {
-        method: "GET",
-        cache: "no-store",
-        signal: controller.signal
-      });
-      clearTimeout(timer);
-      if (!resp.ok) return [];
-      const txt = await resp.text();
-      return extractFromText(txt);
-    } catch (_) {
-      clearTimeout(timer);
-      return [];
-    }
-  }
-
-  async function refreshAccountsPoolFromSource() {
-    for (const url of CANDIDATE_URLS) {
-      const found = await fetchSingleUrl(url);
-      if (found.length > 0) {
-        activePool = found;
-        try {
-          localStorage.setItem(
-            LIVE_CACHE_KEY,
-            JSON.stringify({ updatedAt: Date.now(), accounts: found })
-          );
-        } catch (_) {}
-        return activePool;
-      }
-    }
-
-    try {
-      const rawCache = localStorage.getItem(LIVE_CACHE_KEY);
-      if (rawCache) {
-        const parsedCache = JSON.parse(rawCache);
-        if (parsedCache && Array.isArray(parsedCache.accounts) && parsedCache.accounts.length > 0) {
-          activePool = parsedCache.accounts;
-          return activePool;
-        }
-      }
-    } catch (_) {}
-
-    activePool = INITIAL_ACCOUNTS.slice();
-    return activePool;
-  }
-
-  function pickNextAccountOnReload(pool) {
-    const valid = pool.filter((x) => x && x.email);
-    const list = valid.length > 0 ? valid : INITIAL_ACCOUNTS;
-    let idx = parseInt(localStorage.getItem(ROTATION_INDEX_KEY) || "-1", 10);
-    if (Number.isNaN(idx)) idx = -1;
-    const nextIdx = (idx + 1) % list.length;
-    localStorage.setItem(ROTATION_INDEX_KEY, String(nextIdx));
-    return list[nextIdx];
-  }
-
-  function applyShadowrocketOnly(account) {
-    if (!account) return;
-
-    if (typeof ACCOUNTS_DATA === "object" && ACCOUNTS_DATA.shadowrocket) {
-      ACCOUNTS_DATA.shadowrocket.email = account.email;
-      ACCOUNTS_DATA.shadowrocket.password = "";
-    }
-
-    const passBtn = document.querySelector('.cred-copy-btn[data-cred="password"]');
-    const passCard = passBtn ? passBtn.closest(".cred-card") : null;
-    if (typeof currentSelectedApp !== "undefined" && currentSelectedApp === "shadowrocket") {
-      if (passCard) passCard.style.display = "none";
-    } else if (passCard) {
-      passCard.style.display = "";
-    }
-  }
-
-  window.__syncShadowrocketUI = function () {
-    if (currentAccount) applyShadowrocketOnly(currentAccount);
-  };
-
-  async function startDailyContinuousSync() {
-    await refreshAccountsPoolFromSource();
-    currentAccount = pickNextAccountOnReload(activePool);
-    applyShadowrocketOnly(currentAccount);
-
-    const observer = new MutationObserver(() => {
-      if (currentAccount) applyShadowrocketOnly(currentAccount);
-    });
-    observer.observe(document.body, { childList: true, subtree: true, attributes: true });
-
-    setInterval(async () => {
-      await refreshAccountsPoolFromSource();
-      if (currentAccount) applyShadowrocketOnly(currentAccount);
-    }, EVERY_DAY_CHECK_MS);
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", startDailyContinuousSync);
-  } else {
-    startDailyContinuousSync();
-  }
-})();
+});
 </script>
-
 </body>
 </html>
-
-سوال هل سيتم تحديث موقعي في حال تم تحديث موقع المصدر ؟
