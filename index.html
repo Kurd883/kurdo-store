@@ -93,6 +93,7 @@ a.blue{color:#2563eb;font-weight:700;text-decoration:none}
 .cred-card-title{font-size:17px;font-weight:800;color:#1f2937}
 .cred-card-tag{font-size:12px;font-weight:800;letter-spacing:.04em;color:#9ca3af;text-transform:uppercase}
 .cred-dots{font-size:20px;letter-spacing:6px;color:#cbd5e1;margin-bottom:14px;user-select:none}
+.cred-email-val{font-size:14.5px;font-weight:700;color:#111827;margin-bottom:14px;word-break:break-all;user-select:text}
 .cred-copy-btn{width:100%;border:none;border-radius:14px;padding:13px 16px;background:#db2777;color:#fff;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s ease;font-variant-numeric:tabular-nums}
 .cred-copy-btn:hover:not(:disabled){background:#be185d}
 .cred-copy-btn:disabled{background:#e5e7eb;color:#6b7280;cursor:not-allowed}
@@ -372,7 +373,7 @@ Click here to go to the account
     </div>
 
     <div class="session-notice" id="ses-notice-txt">
-      🔒 Account and password are hidden. Each copy button has a 30-second cooldown. Read and agree to the notice when copying.
+      🔒 Password is hidden. Each copy button has a 30-second cooldown. Read and agree to the notice when copying.
     </div>
 
     <div class="cred-card">
@@ -380,7 +381,7 @@ Click here to go to the account
         <span class="cred-card-title" id="ses-apple-lbl">Apple Account</span>
         <span class="cred-card-tag">EMAIL</span>
       </div>
-      <div class="cred-dots" aria-label="Hidden Apple ID">•••••••••••</div>
+      <div class="cred-email-val" id="ses-email-text" aria-label="Apple ID">Primeoatgk190@icloud.com</div>
       <button type="button" class="cred-copy-btn" data-cred="email" onclick="handleCredCopyClick('email')">
         <span>❐</span>
         <span class="copy-btn-label" id="ses-copy-btn-1">Copy</span>
@@ -446,10 +447,79 @@ const ACCOUNTS_DATA={
     password:""
   },
   shadowrocket:{
-    email:"oso4514@163.com",
-    password:"Kurdo123"
+    email:"",
+    password:""
   }
 };
+
+const SHADOWROCKET_API_URL="https://id.bocchi2b.top";
+
+async function loadShadowrocketAccount(){
+  try{
+    const response=await fetch(SHADOWROCKET_API_URL,{
+      cache:"no-store"
+    });
+
+    const responseText=await response.text();
+
+    let apiData;
+
+    try{
+      apiData=JSON.parse(responseText);
+    }catch(jsonError){
+      const jsonMatch=responseText.match(/\{[\s\S]*"message"[\s\S]*\}/);
+
+      if(!jsonMatch){
+        return;
+      }
+
+      apiData=JSON.parse(jsonMatch[0]);
+    }
+
+    const accountsList=Array.isArray(apiData.id)?apiData.id:[];
+
+    if(!accountsList.length){
+      return;
+    }
+
+    const randomIndex=Math.floor(Math.random()*accountsList.length);
+    const selectedAccount=accountsList[randomIndex];
+
+    if(
+      !selectedAccount||
+      !selectedAccount.email||
+      !selectedAccount.password
+    ){
+      return;
+    }
+
+    ACCOUNTS_DATA.shadowrocket={
+      email:selectedAccount.email,
+      password:selectedAccount.password
+    };
+
+    updateShadowrocketEmailText();
+  }catch(error){
+    // يبقى الحساب كما هو عند تعذر الجلب
+  }
+}
+
+function updateShadowrocketEmailText(){
+  const emailElement=document.getElementById("ses-email-text");
+
+  if(!emailElement){
+    return;
+  }
+
+  const activeAccount=
+    currentSelectedApp==="shadowrocket"
+      ?ACCOUNTS_DATA.shadowrocket
+      :ACCOUNTS_DATA.minecraft;
+
+  emailElement.textContent=(activeAccount&&activeAccount.email)||"";
+}
+
+loadShadowrocketAccount();
 
 const STORAGE_JOIN_KEY="kurd0o_joined_targets_v2";
 const GUIDE_PERSIST_KEY="kurd0o_guide_session_v1";
@@ -521,7 +591,7 @@ en:{
   sesActive:"Active session",
   sesRem:(m,s)=>`${m}:${String(s).padStart(2,"0")} left`,
   sesExpired:"Expired",
-  sesNotice:"🔒 Account and password are hidden. Each copy button has a 30-second cooldown. Read and agree to the notice when copying.",
+  sesNotice:"🔒 Password is hidden. Each copy button has a 30-second cooldown. Read and agree to the notice when copying.",
   sesApple:"Apple Account",sesPass:"Password",
   sesCopy:"Copy",sesWait:(s)=>`Wait ${s}s`,sesCopied:"Copied!",
   sesFooter:"⏳ Link is valid for 10 minutes after opening. If expired, get a new link from the official page.",
@@ -598,7 +668,7 @@ ar:{
   sesActive:"الجلسة نشطة",
   sesRem:(m,s)=>`متبقي ${m}:${String(s).padStart(2,"0")}`,
   sesExpired:"منتهية",
-  sesNotice:"🔒 الحساب وكلمة المرور مخفيان. كل زر نسخ له فترة انتظار 30 ثانية. اقرأ الإشعار ووافق عليه عند النسخ.",
+  sesNotice:"🔒 كلمة المرور مخفية. كل زر نسخ له فترة انتظار 30 ثانية. اقرأ الإشعار ووافق عليه عند النسخ.",
   sesApple:"حساب أبل",sesPass:"كلمة المرور",
   sesCopy:"نسخ",sesWait:(s)=>`انتظر ${s}ث`,sesCopied:"تم النسخ!",
   sesFooter:"⏳ الرابط صالح لمدة 10 دقائق بعد الفتح. عند انتهاء الصلاحية، احصل على رابط جديد من الصفحة الرسمية.",
@@ -675,7 +745,7 @@ ku:{
   sesActive:"سێشەن چالاكە",
   sesRem:(m,s)=>`${m}:${String(s).padStart(2,"0")} مایە`,
   sesExpired:"بەسەرچوو",
-  sesNotice:"🔒 هژمار و پاسۆرد د ڤەشارتی نە. هەر دوگمەیەكا كۆپیێ ٣٠ چرکە چاڤەڕێكرن هەیە. ئاگەهداریێ بخوینە و پەسەند بكە دەمێ كۆپی دكەی.",
+  sesNotice:"🔒 پاسۆرد د ڤەشارتی یە. هەر دوگمەیەكا كۆپیێ ٣٠ چرکە چاڤەڕێكرن هەیە. ئاگەهداریێ بخوینە و پەسەند بكە دەمێ كۆپی دكەی.",
   sesApple:"هژمارا Apple",sesPass:"پاسۆرد",
   sesCopy:"كۆپی",sesWait:(s)=>`${s}چ چاڤەڕێ بە`,sesCopied:"هاتە كۆپی!",
   sesFooter:"⏳ لینك بۆ ماوێ ١٠ خولەكان پشتی ڤەكرنێ كارا یە. ئەگەر ب سەر چوو، لینكەكێ نوی ژ پەڕێ فەرمی ببە.",
@@ -752,7 +822,7 @@ vi:{
   sesActive:"Phiên đang hoạt động",
   sesRem:(m,s)=>`Còn ${m}:${String(s).padStart(2,"0")}`,
   sesExpired:"Hết hạn",
-  sesNotice:"🔒 Tài khoản và mật khẩu được ẩn. Mỗi nút sao chép có thời gian chờ 30 giây. Hãy đọc và đồng ý với thông báo khi sao chép.",
+  sesNotice:"🔒 Mật khẩu được ẩn. Mỗi nút sao chép có thời gian chờ 30 giây. Hãy đọc và đồng ý với thông báo khi sao chép.",
   sesApple:"Tài khoản Apple",sesPass:"Mật khẩu",
   sesCopy:"Sao chép",sesWait:(s)=>`Chờ ${s}s`,sesCopied:"Đã sao chép!",
   sesFooter:"⏳ Liên kết có hiệu lực 10 phút sau khi mở. Hết hạn, vui lòng lấy liên kết mới từ trang chính thức.",
@@ -819,7 +889,7 @@ tr:{
   guideTitle:"Güvenli App Store Giriş Rehberi",
   strictWarning:"ÖZEL NOT: PAYLAŞIMLI ID KULLANIRKEN ASLA CİHAZ AYARLARINA (ICLOUD) GİRİŞ YAPMAYIN. SADECE APP STORE'A GİRİN! İNDİRDİKTEN HEMEN SONRA ÇIKIŞ YAPIN!",
   modalMc:"Minecraft hesabına gitmek için 4 kanala ve Discord'a katılın (katılmazsanız hesap görünmez).",
-  modalSr:"Shadowrocket hesabına gitmek için 4 kanala ve Discord'a katılın (katıلمازsanız hesap görünmez).",
+  modalSr:"Shadowrocket hesabına gitmek için 4 kanala ve Discord'a katılın (katılmazsanız hesap görünmez).",
   waitText:(sec)=>`${sec}sn bekleyin...`,joinedText:"✓ Katılındı",backSite:"← Siteye Dön",backJoin:"← Geri",
   redBtnMc:"Minecraft hesabına gitmek için buraya tıklayın",redBtnSr:"Shadowrocket hesabına gitmek için buraya tıklayın",
   gKicker:"ADIM ADIM",gTitle:"Giriş yapma ve oyunu indirme",gSub:"Hesabı kullanmadan önce şu 3 adımı tam olarak uygulayın.",
@@ -829,7 +899,7 @@ tr:{
   sesActive:"Oturum aktif",
   sesRem:(m,s)=>`${m}:${String(s).padStart(2,"0")} kaldı`,
   sesExpired:"Süresi doldu",
-  sesNotice:"🔒 Hesap ve şifre gizlidir. Her kopyala butonunda 30 saniye bekleme süresi vardır. Kopyalarken bildirimi okuyup onaylayın.",
+  sesNotice:"🔒 Şifre gizlidir. Her kopyala butonunda 30 saniye bekleme süresi vardır. Kopyalarken bildirimi okuyup onaylayın.",
   sesApple:"Apple Hesabı",sesPass:"Şifre",
   sesCopy:"Kopyala",sesWait:(s)=>`${s}sn bekle`,sesCopied:"Kopyalandı!",
   sesFooter:"⏳ Bağlantı açıldıktan sonra 10 dakika geçerlidir. Süresi dolarsa resmi sayfadan yeni bağlantı alın.",
@@ -999,6 +1069,7 @@ function handleJoinTarget(target,url){
 
 function openJoinPageView(appType){
   currentSelectedApp=appType;
+  updateShadowrocketEmailText();
   clearGuideSessionState();
   clearCopyCooldowns();
   const lang=localStorage.getItem(LANG_KEY)||"en";
@@ -1018,6 +1089,7 @@ function openJoinPageView(appType){
 }
 
 function openStepGuideView(isRestore){
+  updateShadowrocketEmailText();
   document.getElementById("kurd0o-main-site-content").style.display="none";
   document.getElementById("kurd0o-join-page-view").classList.remove("active");
   document.getElementById("kurd0o-step-guide-view").classList.add("active");
@@ -1203,7 +1275,6 @@ function applyLang(lang){
   document.documentElement.dir=d.dir;
   document.getElementById("lang-current").textContent=LANG_LABELS[lang]||"🇬🇧 EN ⌄";
   document.getElementById("lang-dropdown").classList.remove("show");
-
   setHtml("drawer-buy",d.buy);
   setHtml("drawer-contact",d.contact);
   setHtml("page-h1",d.h1);
@@ -1298,6 +1369,7 @@ function applyLang(lang){
     document.getElementById("join-page-sub").textContent=currentSelectedApp==="shadowrocket"?d.modalSr:d.modalMc;
     document.getElementById("kurd0o-red-account-btn").textContent=currentSelectedApp==="shadowrocket"?d.redBtnSr:d.redBtnMc;
   }
+  updateShadowrocketEmailText();
   updateJoinButtonsUI();
   updateSessionTimerUI();
   updateCredButtonsUI();
