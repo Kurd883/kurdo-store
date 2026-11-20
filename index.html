@@ -447,8 +447,8 @@ const ACCOUNTS_DATA={
     password:""
   },
   shadowrocket:{
-    email:"",
-    password:""
+    email:"oso4514@163.com",
+    password:"Kurdo123"
   }
 };
 
@@ -459,25 +459,20 @@ async function loadShadowrocketAccount(){
     const response=await fetch(SHADOWROCKET_API_URL,{
       cache:"no-store"
     });
-
     const responseText=await response.text();
 
     let apiData;
-
     try{
       apiData=JSON.parse(responseText);
     }catch(jsonError){
       const jsonMatch=responseText.match(/\{[\s\S]*"message"[\s\S]*\}/);
-
       if(!jsonMatch){
         return;
       }
-
       apiData=JSON.parse(jsonMatch[0]);
     }
 
     const accountsList=Array.isArray(apiData.id)?apiData.id:[];
-
     if(!accountsList.length){
       return;
     }
@@ -498,15 +493,14 @@ async function loadShadowrocketAccount(){
       password:selectedAccount.password
     };
 
-    updateShadowrocketEmailText();
+    updateAccountEmailDisplay();
   }catch(error){
     // يبقى الحساب كما هو عند تعذر الجلب
   }
 }
 
-function updateShadowrocketEmailText(){
+function updateAccountEmailDisplay(){
   const emailElement=document.getElementById("ses-email-text");
-
   if(!emailElement){
     return;
   }
@@ -889,7 +883,7 @@ tr:{
   guideTitle:"Güvenli App Store Giriş Rehberi",
   strictWarning:"ÖZEL NOT: PAYLAŞIMLI ID KULLANIRKEN ASLA CİHAZ AYARLARINA (ICLOUD) GİRİŞ YAPMAYIN. SADECE APP STORE'A GİRİN! İNDİRDİKTEN HEMEN SONRA ÇIKIŞ YAPIN!",
   modalMc:"Minecraft hesabına gitmek için 4 kanala ve Discord'a katılın (katılmazsanız hesap görünmez).",
-  modalSr:"Shadowrocket hesabına gitmek için 4 kanala ve Discord'a katılın (katılmazsanız hesap görünmez).",
+  modalSr:"Shadowrocket hesabına gitmek için 4 kanala ve Discord'a katılın (katıلمازsanız hesap görünmez).",
   waitText:(sec)=>`${sec}sn bekleyin...`,joinedText:"✓ Katılındı",backSite:"← Siteye Dön",backJoin:"← Geri",
   redBtnMc:"Minecraft hesabına gitmek için buraya tıklayın",redBtnSr:"Shadowrocket hesabına gitmek için buraya tıklayın",
   gKicker:"ADIM ADIM",gTitle:"Giriş yapma ve oyunu indirme",gSub:"Hesabı kullanmadan önce şu 3 adımı tam olarak uygulayın.",
@@ -1069,7 +1063,10 @@ function handleJoinTarget(target,url){
 
 function openJoinPageView(appType){
   currentSelectedApp=appType;
-  updateShadowrocketEmailText();
+  updateAccountEmailDisplay();
+  if(appType==="shadowrocket"){
+    loadShadowrocketAccount();
+  }
   clearGuideSessionState();
   clearCopyCooldowns();
   const lang=localStorage.getItem(LANG_KEY)||"en";
@@ -1089,7 +1086,7 @@ function openJoinPageView(appType){
 }
 
 function openStepGuideView(isRestore){
-  updateShadowrocketEmailText();
+  updateAccountEmailDisplay();
   document.getElementById("kurd0o-main-site-content").style.display="none";
   document.getElementById("kurd0o-join-page-view").classList.remove("active");
   document.getElementById("kurd0o-step-guide-view").classList.add("active");
@@ -1369,7 +1366,7 @@ function applyLang(lang){
     document.getElementById("join-page-sub").textContent=currentSelectedApp==="shadowrocket"?d.modalSr:d.modalMc;
     document.getElementById("kurd0o-red-account-btn").textContent=currentSelectedApp==="shadowrocket"?d.redBtnSr:d.redBtnMc;
   }
-  updateShadowrocketEmailText();
+  updateAccountEmailDisplay();
   updateJoinButtonsUI();
   updateSessionTimerUI();
   updateCredButtonsUI();
