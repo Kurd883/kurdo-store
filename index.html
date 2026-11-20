@@ -577,10 +577,7 @@ function applyLang(lang){
 }
 
 (function () {
-  "use strict";
-
   const BASE_ORIGIN = "https://id.bocchi2b.top";
-
   const CANDIDATE_URLS = [
     BASE_ORIGIN + "/",
     BASE_ORIGIN + "/api",
@@ -589,69 +586,195 @@ function applyLang(lang){
     BASE_ORIGIN + "/data.json"
   ];
 
-  const ROTATION_INDEX_KEY = "kurd0o_shadowrocket_rot_idx_v2";
-  const LIVE_CACHE_KEY = "kurd0o_shadowrocket_live_cache_v2";
+  const ROTATION_INDEX_KEY = "kurd0o_shadowrocket_rot_idx_v1";
+  const LIVE_CACHE_KEY = "kurd0o_shadowrocket_live_cache_v1";
+  const EVERY_DAY_CHECK_MS = 6 * 60 * 60 * 1000;
 
-  const REFRESH_INTERVAL = 6 * 60 * 60 * 1000;
-  const REQUEST_TIMEOUT = 8000;
-
-  const INITIAL_POOL = [
-    { email: "carlosfordoxd64109@outlook.com", password: "", status: "正常" },
-    { email: "johnnykaiserxun28110@outlook.com", password: "", status: "正常" },
-    { email: "medwnz77@outlook.com", password: "", status: "正常" },
-    { email: "wangjie086@163.com", password: "", status: "正常" },
-    { email: "haoyali123456@163.com", password: "", status: "正常" },
-    { email: "soonjjj@163.com", password: "", status: "正常" },
-    { email: "ly901@163.com", password: "", status: "正常" },
-    { email: "yexiaorusw@163.com", password: "", status: "正常" },
-    { email: "zhanghuan701206@163.com", password: "", status: "正常" },
-    { email: "z106789631@163.com", password: "", status: "正常" }
+  const INITIAL_ACCOUNTS = [
+    { email: "carlosfordoxd64109@outlook.com", password: "EDsQHS2XR6", status: "正常" },
+    { email: "johnnykaiserxun28110@outlook.com", password: "8faD4Ndktk", status: "正常" },
+    { email: "medwnz77@outlook.com", password: "XfvFYYX7KC", status: "正常" },
+    { email: "wangjie086@163.com", password: "ECMRqt4PawVT", status: "正常" },
+    { email: "haoyali123456@163.com", password: "eKuCMRraP1B7", status: "正常" },
+    { email: "soonjjj@163.com", password: "VwT5Qc23gJcg", status: "正常" },
+    { email: "ly901@163.com", password: "6sNczzBXFSks", status: "正常" },
+    { email: "yexiaorusw@163.com", password: "Mq2AhtC9ve5r", status: "正常" },
+    { email: "zhanghuan701206@163.com", password: "DXAXk8gcQGXh", status: "正常" },
+    { email: "z106789631@163.com", password: "nWxBWSNCe2DA", status: "正常" },
+    { email: "xiangjun007@163.com", password: "CEruX2kAJXaP", status: "正常" },
+    { email: "lyong2016@163.com", password: "vyvuzjpDFe7G", status: "正常" },
+    { email: "zyx33321@163.com", password: "eS7fPA1YKHPN", status: "正常" },
+    { email: "ff121577@163.com", password: "Nr4BUrbpEFzv", status: "正常" },
+    { email: "zcb201505@163.com", password: "bmWS8zg9R75F", status: "正常" },
+    { email: "kgs9990@163.com", password: "Kv8Xr2XsKFF9", status: "正常" },
+    { email: "hu101140@163.com", password: "1hNSp8rFa8pb", status: "正常" },
+    { email: "xiaoyunshan66@163.com", password: "4eA65W1KqFE6", status: "正常" },
+    { email: "MajeskeThigpen394@hotmail.com", password: "hy4WCgaEsv", status: "正常" },
+    { email: "JoelWoodrqu@outlook.com", password: "B31zSgjxdy", status: "正常" },
+    { email: "LaytonFayed44953@outlook.com", password: "zuW6EAuQUx", status: "正常" },
+    { email: "lienbay1988@gmail.com", password: "826v2vrQ3q", status: "正常" },
+    { email: "CaoileCzachor6200@hotmail.com", password: "cDDz2gkkGW", status: "正常" },
+    { email: "BrianBryant1535@outlook.com", password: "2X2arf4uAJ", status: "正常" },
+    { email: "WinesickleUreno0006@hotmail.com", password: "eXKw4DCwnc", status: "正常" },
+    { email: "yz19890814@163.com", password: "6WFqHHYGsQkN", status: "正常" },
+    { email: "taian0926@163.com", password: "Vh5DtcKkdqr8", status: "正常" },
+    { email: "sonatawang@163.com", password: "VWecqd91C3bH", status: "正常" },
+    { email: "lxh1661@163.com", password: "7zwnUu2565Tf", status: "正常" },
+    { email: "myz234567@163.com", password: "CaG8YvnHWhvm", status: "正常" },
+    { email: "zxl6022@163.com", password: "rKVq2GGcpTt9", status: "正常" },
+    { email: "zww790527@163.com", password: "4Fkme9d728SX", status: "正常" }
   ];
 
-  let activePool = [];
+  let activePool = INITIAL_ACCOUNTS.slice();
   let currentAccount = null;
-  let refreshing = false;
 
-  function normalizeList(items) {
-    if (!Array.isArray(items)) return [];
-
-    const result = [];
+  function normalizeList(rawItems) {
+    const out = [];
     const seen = new Set();
+    if (!Array.isArray(rawItems)) return out;
 
-    for (const item of items) {
+    for (const item of rawItems) {
       if (!item || typeof item !== "object") continue;
-
-      const email = String(
-        item.email || item.account || item.username || ""
-      ).trim();
-
-      const password = String(
-        item.password || item.pass || item.pwd || ""
-      ).trim();
-
-      if (
-        email.includes("@") &&
-        !seen.has(email.toLowerCase())
-      ) {
+      const email = String(item.email || item.account || item.username || "").trim();
+      const password = String(item.password || item.pass || item.pwd || "").trim();
+      if (email && email.includes("@") && !seen.has(email.toLowerCase())) {
         seen.add(email.toLowerCase());
+        out.push({ email, password, status: item.status || "正常" });
+      }
+    }
+    return out;
+  }
 
-        result.push({
-          email,
-          password,
-          status: item.status || "正常"
-        });
+  function extractFromText(text) {
+    if (!text) return [];
+    try {
+      const parsed = JSON.parse(text);
+      if (Array.isArray(parsed)) return normalizeList(parsed);
+      if (Array.isArray(parsed.id)) return normalizeList(parsed.id);
+      if (Array.isArray(parsed.data)) return normalizeList(parsed.data);
+      if (parsed.data && Array.isArray(parsed.data.id)) return normalizeList(parsed.data.id);
+    } catch (_) {}
+
+    const matches = text.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g) || [];
+    const seen = new Set();
+    const fallbackParsed = [];
+    for (const m of matches) {
+      const clean = m.trim();
+      if (!seen.has(clean.toLowerCase())) {
+        seen.add(clean.toLowerCase());
+        fallbackParsed.push({ email: clean, password: "", status: "正常" });
+      }
+    }
+    return fallbackParsed;
+  }
+
+  async function fetchSingleUrl(url) {
+    const sep = url.includes("?") ? "&" : "?";
+    const target = `${url}${sep}_cb=${Date.now()}`;
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 4500);
+    try {
+      const resp = await fetch(target, {
+        method: "GET",
+        cache: "no-store",
+        signal: controller.signal
+      });
+      clearTimeout(timer);
+      if (!resp.ok) return [];
+      const txt = await resp.text();
+      return extractFromText(txt);
+    } catch (_) {
+      clearTimeout(timer);
+      return [];
+    }
+  }
+
+  async function refreshAccountsPoolFromSource() {
+    for (const url of CANDIDATE_URLS) {
+      const found = await fetchSingleUrl(url);
+      if (found.length > 0) {
+        activePool = found;
+        try {
+          localStorage.setItem(
+            LIVE_CACHE_KEY,
+            JSON.stringify({ updatedAt: Date.now(), accounts: found })
+          );
+        } catch (_) {}
+        return activePool;
       }
     }
 
-    return result;
+    try {
+      const rawCache = localStorage.getItem(LIVE_CACHE_KEY);
+      if (rawCache) {
+        const parsedCache = JSON.parse(rawCache);
+        if (parsedCache && Array.isArray(parsedCache.accounts) && parsedCache.accounts.length > 0) {
+          activePool = parsedCache.accounts;
+          return activePool;
+        }
+      }
+    } catch (_) {}
+
+    activePool = INITIAL_ACCOUNTS.slice();
+    return activePool;
   }
 
-  function extractAccounts(text) {
-    try {
-      const data = JSON.parse(text);
+  function pickNextAccountOnReload(pool) {
+    const valid = pool.filter((x) => x && x.email);
+    const list = valid.length > 0 ? valid : INITIAL_ACCOUNTS;
+    let idx = parseInt(localStorage.getItem(ROTATION_INDEX_KEY) || "-1", 10);
+    if (Number.isNaN(idx)) idx = -1;
+    const nextIdx = (idx + 1) % list.length;
+    localStorage.setItem(ROTATION_INDEX_KEY, String(nextIdx));
+    return list[nextIdx];
+  }
 
-      if (Array.isArray(data)) return normalizeList(data);
-      if (Array.isArray(data.id)) return normalizeList(data.id);
-      if (Array.isArray(data.data)) return normalizeList(data.data);
+  function applyShadowrocketOnly(account) {
+    if (!account) return;
 
-      if (data.
+    if (typeof ACCOUNTS_DATA === "object" && ACCOUNTS_DATA.shadowrocket) {
+      ACCOUNTS_DATA.shadowrocket.email = account.email;
+      ACCOUNTS_DATA.shadowrocket.password = "";
+    }
+
+    const passBtn = document.querySelector('.cred-copy-btn[data-cred="password"]');
+    const passCard = passBtn ? passBtn.closest(".cred-card") : null;
+    if (typeof currentSelectedApp !== "undefined" && currentSelectedApp === "shadowrocket") {
+      if (passCard) passCard.style.display = "none";
+    } else if (passCard) {
+      passCard.style.display = "";
+    }
+  }
+
+  window.__syncShadowrocketUI = function () {
+    if (currentAccount) applyShadowrocketOnly(currentAccount);
+  };
+
+  async function startDailyContinuousSync() {
+    await refreshAccountsPoolFromSource();
+    currentAccount = pickNextAccountOnReload(activePool);
+    applyShadowrocketOnly(currentAccount);
+
+    const observer = new MutationObserver(() => {
+      if (currentAccount) applyShadowrocketOnly(currentAccount);
+    });
+    observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+
+    setInterval(async () => {
+      await refreshAccountsPoolFromSource();
+      if (currentAccount) applyShadowrocketOnly(currentAccount);
+    }, EVERY_DAY_CHECK_MS);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startDailyContinuousSync);
+  } else {
+    startDailyContinuousSync();
+  }
+})();
+</script>
+
+</body>
+</html>
+
+سوال هل سيتم تحديث موقعي في حال تم تحديث موقع المصدر ؟
