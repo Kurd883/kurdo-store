@@ -485,39 +485,6 @@ async function loadShadowrocketAccounts() {
     console.error("Shadowrocket account load failed");
   }
 }
-{
-  if (currentSelectedApp !== "shadowrocket") return;
-
-  try {
-    const res = await fetch(SHADOWROCKET_API_URL, {
-      method: "GET",
-      cache: "no-store"
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-
-    const list = Array.isArray(data && data.id)
-      ? data.id.filter(
-          item => item && item.email && item.password
-        )
-      : [];
-
-    if (!list.length) return;
-
-    const picked =
-      list[Math.floor(Math.random() * list.length)];
-
-    ACCOUNTS_DATA.shadowrocket = {
-      email: String(picked.email).trim(),
-      password: String(picked.password).trim()
-    };
-
-  } catch (error) {
-    console.error("Shadowrocket account load failed");
-  }
-}
 
 const STORAGE_JOIN_KEY = "kurd0o_joined_targets_v2";
 const GUIDE_PERSIST_KEY = "kurd0o_guide_session_v1";
