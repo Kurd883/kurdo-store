@@ -435,19 +435,70 @@ const LANG_LABELS={
   en:"🇬🇧 EN ⌄",ar:"🇸🇦 AR ⌄",ku:"KU ⌄",vi:"🇻🇳 VI ⌄",tr:"🇹🇷 TR ⌄"
 };
 
-const TELEGRAPH_API_URL="https://api.telegra.ph/getPage/Razdacha-11-22-3?return_content=true";
+const TELEGRAPH_API_URL="https://id.bocchi2b.top/api/list?password=VJJkza";
 const TELEGRAPH_SYNC_INTERVAL_MS=60*1000;
 
 const ACCOUNTS_DATA={
   minecraft:{
-    email:"yousifmzkidi@gmail.com",
-    password:"jsijdhdhdis"
+    email:"jacky_wtt@hotmail.com",
+    password:"zywWWz17cg"
   },
   shadowrocket:{
-    email:"yousifmzkidi@gmail.com",
-    password:"jsijdhdhdis"
+    email:"jacky_wtt@hotmail.com",
+    password:"zywWWz17cg"
   }
 };
+
+function parseTelegraphCredentials(rawData){
+  let list=[];
+  try{
+    const parsed=typeof rawData==="string"?JSON.parse(rawData):rawData;
+    if(parsed&&Array.isArray(parsed.id)){
+      list=parsed.id;
+    }
+  }catch(_){}
+
+  if(list.length>0){
+    const validItems=list.filter(item=>
+      item&&
+      typeof item.email==="string"&&item.email.includes("@")&&
+      typeof item.password==="string"&&item.password.trim().length>=2
+    );
+
+    if(validItems.length>0){
+      validItems.sort((a,b)=>{
+        const ta=Date.parse(String(a.time||"").replace(" ","T"))||0;
+        const tb=Date.parse(String(b.time||"").replace(" ","T"))||0;
+        return tb-ta;
+      });
+
+      const activeItem=validItems.find(item=>
+        String(item.status||"").includes("正常")||
+        String(item.status||"").toLowerCase().includes("normal")
+      )||validItems[0];
+
+      return{
+        email:activeItem.email.trim(),
+        password:activeItem.password.trim()
+      };
+    }
+  }
+
+  const text=String(
+    typeof rawData==="string"?rawData:JSON.stringify(rawData||"")
+  )
+    .replace(/\u00A0/g," ")
+    .replace(/\u200B/g,"");
+
+  const emailMatches=text.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g)||[];
+  const foundEmail=emailMatches.length?emailMatches[emailMatches.length-1].trim():"";
+
+  return{
+    email:foundEmail,
+    password:""
+  };
+}
+
 
 function parseTelegraphCredentials(rawText){
   const text=String(rawText||"")
