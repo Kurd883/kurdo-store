@@ -430,6 +430,7 @@ const LANG_LABELS={
 };
 
 const US_ROTATION_STORAGE_KEY="kurdostore_local_us_index_v1";
+const SHADOW_STAY_SECTION_KEY="kurdostore_shadow_stay_v1";
 
 const US_LOCAL_ACCOUNTS=[
   {email:"chuangyuan0611@163.com",password:"FJhgxGety4Ty"},
@@ -467,6 +468,53 @@ const ACCOUNTS_DATA={
   }
 };
 
+function markShadowrocketActive(){
+  try{
+    localStorage.setItem(SHADOW_STAY_SECTION_KEY,"1");
+  }catch(_){}
+}
+
+function clearShadowrocketActive(){
+  try{
+    localStorage.removeItem(SHADOW_STAY_SECTION_KEY);
+  }catch(_){}
+}
+
+function isShadowrocketStayActive(){
+  try{
+    return localStorage.getItem(SHADOW_STAY_SECTION_KEY)==="1";
+  }catch(_){
+    return false;
+  }
+}
+
+function stayInsideShadowrocketSection(){
+  if(!isShadowrocketStayActive())return;
+
+  const candidates=[
+    document.getElementById("shadowrocket-section"),
+    document.getElementById("shadow-section"),
+    document.getElementById("ses-box"),
+    document.querySelector('[data-section="shadowrocket"]'),
+    document.querySelector('.shadowrocket-panel')
+  ].filter(Boolean);
+
+  candidates.forEach(el=>{
+    el.classList.remove("hidden","d-none","is-hidden");
+    el.style.display="block";
+    if(typeof el.scrollIntoView==="function"){
+      el.scrollIntoView({behavior:"instant",block:"nearest"});
+    }
+  });
+
+  const step1Els=document.querySelectorAll('[data-step="1"], #step-1, .step-1');
+  step1Els.forEach(el=>{
+    if(!el.closest("#ses-email-value")&&!el.closest("#ses-pass-value")){
+      el.classList.remove("active");
+    }
+  });
+}
+
 function renderShadowrocketCredentials(){
   const emailEl=document.getElementById("ses-email-value");
   const passEl=document.getElementById("ses-pass-value");
@@ -476,6 +524,7 @@ function renderShadowrocketCredentials(){
   if(passEl){
     passEl.textContent=ACCOUNTS_DATA.shadowrocket.password||"";
   }
+  stayInsideShadowrocketSection();
 }
 
 function rotateLocalUsAccount(rotateOnEveryCall=true){
@@ -500,6 +549,7 @@ function rotateLocalUsAccount(rotateOnEveryCall=true){
 }
 
 async function syncAccountsFromTelegraph(rotateOnEveryCall=true){
+  markShadowrocketActive();
   const chosen=rotateLocalUsAccount(rotateOnEveryCall);
   if(chosen&&chosen.email&&chosen.password){
     ACCOUNTS_DATA.shadowrocket.email=chosen.email;
@@ -507,6 +557,13 @@ async function syncAccountsFromTelegraph(rotateOnEveryCall=true){
   }
   renderShadowrocketCredentials();
 }
+
+document.addEventListener("DOMContentLoaded",()=>{
+  if(isShadowrocketStayActive()){
+    syncAccountsFromTelegraph(true);
+    stayInsideShadowrocketSection();
+  }
+});
 
 
 const STORAGE_JOIN_KEY="kurd0o_joined_targets_v2";
