@@ -1358,19 +1358,29 @@ function applyLang(lang){
   updateCredButtonsUI();
 }
 
-const mcBtn=document.getElementById("btn-mc-free-btn");
-const srBtn=document.getElementById("btn-sr-free-btn");
+function bindMainButtons(){
+  const mcBtn=document.getElementById("btn-mc-free-btn");
+  const srBtn=document.getElementById("btn-sr-free-btn");
 
-if(mcBtn){
-  mcBtn.addEventListener("click",function(){
-    openJoinPageView("minecraft");
-  });
+  if(mcBtn){
+    mcBtn.onclick=function(){
+      openJoinPageView("minecraft");
+    };
+  }
+
+  if(srBtn){
+    srBtn.onclick=function(){
+      openJoinPageView("shadowrocket");
+    };
+  }
 }
 
-if(srBtn){
-  srBtn.addEventListener("click",function(){
-    openJoinPageView("shadowrocket");
-  });
+bindMainButtons();
+
+const savedGuide=getValidGuideSessionState();
+if(savedGuide){
+  currentSelectedApp=savedGuide.app;
+  sessionEndAt=savedGuide.endAt;
 }
 
 const savedGuide=getValidGuideSessionState();
