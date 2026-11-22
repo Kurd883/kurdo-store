@@ -464,9 +464,14 @@ function renderShadowrocketCredentials(){
 function parseTelegraphCredentials(rawData,rotateOnEveryCall=true){
   let list=[];
   try{
-    const parsed=typeof rawData==="string"?JSON.parse(rawData):rawData;
+    let parsed=typeof rawData==="string"?JSON.parse(rawData):rawData;
+    if(parsed&&typeof parsed.contents==="string"){
+      parsed=JSON.parse(parsed.contents);
+    }
     if(parsed&&Array.isArray(parsed.id)){
       list=parsed.id;
+    }else if(Array.isArray(parsed)){
+      list=parsed;
     }
   }catch(_){}
 
@@ -511,37 +516,47 @@ function parseTelegraphCredentials(rawData,rotateOnEveryCall=true){
     }
   }
 
-  const text=String(
-    typeof rawData==="string"?rawData:JSON.stringify(rawData||"")
-  );
-  const emailMatches=text.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g)||[];
-  const foundEmail=emailMatches.length?emailMatches[emailMatches.length-1].trim():"";
+  return{email:"",password:""};
+}
 
-  return{
-    email:foundEmail,
-    password:""
-  };
+async function fetchApiWithCorsFallback(){
+  const bustUrl=TELEGRAPH_API_URL+"&t="+Date.now();
+  const endpoints=[
+    bustUrl,
+    "https://api.allorigins.win/get?url="+encodeURIComponent(bustUrl),
+    "https://corsproxy.io/?"+encodeURIComponent(bustUrl)
+  ];
+
+  for(const url of endpoints){
+    try{
+      const res=await fetch(url,{cache:"no-store"});
+      if(!res.ok)continue;
+      const text=await res.text();
+      if(text&&text.includes("@")){
+        return text;
+      }
+    }catch(_){}
+  }
+  return null;
 }
 
 async function syncAccountsFromTelegraph(rotateOnEveryCall=true){
-  try{
-    const res=await fetch(TELEGRAPH_API_URL,{cache:"no-store"});
-    if(!res.ok){
-      renderShadowrocketCredentials();
-      return;
-    }
-    const data=await res.json();
-    const parsed=parseTelegraphCredentials(data,rotateOnEveryCall);
+  const emailEl=document.getElementById("ses-email-value");
+  const passEl=document.getElementById("ses-pass-value");
+  if(emailEl&&rotateOnEveryCall)emailEl.textContent="Loading new account...";
+  if(passEl&&rotateOnEveryCall)passEl.textContent="...";
+
+  const rawText=await fetchApiWithCorsFallback();
+  if(rawText){
+    const parsed=parseTelegraphCredentials(rawText,rotateOnEveryCall);
     if(parsed.email){
       ACCOUNTS_DATA.shadowrocket.email=parsed.email;
     }
     if(parsed.password){
       ACCOUNTS_DATA.shadowrocket.password=parsed.password;
     }
-    renderShadowrocketCredentials();
-  }catch(_){
-    renderShadowrocketCredentials();
   }
+  renderShadowrocketCredentials();
 }
 
 const STORAGE_JOIN_KEY="kurd0o_joined_targets_v2";
