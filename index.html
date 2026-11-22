@@ -371,29 +371,30 @@ Click here to go to the account
       🔒 Account and password are hidden. Each copy button has a 30-second cooldown. Read and agree to the notice when copying.
     </div>
 
-    <div class="cred-card">
-      <div class="cred-card-top">
-        <span class="cred-card-title" id="ses-apple-lbl">Apple Account</span>
-        <span class="cred-card-tag">EMAIL</span>
-      </div>
-      <div class="cred-dots" aria-label="Hidden Apple ID">•••••••••••</div>
-      <button type="button" class="cred-copy-btn" data-cred="email" onclick="handleCredCopyClick('email')">
-        <span>❐</span>
-        <span class="copy-btn-label" id="ses-copy-btn-1">Copy</span>
-      </button>
-    </div>
+   <div class="cred-card">
+  <div class="cred-card-top">
+    <span class="cred-card-title" id="ses-apple-lbl">Apple Account</span>
+    <span class="cred-card-tag">EMAIL</span>
+  </div>
+  <div class="cred-plain-value" id="ses-email-value" style="font-weight:700;word-break:break-all;margin:8px 0;user-select:all;"></div>
+  <button type="button" class="cred-copy-btn" data-cred="email" onclick="handleCredCopyClick('email')">
+    <span>❐</span>
+    <span class="copy-btn-label" id="ses-copy-btn-1">Copy</span>
+  </button>
+</div>
 
-    <div class="cred-card">
-      <div class="cred-card-top">
-        <span class="cred-card-title" id="ses-pass-lbl">Password</span>
-        <span class="cred-card-tag">PASSWORD</span>
-      </div>
-      <div class="cred-dots" aria-label="Hidden Password">•••••••••••</div>
-      <button type="button" class="cred-copy-btn" data-cred="password" onclick="handleCredCopyClick('password')">
-        <span>❐</span>
-        <span class="copy-btn-label" id="ses-copy-btn-2">Copy</span>
-      </button>
-    </div>
+<div class="cred-card">
+  <div class="cred-card-top">
+    <span class="cred-card-title" id="ses-pass-lbl">Password</span>
+    <span class="cred-card-tag">PASSWORD</span>
+  </div>
+  <div class="cred-plain-value" id="ses-pass-value" style="font-weight:700;word-break:break-all;margin:8px 0;user-select:all;"></div>
+  <button type="button" class="cred-copy-btn" data-cred="password" onclick="handleCredCopyClick('password')">
+    <span>❐</span>
+    <span class="copy-btn-label" id="ses-copy-btn-2">Copy</span>
+  </button>
+</div>
+
 
     <div class="session-footer-note" id="ses-footer-txt">
       ⏳ Link is valid for 10 minutes after opening. If expired, get a new link from the official page.
@@ -438,12 +439,9 @@ const LANG_LABELS={
 const TELEGRAPH_API_URL="https://id.bocchi2b.top/api/list?password=VJJkza";
 const TELEGRAPH_SYNC_INTERVAL_MS=5*60*1000;
 const US_ROTATION_STORAGE_KEY="kurdostore_us_acc_index_v1";
+const US_LAST_SYNC_STORAGE_KEY="kurdostore_us_last_sync_v1";
 
 const ACCOUNTS_DATA={
-  minecraft:{
-    email:"jacky_wtt@hotmail.com",
-    password:"zywWWz17cg"
-  },
   shadowrocket:{
     email:"jacky_wtt@hotmail.com",
     password:"zywWWz17cg"
@@ -460,7 +458,18 @@ function isNormalAccountItem(item){
   return s.includes("正常")||s.includes("normal")||s.includes("active");
 }
 
-function parseTelegraphCredentials(rawData){
+function renderShadowrocketCredentials(){
+  const emailEl=document.getElementById("ses-email-value");
+  const passEl=document.getElementById("ses-pass-value");
+  if(emailEl){
+    emailEl.textContent=ACCOUNTS_DATA.shadowrocket.email||"";
+  }
+  if(passEl){
+    passEl.textContent=ACCOUNTS_DATA.shadowrocket.password||"";
+  }
+}
+
+function parseTelegraphCredentials(rawData,forceRotate=false){
   let list=[];
   try{
     const parsed=typeof rawData==="string"?JSON.parse(rawData):rawData;
@@ -485,22 +494,27 @@ function parseTelegraphCredentials(rawData){
 
       const usItems=validItems.filter(isUsAccountItem);
       const usNormalItems=usItems.filter(isNormalAccountItem);
+      const pool=usNormalItems.length>0?usNormalItems:(usItems.length>0?usItems:validItems);
 
-      let pool=usNormalItems.length>0?usNormalItems:(usItems.length>0?usItems:validItems);
-
-      let nextIndex=0;
+      let currentIndex=0;
       try{
-        const prevIndex=parseInt(localStorage.getItem(US_ROTATION_STORAGE_KEY)||"-1",10);
-        if(!Number.isNaN(prevIndex)){
-          nextIndex=(prevIndex+1)%pool.length;
+        const now=Date.now();
+        const lastSync=parseInt(localStorage.getItem(US_LAST_SYNC_STORAGE_KEY)||"0",10)||0;
+        const savedIndex=parseInt(localStorage.getItem(US_ROTATION_STORAGE_KEY)||"0",10);
+        const validSaved=Number.isNaN(savedIndex)?0:Math.abs(savedIndex)%pool.length;
+
+        if(forceRotate||(now-lastSync>=TELEGRAPH_SYNC_INTERVAL_MS)){
+          currentIndex=lastSync===0?0:(validSaved+1)%pool.length;
+          localStorage.setItem(US_LAST_SYNC_STORAGE_KEY,String(now));
+        }else{
+          currentIndex=validSaved;
         }
-        localStorage.setItem(US_ROTATION_STORAGE_KEY,String(nextIndex));
+        localStorage.setItem(US_ROTATION_STORAGE_KEY,String(currentIndex));
       }catch(_){
-        nextIndex=0;
+        currentIndex=0;
       }
 
-      const chosen=pool[nextIndex]||pool[0];
-
+      const chosen=pool[currentIndex]||pool[0];
       return{
         email:chosen.email.trim(),
         password:chosen.password.trim()
@@ -510,10 +524,7 @@ function parseTelegraphCredentials(rawData){
 
   const text=String(
     typeof rawData==="string"?rawData:JSON.stringify(rawData||"")
-  )
-    .replace(/\u00A0/g," ")
-    .replace(/\u200B/g,"");
-
+  );
   const emailMatches=text.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g)||[];
   const foundEmail=emailMatches.length?emailMatches[emailMatches.length-1].trim():"";
 
@@ -523,178 +534,34 @@ function parseTelegraphCredentials(rawData){
   };
 }
 
-
-function parseTelegraphCredentials(rawText){
-  const text=String(rawText||"")
-    .replace(/\u00A0/g," ")
-    .replace(/\u200B/g,"");
-
-  const emailMatches=text.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g)||[];
-  const foundEmail=emailMatches.length?emailMatches[emailMatches.length-1].trim():"";
-
-  let foundPass="";
-  const passLabels=[
-    "pass\\s*id",
-    "password",
-    "pass",
-    "пароль",
-    "код",
-    "الرمز\\s*السري",
-    "الرمز",
-    "كلمة\\s*المرور",
-    "كلمة\\s*السر",
-    "باسورد",
-    "پاسۆرد",
-    "باسۆرد",
-    "وشەی\\s*نهێنی"
-  ].join("|");
-
-  const passRegex=new RegExp(
-    `(?:^|[\\s\\W])(?:${passLabels})(?:\\s*id)?[^\\n\\r:：=|\\-]*[:：=|\\-]+\\s*([^\\r\\n]+)`,
-    "gi"
-  );
-
-  let match;
-  let lastPass="";
-  while((match=passRegex.exec(text))!==null){
-    if(match[1]){
-      let val=match[1].trim();
-      val=val
-        .split(/\s+(?:·|\||Обновляется|Канал|Telegram|Channel|قناتنا|تحديث|кенаڵ)\b/i)[0]
-        .trim();
-      val=val.replace(/\s+/g,"").replace(/[.,;]+$/g,"");
-      if(val.length>=2&&!val.includes("@")){
-        lastPass=val;
-      }
-    }
-  }
-  foundPass=lastPass;
-
-  return{
-    email:foundEmail,
-    password:foundPass
-  };
-}
-
-function parseTelegraphCredentials(rawText){
-  const text=String(rawText||"")
-    .replace(/\u00A0/g," ")
-    .replace(/\u200B/g,"");
-
-  const emailMatches=text.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g)||[];
-  const foundEmail=emailMatches.length?emailMatches[emailMatches.length-1].trim():"";
-
-  let foundPass="";
-  const passLabels=[
-    "pass\\s*id",
-    "password",
-    "pass",
-    "пароль",
-    "код",
-    "الرمز\\s*السري",
-    "الرمز",
-    "كلمة\\s*المرور",
-    "كلمة\\s*السر",
-    "باسورد",
-    "پاسۆرد",
-    "باسۆرد",
-    "وشەی\\s*نهێنی"
-  ].join("|");
-
-  const passRegex=new RegExp(
-    `(?:^|[\\s\\W])(?:${passLabels})(?:\\s*id)?[^\\n\\r:：=|\\-]*[:：=|\\-]+\\s*([^\\r\\n]+)`,
-    "gi"
-  );
-
-  let match;
-  let lastPass="";
-  while((match=passRegex.exec(text))!==null){
-    if(match[1]){
-      let val=match[1].trim();
-      val=val
-        .split(/\s+(?:·|\||Обновляется|Канал|Telegram|Channel|قناتنا|تحديث|кенаڵ)\b/i)[0]
-        .trim();
-      val=val.replace(/\s+/g,"").replace(/[.,;]+$/g,"");
-      if(val.length>=2&&!val.includes("@")){
-        lastPass=val;
-      }
-    }
-  }
-  foundPass=lastPass;
-
-  return{
-    email:foundEmail,
-    password:foundPass
-  };
-}
-
-  
-function extractTextFromTelegraphNodes(nodes){
-  if(!Array.isArray(nodes))return"";
-  let out="";
-  for(const node of nodes){
-    if(typeof node==="string"){
-      out+=node+" ";
-    }else if(node && typeof node==="object"){
-      if(["p","div","li","h1","h2","h3","h4","blockquote","pre"].includes(node.tag)){
-        out+="\n";
-      }
-      if(Array.isArray(node.children)){
-        out+=extractTextFromTelegraphNodes(node.children);
-      }
-      if(["p","div","li","h1","h2","h3","h4","blockquote","pre","br"].includes(node.tag)){
-        out+="\n";
-      }
-    }
-  }
-  return out;
-}
-
-function parseTelegraphCredentials(rawText){
-  const text=String(rawText||"");
-  const emailMatch=text.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/);
-  const foundEmail=emailMatch?emailMatch[0].trim():"";
-
-  let foundPass="";
-  const passLineMatch=text.match(/(?:Pass(?:word)?|الرمز|كلمة\s*المرور|باسۆرد)\s*[:|：]?\s*\n*\s*([A-Za-z0-9@#$%^&*._-]{4,40})/i);
-  if(passLineMatch && passLineMatch[1]){
-    foundPass=passLineMatch[1].trim();
-  }else{
-    const lines=text.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
-    for(let i=0;i<lines.length;i++){
-      if(/pass|الرمز|كلمة المرور|باسۆرد/i.test(lines[i])){
-        for(let j=i+1;j<lines.length;j++){
-          const cand=lines[j].trim();
-          if(!/يتم تحديث|تحديث الرمز|telegram|قناتنا|email|ايميل/i.test(cand) && /^[A-Za-z0-9@#$%^&*._-]{4,40}$/.test(cand)){
-            foundPass=cand;
-            break;
-          }
-        }
-        break;
-      }
-    }
-  }
-  return {email:foundEmail,password:foundPass};
-}
-
-async function syncAccountsFromTelegraph(){
+async function syncAccountsFromTelegraph(forceRotate=false){
   try{
     const res=await fetch(TELEGRAPH_API_URL,{cache:"no-store"});
-    if(!res.ok)return;
+    if(!res.ok){
+      renderShadowrocketCredentials();
+      return;
+    }
     const data=await res.json();
-    if(!data || !data.ok || !data.result)return;
-    const plainText=extractTextFromTelegraphNodes(data.result.content);
-    const parsed=parseTelegraphCredentials(plainText);
+    const parsed=parseTelegraphCredentials(data,forceRotate);
     if(parsed.email){
-      ACCOUNTS_DATA.minecraft.email=parsed.email;
       ACCOUNTS_DATA.shadowrocket.email=parsed.email;
     }
     if(parsed.password){
-      ACCOUNTS_DATA.minecraft.password=parsed.password;
       ACCOUNTS_DATA.shadowrocket.password=parsed.password;
     }
-  }catch{}
+    renderShadowrocketCredentials();
+  }catch(_){
+    renderShadowrocketCredentials();
+  }
 }
+
+document.addEventListener("DOMContentLoaded",()=>{
+  renderShadowrocketCredentials();
+  syncAccountsFromTelegraph(false);
+  setInterval(()=>{
+    syncAccountsFromTelegraph(true);
+  },TELEGRAPH_SYNC_INTERVAL_MS);
+});
 
 const STORAGE_JOIN_KEY="kurd0o_joined_targets_v2";
 const GUIDE_PERSIST_KEY="kurd0o_guide_session_v1";
@@ -703,7 +570,7 @@ const FIVE_MINUTES_MS=5*60*1000;
 const REQUIRED_TARGETS=["ch1","ch2","ch3","ch4","discord"];
 const timers={};
 const countdowns={};
-let currentSelectedApp="minecraft";
+let currentSelectedApp="shadowrocket";
 
 const SESSION_DURATION_MS=10*60*1000;
 const COPY_COOLDOWN_SEC=30;
@@ -711,6 +578,8 @@ let sessionEndAt=Date.now()+SESSION_DURATION_MS;
 let pendingCredType=null;
 const copyCooldowns={email:0,password:0};
 const copyIntervals={};
+
+
 const T={
 en:{
   dir:"ltr",buy:"Apple Accounts",contact:"Contact & Inquiries",
@@ -1101,7 +970,7 @@ tr:{
 function saveGuideSessionState(appType, endAt){
   try{
     localStorage.setItem(GUIDE_PERSIST_KEY, JSON.stringify({
-      app: appType || "minecraft",
+      app: appType || "shadowrocket",
       endAt: endAt
     }));
   }catch{}
@@ -1119,7 +988,7 @@ function getValidGuideSessionState(){
     if(!raw || !raw.endAt) return null;
     if(Date.now() < Number(raw.endAt)){
       return {
-        app: raw.app === "shadowrocket" ? "shadowrocket" : "minecraft",
+        app: "shadowrocket",
         endAt: Number(raw.endAt)
       };
     }
@@ -1241,7 +1110,7 @@ function handleJoinTarget(target,url){
 }
 
 function openJoinPageView(appType){
-  currentSelectedApp=appType;
+  currentSelectedApp="shadowrocket";
   clearGuideSessionState();
   clearCopyCooldowns();
   const lang=localStorage.getItem(LANG_KEY)||"en";
@@ -1252,16 +1121,17 @@ function openJoinPageView(appType){
   const view=document.getElementById("kurd0o-join-page-view");
   view.classList.add("active");
 
-  document.getElementById("join-page-title").textContent=appType==="shadowrocket"?"Shadowrocket":"Minecraft";
-  document.getElementById("join-page-sub").textContent=appType==="shadowrocket"?d.modalSr:d.modalMc;
-  document.getElementById("kurd0o-red-account-btn").textContent=appType==="shadowrocket"?d.redBtnSr:d.redBtnMc;
+  document.getElementById("join-page-title").textContent="Shadowrocket";
+  document.getElementById("join-page-sub").textContent=d.modalSr;
+  document.getElementById("kurd0o-red-account-btn").textContent=d.redBtnSr;
 
   updateJoinButtonsUI();
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function openStepGuideView(isRestore){
-  syncAccountsFromTelegraph();
+  renderShadowrocketCredentials();
+  syncAccountsFromTelegraph(false);
   document.getElementById("kurd0o-main-site-content").style.display="none";
   document.getElementById("kurd0o-join-page-view").classList.remove("active");
   document.getElementById("kurd0o-step-guide-view").classList.add("active");
@@ -1403,8 +1273,8 @@ async function confirmCredCopy(){
   closeCredModal();
   if(!type)return;
 
-  await syncAccountsFromTelegraph();
-  const acc=ACCOUNTS_DATA[currentSelectedApp]||ACCOUNTS_DATA.minecraft;
+  await syncAccountsFromTelegraph(false);
+  const acc=ACCOUNTS_DATA.shadowrocket;
   const value=acc[type]||"";
   if(value && navigator.clipboard && navigator.clipboard.writeText){
     navigator.clipboard.writeText(value).catch(()=>{});
@@ -1540,9 +1410,10 @@ function applyLang(lang){
   setHtml("sup-tiktok-txt",d.supTikTok);
 
   if(document.getElementById("kurd0o-join-page-view").classList.contains("active")){
-    document.getElementById("join-page-sub").textContent=currentSelectedApp==="shadowrocket"?d.modalSr:d.modalMc;
-    document.getElementById("kurd0o-red-account-btn").textContent=currentSelectedApp==="shadowrocket"?d.redBtnSr:d.redBtnMc;
+    document.getElementById("join-page-sub").textContent=d.modalSr;
+    document.getElementById("kurd0o-red-account-btn").textContent=d.redBtnSr;
   }
+  renderShadowrocketCredentials();
   updateJoinButtonsUI();
   updateSessionTimerUI();
   updateCredButtonsUI();
@@ -1550,12 +1421,15 @@ function applyLang(lang){
 
 const savedGuide=getValidGuideSessionState();
 if(savedGuide){
-  currentSelectedApp=savedGuide.app;
+  currentSelectedApp="shadowrocket";
   sessionEndAt=savedGuide.endAt;
 }
 
-syncAccountsFromTelegraph();
-setInterval(syncAccountsFromTelegraph,TELEGRAPH_SYNC_INTERVAL_MS);
+renderShadowrocketCredentials();
+syncAccountsFromTelegraph(false);
+setInterval(()=>{
+  syncAccountsFromTelegraph(true);
+},TELEGRAPH_SYNC_INTERVAL_MS);
 setInterval(updateSessionTimerUI,1000);
 applyLang(localStorage.getItem(LANG_KEY)||"en");
 restoreCredCooldowns();
