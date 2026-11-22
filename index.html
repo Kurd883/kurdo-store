@@ -49,7 +49,6 @@ section{margin-bottom:32px}
 .app-footer{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#9ca3af;padding-top:4px}
 .divider{padding-bottom:12px;border-bottom:1px solid #f1f5f9;gap:10px}
 a.blue{color:#2563eb;font-weight:700;text-decoration:none}
-.btn-id-green{width:100%;border:none;border-radius:14px;padding:15px 16px;margin-bottom:12px;background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;font-size:15px;font-weight:800;line-height:1.35;text-align:center;cursor:pointer;box-shadow:0 6px 16px rgba(22,163,74,.28);display:flex;align-items:center;justify-content:center;gap:8px}
 .btn-id-blue{width:100%;border:none;border-radius:14px;padding:15px 16px;margin-bottom:26px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-size:15px;font-weight:800;line-height:1.35;text-align:center;cursor:pointer;box-shadow:0 6px 16px rgba(37,99,235,.28);display:flex;align-items:center;justify-content:center;gap:8px}
 .join-view-card{display:none;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:18px;box-shadow:0 12px 28px rgba(15,23,42,.08);margin-top:14px;margin-bottom:24px}
 .join-view-card.active{display:block}
@@ -64,7 +63,6 @@ a.blue{color:#2563eb;font-weight:700;text-decoration:none}
 .red-account-box{display:none;margin-top:16px}
 .red-account-box.show{display:block}
 .red-account-btn{display:block;width:100%;box-sizing:border-box;text-align:center;background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;padding:14px 16px;border-radius:12px;font-size:14.5px;font-weight:800;text-decoration:none;border:none;cursor:pointer;box-shadow:0 6px 18px rgba(220,38,38,.32)}
-
 .guide-view-card{display:none;background:#ffffff;padding:20px 4px 36px;margin-top:8px}
 .guide-view-card.active{display:block}
 .guide-top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
@@ -87,13 +85,18 @@ a.blue{color:#2563eb;font-weight:700;text-decoration:none}
 .session-dot{width:8px;height:8px;border-radius:999px;background:#16a34a;display:inline-block}
 .session-timer-pill{background:#fff;border:1px solid #e5e7eb;color:#4b5563;font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:12px;font-variant-numeric:tabular-nums}
 .session-notice{background:#fdf2f8;border:1px solid #fbcfe8;border-radius:16px;padding:14px;font-size:14px;line-height:1.6;color:#9d174d;font-weight:600;margin-bottom:16px}
+.accounts-meta-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:12px 14px;margin-bottom:14px}
+.accounts-count-badge{font-size:13.5px;font-weight:800;color:#111827;font-variant-numeric:tabular-nums}
+.change-email-top-btn{border:none;border-radius:11px;padding:9px 13px;background:#111827;color:#fff;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background .2s ease}
+.change-email-top-btn:hover{background:#374151}
 .cred-card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:0 4px 14px rgba(17,24,39,.03)}
 .cred-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
 .cred-card-title{font-size:17px;font-weight:800;color:#1f2937}
 .cred-card-tag{font-size:12px;font-weight:800;letter-spacing:.04em;color:#9ca3af;text-transform:uppercase}
+.cred-visible-value{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:11px 13px;font-size:14.5px;font-weight:700;color:#111827;margin-bottom:12px;word-break:break-all;user-select:all;font-variant-numeric:tabular-nums}
 .cred-dots{font-size:20px;letter-spacing:6px;color:#cbd5e1;margin-bottom:14px;user-select:none}
-.cred-copy-btn{width:100%;border:none;border-radius:14px;padding:13px 16px;background:#db2777;color:#fff;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s ease;font-variant-numeric:tabular-nums}
-.cred-copy-btn:hover:not(:disabled){background:#be185d}
+.cred-copy-btn{width:100%;border:none;border-radius:14px;padding:13px 16px;background:#dc2626;color:#fff;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s ease;font-variant-numeric:tabular-nums}
+.cred-copy-btn:hover:not(:disabled){background:#b91c1c}
 .cred-copy-btn:disabled{background:#e5e7eb;color:#6b7280;cursor:not-allowed}
 .session-footer-note{margin-top:8px;font-size:13.5px;line-height:1.6;color:#6b7280;font-weight:500}
 
@@ -114,7 +117,7 @@ a.blue{color:#2563eb;font-weight:700;text-decoration:none}
 .cred-modal-box p{font-size:14px;line-height:1.6;color:#4b5563;margin-bottom:16px}
 .cred-modal-actions{display:flex;gap:10px;justify-content:flex-end}
 .cred-modal-cancel{border:1px solid #d1d5db;background:#fff;color:#374151;border-radius:10px;padding:9px 14px;font-size:13.5px;font-weight:700;cursor:pointer}
-.cred-modal-confirm{border:none;background:#db2777;color:#fff;border-radius:10px;padding:9px 16px;font-size:13.5px;font-weight:700;cursor:pointer}
+.cred-modal-confirm{border:none;background:#dc2626;color:#fff;border-radius:10px;padding:9px 16px;font-size:13.5px;font-weight:700;cursor:pointer}
 </style>
 </head>
 <body>
@@ -236,7 +239,7 @@ a.blue{color:#2563eb;font-weight:700;text-decoration:none}
 <section id="sec-free-id-gateway">
 <img src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=900&q=75" alt="Shadowrocket iOS Setup">
 
-<button type="button" class="btn-id-blue" onclick="openJoinPageView('shadowrocket')">
+<button type="button" class="btn-id-blue" onclick="openJoinPageView()">
 <span>🚀</span>
 <span id="btn-sr-free">GET FREE SHADOWROCKET DOWNLOAD ID</span>
 </button>
@@ -312,6 +315,7 @@ Click here to go to the Shadowrocket account
 </button>
 </div>
 </div>
+
 <div id="kurd0o-step-guide-view" class="guide-view-card">
   <div class="guide-top-bar">
     <span style="font-weight:800;font-size:15px;color:#be185d;">Kurd0o</span>
@@ -352,7 +356,6 @@ Click here to go to the Shadowrocket account
       </div>
     </div>
   </div>
-
   <div id="kurd0o-session-box" class="session-panel">
     <div class="session-status-bar">
       <span class="session-active-pill">
@@ -363,7 +366,15 @@ Click here to go to the Shadowrocket account
     </div>
 
     <div class="session-notice" id="ses-notice-txt">
-      🔒 Account and password are hidden. Each copy button has a 30-second cooldown. Read and agree to the notice when copying.
+      🔒 Account email is shown while password stays hidden. Each copy button has a 30-second cooldown. Read and agree to the notice when copying.
+    </div>
+
+    <div class="accounts-meta-bar">
+      <span class="accounts-count-badge" id="ses-account-counter">Account 1 of 26</span>
+      <button type="button" class="change-email-top-btn" id="btn-change-email" onclick="handleManualChangeAccount()">
+        <span>🔄</span>
+        <span id="btn-change-email-txt">Change Email</span>
+      </button>
     </div>
 
     <div class="cred-card">
@@ -371,7 +382,7 @@ Click here to go to the Shadowrocket account
         <span class="cred-card-title" id="ses-apple-lbl">Apple Account</span>
         <span class="cred-card-tag">EMAIL</span>
       </div>
-      <div class="cred-dots" aria-label="Hidden Apple ID">•••••••••••</div>
+      <div class="cred-visible-value" id="ses-email-display">oso4514@163.com</div>
       <button type="button" class="cred-copy-btn" data-cred="email" onclick="handleCredCopyClick('email')">
         <span>❐</span>
         <span class="copy-btn-label" id="ses-copy-btn-1">Copy</span>
@@ -411,6 +422,7 @@ Click here to go to the Shadowrocket account
     </div>
   </div>
 </div>
+
 <div id="kurd0o-copy-modal" class="cred-modal-backdrop" onclick="closeCredModal()">
   <div class="cred-modal-box" onclick="event.stopPropagation()">
     <h4 id="cred-modal-title">Copy Notice</h4>
@@ -461,7 +473,6 @@ const US_LOCAL_ACCOUNTS=[
   {email:"lwiiku@163.com",password:"TrzUc14Jg1FZ"},
   {email:"bsg0932@163.com",password:"ZrESB8c3xTzz"}
 ];
-
 const ACCOUNTS_DATA={
   shadowrocket:{
     email:US_LOCAL_ACCOUNTS[0].email,
@@ -485,6 +496,7 @@ let sessionEndAt=Date.now()+SESSION_DURATION_MS;
 let pendingCredType=null;
 const copyCooldowns={email:0,password:0};
 const copyIntervals={};
+
 const T={
 en:{
   dir:"ltr",buy:"Apple Accounts",contact:"Contact & Inquiries",
@@ -538,7 +550,9 @@ en:{
   sesActive:"Active session",
   sesRem:(m,s)=>`${m}:${String(s).padStart(2,"0")} left`,
   sesExpired:"Expired",
-  sesNotice:"🔒 Account and password are hidden. Each copy button has a 30-second cooldown. Read and agree to the notice when copying.",
+  sesNotice:"🔒 Account email is shown while password stays hidden. Each copy button has a 30-second cooldown. Read and agree to the notice when copying.",
+  accCounter:(cur,tot)=>`Account ${cur} of ${tot}`,
+  changeEmailBtn:"Change Email",
   sesApple:"Apple Account",sesPass:"Password",
   sesCopy:"Copy",sesWait:(s)=>`Wait ${s}s`,sesCopied:"Copied!",
   sesFooter:"⏳ Link is valid for 10 minutes after opening. If expired, get a new link from the official page.",
@@ -614,7 +628,9 @@ ar:{
   sesActive:"الجلسة نشطة",
   sesRem:(m,s)=>`متبقي ${m}:${String(s).padStart(2,"0")}`,
   sesExpired:"منتهية",
-  sesNotice:"🔒 الحساب وكلمة المرور مخفيان. كل زر نسخ له فترة انتظار 30 ثانية. اقرأ الإشعار ووافق عليه عند النسخ.",
+  sesNotice:"🔒 الإيميل ظاهر بينما كلمة المرور مخفية. كل زر نسخ له فترة انتظار 30 ثانية. اقرأ الإشعار ووافق عليه عند النسخ.",
+  accCounter:(cur,tot)=>`الحساب ${cur} من ${tot}`,
+  changeEmailBtn:"تغيير الإيميل",
   sesApple:"حساب أبل",sesPass:"كلمة المرور",
   sesCopy:"نسخ",sesWait:(s)=>`انتظر ${s}ث`,sesCopied:"تم النسخ!",
   sesFooter:"⏳ الرابط صالح لمدة 10 دقائق بعد الفتح. عند انتهاء الصلاحية، احصل على رابط جديد من الصفحة الرسمية.",
@@ -690,7 +706,9 @@ ku:{
   sesActive:"سێشەن چالاكە",
   sesRem:(m,s)=>`${m}:${String(s).padStart(2,"0")} مایە`,
   sesExpired:"بەسەرچوو",
-  sesNotice:"🔒 هژمار و پاسۆرد د ڤەشارتی نە. هەر دوگمەیەكا كۆپیێ ٣٠ چرکە چاڤەڕێكرن هەیە. ئاگەهداریێ بخوینە و پەسەند بكە دەمێ كۆپی دكەی.",
+  sesNotice:"🔒 ئیمەیڵ یێ دیارە و پاسۆرد یێ ڤەشارتی یە. هەر دوگمەیەكا كۆپیێ ٣٠ چرکە چاڤەڕێكرن هەیە. ئاگەهداریێ بخوینە و پەسەند بكە دەمێ كۆپی دكەی.",
+  accCounter:(cur,tot)=>`هژمار ${cur} ژ ${tot}`,
+  changeEmailBtn:"گوهۆڕینا ئیمەیڵی",
   sesApple:"هژمارا Apple",sesPass:"پاسۆرد",
   sesCopy:"كۆپی",sesWait:(s)=>`${s}چ چاڤەڕێ بە`,sesCopied:"هاتە كۆپی!",
   sesFooter:"⏳ لینك بۆ ماوێ ١٠ خولەكان پشتی ڤەكرنێ كارا یە. ئەگەر ب سەر چوو، لینكەكێ نوی ژ پەڕێ فەرمی ببە.",
@@ -756,7 +774,7 @@ vi:{
   srBtn:"NHẬN ID TẢI SHADOWROCKET MIỄN PHÍ",
   guideTitle:"Hướng dẫn đăng nhập App Store an toàn",
   strictWarning:"LƯU Ý ĐẶC BIỆT: KHI DÙNG ID DÙNG CHUNG, TUYỆT ĐỐI KHÔNG ĐĂNG NHẬP VÀO CÀI ĐẶT THIẾT BỊ (ICLOUD). CHỈ ĐĂNG NHẬP TRONG APP STORE! ĐĂNG XUẤT NGAY SAU KHI TẢI!",
-  modalSr:"Tham gia 4 kênh và Discord để tới tài khoản Shadowrocket (nếu không tham gia, tài khoản will not appear).",
+  modalSr:"Tham gia 4 kênh và Discord để tới tài khoản Shadowrocket (nếu không tham gia, tài khoản sẽ không hiển thị).",
   waitText:(sec)=>`Chờ ${sec}s...`,joinedText:"✓ Đã tham gia",backSite:"← Quay lại trang",backJoin:"← Quay lại",
   redBtnSr:"Nhấn vào đây để tới tài khoản Shadowrocket",
   gKicker:"LÀM THEO TỪNG BƯỚC",gTitle:"Cách đăng nhập và tải Shadowrocket",gSub:"Thực hiện đúng 3 bước sau trước khi sử dụng tài khoản.",
@@ -766,7 +784,9 @@ vi:{
   sesActive:"Phiên đang hoạt động",
   sesRem:(m,s)=>`Còn ${m}:${String(s).padStart(2,"0")}`,
   sesExpired:"Hết hạn",
-  sesNotice:"🔒 Tài khoản và mật khẩu được ẩn. Mỗi nút sao chép có thời gian chờ 30 giây. Hãy đọc và đồng ý với thông báo khi sao chép.",
+  sesNotice:"🔒 Email tài khoản được hiển thị còn mật khẩu được ẩn. Mỗi nút sao chép có thời gian chờ 30 giây. Hãy đọc và đồng ý với thông báo khi sao chép.",
+  accCounter:(cur,tot)=>`Tài khoản ${cur} / ${tot}`,
+  changeEmailBtn:"Đổi email",
   sesApple:"Tài khoản Apple",sesPass:"Mật khẩu",
   sesCopy:"Sao chép",sesWait:(s)=>`Chờ ${s}s`,sesCopied:"Đã sao chép!",
   sesFooter:"⏳ Liên kết có hiệu lực 10 phút sau khi mở. Hết hạn, vui lòng lấy liên kết mới từ trang chính thức.",
@@ -842,7 +862,9 @@ tr:{
   sesActive:"Oturum aktif",
   sesRem:(m,s)=>`${m}:${String(s).padStart(2,"0")} kaldı`,
   sesExpired:"Süresi doldu",
-  sesNotice:"🔒 Hesap ve şifre gizlidir. Her kopyala butonunda 30 saniye bekleme süresi vardır. Kopyalarken bildirimi okuyup onaylayın.",
+  sesNotice:"🔒 Hesap e-postası görünür, şifre ise gizlidir. Her kopyala butonunda 30 saniye bekleme süresi vardır. Kopyalarken bildirimi okuyup onaylayın.",
+  accCounter:(cur,tot)=>`Hesap ${cur} / ${tot}`,
+  changeEmailBtn:"E-postayı Değiştir",
   sesApple:"Apple Hesabı",sesPass:"Şifre",
   sesCopy:"Kopyala",sesWait:(s)=>`${s}sn bekle`,sesCopied:"Kopyalandı!",
   sesFooter:"⏳ Bağlantı açıldıktan sonra 10 dakika geçerlidir. Süresi dolarsa resmi sayfadan yeni bağlantı alın.",
@@ -923,14 +945,37 @@ function setStoredUsIndex(idx){
   return safeIdx;
 }
 
-function syncShadowrocketAccountByIndex(idx){
-  const safeIdx = setStoredUsIndex(idx);
-  const acc = US_LOCAL_ACCOUNTS[safeIdx] || US_LOCAL_ACCOUNTS[0];
+function renderShadowrocketAccountUI(){
+  const lang = localStorage.getItem(LANG_KEY) || "en";
+  const d = T[lang] || T.en;
+  const idx = getStoredUsIndex();
+  const acc = US_LOCAL_ACCOUNTS[idx] || US_LOCAL_ACCOUNTS[0];
+
   ACCOUNTS_DATA.shadowrocket = {
     email: acc.email,
     password: acc.password,
-    index: safeIdx
+    index: idx
   };
+
+  const counterEl = document.getElementById("ses-account-counter");
+  if(counterEl){
+    counterEl.textContent = d.accCounter(idx + 1, US_LOCAL_ACCOUNTS.length);
+  }
+
+  const emailDisplayEl = document.getElementById("ses-email-display");
+  if(emailDisplayEl){
+    emailDisplayEl.textContent = acc.email;
+  }
+
+  const changeBtnTxt = document.getElementById("btn-change-email-txt");
+  if(changeBtnTxt){
+    changeBtnTxt.textContent = d.changeEmailBtn;
+  }
+}
+
+function syncShadowrocketAccountByIndex(idx){
+  setStoredUsIndex(idx);
+  renderShadowrocketAccountUI();
   return ACCOUNTS_DATA.shadowrocket;
 }
 
@@ -938,6 +983,12 @@ function advanceShadowrocketAccount(){
   const currentIdx = getStoredUsIndex();
   const nextIdx = (currentIdx + 1) % US_LOCAL_ACCOUNTS.length;
   return syncShadowrocketAccountByIndex(nextIdx);
+}
+
+function handleManualChangeAccount(){
+  advanceShadowrocketAccount();
+  saveShadowStayState("guide", sessionEndAt);
+  saveGuideSessionState("shadowrocket", sessionEndAt);
 }
 
 function saveGuideSessionState(appType, endAt){
@@ -1083,7 +1134,6 @@ function handleJoinTarget(target,url){
     }
   },1000);
 }
-
 function openJoinPageView(){
   currentSelectedApp="shadowrocket";
   clearGuideSessionState();
@@ -1396,29 +1446,33 @@ function applyLang(lang){
     document.getElementById("join-page-sub").textContent=d.modalSr;
     document.getElementById("kurd0o-red-account-btn").textContent=d.redBtnSr;
   }
+  renderShadowrocketAccountUI();
   updateJoinButtonsUI();
   updateSessionTimerUI();
   updateCredButtonsUI();
 }
 
-syncShadowrocketAccountByIndex(getStoredUsIndex());
-
 const savedGuide=getValidGuideSessionState();
 const savedStay=getValidShadowStayState();
 
-if(savedGuide){
+if(savedGuide || (savedStay && savedStay.view==="guide")){
   currentSelectedApp="shadowrocket";
-  sessionEndAt=savedGuide.endAt;
-}else if(savedStay){
-  currentSelectedApp="shadowrocket";
-  sessionEndAt=savedStay.endAt;
+  sessionEndAt=(savedGuide && savedGuide.endAt) || (savedStay && savedStay.endAt) || (Date.now()+SESSION_DURATION_MS);
+  advanceShadowrocketAccount();
+  saveGuideSessionState("shadowrocket", sessionEndAt);
+}else{
+  syncShadowrocketAccountByIndex(getStoredUsIndex());
+  if(savedStay && savedStay.view==="join"){
+    currentSelectedApp="shadowrocket";
+    sessionEndAt=savedStay.endAt;
+  }
 }
 
 setInterval(updateSessionTimerUI,1000);
 applyLang(localStorage.getItem(LANG_KEY)||"en");
 restoreCredCooldowns();
 
-if(savedGuide){
+if(savedGuide || (savedStay && savedStay.view==="guide")){
   openStepGuideView(true);
 }else if(savedStay && savedStay.view==="join"){
   openJoinPageView();
