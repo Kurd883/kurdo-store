@@ -435,19 +435,64 @@ const LANG_LABELS={
   en:"🇬🇧 EN ⌄",ar:"🇸🇦 AR ⌄",ku:"KU ⌄",vi:"🇻🇳 VI ⌄",tr:"🇹🇷 TR ⌄"
 };
 
-const TELEGRAPH_API_URL = "https://api.telegra.ph/getPage/Razdacha-11-22-2?return_content=true";
-const TELEGRAPH_SYNC_INTERVAL_MS = 60 * 1000;
+function parseTelegraphCredentials(rawText) {
+  const text = String(rawText || "")
+    .replace(/\u00A0/g, " ")
+    .replace(/\u200B/g, "");
 
-const ACCOUNTS_DATA = {
-  minecraft: {
-    email: "tgsuperOA98@gmail.com",
-    password: "tg//SuperOA"
-  },
-  shadowrocket: {
-    email: "tgsuperOA98@gmail.com",
-    password: "tg//SuperOA"
+  // 1. استخراج الإيميل من أي مكان في النص مهما طالت الأسطر
+  const emailMatch = text.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/);
+  const foundEmail = emailMatch ? emailMatch[0].trim() : "";
+
+  // 2. استخراج الرمز بجميع اللغات والصيغ (إنجليزي، روسي، عربي، كوردي)
+  let foundPass = "";
+  const passLabels = [
+    "pass\\s*id",
+    "password",
+    "pass",
+    "пароль",
+    "код",
+    "الرمز\\s*السري",
+    "الرمز",
+    "كلمة\\s*المرور",
+    "كلمة\\s*السر",
+    "باسورد",
+    "پاسۆرد",
+    "باسۆرد",
+    "وشەی\\s*نهێنی"
+  ].join("|");
+
+  // يبحث عن أي تسمية للرمز متبوعة بـ (: أو = أو - أو |) حتى لو لاصقة بكلام قبلها
+  const passRegex = new RegExp(
+    `(?:^|[\\s\\W])(?:${passLabels})(?:\\s*id)?[^\\n\\r:：=|\\-]*[:：=|\\-]+\\s*([^\\r\\n]+)`,
+    "i"
+  );
+
+  const passMatch = text.match(passRegex);
+
+  if (passMatch && passMatch[1]) {
+    let val = passMatch[1].trim();
+
+    // قطع أي كلام إضافي في نفس السطر مثل الإعلانات أو الروابط الترويجية
+    val = val
+      .split(/\s+(?:·|\||Обновляется|Канал|Telegram|Channel|قناتنا|تحديث|кенаڵ)\b/i)[0]
+      .trim();
+
+    // تنظيف المسافات الداخلية الناتجة عن تقسيم الوسوم وعلامات الترقيم الزائدة في النهاية
+    val = val.replace(/\s+/g, "").replace(/[.,;]+$/g, "");
+
+    // التأكد أن النتيجة ليست إيميلاً
+    if (val.length >= 2 && !val.includes("@")) {
+      foundPass = val;
+    }
   }
-};
+
+  return {
+    email: foundEmail,
+    password: foundPass
+  };
+}
+
 
 
 
