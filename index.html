@@ -99,8 +99,8 @@ a.blue{color:#2563eb;font-weight:700;text-decoration:none}
 .session-footer-note{margin-top:8px;font-size:13.5px;line-height:1.6;color:#6b7280;font-weight:500}
 
 .support-card{margin-top:22px;background:#f8f5fc;border:1px solid #e9e2f5;border-radius:24px;padding:24px 20px;box-shadow:0 6px 20px rgba(79,70,229,.05)}
-.support-kicker{font-size:12px;font
--weight:800;letter-spacing:.06em;text-transform:uppercase;color:#db2777;margin-bottom:8px}
+.support-kicker{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform
+:uppercase;color:#db2777;margin-bottom:8px}
 .support-title{font-size:22px;line-height:1.3;font-weight:800;color:#1f2937;margin-bottom:12px}
 .support-desc{font-size:15px;line-height:1.65;color:#4b5563;margin-bottom:20px}
 .support-actions{display:flex;flex-direction:column;gap:12px}
@@ -240,15 +240,15 @@ a.blue{color:#2563eb;font-weight:700;text-decoration:none}
 <section id="sec-free-id-gateway">
 <img src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=900&q=75" alt="Minecraft Adventure">
 
-<button type="button" class="btn-id-green" onclick="openJoinPageView('minecraft')">
+<button type="button" id="btn-mc-free-btn" class="btn-id-green" style="cursor:pointer;position:relative;z-index:5;">
 <span>🍏</span>
 <span id="btn-mc-free">GET FREE MINECRAFT DOWNLOAD ID</span>
 </button>
 
-<button type="button" class="btn-id-blue" onclick="openJoinPageView('shadowrocket')">
-<span>🚀</s
-pan>
-<span id="btn-sr-free">GET FREE SHADOWROCKET DOWNLOAD ID</span>
+<button type="button" id="btn-sr-free-btn" class="btn-id-blue" style="cursor:pointer;position:relative;z-index:5;">
+<span>🚀</span>
+<span id="btn-sr-free">GET
+ FREE SHADOWROCKET DOWNLOAD ID</span>
 </button>
 
 <h2 class="divider"><span>🛡️</span><span id="guide-appstore-title">Safe App Store Sign-In Guide</span></h2>
@@ -498,10 +498,10 @@ const STORAGE_JOIN_KEY="kurd0o_joined_targets_v2";
 const GUIDE_PERSIST_KEY="kurd0o_guide_session_v1";
 const COPY_COOLDOWN_KEY="kurd0o_copy_cooldowns_v1";
 const FIVE_MINUTES_MS=5*60*1000;
-const REQUIRED_TARG
-ETS=["ch1","ch2","ch3","ch4","discord"];
+const REQUIRED_TARGETS=["ch1","ch2","ch3","ch4","discord"];
 const timers={};
 const countdowns={};
+
 let currentSelectedApp="minecraft";
 
 const SESSION_DURATION_MS=10*60*1000;
@@ -614,10 +614,10 @@ ar:{
   devP1:"تتوفر ماينكرافت بنسخة محسّنة خصيصاً للأجهزة المحمولة؛ فالحركة والقفز وكسر الكتل ووضعها وفتح حقيبة الأدوات سهلة ومريحة عبر شاشة اللمس.",
   devP2:"وبشكل خاص على <strong>iPad</strong>، تمنح الشاشة الكبيرة مساحة عرض مريحة للغاية تجعل بناء المشاريع وإدارة المخزون أكثر دقة بكثير.",
   mktTitle:"Add-On و Map و Texture Pack",
-  mktP1:"بعد قضاء وقت كافٍ في ماينكرافت الأساسية، لا يزال أمامك آلاف الإضافات لاستكشافها عبر <strong>Minecraf
-t Marketplace</strong>:",
+  mktP1:"بعد قضاء وقت كافٍ في ماينكرافت الأساسية، لا يزال أمامك آلاف الإضافات لاستكشافها عبر <strong>Minecraft Marketplace</strong>:",
   mktLi1:"<strong>Add-On:</strong> يضيف مخلوقات جديدة ومركبات وعناصر وأسلحة مميزة.",
-  mktLi2:"<strong>Map:</strong> تجربة خرائط المغامرات والرعب والألغاز أو الألعاب المصغرة.",
+  mktLi2:"<str
+ong>Map:</strong> تجربة خرائط المغامرات والرعب والألغاز أو الألعاب المصغرة.",
   mktLi3:"<strong>Texture Pack:</strong> يغيّر المظهر الرسومي للعبة بالكامل من الكتل وحتى السماء.",
   warnFull:"⚠️ <strong>تنبيه:</strong> إذا قمت بتحميل محتوى من خارج (ليس عبر Marketplace)، فتحقق جيداً من المصدر ومدى توافقه مع إصدار لعبتك لتجنب الأخطاء.",
   srTitle:"ما هو تطبيق Shadowrocket؟",appBtn:"فتح",ratingLbl:"236 تقييم",ageLbl:"العمر",ageSub:"سنوات",rankLbl:"التصنيف",rankSub:"أدوات",whatsNew:"الجديد >",
@@ -716,11 +716,11 @@ ku:{
   gKicker:"هەنگاڤ ب هەنگاڤ",gTitle:"چاوانیا چوونا ژۆر و داگرتنا یاریێ",gSub:"ئەڤ هەر ٣ هەنگاڤان ب دروستی بجھ بینە بەریا بكارئینانا هژمارێ.",
   gS1T:"App Store ڤەكە",gS1D:"پشتی خواندنا رێنمایێ، هژمارێ ل دوماهیا پەڕی ببە و بتنێ د ناڤ App Store دا بچە ژۆر.",
   gS2T:"ل ناڤێ یاریێ بگەڕێ",gS2D:"ئێكسەر ب رێكا بارێ لێگەڕینێ ل ناڤێ ئەپێ بگەڕێ. پێدڤی ناكەت بچییە د بەشێ <strong>Purchased</strong> دا.",
-  gS3T:"پشتی داگرتنێ دەربكەڤە",gS3D:"ئەگەر یاریێ هێشتا نرخ نیشان دا، بەریا پشتڕاستكرنێ بپشكنە دا پارە ب خەلەتی نەچیت. پش
-تی داگرتنێ، <strong>ژ هژمارێ د ناڤ App Store دا دەربكەڤە</strong>.",
+  gS3T:"پشتی داگرتنێ دەربكەڤە",gS3D:"ئەگەر یاریێ هێشتا نرخ نیشان دا، بەریا پشتڕاستكرنێ بپشكنە دا پارە ب خەلەتی نەچیت. پشتی داگرتنێ، <strong>ژ هژمارێ د ناڤ App Store دا دەربكەڤە</strong>.",
   sesActive:"سێشەن چالاكە",
   sesRem:(m,s)=>`${m}:${String(s).padStart(2,"0")} مایە`,
-  sesExpired:"بەسەرچوو",
+  sesExpired:"بەس
+ەرچوو",
   sesNotice:"🔒 هژمار و پاسۆرد د ڤەشارتی نە. هەر دوگمەیەكا كۆپیێ ٣٠ چرکە چاڤەڕێكرن هەیە. ئاگەهداریێ بخوینە و پەسەند بكە دەمێ كۆپی دكەی.",
   sesApple:"هژمارا Apple",sesPass:"پاسۆرد",
   sesCopy:"كۆپی",sesWait:(s)=>`${s}چ چاڤەڕێ بە`,sesCopied:"هاتە كۆپی!",
@@ -761,60 +761,60 @@ vi:{
   survTitle:"Survival – Sinh tồn và Khám phá",
   survP1:"<strong>Survival</strong> là chế độ tuyệt vời nhất nếu bạn muốn trải nghiệm trọn vẹn khía cạnh phiêu lưu của Minecraft. Ban đầu bạn gần như không có gì, phải đốn gỗ, kiếm thức ăn, khai thác tài nguyên và chế tạo công cụ đầu tiên.",
   survP2:"Khi màn đêm buông xuống, mọi thứ nguy hiểm hơn. Zombie, Skeleton, Nhện và đặc biệt là Creeper có thể xuất hiện quanh bạn, vì vậy dựng chỗ trú an toàn ngay ngày đầu là rất cần thiết.",
-  tipBox:"🔥 <strong>Mẹo cho người mới:</strong> Đừng dành cả ngày đầu đi lang thang quá xa. Hãy ưu tiên gỗ, thức ăn, công cụ và nơi trú ẩn trước khi trời tối.",
+  tipBox:"🔥 <strong>Mẹo cho người mới:</strong> Đừng dành cả ngày đầu đi lang thang quá xa. Hãy ưu tiên gỗ, thức ăn, công cụ و nơi trú ẩn trước khi trời tối.",
   creaTitle:"Creative – Xây dựng không giới hạn",
   creaP1:"Nếu Survival là sinh tồn nơi hoang dã, thì <strong>Creative</strong> giống như một hộp cát khổng lồ để xây dựng. Từ những khối đơn giản, người chơi có thể tạo ra:",
-  creaLi1:"🏙️ Nhà hiện đại, biệt thự và thành phố.",
-  creaLi2:"🏰 Lâu đài khổng lồ và công trình giả tưởng.",
+  creaLi1:"🏙️ Nhà hiện đại, biệt thự و thành phố.",
+  creaLi2:"🏰 Lâu đài khổng lồ و công trình giả tưởng.",
   devTitle:"Trải nghiệm trên iPhone & iPad",
-  devP1:"Minecraft có phiên bản tối ưu chu đáo cho thiết bị di động. Di chuyển, nhảy, phá khối, đặt khối và mở túi đồ đều trực quan trên màn hình cảm ứng.",
-  devP2:"Đặc biệt trên <strong>iPad</strong>, màn hình lớn mang lại góc nhìn thoải mái hơn nhiều, giúp xây công trình và quản lý kho đồ chính xác hơn rõ rệt.",
-  mktTitle:"Add-On, Map và Texture Pack",
+  devP1:"Minecraft có phiên bản tối ưu chu đáo cho thiết bị di động. Di chuyển, nhảy, phá khối, đặt khối و mở túi đồ đều trực quan trên màn hình cảm ứng.",
+  devP2:"Đặc biệt trên <strong>iPad</strong>, màn hình lớn mang lại góc nhìn thoải mái hơn nhiều, giúp xây công trình و quản lý kho đồ chính xác hơn rõ rệt.",
+  mktTitle:"Add-On, Map و Texture Pack",
   mktP1:"Sau khi chơi Minecraft thuần túy một thời gian, vẫn còn hàng nghìn vật phẩm bổ sung để khám phá qua <strong>Minecraft Marketplace</strong>:",
-  mktLi1:"<strong>Add-On:</strong> Thêm sinh vật mới, phương tiện, vật phẩm và vũ khí độc đáo.",
+  mktLi1:"<strong>Add-On:</strong> Thêm sinh vật mới, phương tiện, vật phẩm و vũ khí độc đáo.",
   mktLi2:"<strong>Map:</strong> Chơi bản đồ Phiêu lưu, Kinh dị, Giải đố hoặc Mini Game.",
   mktLi3:"<strong>Texture Pack:</strong> Làm mới hoàn toàn diện mạo đồ họa của game, từ khối vuông đến bầu trời.",
-  warnFull:"⚠️ <strong>Lưu ý:</strong> Nếu tải nội dung từ bên ngoài (không qua Marketplace), hãy kiểm tra kỹ nguồn và độ tương thích với phiên bản game để tránh lỗi.",
+  warnFull:"⚠️ <strong>Lưu ý:</strong> Nếu tải nội dung từ bên ngoài (không qua Marketplace), hãy kiểm tra kỹ nguồn و độ tương thích với phiên bản game để tránh lỗi.",
   srTitle:"Ứng dụng Shadowrocket là gì?",appBtn:"Mở",ratingLbl:"236 ĐÁNH GIÁ",ageLbl:"ĐỘ TUỔI",ageSub:"Năm",rankLbl:"BẢNG XẾP HẠNG",rankSub:"Tiện ích",whatsNew:"Có gì mới >",
   srP1:"Cùng với đó, chúng tôi cũng giới thiệu <strong>Shadowrocket</strong> – ứng dụng Tiện ích (Utilities) thiết yếu cho người dùng hệ sinh thái Apple.",
   srP2:"Đây là <strong>tiện ích proxy dựa trên quy tắc</strong> giúp quản lý kết nối mạng theo cấu hình. Điểm nổi bật:",
   srLi1:"🔒 Quản lý lưu lượng mạng linh hoạt (Domain, CIDR, GeoIP...).",
   srLi2:"📊 Theo dõi lưu lượng mạng theo thời gian thực.",
   srLi3:"🌐 Hỗ trợ DNS hiện đại (DNS over HTTPS/TLS).",
-  srLi4:"📲 Hỗ trợ đa nền tảng: iPhone, iPad, Mac và Apple TV (yêu cầu iOS 13.0+).",
+  srLi4:"📲 Hỗ trợ đa nền tảng: iPhone, iPad, Mac و Apple TV (yêu cầu iOS 13.0+).",
   idTitle:"Nhận ID game & ứng dụng miễn phí (Hoặc mua bản quyền)",
   idP1:'Muốn thử <strong>Minecraft</strong> ngay hoặc tải công cụ <strong>Shadowrocket</strong>? Hãy dùng tài khoản chia sẻ miễn phí hằng ngày từ Kurd0o, hoặc mua tài khoản bản quyền tại <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">Shop Kurd0o</a> để sở hữu vĩnh viễn.',
   mcBtn:"NHẬN ID TẢI MINECRAFT MIỄN PHÍ",srBtn:"NHẬN ID TẢI SHADOWROCKET MIỄN PHÍ",
   guideTitle:"Hướng dẫn đăng nhập App Store an toàn",
   strictWarning:"LƯU Ý ĐẶC BIỆT: KHI DÙNG ID DÙNG CHUNG, TUYỆT ĐỐI KHÔNG ĐĂNG NHẬP VÀO CÀI ĐẶT THIẾT BỊ (ICLOUD). CHỈ ĐĂNG NHẬP TRONG APP STORE! ĐĂNG XUẤT NGAY SAU KHI TẢI!",
-  modalMc:"Tham gia 4 kênh và Discord để tới tài khoản Minecraft (nếu không tham gia, tài khoản sẽ không hiện).",
-  modalSr:"Tham gia 4 kênh và Discord để tới tài khoản Shadowrocket (nếu không tham gia, tài khoản sẽ không hiện).",
+  modalMc:"Tham gia 4 kênh و Discord để tới tài khoản Minecraft (nếu không tham gia, tài khoản sẽ không hiện).",
+  modalSr:"Tham gia 4 kênh و Discord để tới tài khoản Shadowrocket (nếu không tham gia, tài khoản sẽ không hiện).",
   waitText:(sec)=>`Chờ ${sec}s...`,joinedText:"✓ Đã tham gia",backSite:"← Quay lại trang",backJoin:"← Quay lại",
   redBtnMc:"Nhấn vào đây để tới tài khoản Minecraft",redBtnSr:"Nhấn vào đây để tới tài khoản Shadowrocket",
-  gKicker:"LÀM THEO TỪNG BƯỚC",gTitle:"Cách đăng nhập và tải game",gSub:"Thực hiện đúng 3 bước sau trước khi sử dụng tài khoản.",
-  gS1T:"Mở App Store",gS1D:"Sau khi đọc hướng dẫn, lấy tài khoản ở cuối trang và chỉ đăng nhập trong App Store.",
+  gKicker:"LÀM THEO TỪNG BƯỚC",gTitle:"Cách đăng nhập و tải game",gSub:"Thực hiện đúng 3 bước sau trước khi sử dụng tài khoản.",
+  gS1T:"Mở App Store",gS1D:"Sau khi đọc hướng dẫn, lấy tài khoản ở cuối trang و chỉ đăng nhập trong App Store.",
   gS2T:"Tìm tên game",gS2D:"Tìm trực tiếp tên ứng dụng bằng thanh tìm kiếm. Không cần vào mục <strong>Đã mua</strong>.",
   gS3T:"Tải xong thì đăng xuất",gS3D:"Nếu game còn hiển thị giá, hãy kiểm tra trước khi xác nhận để tránh thanh toán ngoài ý muốn. Sau khi tải xong, <strong>đăng xuất tài khoản khỏi App Store</strong>.",
   sesActive:"Phiên đang hoạt động",
   sesRem:(m,s)=>`Còn ${m}:${String(s).padStart(2,"0")}`,
   sesExpired:"Hết hạn",
-  sesNotice:"🔒 Tài khoản và mật khẩu được ẩn. Mỗi nút sao chép có thời gian chờ 30 giây. Hãy đọc và đồng ý với thông báo khi sao chép.",
+  sesNotice:"🔒 Tài khoản و mật khẩu được ẩn. Mỗi nút sao chép có thời gian chờ 30 giây. Hãy đọc و đồng ý với thông báo khi sao chép.",
   sesApple:"Tài khoản Apple",sesPass:"Mật khẩu",
   sesCopy:"Sao chép",sesWait:(s)=>`Chờ ${s}s`,sesCopied:"Đã sao chép!",
   sesFooter:"⏳ Liên kết có hiệu lực 10 phút sau khi mở. Hết hạn, vui lòng lấy liên kết mới từ trang chính thức.",
   sesModalTitle:"Thông báo sao chép",
-  sesModalDesc:"Chỉ đăng nhập trong App Store và đăng xuất ngay sau khi tải. Bạn có đồng ý sao chép không?",
+  sesModalDesc:"Chỉ đăng nhập trong App Store و đăng xuất ngay sau khi tải. Bạn có đồng ý sao chép không?",
   sesCancel:"Hủy",sesConfirm:"Đồng ý & Sao chép",
   supKicker:"CẦN TRỢ GIÚP?",
-  supTitle:"Liên hệ và nhận thông báo",
+  supTitle:"Liên hệ و nhận thông báo",
   supDesc:"Gặp lỗi hoặc cần cập nhật thông tin? Hãy tham gia Discord của Kurd0o. Bạn cũng có thể xem nội dung trên TikTok.",
   supDiscord:"Discord Kurd0o ↗",
   supTikTok:"TikTok Kurd0o ↗",
   as1:"<strong>Bước 1:</strong> Mở ứng dụng App Store trên iPhone/iPad.",
-  as2:"<strong>Bước 2:</strong> Chạm vào Ảnh đại diện ở góc trên bên phải. Cuộn xuống cuối và chạm <strong>Đăng xuất</strong> tài khoản cũ.",
-  as3:"<strong>Bước 3:</strong> Nhập ID và Mật khẩu do Kurd0o cung cấp.",
+  as2:"<strong>Bước 2:</strong> Chạm vào Ảnh đại diện ở góc trên bên phải. Cuộn xuống cuối و chạm <strong>Đăng xuất</strong> tài khoản cũ.",
+  as3:"<strong>Bước 3:</strong> Nhập ID و Mật khẩu do Kurd0o cung cấp.",
   as4:"<strong>Bước 4:</strong> Nếu hiện thông báo bảo mật, chọn “Tùy chọn khác” → “Không nâng cấp”.",
-  as5:"<strong>Bước 5:</strong> Tìm game/ứng dụng và tải về. Tải xong thì quay lại Ảnh đại diện và <strong>Đăng xuất</strong>.",
+  as5:"<strong>Bước 5:</strong> Tìm game/ứng dụng و tải về. Tải xong thì quay lại Ảnh đại diện و <strong>Đăng xuất</strong>.",
   commTitle:"Cộng đồng Kurd0o",
   commDesc:"Để xem thông báo chi tiết, hãy tham gia ngay các kênh của Kurd0o để nhận thông báo ID miễn phí hằng ngày!!!",
   commTikTok:'🎵 TikTok: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
@@ -827,11 +827,11 @@ tr:{
   h1:"Minecraft iOS – Detaylı İnceleme ve iPhone & iPad'de İndirme Rehberi",
   p1:"Bazı oyunları indirir, birkaç gün oynar ve unutursunuz. Bazılarıysa yüzlerce saat sonra bile sizi tekrar tekrar kendine çeker.",
   p2:"<strong>Minecraft iOS</strong> bunlardan biridir.",
-  p3:"Aşırı gerçekçi grafiklere veya abartılı efektlere ihtiyaç duymadan <strong>özgürlük, yara
-tıcılık ve keşfedilecek dev bir dünya</strong> sunar.",
+  p3:"Aşırı gerçekçi grafiklere veya abartılı efektlere ihtiyaç duymadan <strong>özgürlük, yaratıcılık ve keşfedilecek dev bir dünya</strong> sunar.",
   c2title:"Minecraft iOS'u Bu Kadar Cazip Kılan Nedir?",
   c2p1:"iPhone ve iPad'deki Minecraft, tanıdık sandbox deneyimini doğrudan mobil cihazınıza getirir.",
-  c2p2:"Oyunun en güzel yanı <strong>oyuncuyu tek bir sabit yola zorlamamasıdır</strong>. Bir dünya oluşturduğunuz anda kendi maceranızı seçersiniz.",
+  c
+2p2:"Oyunun en güzel yanı <strong>oyuncuyu tek bir sabit yola zorlamamasıdır</strong>. Bir dünya oluşturduğunuz anda kendi maceranızı seçersiniz.",
   c2li1:"🌲 Ev yapmak mı istiyorsun? Ağaç kesmeye ve kaynak toplamaya başla.",
   c2li2:"🗺️ Keşfetmek mi istiyorsun? Ekipmanını kuşan ve yola çık.",
   c2li3:"💎 Elmas bulmak mı istiyorsun? Kazma üret ve yerin derinliklerine in.",
@@ -1028,8 +1028,7 @@ function handleJoinTarget(target,url){
 
   let sec=5;
   countdowns[target]=sec;
-  updateJoinButtons
-UI();
+  updateJoinButtonsUI();
 
   timers[target]=setInterval(()=>{
     sec-=1;
@@ -1041,7 +1040,7 @@ UI();
     }else{
       countdowns[target]=sec;
       updateJoinButtonsUI();
-    }
+   }
   },1000);
 }
 
@@ -1357,6 +1356,21 @@ function applyLang(lang){
   updateJoinButtonsUI();
   updateSessionTimerUI();
   updateCredButtonsUI();
+}
+
+const mcBtn=document.getElementById("btn-mc-free-btn");
+const srBtn=document.getElementById("btn-sr-free-btn");
+
+if(mcBtn){
+  mcBtn.addEventListener("click",function(){
+    openJoinPageView("minecraft");
+  });
+}
+
+if(srBtn){
+  srBtn.addEventListener("click",function(){
+    openJoinPageView("shadowrocket");
+  });
 }
 
 const savedGuide=getValidGuideSessionState();
