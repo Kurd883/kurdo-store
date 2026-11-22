@@ -446,32 +446,38 @@ const US_ROTATION_STORAGE_KEY="kurdostore_local_us_index_v1";
 const SHADOW_STAY_SECTION_KEY="kurdostore_shadow_stay_v1";
 
 const US_LOCAL_ACCOUNTS=[
-  {email:"oso4514@163.com",password:"Kurdo123"},
-  {email:"18358279124@163.com",password:"Zhen123456"},
-  {email:"13615748291@163.com",password:"Aa112233"},
-  {email:"15867294013@163.com",password:"Qq123456"},
-  {email:"18957120468@163.com",password:"Ww123456"},
-  {email:"13958017246@163.com",password:"Ee123456"},
-  {email:"18767139052@163.com",password:"Rr123456"},
-  {email:"15968023417@163.com",password:"Tt123456"},
-  {email:"13758290146@163.com",password:"Yy123456"},
-  {email:"18857194023@163.com",password:"Uu123456"},
-  {email:"13515780294@163.com",password:"Ii123456"},
-  {email:"15167209483@163.com",password:"Oo123456"},
-  {email:"18257103946@163.com",password:"Pp123456"},
-  {email:"13858049217@163.com",password:"As123456"},
-  {email:"15267184029@163.com",password:"Df123456"},
-  {email:"18658029413@163.com",password:"Gh123456"},
-  {email:"13457190284@163.com",password:"Jk123456"},
-  {email:"15768019243@163.com",password:"Lz123456"},
-  {email:"18557128409@163.com",password:"Zx123456"},
-  {email:"BrianBryant1535@outlook.com",password:"hxhWZV61mP"},
-  {email:"axe3997@163.com",password:"4Yx2buwyHhHS"},
-  {email:"benson987654321@163.com",password:"h3wPRgeEUDNU"},
-  {email:"799030669@qq.com",password:"rqhjH9x1TgYZ"},
-  {email:"xvs2161@163.com",password:"zhnfpqwW6cy5"},
-  {email:"lwiiku@163.com",password:"TrzUc14Jg1FZ"},
-  {email:"bsg0932@163.com",password:"ZrESB8c3xTzz"}
+  {email:"xiaoyunshan66@163.com",password:"xrMJRxFcZx4a"},
+  {email:"vex4512@163.com",password:"qqQrBUfNEyg8"},
+  {email:"shajj1234@163.com",password:"2fPnjQpzkw9Y"},
+  {email:"laocaizhi@163.com",password:"jvPCrGct5SYf"},
+  {email:"sekqy64@163.com",password:"mUrPDM83EHSN"},
+  {email:"799030669@qq.com",password:"RJWj6CHjzmqp"},
+  {email:"gzc3457@163.com",password:"H9nkc178YHVe"},
+  {email:"veu3634@163.com",password:"bVVZtmJFhaV6"},
+  {email:"axe3997@163.com",password:"nHeEZD4qq1WQ"},
+  {email:"CaoileCzachor6200@hotmail.com",password:"qc7PzDyEZb"},
+  {email:"LaytonFayed44953@outlook.com",password:"HZaJFhH28z"},
+  {email:"mxrhy123@163.com",password:"aVuFKxZkzH4g"},
+  {email:"weizixuan21@163.com",password:"dyDB5h8eK5bj"},
+  {email:"cra5969@163.com",password:"Rz41vrCWsq4f"},
+  {email:"chuangyuan0611@163.com",password:"SQdVk4Egy8xR"},
+  {email:"bsg0932@163.com",password:"ctah1U1PQaHj"},
+  {email:"linshifeng7@163.com",password:"32FVMj3pD2c9"},
+  {email:"BrianBryant1535@outlook.com",password:"yKJf3xK9S8"},
+  {email:"lwiiku@163.com",password:"HwUyBQFf3RwR"},
+  {email:"xvs2161@163.com",password:"HZRk9q2zmwS6"},
+  {email:"che.jf@163.com",password:"1feajpuyg4uT"},
+  {email:"ymq1381@163.com",password:"nRY9RunnqJ8V"},
+  {email:"WinesickleUreno0006@hotmail.com",password:"qDU3KNTSSQ"},
+  {email:"lienbay1988@gmail.com",password:"K3ky2RBUec"},
+  {email:"MajeskeThigpen394@hotmail.com",password:"9h3maB164u"},
+  {email:"JoelWoodrqu@outlook.com",password:"Pt7nqr37DF"},
+  {email:"nivoci@163.com",password:"1dN7rkXvSeWj"},
+  {email:"haoyali123456@163.com",password:"6wRzqc1QNE1j"},
+  {email:"benson987654321@163.com",password:"1am7QfFZKjWU"},
+  {email:"nbx8004@163.com",password:"1Frp1WpnAkbG"},
+  {email:"zoubiao18@163.com",password:"VtYJMN3Fe8Bu"},
+  {email:"soonjjj@163.com",password:"ZsfPf3rtfB4w"}
 ];
 const ACCOUNTS_DATA={
   shadowrocket:{
@@ -480,6 +486,16 @@ const ACCOUNTS_DATA={
     index:0
   }
 };
+
+const STORAGE_JOIN_KEY="kurd0o_joined_targets_v2";
+const GUIDE_PERSIST_KEY="kurd0o_guide_session_v1";
+const COPY_COOLDOWN_KEY="kurd0o_copy_cooldowns_v1";
+const FIVE_MINUTES_MS=5*60*1000;
+const REQUIRED_TARGETS=["ch1","ch2","ch3","ch4","discord"];
+const timers={};
+const countdowns={};
+let currentSelectedApp="shadowrocket";
+
 
 const STORAGE_JOIN_KEY="kurd0o_joined_targets_v2";
 const GUIDE_PERSIST_KEY="kurd0o_guide_session_v1";
