@@ -520,81 +520,11 @@ function parseShadowrocketBestHtml(htmlText,rotateOnEveryCall=true){
   return pool[currentIndex]||pool[0];
 }
 
-function parseShadowrocketBestHtml(htmlText,rotateOnEveryCall=true){
-  const parser=new DOMParser();
-  const doc=parser.parseFromString(htmlText,"text/html");
-  const cleanText=(doc.body?doc.body.innerText:htmlText)||"";
-  const lines=cleanText.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
-
-  const usAccounts=[];
-  const allAccounts=[];
-  let currentRegion="";
-  let isAvailable=true;
-
-  for(let i=0;i<lines.length;i++){
-    const line=lines[i];
-    if(line.includes("Apple ID")){
-      currentRegion=line;
-      isAvailable=true;
-      continue;
-    }
-    if(line.includes("正常可用")){
-      isAvailable=true;
-      continue;
-    }
-    if(line.includes("锁定")||line.includes("禁用")||line.includes("失效")||line.includes("异常")){
-      isAvailable=false;
-      continue;
-    }
-
-    const emailMatch=line.match(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/);
-    if(emailMatch){
-      const email=emailMatch[0];
-      let password="";
-      for(let j=i+1;j<=i+5&&j<lines.length;j++){
-        if(lines[j]==="复制"||lines[j]==="密码"||lines[j]==="账号")continue;
-        if(!lines[j].includes("@")&&!lines[j].startsWith("更新")&&lines[j].length>=6&&lines[j].length<=32){
-          password=lines[j];
-          break;
-        }
-      }
-      if(email&&password&&isAvailable){
-        const item={email,password};
-        allAccounts.push(item);
-        if(currentRegion.includes("美国")){
-          usAccounts.push(item);
-        }
-      }
-    }
-  }
-
-  const pool=usAccounts.length>0?usAccounts:allAccounts;
-  if(pool.length===0)return null;
-
-  let currentIndex=0;
-  try{
-    const savedIndex=parseInt(localStorage.getItem(US_ROTATION_STORAGE_KEY)||"-1",10);
-    if(Number.isNaN(savedIndex)){
-      currentIndex=0;
-    }else if(rotateOnEveryCall){
-      currentIndex=(Math.abs(savedIndex)+1)%pool.length;
-    }else{
-      currentIndex=Math.abs(savedIndex)%pool.length;
-    }
-    localStorage.setItem(US_ROTATION_STORAGE_KEY,String(currentIndex));
-  }catch(_){
-    currentIndex=0;
-  }
-
-  return pool[currentIndex]||pool[0];
-}
-
-
 async function fetchApiWithCorsFallback(){
-  const bustUrl=TELEGRAPH_API_URL+"&t="+Date.now();
+  const bustUrl=SHADOWROCKET_BEST_URL+"/?t="+Date.now();
   const endpoints=[
-    bustUrl,
-    "https://api.allorigins.win/get?url="+encodeURIComponent(bustUrl),
+    "https://api.allorigins.win/raw?url="+encodeURIComponent(bustUrl),
+    "https://api.codetabs.com/v1/proxy?quest="+encodeURIComponent(bustUrl),
     "https://corsproxy.io/?"+encodeURIComponent(bustUrl)
   ];
 
@@ -619,12 +549,10 @@ async function syncAccountsFromTelegraph(rotateOnEveryCall=true){
 
   const rawText=await fetchApiWithCorsFallback();
   if(rawText){
-    const parsed=parseTelegraphCredentials(rawText,rotateOnEveryCall);
-    if(parsed.email){
-      ACCOUNTS_DATA.shadowrocket.email=parsed.email;
-    }
-    if(parsed.password){
-      ACCOUNTS_DATA.shadowrocket.password=parsed.password;
+    const chosen=parseShadowrocketBestHtml(rawText,rotateOnEveryCall);
+    if(chosen&&chosen.email&&chosen.password){
+      ACCOUNTS_DATA.shadowrocket.email=chosen.email;
+      ACCOUNTS_DATA.shadowrocket.password=chosen.password;
     }
   }
   renderShadowrocketCredentials();
@@ -645,6 +573,7 @@ let sessionEndAt=Date.now()+SESSION_DURATION_MS;
 let pendingCredType=null;
 const copyCooldowns={email:0,password:0};
 const copyIntervals={};
+
 
 const T={
 en:{
