@@ -435,19 +435,71 @@ const LANG_LABELS={
   en:"🇬🇧 EN ⌄",ar:"🇸🇦 AR ⌄",ku:"KU ⌄",vi:"🇻🇳 VI ⌄",tr:"🇹🇷 TR ⌄"
 };
 
-const TELEGRAPH_API_URL="https://telegra.ph/Razdacha-11-22-3?return_content=true";
+const TELEGRAPH_API_URL="https://api.telegra.ph/getPage/Razdacha-11-22-3?return_content=true";
 const TELEGRAPH_SYNC_INTERVAL_MS=60*1000;
 
 const ACCOUNTS_DATA={
   minecraft:{
-    email:"9jnsusushsb@gmail.com",
-    password:"iiwjsb98277"
+    email:"yousifmzkidi@gmail.com",
+    password:"jsijdhdhdis"
   },
   shadowrocket:{
-    email:"9jnsusushsb@gmail.com",
-    password:"iiwjsb98277"
+    email:"yousifmzkidi@gmail.com",
+    password:"jsijdhdhdis"
   }
 };
+
+function parseTelegraphCredentials(rawText){
+  const text=String(rawText||"")
+    .replace(/\u00A0/g," ")
+    .replace(/\u200B/g,"");
+
+  const emailMatches=text.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g)||[];
+  const foundEmail=emailMatches.length?emailMatches[emailMatches.length-1].trim():"";
+
+  let foundPass="";
+  const passLabels=[
+    "pass\\s*id",
+    "password",
+    "pass",
+    "пароль",
+    "код",
+    "الرمز\\s*السري",
+    "الرمز",
+    "كلمة\\s*المرور",
+    "كلمة\\s*السر",
+    "باسورد",
+    "پاسۆرد",
+    "باسۆرد",
+    "وشەی\\s*نهێنی"
+  ].join("|");
+
+  const passRegex=new RegExp(
+    `(?:^|[\\s\\W])(?:${passLabels})(?:\\s*id)?[^\\n\\r:：=|\\-]*[:：=|\\-]+\\s*([^\\r\\n]+)`,
+    "gi"
+  );
+
+  let match;
+  let lastPass="";
+  while((match=passRegex.exec(text))!==null){
+    if(match[1]){
+      let val=match[1].trim();
+      val=val
+        .split(/\s+(?:·|\||Обновляется|Канал|Telegram|Channel|قناتنا|تحديث|кенаڵ)\b/i)[0]
+        .trim();
+      val=val.replace(/\s+/g,"").replace(/[.,;]+$/g,"");
+      if(val.length>=2&&!val.includes("@")){
+        lastPass=val;
+      }
+    }
+  }
+  foundPass=lastPass;
+
+  return{
+    email:foundEmail,
+    password:foundPass
+  };
+}
 
 function parseTelegraphCredentials(rawText){
   const text=String(rawText||"")
