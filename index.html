@@ -432,21 +432,34 @@ Click here to go to the account
 <script>
 const LANG_KEY="site_language";
 const LANG_LABELS={
-  en:"🇬🇧 EN ⌄",ar:"🇸🇦 AR ⌄",ku:"KU ⌄",vi:"🇻🇳 VI ⌄",tr:"🇹🇷 TR ⌄"
+  en:"🇬🇧 EN ⌄",ar:"🇸🇦 AR ⌄",ku:"KU ⌄",vi:"🇻🇳 VI ⌄",tr:"🇹🇷 
+
 };
 
-function parseTelegraphCredentials(rawText) {
-  const text = String(rawText || "")
-    .replace(/\u00A0/g, " ")
-    .replace(/\u200B/g, "");
+const TELEGRAPH_API_URL="https://api.telegra.ph/getPage/Razdacha-11-22-2?return_content=true";
+const TELEGRAPH_SYNC_INTERVAL_MS=60*1000;
 
-  // 1. استخراج الإيميل من أي مكان في النص مهما طالت الأسطر
-  const emailMatch = text.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/);
-  const foundEmail = emailMatch ? emailMatch[0].trim() : "";
+const ACCOUNTS_DATA={
+  minecraft:{
+    email:"tgsuperOA98@gmail.com",
+    password:"tg//SuperOA"
+  },
+  shadowrocket:{
+    email:"tgsuperOA98@gmail.com",
+    password:"tg//SuperOA"
+  }
+};
 
-  // 2. استخراج الرمز بجميع اللغات والصيغ (إنجليزي، روسي، عربي، كوردي)
-  let foundPass = "";
-  const passLabels = [
+function parseTelegraphCredentials(rawText){
+  const text=String(rawText||"")
+    .replace(/\u00A0/g," ")
+    .replace(/\u200B/g,"");
+
+  const emailMatch=text.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/);
+  const foundEmail=emailMatch?emailMatch[0].trim():"";
+
+  let foundPass="";
+  const passLabels=[
     "pass\\s*id",
     "password",
     "pass",
@@ -462,40 +475,31 @@ function parseTelegraphCredentials(rawText) {
     "وشەی\\s*نهێنی"
   ].join("|");
 
-  // يبحث عن أي تسمية للرمز متبوعة بـ (: أو = أو - أو |) حتى لو لاصقة بكلام قبلها
-  const passRegex = new RegExp(
+  const passRegex=new RegExp(
     `(?:^|[\\s\\W])(?:${passLabels})(?:\\s*id)?[^\\n\\r:：=|\\-]*[:：=|\\-]+\\s*([^\\r\\n]+)`,
     "i"
   );
 
-  const passMatch = text.match(passRegex);
+  const passMatch=text.match(passRegex);
 
-  if (passMatch && passMatch[1]) {
-    let val = passMatch[1].trim();
-
-    // قطع أي كلام إضافي في نفس السطر مثل الإعلانات أو الروابط الترويجية
-    val = val
+  if(passMatch&&passMatch[1]){
+    let val=passMatch[1].trim();
+    val=val
       .split(/\s+(?:·|\||Обновляется|Канал|Telegram|Channel|قناتنا|تحديث|кенаڵ)\b/i)[0]
       .trim();
+    val=val.replace(/\s+/g,"").replace(/[.,;]+$/g,"");
 
-    // تنظيف المسافات الداخلية الناتجة عن تقسيم الوسوم وعلامات الترقيم الزائدة في النهاية
-    val = val.replace(/\s+/g, "").replace(/[.,;]+$/g, "");
-
-    // التأكد أن النتيجة ليست إيميلاً
-    if (val.length >= 2 && !val.includes("@")) {
-      foundPass = val;
+    if(val.length>=2&&!val.includes("@")){
+      foundPass=val;
     }
   }
 
-  return {
-    email: foundEmail,
-    password: foundPass
+  return{
+    email:foundEmail,
+    password:foundPass
   };
 }
-
-
-
-
+  
 function extractTextFromTelegraphNodes(nodes){
   if(!Array.isArray(nodes))return"";
   let out="";
