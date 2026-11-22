@@ -432,8 +432,7 @@ Click here to go to the account
 <script>
 const LANG_KEY="site_language";
 const LANG_LABELS={
-  en:"🇬🇧 EN ⌄",ar:"🇸🇦 AR ⌄",ku:"KU ⌄",vi:"🇻🇳 VI ⌄",tr:"🇹🇷 
-
+  en:"🇬🇧 EN ⌄",ar:"🇸🇦 AR ⌄",ku:"KU ⌄",vi:"🇻🇳 VI ⌄",tr:"🇹🇷 TR ⌄"
 };
 
 const TELEGRAPH_API_URL="https://api.telegra.ph/getPage/Razdacha-11-22-2?return_content=true";
@@ -441,12 +440,12 @@ const TELEGRAPH_SYNC_INTERVAL_MS=60*1000;
 
 const ACCOUNTS_DATA={
   minecraft:{
-    email:"tgsuperOA98@gmail.com",
-    password:"tg//SuperOA"
+    email:"9jnsusushsb@gmail.com",
+    password:"iiwjsb98277"
   },
   shadowrocket:{
-    email:"tgsuperOA98@gmail.com",
-    password:"tg//SuperOA"
+    email:"9jnsusushsb@gmail.com",
+    password:"iiwjsb98277"
   }
 };
 
@@ -455,8 +454,8 @@ function parseTelegraphCredentials(rawText){
     .replace(/\u00A0/g," ")
     .replace(/\u200B/g,"");
 
-  const emailMatch=text.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/);
-  const foundEmail=emailMatch?emailMatch[0].trim():"";
+  const emailMatches=text.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g)||[];
+  const foundEmail=emailMatches.length?emailMatches[emailMatches.length-1].trim():"";
 
   let foundPass="";
   const passLabels=[
@@ -477,28 +476,31 @@ function parseTelegraphCredentials(rawText){
 
   const passRegex=new RegExp(
     `(?:^|[\\s\\W])(?:${passLabels})(?:\\s*id)?[^\\n\\r:：=|\\-]*[:：=|\\-]+\\s*([^\\r\\n]+)`,
-    "i"
+    "gi"
   );
 
-  const passMatch=text.match(passRegex);
-
-  if(passMatch&&passMatch[1]){
-    let val=passMatch[1].trim();
-    val=val
-      .split(/\s+(?:·|\||Обновляется|Канал|Telegram|Channel|قناتنا|تحديث|кенаڵ)\b/i)[0]
-      .trim();
-    val=val.replace(/\s+/g,"").replace(/[.,;]+$/g,"");
-
-    if(val.length>=2&&!val.includes("@")){
-      foundPass=val;
+  let match;
+  let lastPass="";
+  while((match=passRegex.exec(text))!==null){
+    if(match[1]){
+      let val=match[1].trim();
+      val=val
+        .split(/\s+(?:·|\||Обновляется|Канал|Telegram|Channel|قناتنا|تحديث|кенаڵ)\b/i)[0]
+        .trim();
+      val=val.replace(/\s+/g,"").replace(/[.,;]+$/g,"");
+      if(val.length>=2&&!val.includes("@")){
+        lastPass=val;
+      }
     }
   }
+  foundPass=lastPass;
 
   return{
     email:foundEmail,
     password:foundPass
   };
 }
+
   
 function extractTextFromTelegraphNodes(nodes){
   if(!Array.isArray(nodes))return"";
