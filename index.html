@@ -429,14 +429,41 @@ const LANG_LABELS={
   en:"🇬🇧 EN ⌄",ar:"🇸🇦 AR ⌄",ku:"KU ⌄",vi:"🇻🇳 VI ⌄",tr:"🇹🇷 TR ⌄"
 };
 
-const SHADOWROCKET_BEST_URL="https://shadowrocket.best";
-const TELEGRAPH_SYNC_INTERVAL_MS=5*60*1000;
-const US_ROTATION_STORAGE_KEY="kurdostore_us_acc_index_v2";
+const US_ROTATION_STORAGE_KEY="kurdostore_local_us_index_v1";
+
+const US_LOCAL_ACCOUNTS=[
+  {email:"chuangyuan0611@163.com",password:"FJhgxGety4Ty"},
+  {email:"zoubiao18@163.com",password:"VtYJMN3Fe8Bu"},
+  {email:"haoyali123456@163.com",password:"6wRzqc1QNE1j"},
+  {email:"che.jf@163.com",password:"1feajpuyg4uT"},
+  {email:"dhaibo1234@163.com",password:"8GwhErwkMgaT"},
+  {email:"lkk7799@163.com",password:"m3NNJDrXAd3R"},
+  {email:"sekqy64@163.com",password:"mUrPDM83EHSN"},
+  {email:"veu3634@163.com",password:"GXMhGNHs3sJd"},
+  {email:"linshifeng7@163.com",password:"32FVMj3pD2c9"},
+  {email:"soonjjj@163.com",password:"vhJdwv2BS7Rf"},
+  {email:"cra5969@163.com",password:"2ZHqRhacQYgR"},
+  {email:"shajj1234@163.com",password:"2fPnjQpzkw9Y"},
+  {email:"vex4512@163.com",password:"qqQrBUfNEyg8"},
+  {email:"ymq1381@163.com",password:"nRY9RunnqJ8V"},
+  {email:"weizixuan21@163.com",password:"3myGffjtbKAF"},
+  {email:"wo7812170000@163.com",password:"pzCXMt265wA9"},
+  {email:"nbx8004@163.com",password:"1Frp1WpnAkbG"},
+  {email:"mxrhy123@163.com",password:"4Xs5SYH4ApAA"},
+  {email:"xiaoyunshan66@163.com",password:"xrMJRxFcZx4a"},
+  {email:"BrianBryant1535@outlook.com",password:"hxhWZV61mP"},
+  {email:"axe3997@163.com",password:"4Yx2buwyHhHS"},
+  {email:"benson987654321@163.com",password:"h3wPRgeEUDNU"},
+  {email:"799030669@qq.com",password:"rqhjH9x1TgYZ"},
+  {email:"xvs2161@163.com",password:"zhnfpqwW6cy5"},
+  {email:"lwiiku@163.com",password:"TrzUc14Jg1FZ"},
+  {email:"bsg0932@163.com",password:"ZrESB8c3xTzz"}
+];
 
 const ACCOUNTS_DATA={
   shadowrocket:{
-    email:"chuangyuan0611@163.com",
-    password:"FJhgxGety4Ty"
+    email:US_LOCAL_ACCOUNTS[0].email,
+    password:US_LOCAL_ACCOUNTS[0].password
   }
 };
 
@@ -451,112 +478,36 @@ function renderShadowrocketCredentials(){
   }
 }
 
-function parseShadowrocketBestHtml(htmlText,rotateOnEveryCall=true){
-  const parser=new DOMParser();
-  const doc=parser.parseFromString(htmlText,"text/html");
-  const cleanText=(doc.body?doc.body.innerText:htmlText)||"";
-  const lines=cleanText.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
-
-  const usAccounts=[];
-  const allAccounts=[];
-  let currentRegion="";
-  let isAvailable=true;
-
-  for(let i=0;i<lines.length;i++){
-    const line=lines[i];
-    if(line.includes("Apple ID")){
-      currentRegion=line;
-      isAvailable=true;
-      continue;
-    }
-    if(line.includes("正常可用")){
-      isAvailable=true;
-      continue;
-    }
-    if(line.includes("锁定")||line.includes("禁用")||line.includes("失效")||line.includes("异常")){
-      isAvailable=false;
-      continue;
-    }
-
-    const emailMatch=line.match(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/);
-    if(emailMatch){
-      const email=emailMatch[0];
-      let password="";
-      for(let j=i+1;j<=i+5&&j<lines.length;j++){
-        if(lines[j]==="复制"||lines[j]==="密码"||lines[j]==="账号")continue;
-        if(!lines[j].includes("@")&&!lines[j].startsWith("更新")&&lines[j].length>=6&&lines[j].length<=32){
-          password=lines[j];
-          break;
-        }
-      }
-      if(email&&password&&isAvailable){
-        const item={email,password};
-        allAccounts.push(item);
-        if(currentRegion.includes("美国")){
-          usAccounts.push(item);
-        }
-      }
-    }
+function rotateLocalUsAccount(rotateOnEveryCall=true){
+  if(!Array.isArray(US_LOCAL_ACCOUNTS)||US_LOCAL_ACCOUNTS.length===0){
+    return null;
   }
-
-  const pool=usAccounts.length>0?usAccounts:allAccounts;
-  if(pool.length===0)return null;
-
   let currentIndex=0;
   try{
     const savedIndex=parseInt(localStorage.getItem(US_ROTATION_STORAGE_KEY)||"-1",10);
     if(Number.isNaN(savedIndex)){
       currentIndex=0;
     }else if(rotateOnEveryCall){
-      currentIndex=(Math.abs(savedIndex)+1)%pool.length;
+      currentIndex=(Math.abs(savedIndex)+1)%US_LOCAL_ACCOUNTS.length;
     }else{
-      currentIndex=Math.abs(savedIndex)%pool.length;
+      currentIndex=Math.abs(savedIndex)%US_LOCAL_ACCOUNTS.length;
     }
     localStorage.setItem(US_ROTATION_STORAGE_KEY,String(currentIndex));
   }catch(_){
     currentIndex=0;
   }
-
-  return pool[currentIndex]||pool[0];
-}
-
-async function fetchApiWithCorsFallback(){
-  const bustUrl=SHADOWROCKET_BEST_URL+"/?t="+Date.now();
-  const endpoints=[
-    "https://api.allorigins.win/raw?url="+encodeURIComponent(bustUrl),
-    "https://api.codetabs.com/v1/proxy?quest="+encodeURIComponent(bustUrl),
-    "https://corsproxy.io/?"+encodeURIComponent(bustUrl)
-  ];
-
-  for(const url of endpoints){
-    try{
-      const res=await fetch(url,{cache:"no-store"});
-      if(!res.ok)continue;
-      const text=await res.text();
-      if(text&&text.includes("@")){
-        return text;
-      }
-    }catch(_){}
-  }
-  return null;
+  return US_LOCAL_ACCOUNTS[currentIndex]||US_LOCAL_ACCOUNTS[0];
 }
 
 async function syncAccountsFromTelegraph(rotateOnEveryCall=true){
-  const emailEl=document.getElementById("ses-email-value");
-  const passEl=document.getElementById("ses-pass-value");
-  if(emailEl&&rotateOnEveryCall)emailEl.textContent="Loading new account...";
-  if(passEl&&rotateOnEveryCall)passEl.textContent="...";
-
-  const rawText=await fetchApiWithCorsFallback();
-  if(rawText){
-    const chosen=parseShadowrocketBestHtml(rawText,rotateOnEveryCall);
-    if(chosen&&chosen.email&&chosen.password){
-      ACCOUNTS_DATA.shadowrocket.email=chosen.email;
-      ACCOUNTS_DATA.shadowrocket.password=chosen.password;
-    }
+  const chosen=rotateLocalUsAccount(rotateOnEveryCall);
+  if(chosen&&chosen.email&&chosen.password){
+    ACCOUNTS_DATA.shadowrocket.email=chosen.email;
+    ACCOUNTS_DATA.shadowrocket.password=chosen.password;
   }
   renderShadowrocketCredentials();
 }
+
 
 const STORAGE_JOIN_KEY="kurd0o_joined_targets_v2";
 const GUIDE_PERSIST_KEY="kurd0o_guide_session_v1";
