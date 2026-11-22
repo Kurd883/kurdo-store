@@ -1,390 +1,1839 @@
+
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr" id="html-root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kurd0o - Free Shadowrocket Accounts</title>
+<title>Shadowrocket iOS – Complete Guide for iPhone & iPad | Kurd0o</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f1f5f9;color:#0f172a;padding:16px}
-.container{max-width:480px;margin:0 auto}
-.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 8px 24px rgba(15,23,42,.06)}
-h1{font-size:22px;margin-bottom:10px}
-h2{font-size:18px;margin-bottom:8px}
-p{font-size:14px;line-height:1.7;color:#475569}
-button{font-family:inherit;border:none;cursor:pointer}
-.main-btn{width:100%;border-radius:14px;padding:16px;font-size:15px;font-weight:800;color:#fff;margin-bottom:12px}
-.sr{background:linear-gradient(135deg,#2563eb,#1d4ed8)}
-.back{background:#f1f5f9;border:1px solid #cbd5e1;color:#0f172a;border-radius:10px;padding:8px 14px;font-weight:700;font-size:13px}
-.join-btn{width:100%;display:flex;justify-content:space-between;align-items:center;gap:8px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px 14px;margin-bottom:9px;font-weight:700;font-size:14px;text-align:start}
-.join-btn.joined{background:#dcfce7;border-color:#16a34a;color:#14532d}
-.status{font-size:13px;font-weight:800}
-.go-btn{display:none;width:100%;border-radius:12px;padding:14px;background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;font-weight:800;font-size:15px;margin-top:12px}
-.go-btn.show{display:block}
-.hidden{display:none}
-.lang-btn{background:#0f172a;color:#fff;border-radius:999px;padding:8px 14px;font-weight:800;font-size:13px;margin-bottom:14px}
-.counter{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;border-radius:12px;padding:10px 12px;font-weight:800;font-size:14px;margin-bottom:14px;text-align:center}
-.change-btn{width:100%;background:#0f172a;color:#fff;border-radius:12px;padding:12px;font-weight:800;font-size:14px;margin-bottom:14px}
-.cred{border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin-bottom:12px}
-.cred-title{font-weight:800;margin-bottom:8px;font-size:14px}
-.cred-value{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px;font-weight:700;font-size:14px;word-break:break-all;margin-bottom:10px}
-.copy-red{width:100%;background:#dc2626;color:#fff;border-radius:12px;padding:12px;font-weight:800;font-size:14px}
-.note{background:#fff1f2;border-inline-start:4px solid #f43f5e;border-radius:10px;padding:12px;color:#9f1239;font-weight:700;font-size:13px;margin-bottom:14px}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#fff;color:#111827;overflow-x:hidden}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#fff;border-bottom:1px solid #f1f5f9;position:sticky;top:0;z-index:30}
+.left-group{display:flex;align-items:center;gap:14px;position:relative}
+.menu-btn{background:none;border:none;font-size:19px;cursor:pointer;color:#111827;padding:4px 6px}
+.brand{font-weight:800;font-size:20px;color:#f43f5e;letter-spacing:-.5px;text-decoration:none}
+.lang-wrap{position:relative}
+.lang-pill{font-size:12px;font-weight:700;padding:4px 10px;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc;cursor:pointer;color:#111827}
+.lang-dropdown{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:6px;width:190px;max-height:280px;overflow-y:auto;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 10px 25px rgba(0,0,0,.12);z-index:50}
+.lang-dropdown.show{display:block}
+.lang-option{width:100%;text-align:start;background:none;border:none;padding:8px 12px;font-size:13px;color:#1f2937;cursor:pointer;display:block}
+.lang-option:hover{background:#f1f5f9}
+.side-drawer{display:none;position:fixed;top:56px;left:16px;right:16px;max-width:300px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.16);padding:10px;z-index:60}
+.side-drawer.show{display:flex;flex-direction:column;gap:8px}
+.drawer-link{display:block;padding:11px 14px;border-radius:9px;text-decoration:none;font-size:13px;font-weight:700;color:#111827;background:#f8fafc;border:1px solid #f1f5f9;text-align:start}
+.drawer-link:hover{background:#f1f5f9}
+.icons{display:flex;align-items:center;gap:14px;font-size:17px;color:#1e293b}
+.icon-link{text-decoration:none;color:#1e293b}
+.container{max-width:480px;margin:0 auto;padding:0 16px 36px}
+.banner{width:100%;height:210px;object-fit:cover;display:block;margin:12px 0 18px;border-radius:4px}
+h1{font-size:26px;line-height:1.25;font-weight:700;color:#111827;margin-bottom:18px}
+h2{font-size:21px;font-weight:700;line-height:1.35;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+p,li{font-size:15px;line-height:1.65;color:#1f2937}
+.callout-blue{background:#f8fafc;border-inline-start:4px solid #1d4ed8;border-radius:0 12px 12px 0;padding:18px 16px;box-shadow:0 2px 10px rgba(0,0,0,.04);margin-bottom:20px}
+.callout-blue p{margin-bottom:14px}
+.callout-blue p:last-child{margin-bottom:0}
+.tip-box{background:#f8fafc;border-inline-start:4px solid #16a34a;border-radius:0 12px 12px 0;padding:15px 16px;margin-bottom:24px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+ul{list-style:disc;padding-inline-start:20px;margin-bottom:16px}
+li{margin-bottom:10px}
+img{width:100%;height:215px;object-fit:cover;border-radius:4px;display:block;margin-bottom:16px}
+section{margin-bottom:32px}
+.warn-full{background:#fff1f2;border-inline-start:4px solid #f43f5e;border-radius:0 12px 12px 0;padding:15px 16px;margin-bottom:24px;box-shadow:0 2px 10px rgba(0,0,0,.04);color:#9f1239}
+.strict-warn-box{background:#fff1f2;border-inline-start:4px solid #f43f5e;border-radius:0 12px 12px 0;padding:15px 16px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,.04);font-size:14.5px;line-height:1.65;color:#be123c;font-weight:700}
+.app-card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px;margin-bottom:18px;box-shadow:0 6px 20px rgba(15,23,42,.06);position:relative;overflow:hidden}
+.app-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.app-icon{width:62px;height:62px;border-radius:15px;background:#f5f3ff;border:1px solid #ddd6fe;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:32px;color:#7c3aed}
+.app-btn{display:inline-block;margin-top:8px;background:#2563eb;color:#fff;font-size:12px;font-weight:700;padding:4px 16px;border-radius:999px;text-decoration:none}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;border-top:1px solid #f1f5f9;padding-top:12px;margin-bottom:10px}
+.stat-label{font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase}
+.stat-value{font-size:16px;font-weight:800;color:#4b5563;margin-top:2px}
+.stat-sub{font-size:11px;color:#6b7280}
+.app-footer{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#9ca3af;padding-top:4px}
+.divider{padding-bottom:12px;border-bottom:1px solid #f1f5f9;gap:10px}
+a.blue{color:#2563eb;font-weight:700;text-decoration:none}
+.btn-id-green{width:100%;border:none;border-radius:14px;padding:15px 16px;margin-bottom:12px;background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;font-size:15px;font-weight:800;line-height:1.35;text-align:center;cursor:pointer;box-shadow:0 6px 16px rgba(22,163,74,.28);display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-id-blue{width:100%;border:none;border-radius:14px;padding:15px 16px;margin-bottom:26px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-size:15px;font-weight:800;line-height:1.35;text-align:center;cursor:pointer;box-shadow:0 6px 16px rgba(37,99,235,.28);display:flex;align-items:center;justify-content:center;gap:8px}
+
+.join-view-card{display:none;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:18px;box-shadow:0 12px 28px rgba(15,23,42,.08);margin-top:14px;margin-bottom:24px}
+.join-view-card.active{display:block}
+.join-view-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.btn-back-site{background:#f1f5f9;border:1px solid #cbd5e1;border-radius:10px;padding:6px 12px;font-size:12.5px;font-weight:700;cursor:pointer;color:#111827}
+.join-list{display:flex;flex-direction:column;gap:9px}
+.kurd-join-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;color:#111827;font-size:13.5px;font-weight:700;cursor:pointer;text-align:start;transition:all .2s ease}
+.kurd-join-btn.discord-btn{background:#eef2ff;border-color:#c7d2fe;color:#1e1b4b;font-weight:800}
+.kurd-join-btn.joined{background:#dcfce7;border-color:#16a34a;color:#14532d}
+.join-status{font-size:12.5px;font-weight:800;white-space:nowrap}
+.kurd-join-btn.joined .join-status{color:#15803d;font-size:13px}
+.red-account-box{display:none;margin-top:16px}
+.red-account-box.show{display:block}
+.red-account-btn{display:block;width:100%;box-sizing:border-box;text-align:center;background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;padding:14px 16px;border-radius:12px;font-size:14.5px;font-weight:800;text-decoration:none;border:none;cursor:pointer;box-shadow:0 6px 18px rgba(220,38,38,.32)}
+
+.guide-view-card{display:none;background:#ffffff;padding:20px 4px 36px;margin-top:8px}
+.guide-view-card.active{display:block}
+.guide-top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.guide-header-row{display:flex;align-items:flex-start;gap:16px;margin-bottom:26px}
+.guide-step-badge{width:46px;height:46px;border-radius:14px;background:#fdf2f8;color:#be185d;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.guide-header-text{flex:1}
+.guide-kicker{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#be185d;margin-bottom:6px}
+.guide-title{font-size:27px;line-height:1.25;font-weight:800;color:#1f2937;margin-bottom:10px}
+.guide-subtitle{font-size:15.5px;line-height:1.6;color:#6b7280}
+.guide-steps-list{display:flex;flex-direction:column;gap:16px}
+.guide-step-card{background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:20px 18px;box-shadow:0 4px 16px rgba(17,24,39,.03);display:flex;align-items:flex-start;gap:15px}
+.guide-step-num{width:34px;height:34px;border-radius:10px;background:#f5f3ff;color:#7c3aed;font-weight:800;font-size:14.5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.guide-step-body h3{font-size:17.5px;font-weight:800;color:#1f2937;margin-bottom:8px}
+.guide-step-body p{font-size:15px;line-height:1.65;color:#4b5563}
+.guide-step-body strong{color:#1f2937;font-weight:700}
+
+.session-panel{margin-top:26px;background:#fff;border:1px solid #fce7f3;border-radius:22px;padding:18px;box-shadow:0 8px 24px rgba(219,39,119,.07)}
+.session-status-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.session-active-pill{display:inline-flex;align-items:center;gap:8px;background:#dcfce7;color:#15803d;font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:12px}
+.session-dot{width:8px;height:8px;border-radius:999px;background:#16a34a;display:inline-block}
+.session-timer-pill{background:#fff;border:1px solid #e5e7eb;color:#4b5563;font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:12px;font-variant-numeric:tabular-nums}
+.session-notice{background:#fdf2f8;border:1px solid #fbcfe8;border-radius:16px;padding:14px;font-size:14px;line-height:1.6;color:#9d174d;font-weight:600;margin-bottom:16px}
+.cred-card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:0 4px 14px rgba(17,24,39,.03)}
+.cred-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.cred-card-title{font-size:17px;font-weight:800;color:#1f2937}
+.cred-card-tag{font-size:12px;font-weight:800;letter-spacing:.04em;color:#9ca3af;text-transform:uppercase}
+.cred-dots{font-size:20px;letter-spacing:6px;color:#cbd5e1;margin-bottom:14px;user-select:none}
+.cred-copy-btn{width:100%;border:none;border-radius:14px;padding:13px 16px;background:#dc2626;color:#fff;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s ease;font-variant-numeric:tabular-nums}
+.cred-copy-btn:hover:not(:disabled){background:#b91c1c}
+.cred-copy-btn:disabled{background:#e5e7eb;color:#6b7280;cursor:not-allowed}
+.session-footer-note{margin-top:8px;font-size:13.5px;line-height:1.6;color:#6b7280;font-weight:500}
+
+.support-card{margin-top:22px;background:#f8f5fc;border:1px solid #e9e2f5;border-radius:24px;padding:24px 20px;box-shadow:0 6px 20px rgba(79,70,229,.05)}
+.support-kicker{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#db2777;margin-bottom:8px}
+.support-title{font-size:22px;line-height:1.3;font-weight:800;color:#1f2937;margin-bottom:12px}
+.support-desc{font-size:15px;line-height:1.65;color:#4b5563;margin-bottom:20px}
+.support-actions{display:flex;flex-direction:column;gap:12px}
+.btn-discord-kurd0o{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 18px;border-radius:15px;background:#5c5ce6;color:#fff;font-size:15px;font-weight:800;text-decoration:none;box-shadow:0 6px 16px rgba(92,92,230,.25);transition:background .2s ease}
+.btn-discord-kurd0o:hover{background:#4b4bd4}
+.btn-tiktok-kurd0o{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 18px;border-radius:15px;background:#fff;color:#1f2937;border:1.5px solid #e5e7eb;font-size:15px;font-weight:800;text-decoration:none;box-shadow:0 3px 10px rgba(17,24,39,.04);transition:background .2s ease}
+.btn-tiktok-kurd0o:hover{background:#f9fafb}
+
+.cred-modal-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:90;align-items:center;justify-content:center;padding:16px}
+.cred-modal-backdrop.open{display:flex}
+.cred-modal-box{width:100%;max-width:380px;background:#fff;border-radius:18px;padding:20px;box-shadow:0 20px 45px rgba(0,0,0,.22)}
+.cred-modal-box h4{font-size:17px;font-weight:800;color:#111827;margin-bottom:8px}
+.cred-modal-box p{font-size:14px;line-height:1.6;color:#4b5563;margin-bottom:16px}
+.cred-modal-actions{display:flex;gap:10px;justify-content:flex-end}
+.cred-modal-cancel{border:1px solid #d1d5db;background:#fff;color:#374151;border-radius:10px;padding:9px 14px;font-size:13.5px;font-weight:700;cursor:pointer}
+.cred-modal-confirm{border:none;background:#dc2626;color:#fff;border-radius:10px;padding:9px 16px;font-size:13.5px;font-weight:700;cursor:pointer}
+.account-email{font-size:15px;font-weight:800;color:#111827;direction:ltr;text-align:center;overflow-wrap:anywhere;margin-bottom:12px}
+.account-password{font-size:15px;letter-spacing:5px;color:#9ca3af;text-align:center;margin-bottom:12px}
+.account-switch-btn{width:100%;border:none;border-radius:12px;padding:12px;background:#111827;color:#fff;font-weight:800;font-size:14px;cursor:pointer;margin-bottom:14px}
+.account-count{font-size:12px;color:#6b7280;font-weight:700;text-align:center;margin-bottom:12px}
 </style>
 </head>
+
 <body>
-<div class="container">
 
-<button id="langBtn" class="lang-btn">English</button>
+<header class="topbar">
+  <div class="left-group">
+    <button type="button" class="menu-btn" onclick="toggleDrawer(event)" aria-label="Menu">☰</button>
+    <a href="#" class="brand" onclick="backToMainSiteView();return false;">Kurd0o</a>
 
-<div id="homePage">
-<div class="card">
-<h1 id="homeTitle">Kurd0o - حسابات Shadowrocket مجانية</h1>
-<p id="homeText">Shadowrocket هو تطبيق VPN ووكيل لأجهزة iPhone وiPad. يساعد على إدارة قواعد الاتصال والخوادم، ويمكن استيراد ملفات الإعداد أو إضافة الخوادم يدوياً. اختر الزر أدناه للحصول على حساب مجاني.</p>
+    <div id="side-drawer" class="side-drawer" onclick="event.stopPropagation()">
+      <a id="drawer-buy" class="drawer-link" href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer">Get Apple Accounts</a>
+      <a id="drawer-contact" class="drawer-link" href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer">Contact & Inquiries</a>
+    </div>
+  </div>
+
+  <div class="lang-wrap">
+    <button type="button" class="lang-pill" onclick="toggleLangDropdown(event)" id="lang-current">🇬🇧 EN ⌄</button>
+    <div id="lang-dropdown" class="lang-dropdown" onclick="event.stopPropagation()">
+      <button type="button" class="lang-option" onclick="applyLang('en')">English</button>
+      <button type="button" class="lang-option" onclick="applyLang('ar')">العربية</button>
+      <button type="button" class="lang-option" onclick="applyLang('ku')">کوردی (Badînî)</button>
+      <button type="button" class="lang-option" onclick="applyLang('vi')">Tiếng Việt</button>
+      <button type="button" class="lang-option" onclick="applyLang('tr')">Türkçe</button>
+    </div>
+  </div>
+
+  <div class="icons">
+    <a class="icon-link" href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" title="Telegram">👤</a>
+    <a class="icon-link" href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" title="Accounts">🛒</a>
+    <span>🔍</span>
+  </div>
+</header>
+
+<main class="container">
+
+<div id="kurd0o-main-site-content">
+
+<img class="banner" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=75" alt="Shadowrocket network technology">
+
+<h1 id="page-h1">Shadowrocket iOS – Detailed Review & Complete Guide for iPhone and iPad</h1>
+
+<div class="callout-blue">
+  <p id="p-1">Some apps become an essential part of your daily digital experience. They help you understand, manage, and control how your device connects to the internet.</p>
+  <p id="p-2"><strong>Shadowrocket</strong> is a powerful network utility designed for users who want more control over their internet connections.</p>
+  <p id="p-3">With support for proxy configurations, traffic rules, DNS settings, and connection monitoring, Shadowrocket provides advanced tools in one application.</p>
 </div>
 
-<button id="srBtn" class="main-btn sr">🚀 GET FREE SHADOWROCKET DOWNLOAD ID</button>
+<section id="sec-continuation-2">
+  <h2><span>🚀</span><span id="c2-title-text">What Makes Shadowrocket Useful?</span></h2>
+  <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=75" alt="Network servers and connections">
+  <p id="c2-p1">Shadowrocket is a network utility for Apple devices. It allows users to configure supported proxy connections and manage how network traffic is handled.</p>
+  <p id="c2-p2">Instead of treating every connection in the same way, users can create rules that determine how different types of traffic should be routed.</p>
+  <ul>
+    <li id="c2-li1">🌐 Manage supported proxy connections and server configurations.</li>
+    <li id="c2-li2">🔒 Organize network traffic using rules and configuration profiles.</li>
+    <li id="c2-li3">📊 Monitor connection activity and data usage.</li>
+  </ul>
+  <p id="c2-p3">The application is designed for users who need more detailed network controls than the standard settings available on their devices.</p>
+</section>
 
-<div class="card">
-<p class="note" id="warningText">تنبيه: سجّل الدخول فقط داخل App Store، ولا تسجّل الدخول إلى iCloud. بعد التحميل سجّل الخروج فوراً.</p>
+<section id="sec-continuation-3">
+  <h2><span>⚙️</span><span id="c3-surv-title">Proxy Configuration and Connection Management</span></h2>
+  <p id="c3-surv-p1"><strong>Proxy Configuration</strong> is one of the main features of Shadowrocket. Users can add supported server details or import a compatible configuration to manage their connections.</p>
+  <p id="c3-surv-p2">The available connection methods and options depend on the configuration provider. Always use trusted configuration sources and check the details before connecting.</p>
+
+  <div class="tip-box">
+    <p id="c3-tip-box">💡 <strong>Useful Tip:</strong> Keep a backup of configurations you trust. Check server details and connection settings before using an unfamiliar profile.</p>
+  </div>
+
+  <h2><span>🧭</span><span id="c3-crea-title">Rules and Traffic Routing</span></h2>
+  <p id="c3-crea-p1">Shadowrocket can use rules to determine how supported network requests are handled. Depending on the configuration, rules may be based on domains, IP ranges, or other matching conditions.</p>
+  <ul>
+    <li id="c3-crea-li1">🌍 Domain-based rules for selected websites and services.</li>
+    <li id="c3-crea-li2">🔀 Different routing policies for different network destinations.</li>
+  </ul>
+</section>
+
+<section id="sec-free-id-gateway">
+  <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=75" alt="Shadowrocket network and server connection">
+
+  <button type="button" class="btn-id-blue" onclick="openJoinPageView('shadowrocket')">
+    <span>🚀</span>
+    <span id="btn-sr-free">SHADOWROCKET ACCOUNTS</span>
+  </button>
+
+  <h2 class="divider">
+    <span>🛡️</span>
+    <span id="guide-appstore-title">How to Use Shadowrocket Safely</span>
+  </h2>
+
+  <div class="strict-warn-box">
+    <p id="strict-id-warning">
+      IMPORTANT: Use the provided account only for its intended purpose. Do not change account settings, password, or security information.
+    </p>
+  </div>
+</section>
+
+<section id="sec-appstore-steps-1-5">
+  <h2 class="divider">
+    <span>📱</span>
+    <span id="sr-install-title">How to Install and Use Shadowrocket</span>
+  </h2>
+
+  <ul>
+    <li id="as-step-1"><strong>Step 1:</strong> Open the App Store on your iPhone or iPad.</li>
+    <li id="as-step-2"><strong>Step 2:</strong> Search for Shadowrocket in the App Store.</li>
+    <li id="as-step-3"><strong>Step 3:</strong> Sign in using the provided App Store account if required.</li>
+    <li id="as-step-4"><strong>Step 4:</strong> Install Shadowrocket on your device.</li>
+    <li id="as-step-5"><strong>Step 5:</strong> Open Shadowrocket and add a proxy configuration from a trusted provider.</li>
+  </ul>
+</section>
+
+<section id="sec-kurd0o-community">
+  <h2 class="divider">
+    <span>💬</span>
+    <span id="comm-title">Kurd0o Community</span>
+  </h2>
+
+  <p id="comm-desc">
+    Follow our official channels for updates and information about available Shadowrocket accounts.
+  </p>
+
+  <ul>
+    <li id="comm-li-tiktok">
+      🎵 TikTok:
+      <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>
+    </li>
+    <li id="comm-li-discord">
+      🎮 Discord:
+      <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">Join Discord</a>
+    </li>
+    <li id="comm-li-telegram">
+      ✈️ Telegram:
+      <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>
+    </li>
+    <li id="comm-li-shop">
+      🛍️ Accounts:
+      <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>
+    </li>
+  </ul>
+</section>
+
 </div>
+
+<div id="kurd0o-join-page-view" class="join-view-card">
+  <div class="join-view-head">
+    <h3 id="join-page-title" style="font-size:17px;font-weight:800;margin:0;color:#111827;">
+      Shadowrocket
+    </h3>
+
+    <button type="button" onclick="backToMainSiteView()" id="btn-back-site" class="btn-back-site">
+      ← Back to Site
+    </button>
+  </div>
+
+  <p id="join-page-sub" style="font-size:13.5px;color:#374151;margin-bottom:14px;line-height:1.6;font-weight:600;">
+    Open each of the four Telegram channels and Discord. Wait 5 seconds on each link to unlock the red button.
+  </p>
+
+  <div class="join-list">
+
+    <button type="button" data-target="ch1"
+      onclick="handleJoinTarget('ch1', 'https://t.me/kurd0o1')"
+      class="kurd-join-btn">
+      <span>📢 Kurd0o1</span>
+      <span class="join-status">↗</span>
+    </button>
+
+    <button type="button" data-target="ch2"
+      onclick="handleJoinTarget('ch2', 'https://t.me/Kurd0o2')"
+      class="kurd-join-btn">
+      <span>📢 Kurd0o2</span>
+      <span class="join-status">↗</span>
+    </button>
+
+    <button type="button" data-target="ch3"
+      onclick="handleJoinTarget('ch3', 'https://t.me/Kurd0o3')"
+      class="kurd-join-btn">
+      <span>📢 Kurd0o3</span>
+      <span class="join-status">↗</span>
+    </button>
+
+    <button type="button" data-target="ch4"
+      onclick="handleJoinTarget('ch4', 'https://t.me/Kurd0o4')"
+      class="kurd-join-btn">
+      <span>📢 Kurd0o4</span>
+      <span class="join-status">↗</span>
+    </button>
+
+    <button type="button" data-target="discord"
+      onclick="handleJoinTarget('discord', 'https://discord.gg/Tn4U989mmz')"
+      class="kurd-join-btn discord-btn">
+      <span>🎮 Discord</span>
+      <span class="join-status">↗</span>
+    </button>
+
+  </div>
+
+  <div id="kurd0o-red-account-box" class="red-account-box">
+    <button type="button" id="kurd0o-red-account-btn"
+      onclick="openStepGuideView(false)"
+      class="red-account-btn">
+      الانتقال إلى حسابات Shadowrocket
+    </button>
+  </div>
 </div>
 
-<div id="joinPage" class="hidden">
-<div class="card">
-<button id="backHome" class="back">← رجوع</button>
-<h1 id="joinTitle" style="margin-top:12px">Shadowrocket</h1>
-<p id="joinText">انضم إلى القنوات الأربعة وديسكورد، ثم اضغط زر الحساب.</p>
+<div id="kurd0o-step-guide-view" class="guide-view-card">
+  <div class="guide-top-bar">
+    <span style="font-weight:800;font-size:15px;color:#be185d;">Kurd0o</span>
 
-<button class="join-btn" data-target="ch1" data-url="https://t.me/kurd0o1"><span>📢 kurd0o1</span><span class="status">↗</span></button>
-<button class="join-btn" data-target="ch2" data-url="https://t.me/Kurd0o2"><span>📢 Kurd0o2</span><span class="status">↗</span></button>
-<button class="join-btn" data-target="ch3" data-url="https://t.me/Kurd0o3"><span>📢 Kurd0o3</span><span class="status">↗</span></button>
-<button class="join-btn" data-target="ch4" data-url="https://t.me/Kurd0o4"><span>📢 Kurd0o4</span><span class="status">↗</span></button>
-<button class="join-btn" data-target="discord" data-url="https://discord.gg/Tn4U989mmz"><span>🎮 Discord</span><span class="status">↗</span></button>
+    <button type="button" onclick="backToJoinView()" id="btn-back-join" class="btn-back-site">
+      ← Back
+    </button>
+  </div>
 
-<button id="goAccount" class="go-btn">اضغط هنا للانتقال إلى الحساب</button>
+  <div class="guide-header-row">
+    <div class="guide-step-badge">02</div>
+
+    <div class="guide-header-text">
+      <div class="guide-kicker" id="g-kicker">STEP BY STEP</div>
+      <h2 class="guide-title" id="g-title">Shadowrocket Accounts</h2>
+      <p class="guide-subtitle" id="g-sub">
+        Follow the instructions below before copying the account details.
+      </p>
+    </div>
+  </div>
+
+  <div class="guide-steps-list">
+    <div class="guide-step-card">
+      <div class="guide-step-num">1</div>
+      <div class="guide-step-body">
+        <h3 id="g-s1-t">Open the App Store</h3>
+        <p id="g-s1-d">
+          Open the App Store on your iPhone or iPad.
+        </p>
+      </div>
+    </div>
+
+    <div class="guide-step-card">
+      <div class="guide-step-num">2</div>
+      <div class="guide-step-body">
+        <h3 id="g-s2-t">Install Shadowrocket</h3>
+        <p id="g-s2-d">
+          Search for Shadowrocket and install the application.
+        </p>
+      </div>
+    </div>
+
+    <div class="guide-step-card">
+      <div class="guide-step-num">3</div>
+      <div class="guide-step-body">
+        <h3 id="g-s3-t">Sign Out After Installation</h3>
+        <p id="g-s3-d">
+          After installation, sign out of the shared App Store account. Do not change its account information or security settings.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="kurd0o-session-box" class="session-panel">
+    <div class="session-status-bar">
+      <span class="session-active-pill">
+        <span class="session-dot"></span>
+        <span id="ses-active-txt">Available Accounts</span>
+      </span>
+
+      <span class="session-timer-pill" id="ses-timer-txt">Account 1</span>
+    </div>
+
+    <div class="session-notice" id="ses-notice-txt">
+      Your account details are displayed below. Keep the password private and do not change the account settings.
+    </div>
+
+    <div class="cred-card">
+      <div class="cred-card-top">
+        <span class="cred-card-title" id="ses-apple-lbl">Email Address</span>
+        <span class="cred-card-tag">EMAIL</span>
+      </div>
+
+      <div class="account-email-value" id="account-email-value">
+        Loading account...
+      </div>
+
+      <button type="button" class="cred-copy-btn" data-cred="email"
+        onclick="handleCredCopyClick('email')">
+        <span>❐</span>
+        <span class="copy-btn-label" id="ses-copy-btn-1">Copy Email</span>
+      </button>
+    </div>
+
+    <div class="cred-card">
+      <div class="cred-card-top">
+        <span class="cred-card-title" id="ses-pass-lbl">Password</span>
+        <span class="cred-card-tag">PASSWORD</span>
+      </div>
+
+      <div class="cred-dots" id="account-password-value" aria-label="Hidden Password">
+        ••••••••••••
+      </div>
+
+      <button type="button" class="cred-copy-btn" data-cred="password"
+        onclick="handleCredCopyClick('password')">
+        <span>❐</span>
+        <span class="copy-btn-label" id="ses-copy-btn-2">Copy Password</span>
+      </button>
+    </div>
+
+    <div class="account-switch-area">
+      <button type="button" class="account-switch-btn"
+        onclick="switchShadowrocketAccount()">
+        <span>🔄</span>
+        <span id="account-switch-label">Switch Account</span>
+      </button>
+
+      <div class="account-count" id="account-count">
+        Account 1 of 32
+      </div>
+    </div>
+
+    <div class="session-footer-note" id="ses-footer-txt">
+      Use the account only for downloading Shadowrocket. Sign out after installation.
+    </div>
+  </div>
+
+  <div id="kurd0o-support-box" class="support-card">
+    <div class="support-kicker" id="sup-kicker">NEED HELP?</div>
+
+    <h3 class="support-title" id="sup-title">Contact and Receive Notifications</h3>
+
+    <p class="support-desc" id="sup-desc">
+      Having trouble or need updates? Join Kurd0o's Discord. You can also follow our TikTok account.
+    </p>
+
+    <div class="support-actions">
+      <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer"
+        class="btn-discord-kurd0o" id="sup-discord-btn">
+        <span>💬</span>
+        <span id="sup-discord-txt">Discord Kurd0o ↗</span>
+      </a>
+
+      <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL"
+        target="_blank" rel="noopener noreferrer"
+        class="btn-tiktok-kurd0o" id="sup-tiktok-btn">
+        <span>▶</span>
+        <span id="sup-tiktok-txt">TikTok Kurd0o ↗</span>
+      </a>
+    </div>
+  </div>
 </div>
+
+<div id="kurd0o-copy-modal" class="cred-modal-backdrop" onclick="closeCredModal()">
+  <div class="cred-modal-box" onclick="event.stopPropagation()">
+    <h4 id="cred-modal-title">Account Safety Notice</h4>
+
+    <p id="cred-modal-desc">
+      Use the account only in the App Store. Do not sign in to iCloud or change account settings. Do you agree to continue?
+    </p>
+
+    <div class="cred-modal-actions">
+      <button type="button" class="cred-modal-cancel"
+        onclick="closeCredModal()" id="cred-modal-cancel">
+        Cancel
+      </button>
+
+      <button type="button" class="cred-modal-confirm"
+        onclick="confirmCredCopy()" id="cred-modal-confirm">
+        Agree & Copy
+      </button>
+    </div>
+  </div>
 </div>
 
-<div id="accountPage" class="hidden">
-<div class="card">
-<button id="backJoin" class="back">← رجوع</button>
-<h1 id="accountTitle" style="margin-top:12px">حساب Shadowrocket</h1>
+</main>
 
-<div id="accountCounter" class="counter">الحساب 1 من 0</div>
-
-<button id="changeAccount" class="change-btn">🔄 تغيير الإيميل</button>
-
-<div class="cred">
-<div class="cred-title" id="emailTitle">Email</div>
-<div id="emailValue" class="cred-value">لا يوجد إيميل</div>
-<button id="copyEmail" class="copy-red">نسخ الإيميل</button>
-</div>
-
-<div class="cred">
-<div class="cred-title" id="passTitle">Password</div>
-<div id="passValue" class="cred-value">••••••••</div>
-<button id="copyPass" class="copy-red">نسخ كلمة المرور</button>
-</div>
-
-<p id="accountStatus" style="margin-top:10px"></p>
-</div>
-</div>
-
-</div>
 <script>
-const SHADOWROCKET_ACCOUNTS = [];
 
-const translations={
-  ar:{
-    homeTitle:"Kurd0o - حسابات Shadowrocket مجانية",
-    homeText:"Shadowrocket هو تطبيق VPN ووكيل لأجهزة iPhone وiPad. يساعد على إدارة قواعد الاتصال والخوادم، ويمكن استيراد ملفات الإعداد أو إضافة الخوادم يدوياً. اختر الزر أدناه للحصول على حساب مجاني.",
-    warning:"تنبيه: سجّل الدخول فقط داخل App Store، ولا تسجّل الدخول إلى iCloud. بعد التحميل سجّل الخروج فوراً.",
-    joinTitle:"Shadowrocket",
-    joinText:"انضم إلى القنوات الأربعة وديسكورد، ثم اضغط زر الحساب.",
-    goAccount:"اضغط هنا للانتقال إلى الحساب",
-    accountTitle:"حساب Shadowrocket",
-    emailTitle:"Email",
-    passTitle:"Password",
-    copyEmail:"نسخ الإيميل",
-    copyPass:"نسخ كلمة المرور",
-    changeAccount:"🔄 تغيير الإيميل",
-    noEmail:"لا يوجد إيميل",
-    counter:"الحساب",
-    of:"من",
-    langBtn:"English",
-    back:"← رجوع"
-  },
-  en:{
-    homeTitle:"Kurd0o - Free Shadowrocket Accounts",
-    homeText:"Shadowrocket is a VPN and proxy app for iPhone and iPad. It helps manage connection rules and servers, and you can import configuration files or add servers manually. Choose the button below to get a free account.",
-    warning:"Warning: Sign in only inside the App Store, not iCloud. Sign out immediately after downloading.",
-    joinTitle:"Shadowrocket",
-    joinText:"Join the four channels and Discord, then press the account button.",
-    goAccount:"Click here to go to the account",
-    accountTitle:"Shadowrocket Account",
-    emailTitle:"Email",
-    passTitle:"Password",
-    copyEmail:"Copy Email",
-    copyPass:"Copy Password",
-    changeAccount:"🔄 Change Email",
-    noEmail:"No email available",
-    counter:"Account",
-    of:"of",
-    langBtn:"العربية",
-    back:"← Back"
-  }
+const LANG_KEY = "site_language";
+
+const LANG_LABELS = {
+  en: "🇬🇧 EN ⌄",
+  ar: "🇸🇦 AR ⌄",
+  ku: "KU ⌄",
+  vi: "🇻🇳 VI ⌄",
+  tr: "🇹🇷 TR ⌄"
 };
 
-let currentLang="ar";
-let currentAccountIndex=0;
+const ACCOUNTS_DATA = [
+  {email:"xiaoyunshan66@163.com",password:"xrMJRxFcZx4a"},
+  {email:"vex4512@163.com",password:"qqQrBUfNEyg8"},
+  {email:"shajj1234@163.com",password:"2fPnjQpzkw9Y"},
+  {email:"laocaizhi@163.com",password:"jvPCrGct5SYf"},
+  {email:"sekqy64@163.com",password:"mUrPDM83EHSN"},
+  {email:"799030669@qq.com",password:"RJWj6CHjzmqp"},
+  {email:"gzc3457@163.com",password:"H9nkc178YHVe"},
+  {email:"veu3634@163.com",password:"bVVZtmJFhaV6"},
+  {email:"axe3997@163.com",password:"nHeEZD4qq1WQ"},
+  {email:"CaoileCzachor6200@hotmail.com",password:"qc7PzDyEZb"},
+  {email:"LaytonFayed44953@outlook.com",password:"HZaJFhH28z"},
+  {email:"mxrhy123@163.com",password:"aVuFKxZkzH4g"},
+  {email:"weizixuan21@163.com",password:"dyDB5h8eK5bj"},
+  {email:"cra5969@163.com",password:"Rz41vrCWsq4f"},
+  {email:"chuangyuan0611@163.com",password:"SQdVk4Egy8xR"},
+  {email:"bsg0932@163.com",password:"ctah1U1PQaHj"},
+  {email:"linshifeng7@163.com",password:"32FVMj3pD2c9"},
+  {email:"BrianBryant1535@outlook.com",password:"yKJf3xK9S8"},
+  {email:"lwiiku@163.com",password:"HwUyBQFf3RwR"},
+  {email:"xvs2161@163.com",password:"HZRk9q2zmwS6"},
+  {email:"che.jf@163.com",password:"1feajpuyg4uT"},
+  {email:"ymq1381@163.com",password:"nRY9RunnqJ8V"},
+  {email:"WinesickleUreno0006@hotmail.com",password:"qDU3KNTSSQ"},
+  {email:"lienbay1988@gmail.com",password:"K3ky2RBUec"},
+  {email:"MajeskeThigpen394@hotmail.com",password:"9h3maB164u"},
+  {email:"JoelWoodrqu@outlook.com",password:"Pt7nqr37DF"},
+  {email:"nivoci@163.com",password:"1dN7rkXvSeWj"},
+  {email:"haoyali123456@163.com",password:"6wRzqc1QNE1j"},
+  {email:"benson987654321@163.com",password:"1am7QfFZKjWU"},
+  {email:"nbx8004@163.com",password:"1Frp1WpnAkbG"},
+  {email:"zoubiao18@163.com",password:"VtYJMN3Fe8Bu"},
+  {email:"soonjjj@163.com",password:"ZsfPf3rtfB4w"}
+];
 
-const pages={
-  home:document.getElementById("homePage"),
-  join:document.getElementById("joinPage"),
-  account:document.getElementById("accountPage")
+let currentAccountIndex = 0;
+
+const STORAGE_JOIN_KEY = "kurd0o_shadowrocket_joined_v1";
+const GUIDE_PERSIST_KEY = "kurd0o_shadowrocket_guide_v1";
+const COPY_COOLDOWN_KEY = "kurd0o_shadowrocket_copy_v1";
+
+const FIVE_MINUTES_MS = 5 * 60 * 1000;
+const REQUIRED_TARGETS = ["ch1", "ch2", "ch3", "ch4", "discord"];
+
+const timers = {};
+const countdowns = {};
+
+let currentSelectedApp = "shadowrocket";
+
+const SESSION_DURATION_MS = 10 * 60 * 1000;
+const COPY_COOLDOWN_SEC = 30;
+
+let sessionEndAt = Date.now() + SESSION_DURATION_MS;
+let pendingCredType = null;
+
+const copyCooldowns = {
+  email: 0,
+  password: 0
 };
 
-const elements={
-  langBtn:document.getElementById("langBtn"),
-  homeTitle:document.getElementById("homeTitle"),
-  homeText:document.getElementById("homeText"),
-  warningText:document.getElementById("warningText"),
-  joinTitle:document.getElementById("joinTitle"),
-  joinText:document.getElementById("joinText"),
-  goAccount:document.getElementById("goAccount"),
-  accountTitle:document.getElementById("accountTitle"),
-  accountCounter:document.getElementById("accountCounter"),
-  changeAccount:document.getElementById("changeAccount"),
-  emailTitle:document.getElementById("emailTitle"),
-  passTitle:document.getElementById("passTitle"),
-  emailValue:document.getElementById("emailValue"),
-  passValue:document.getElementById("passValue"),
-  copyEmail:document.getElementById("copyEmail"),
-  copyPass:document.getElementById("copyPass"),
-  accountStatus:document.getElementById("accountStatus"),
-  backHome:document.getElementById("backHome"),
-  backJoin:document.getElementById("backJoin")
-};
+const copyIntervals = {};
 
-function applyLanguage(){
-  const t=translations[currentLang];
+function getCurrentAccount() {
+  if (!ACCOUNTS_DATA.length) {
+    return { email: "", password: "" };
+  }
 
-  elements.langBtn.textContent=t.langBtn;
-  elements.homeTitle.textContent=t.homeTitle;
-  elements.homeText.textContent=t.homeText;
-  elements.warningText.textContent=t.warning;
-  elements.joinTitle.textContent=t.joinTitle;
-  elements.joinText.textContent=t.joinText;
-  elements.goAccount.textContent=t.goAccount;
-  elements.accountTitle.textContent=t.accountTitle;
-  elements.emailTitle.textContent=t.emailTitle;
-  elements.passTitle.textContent=t.passTitle;
-  elements.copyEmail.textContent=t.copyEmail;
-  elements.copyPass.textContent=t.copyPass;
-  elements.changeAccount.textContent=t.changeAccount;
-  elements.backHome.textContent=t.back;
-  elements.backJoin.textContent=t.back;
-
-  updateAccountView();
+  return ACCOUNTS_DATA[currentAccountIndex] || ACCOUNTS_DATA[0];
 }
 
-function showPage(name){
-  pages.home.classList.add("hidden");
-  pages.join.classList.add("hidden");
-  pages.account.classList.add("hidden");
-  pages[name].classList.remove("hidden");
+function updateAccountUI() {
+  const account = getCurrentAccount();
 
-  localStorage.setItem("kurd0o_page",name);
-  window.scrollTo(0,0);
-}
-const joined={};
+  const emailElement = document.getElementById("account-email-value");
+  const passwordElement = document.getElementById("account-password-value");
+  const countElement = document.getElementById("account-count");
 
-function resetJoin(){
-  document.querySelectorAll(".join-btn").forEach(function(btn){
-    btn.classList.remove("joined");
-    btn.querySelector(".status").textContent="↗";
-    joined[btn.dataset.target]=false;
-  });
+  if (emailElement) {
+    emailElement.textContent = account.email || "Account not configured";
+  }
 
-  elements.goAccount.classList.remove("show");
-  localStorage.removeItem("kurd0o_joined");
-}
+  if (passwordElement) {
+    passwordElement.textContent = "••••••••••••";
+  }
 
-function openJoinPage(){
-  resetJoin();
-  showPage("join");
-}
-
-function allJoined(){
-  return joined.ch1 && joined.ch2 && joined.ch3 && joined.ch4 && joined.discord;
-}
-
-function checkJoin(){
-  if(allJoined()){
-    elements.goAccount.classList.add("show");
-    localStorage.setItem("kurd0o_joined","true");
+  if (countElement) {
+    countElement.textContent = ACCOUNTS_DATA.length
+      ? `Account ${currentAccountIndex + 1} of ${ACCOUNTS_DATA.length}`
+      : "No accounts available";
   }
 }
 
-document.querySelectorAll(".join-btn").forEach(function(btn){
-  btn.addEventListener("click",function(){
-    const target=btn.dataset.target;
-    const url=btn.dataset.url;
+function switchShadowrocketAccount() {
+  if (ACCOUNTS_DATA.length < 2) return;
 
-    window.open(url,"_blank");
+  currentAccountIndex =
+    (currentAccountIndex + 1) % ACCOUNTS_DATA.length;
 
-    btn.classList.add("joined");
-    btn.querySelector(".status").textContent="تم";
-    joined[target]=true;
+  updateAccountUI();
 
-    checkJoin();
-  });
-});
+  copyCooldowns.email = 0;
+  copyCooldowns.password = 0;
 
-elements.backHome.addEventListener("click",function(){
-  showPage("home");
-});
-
-elements.backJoin.addEventListener("click",function(){
-  showPage("join");
-});
-
-elements.langBtn.addEventListener("click",function(){
-  currentLang=currentLang==="ar"?"en":"ar";
-  localStorage.setItem("kurd0o_lang",currentLang);
-  applyLanguage();
-});
-
-function restorePage(){
-  const savedPage=localStorage.getItem("kurd0o_page");
-
-  if(savedPage==="join"){
-    showPage("join");
-  }else if(savedPage==="account"){
-    showPage("account");
-  }else{
-    showPage("home");
-  }
-}
-function updateAccountView(){
-  const total=SHADOWROCKET_ACCOUNTS.length;
-
-  if(total===0){
-    elements.accountCounter.textContent=translations[currentLang].counter+" 0 "+translations[currentLang].of+" 0";
-    elements.emailValue.textContent=translations[currentLang].noEmail;
-    elements.passValue.textContent="••••••••";
-    elements.accountStatus.textContent="أضف الحسابات في SHADOWROCKET_ACCOUNTS داخل الكود.";
-    return;
-  }
-
-  if(currentAccountIndex>=total){
-    currentAccountIndex=0;
-  }
-
-  const account=SHADOWROCKET_ACCOUNTS[currentAccountIndex];
-
-  elements.accountCounter.textContent=translations[currentLang].counter+" "+(currentAccountIndex+1)+" "+translations[currentLang].of+" "+total;
-
-  elements.emailValue.textContent=account.email||translations[currentLang].noEmail;
-  elements.passValue.textContent="••••••••";
-
-  localStorage.setItem("kurd0o_account_index",currentAccountIndex);
+  updateCredButtonsUI();
 }
 
-function changeAccount(){
-  const total=SHADOWROCKET_ACCOUNTS.length;
-
-  if(total===0){
-    return;
-  }
-
-  currentAccountIndex=(currentAccountIndex+1)%total;
-  updateAccountView();
+function saveGuideSessionState(endAt) {
+  try {
+    localStorage.setItem(
+      GUIDE_PERSIST_KEY,
+      JSON.stringify({
+        app: "shadowrocket",
+        endAt: endAt
+      })
+    );
+  } catch {}
 }
 
-function copyText(text,button){
-  if(!text){
-    button.textContent="لا يوجد نص للنسخ";
+function clearGuideSessionState() {
+  try {
+    localStorage.removeItem(GUIDE_PERSIST_KEY);
+  } catch {}
+}
 
-    setTimeout(function(){
-      button.textContent=translations[currentLang].copyEmail;
-    },1500);
+function getValidGuideSessionState() {
+  try {
+    const raw = JSON.parse(
+      localStorage.getItem(GUIDE_PERSIST_KEY) || "null"
+    );
 
-    return;
+    if (!raw || !raw.endAt) return null;
+
+    if (Date.now() < Number(raw.endAt)) {
+      return {
+        endAt: Number(raw.endAt)
+      };
+    }
+
+    clearGuideSessionState();
+    return null;
+  } catch {
+    return null;
   }
+}
 
-  if(navigator.clipboard&&navigator.clipboard.writeText){
-    navigator.clipboard.writeText(text).then(function(){
-      const old=button.textContent;
-      button.textContent="تم النسخ";
+function saveCopyCooldownMap(mapObj) {
+  try {
+    localStorage.setItem(
+      COPY_COOLDOWN_KEY,
+      JSON.stringify(mapObj)
+    );
+  } catch {}
+}
 
-      setTimeout(function(){
-        button.textContent=old;
-      },1500);
-    }).catch(function(){
-      fallbackCopy(text,button);
+function clearCopyCooldowns() {
+  try {
+    localStorage.removeItem(COPY_COOLDOWN_KEY);
+  } catch {}
+}
+
+function getStoredCopyCooldowns() {
+  try {
+    const raw = JSON.parse(
+      localStorage.getItem(COPY_COOLDOWN_KEY) || "{}"
+    );
+
+    const now = Date.now();
+    const cleaned = {};
+    const seconds = {
+      email: 0,
+      password: 0
+    };
+
+    ["email", "password"].forEach(key => {
+      const endAt = Number(raw[key] || 0);
+
+      if (endAt > now) {
+        cleaned[key] = endAt;
+        seconds[key] = Math.ceil((endAt - now) / 1000);
+      }
     });
-  }else{
-    fallbackCopy(text,button);
+
+    saveCopyCooldownMap(cleaned);
+    return seconds;
+  } catch {
+    return {
+      email: 0,
+      password: 0
+    };
   }
 }
 
-function fallbackCopy(text,button){
-  const area=document.createElement("textarea");
-  area.value=text;
-  document.body.appendChild(area);
-  area.select();
+function getJoinedMap() {
+  try {
+    const raw = JSON.parse(
+      localStorage.getItem(STORAGE_JOIN_KEY) || "{}"
+    );
 
-  try{
-    document.execCommand("copy");
-    const old=button.textContent;
-    button.textContent="تم النسخ";
+    const now = Date.now();
+    const cleaned = {};
 
-    setTimeout(function(){
-      button.textContent=old;
-    },1500);
-  }catch(err){
-    console.error(err);
+    for (const key of REQUIRED_TARGETS) {
+      if (raw[key] && (now - raw[key]) < FIVE_MINUTES_MS) {
+        cleaned[key] = raw[key];
+      }
+    }
+
+    localStorage.setItem(
+      STORAGE_JOIN_KEY,
+      JSON.stringify(cleaned)
+    );
+
+    return cleaned;
+  } catch {
+    return {};
+  }
+}
+
+function markJoined(target) {
+  const map = getJoinedMap();
+
+  map[target] = Date.now();
+
+  localStorage.setItem(
+    STORAGE_JOIN_KEY,
+    JSON.stringify(map)
+  );
+
+  updateJoinButtonsUI();
+}
+
+function updateJoinButtonsUI() {
+  const lang = localStorage.getItem(LANG_KEY) || "en";
+  const d = T[lang] || T.en;
+  const map = getJoinedMap();
+
+  document.querySelectorAll(".kurd-join-btn").forEach(btn => {
+    const target = btn.getAttribute("data-target");
+    const statusEl = btn.querySelector(".join-status");
+
+    if (!statusEl) return;
+
+    btn.classList.remove("joined");
+
+    if (countdowns[target]) {
+      statusEl.textContent = d.waitText(countdowns[target]);
+      statusEl.style.color = "#d97706";
+    } else if (map[target]) {
+      statusEl.textContent = d.joinedText || "✓ Completed";
+      statusEl.style.color = "#15803d";
+      btn.classList.add("joined");
+    } else {
+      statusEl.textContent = "↗";
+      statusEl.style.color = "";
+    }
+  });
+
+  const allDone = REQUIRED_TARGETS.every(
+    target => Boolean(map[target])
+  );
+
+  const redBox = document.getElementById(
+    "kurd0o-red-account-box"
+  );
+
+  if (redBox) {
+    redBox.classList.toggle("show", allDone);
+  }
+}
+
+function handleJoinTarget(target, url) {
+  if (!REQUIRED_TARGETS.includes(target)) return;
+  if (getJoinedMap()[target]) return;
+  if (timers[target]) return;
+
+  window.open(url, "_blank", "noopener,noreferrer");
+
+  let sec = 5;
+  countdowns[target] = sec;
+
+  updateJoinButtonsUI();
+
+  timers[target] = setInterval(() => {
+    sec -= 1;
+
+    if (sec <= 0) {
+      clearInterval(timers[target]);
+
+      delete timers[target];
+      delete countdowns[target];
+
+      markJoined(target);
+    } else {
+      countdowns[target] = sec;
+      updateJoinButtonsUI();
+    }
+  }, 1000);
+}
+
+function openJoinPageView() {
+  currentSelectedApp = "shadowrocket";
+
+  clearGuideSessionState();
+  clearCopyCooldowns();
+
+  const lang = localStorage.getItem(LANG_KEY) || "en";
+  const d = T[lang] || T.en;
+
+  document.getElementById("kurd0o-main-site-content").style.display = "none";
+  document.getElementById("kurd0o-step-guide-view").classList.remove("active");
+
+  const view = document.getElementById("kurd0o-join-page-view");
+  view.classList.add("active");
+
+  document.getElementById("join-page-title").textContent = "Shadowrocket";
+  document.getElementById("join-page-sub").textContent = d.modalSr;
+  document.getElementById("kurd0o-red-account-btn").textContent = d.redBtnSr;
+
+  updateJoinButtonsUI();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function openStepGuideView(isRestore) {
+  currentSelectedApp = "shadowrocket";
+
+  document.getElementById("kurd0o-main-site-content").style.display = "none";
+  document.getElementById("kurd0o-join-page-view").classList.remove("active");
+  document.getElementById("kurd0o-step-guide-view").classList.add("active");
+
+  if (!isRestore) {
+    resetSessionTimer();
+  } else {
+    updateSessionTimerUI();
   }
 
-  document.body.removeChild(area);
+  updateAccountUI();
+  updateCredButtonsUI();
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-elements.copyEmail.addEventListener("click",function(){
-  const account=SHADOWROCKET_ACCOUNTS[currentAccountIndex];
-  copyText(account?account.email:"",elements.copyEmail);
-});
+function backToJoinView() {
+  clearGuideSessionState();
+  clearCopyCooldowns();
 
-elements.copyPass.addEventListener("click",function(){
-  const account=SHADOWROCKET_ACCOUNTS[currentAccountIndex];
-  copyText(account?account.password:"",elements.copyPass);
-});
+  document.getElementById("kurd0o-step-guide-view").classList.remove("active");
+  document.getElementById("kurd0o-join-page-view").classList.add("active");
 
-elements.changeAccount.addEventListener("click",changeAccount);
-document.getElementById("srBtn").addEventListener("click",function(){
-  openJoinPage();
-});
-
-elements.goAccount.addEventListener("click",function(){
-  showPage("account");
-  updateAccountView();
-});
-
-const savedLang=localStorage.getItem("kurd0o_lang");
-
-if(savedLang==="ar"||savedLang==="en"){
-  currentLang=savedLang;
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-const savedAccountIndex=localStorage.getItem("kurd0o_account_index");
+function backToMainSiteView() {
+  clearGuideSessionState();
+  clearCopyCooldowns();
 
-if(savedAccountIndex!==null){
-  currentAccountIndex=parseInt(savedAccountIndex,10)||0;
+  document.getElementById("kurd0o-join-page-view").classList.remove("active");
+  document.getElementById("kurd0o-step-guide-view").classList.remove("active");
+  document.getElementById("kurd0o-main-site-content").style.display = "block";
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-applyLanguage();
-restorePage();
+function resetSessionTimer() {
+  sessionEndAt = Date.now() + SESSION_DURATION_MS;
+  saveGuideSessionState(sessionEndAt);
+  updateSessionTimerUI();
+}
+
+function updateSessionTimerUI() {
+  const lang = localStorage.getItem(LANG_KEY) || "en";
+  const d = T[lang] || T.en;
+
+  const timerEl = document.getElementById("ses-timer-txt");
+  const guideView = document.getElementById("kurd0o-step-guide-view");
+
+  const guideActive = guideView && guideView.classList.contains("active");
+
+  const diffSec = Math.max(
+    0,
+    Math.floor((sessionEndAt - Date.now()) / 1000)
+  );
+
+  if (diffSec <= 0) {
+    if (timerEl) timerEl.textContent = d.sesExpired;
+
+    if (guideActive) {
+      clearGuideSessionState();
+      clearCopyCooldowns();
+      backToMainSiteView();
+    }
+  } else {
+    if (timerEl) {
+      const mins = Math.floor(diffSec / 60);
+      const secs = diffSec % 60;
+
+      timerEl.textContent = d.sesRem(mins, secs);
+    }
+  }
+}
+
+function updateCredButtonsUI() {
+  const lang = localStorage.getItem(LANG_KEY) || "en";
+  const d = T[lang] || T.en;
+
+  document.querySelectorAll(".cred-copy-btn").forEach(btn => {
+    const type = btn.getAttribute("data-cred");
+    const label = btn.querySelector(".copy-btn-label");
+    const remaining = copyCooldowns[type] || 0;
+
+    if (remaining > 0) {
+      btn.disabled = true;
+      if (label) label.textContent = d.sesWait(remaining);
+    } else {
+      btn.disabled = false;
+      if (label) label.textContent = d.sesCopy;
+    }
+  });
+}
+
+function handleCredCopyClick(type) {
+  if (!["email", "password"].includes(type)) return;
+  if ((copyCooldowns[type] || 0) > 0) return;
+
+  pendingCredType = type;
+
+  const modal = document.getElementById("kurd0o-copy-modal");
+  if (modal) modal.classList.add("open");
+}
+
+function closeCredModal() {
+  pendingCredType = null;
+
+  const modal = document.getElementById("kurd0o-copy-modal");
+  if (modal) modal.classList.remove("open");
+}
+
+function runCooldownTicker(type, endAt) {
+  if (copyIntervals[type]) {
+    clearInterval(copyIntervals[type]);
+  }
+
+  const tick = () => {
+    const remaining = Math.max(
+      0,
+      Math.ceil((endAt - Date.now()) / 1000)
+    );
+
+    copyCooldowns[type] = remaining;
+
+    if (remaining <= 0) {
+      clearInterval(copyIntervals[type]);
+      delete copyIntervals[type];
+
+      try {
+        const map = JSON.parse(
+          localStorage.getItem(COPY_COOLDOWN_KEY) || "{}"
+        );
+
+        delete map[type];
+        saveCopyCooldownMap(map);
+      } catch {}
+    }
+
+    updateCredButtonsUI();
+  };
+
+  tick();
+
+  if (Date.now() < endAt) {
+    copyIntervals[type] = setInterval(tick, 500);
+  }
+}
+
+function startCredCooldown(type) {
+  const endAt = Date.now() + COPY_COOLDOWN_SEC * 1000;
+
+  let stored = {};
+
+  try {
+    stored = JSON.parse(
+      localStorage.getItem(COPY_COOLDOWN_KEY) || "{}"
+    );
+  } catch {}
+
+  stored[type] = endAt;
+  saveCopyCooldownMap(stored);
+
+  runCooldownTicker(type, endAt);
+}
+
+function restoreCredCooldowns() {
+  let raw = {};
+
+  try {
+    raw = JSON.parse(
+      localStorage.getItem(COPY_COOLDOWN_KEY) || "{}"
+    );
+  } catch {}
+
+  const initialSeconds = getStoredCopyCooldowns();
+
+  ["email", "password"].forEach(type => {
+    if (initialSeconds[type] > 0 && raw[type]) {
+      runCooldownTicker(type, Number(raw[type]));
+    } else {
+      copyCooldowns[type] = 0;
+    }
+  });
+
+  updateCredButtonsUI();
+}
+
+function confirmCredCopy() {
+  const type = pendingCredType;
+
+  closeCredModal();
+
+  if (!type) return;
+
+  const account = getCurrentAccount();
+  const value = account[type] || "";
+
+  if (!value) return;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(value).catch(() => {});
+  }
+
+  const lang = localStorage.getItem(LANG_KEY) || "en";
+  const d = T[lang] || T.en;
+
+  const btn = document.querySelector(
+    `.cred-copy-btn[data-cred="${type}"]`
+  );
+
+  const label = btn
+    ? btn.querySelector(".copy-btn-label")
+    : null;
+
+  if (label) label.textContent = d.sesCopied;
+
+  startCredCooldown(type);
+}
+
+function toggleDrawer(e) {
+  e.stopPropagation();
+
+  document.getElementById("lang-dropdown").classList.remove("show");
+  document.getElementById("side-drawer").classList.toggle("show");
+}
+
+function toggleLangDropdown(e) {
+  e.stopPropagation();
+
+  document.getElementById("side-drawer").classList.remove("show");
+  document.getElementById("lang-dropdown").classList.toggle("show");
+}
+
+document.addEventListener("click", () => {
+  const drawer = document.getElementById("side-drawer");
+  const dropdown = document.getElementById("lang-dropdown");
+
+  if (drawer) drawer.classList.remove("show");
+  if (dropdown) dropdown.classList.remove("show");
+});
+
+function setHtml(id, value) {
+  const element = document.getElementById(id);
+
+  if (element) {
+    element.innerHTML = value;
+  }
+}
+
+function applyLang(lang) {
+  const d = T[lang] || T.en;
+
+  localStorage.setItem(LANG_KEY, lang);
+
+  document.documentElement.lang = lang;
+  document.documentElement.dir = d.dir;
+
+  const langCurrent = document.getElementById("lang-current");
+
+  if (langCurrent) {
+    langCurrent.textContent = LANG_LABELS[lang] || LANG_LABELS.en;
+  }
+
+  const dropdown = document.getElementById("lang-dropdown");
+
+  if (dropdown) {
+    dropdown.classList.remove("show");
+  }
+
+  setHtml("drawer-buy", d.buy);
+  setHtml("drawer-contact", d.contact);
+
+  setHtml("page-h1", d.h1);
+  setHtml("p-1", d.p1);
+  setHtml("p-2", d.p2);
+  setHtml("p-3", d.p3);
+
+  setHtml("c2-title-text", d.c2title);
+  setHtml("c2-p1", d.c2p1);
+  setHtml("c2-p2", d.c2p2);
+  setHtml("c2-li1", d.c2li1);
+  setHtml("c2-li2", d.c2li2);
+  setHtml("c2-li3", d.c2li3);
+  setHtml("c2-p3", d.c2p3);
+
+  setHtml("c3-surv-title", d.survTitle);
+  setHtml("c3-surv-p1", d.survP1);
+  setHtml("c3-surv-p2", d.survP2);
+  setHtml("c3-tip-box", d.tipBox);
+  setHtml("c3-crea-title", d.creaTitle);
+  setHtml("c3-crea-p1", d.creaP1);
+  setHtml("c3-crea-li1", d.creaLi1);
+  setHtml("c3-crea-li2", d.creaLi2);
+
+  setHtml("c4-dev-title", d.devTitle);
+  setHtml("c4-dev-p1", d.devP1);
+  setHtml("c4-dev-p2", d.devP2);
+  setHtml("c4-mkt-title", d.mktTitle);
+  setHtml("c4-mkt-p1", d.mktP1);
+  setHtml("c4-mkt-li1", d.mktLi1);
+  setHtml("c4-mkt-li2", d.mktLi2);
+  setHtml("c4-mkt-li3", d.mktLi3);
+
+  setHtml("c5-warn-full", d.warnFull);
+  setHtml("c5-sr-title", d.srTitle);
+  setHtml("c5-app-btn", d.appBtn);
+  setHtml("c5-stat-rating-lbl", d.ratingLbl);
+  setHtml("c5-stat-age-lbl", d.ageLbl);
+  setHtml("c5-stat-age-sub", d.ageSub);
+  setHtml("c5-stat-rank-lbl", d.rankLbl);
+  setHtml("c5-stat-rank-sub", d.rankSub);
+  setHtml("c5-whats-new", d.whatsNew);
+  setHtml("c5-sr-p1", d.srP1);
+  setHtml("c5-sr-p2", d.srP2);
+  setHtml("c5-sr-li1", d.srLi1);
+  setHtml("c5-sr-li2", d.srLi2);
+
+  setHtml("c6-sr-li1", d.srLi3);
+  setHtml("c6-sr-li2", d.srLi4);
+  setHtml("c6-id-title", d.idTitle);
+  setHtml("c6-id-p1", d.idP1);
+
+  setHtml("btn-sr-free", d.srBtn);
+  setHtml("guide-appstore-title", d.guideTitle);
+  setHtml("strict-id-warning", d.strictWarning);
+
+  setHtml("as-step-1", d.as1);
+  setHtml("as-step-2", d.as2);
+  setHtml("as-step-3", d.as3);
+  setHtml("as-step-4", d.as4);
+  setHtml("as-step-5", d.as5);
+
+  setHtml("comm-title", d.commTitle);
+  setHtml("comm-desc", d.commDesc);
+  setHtml("comm-li-tiktok", d.commTikTok);
+  setHtml("comm-li-discord", d.commDiscord);
+  setHtml("comm-li-telegram", d.commTelegram);
+  setHtml("comm-li-shop", d.commShop);
+
+  setHtml("btn-back-site", d.backSite);
+  setHtml("btn-back-join", d.backJoin);
+
+  setHtml("g-kicker", d.gKicker);
+  setHtml("g-title", d.gTitle);
+  setHtml("g-sub", d.gSub);
+
+  setHtml("g-s1-t", d.gS1T);
+  setHtml("g-s1-d", d.gS1D);
+  setHtml("g-s2-t", d.gS2T);
+  setHtml("g-s2-d", d.gS2D);
+  setHtml("g-s3-t", d.gS3T);
+  setHtml("g-s3-d", d.gS3D);
+
+  setHtml("ses-active-txt", d.sesActive);
+  setHtml("ses-notice-txt", d.sesNotice);
+  setHtml("ses-apple-lbl", d.sesApple);
+  setHtml("ses-pass-lbl", d.sesPass);
+  setHtml("ses-footer-txt", d.sesFooter);
+
+  setHtml("cred-modal-title", d.sesModalTitle);
+  setHtml("cred-modal-desc", d.sesModalDesc);
+  setHtml("cred-modal-cancel", d.sesCancel);
+  setHtml("cred-modal-confirm", d.sesConfirm);
+
+  setHtml("sup-kicker", d.supKicker);
+  setHtml("sup-title", d.supTitle);
+  setHtml("sup-desc", d.supDesc);
+  setHtml("sup-discord-txt", d.supDiscord);
+  setHtml("sup-tiktok-txt", d.supTikTok);
+
+  const joinView = document.getElementById("kurd0o-join-page-view");
+
+  if (joinView && joinView.classList.contains("active")) {
+    document.getElementById("join-page-sub").textContent = d.modalSr;
+    document.getElementById("kurd0o-red-account-btn").textContent = d.redBtnSr;
+  }
+
+  updateJoinButtonsUI();
+  updateSessionTimerUI();
+  updateCredButtonsUI();
+  updateAccountUI();
+}
+
+const BASE_TRANSLATION = {
+  dir: "ltr",
+
+  buy: "Apple Accounts",
+  contact: "Contact & Support",
+
+  h1: "Shadowrocket for iOS – Complete Guide",
+  p1: "Discover Shadowrocket, a powerful network utility for Apple devices.",
+  p2: "Manage your network connections with flexible configuration rules.",
+  p3: "Explore the main features and learn how to download Shadowrocket.",
+
+  c2title: "What makes Shadowrocket useful?",
+  c2p1: "Shadowrocket is a rule-based proxy utility for managing network traffic.",
+  c2p2: "It provides flexible settings and tools for controlling network connections.",
+  c2li1: "🔒 Flexible traffic management.",
+  c2li2: "📊 Real-time network traffic monitoring.",
+  c2li3: "🌐 Support for modern DNS configurations.",
+  c2p3: "Configure your network according to your needs.",
+
+  survTitle: "Network Management",
+  survP1: "Manage network connections with configurable rules and supported proxy protocols.",
+  survP2: "Use different rules to control how network requests are handled.",
+  tipBox: "💡 Tip: Always use configurations from sources you trust.",
+
+  creaTitle: "Flexible Configuration",
+  creaP1: "Shadowrocket provides tools to organize network traffic.",
+  creaLi1: "🌐 Domain-based routing rules.",
+  creaLi2: "🔀 Different policies for different destinations.",
+
+  devTitle: "Experience on iPhone and iPad",
+  devP1: "Shadowrocket is designed for Apple's mobile devices.",
+  devP2: "Manage configurations and monitor network activity from your device.",
+
+  mktTitle: "Features and Configuration",
+  mktP1: "Explore the available configuration options:",
+  mktLi1: "<strong>Rules:</strong> Manage traffic according to specific conditions.",
+  mktLi2: "<strong>DNS:</strong> Configure supported DNS services.",
+  mktLi3: "<strong>Monitoring:</strong> View network activity.",
+
+  warnFull: "⚠️ <strong>Note:</strong> Only use configuration files and services from sources you trust.",
+
+  srTitle: "What Is Shadowrocket?",
+  appBtn: "Open",
+  ratingLbl: "APP INFORMATION",
+  ageLbl: "AGE",
+  ageSub: "Years",
+  rankLbl: "CATEGORY",
+  rankSub: "Utilities",
+  whatsNew: "What's New >",
+
+  srP1: "Shadowrocket is a network utility for users in the Apple ecosystem.",
+  srP2: "It is a <strong>rule-based proxy utility</strong> that helps manage network connections.",
+  srLi1: "🔒 Flexible network traffic management.",
+  srLi2: "📊 Real-time network traffic monitoring.",
+  srLi3: "🌐 Modern DNS support.",
+  srLi4: "📲 Designed for Apple devices.",
+
+  idTitle: "Get a Shadowrocket Account",
+  idP1: 'Use the available shared account to download <strong>Shadowrocket</strong>, or visit <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">Kurd0o Store</a>.',
+
+  srBtn: "GET FREE SHADOWROCKET ACCOUNT",
+
+  guideTitle: "Safe App Store Sign-In Guide",
+  strictWarning: "IMPORTANT: NEVER SIGN IN TO DEVICE SETTINGS OR ICLOUD WITH A SHARED ACCOUNT. SIGN IN ONLY INSIDE THE APP STORE. SIGN OUT AFTER DOWNLOADING.",
+
+  modalSr: "Visit the four Telegram channels and Discord to continue to the Shadowrocket account.",
+  waitText: sec => `Wait ${sec}s...`,
+  joinedText: "✓ Completed",
+
+  backSite: "← Back to Site",
+  backJoin: "← Back",
+
+  redBtnSr: "Continue to Shadowrocket Accounts",
+
+  gKicker: "STEP BY STEP",
+  gTitle: "How to sign in and download Shadowrocket",
+  gSub: "Follow these steps before using the account.",
+
+  gS1T: "Open App Store",
+  gS1D: "Open the App Store on your iPhone or iPad.",
+  gS2T: "Search for Shadowrocket",
+  gS2D: "Search for the application using the App Store search bar.",
+  gS3T: "Sign out after downloading",
+  gS3D: "After downloading, sign out of the shared account from the App Store.",
+
+  sesActive: "Active session",
+  sesRem: (m, s) => `${m}:${String(s).padStart(2, "0")} left`,
+  sesExpired: "Expired",
+
+  sesNotice: "🔒 Account details are protected. Each copy button has a 30-second cooldown. Read the notice before copying.",
+  sesApple: "Apple Account",
+  sesPass: "Password",
+
+  sesCopy: "Copy",
+  sesWait: s => `Wait ${s}s`,
+  sesCopied: "Copied!",
+
+  sesFooter: "⏳ This session is valid for 10 minutes. If it expires, return to the main page.",
+
+  sesModalTitle: "Copy Notice",
+  sesModalDesc: "Sign in only inside the App Store and sign out after downloading. Do you agree?",
+  sesCancel: "Cancel",
+  sesConfirm: "Agree & Copy",
+
+  supKicker: "NEED HELP?",
+  supTitle: "Contact and Updates",
+  supDesc: "For assistance and updates, join the Kurd0o community.",
+  supDiscord: "Discord Kurd0o ↗",
+  supTikTok: "TikTok Kurd0o ↗",
+
+  as1: "<strong>Step 1:</strong> Open the App Store.",
+  as2: "<strong>Step 2:</strong> Tap your profile picture and sign out of the old account.",
+  as3: "<strong>Step 3:</strong> Enter the provided account email and password.",
+  as4: "<strong>Step 4:</strong> Follow the instructions displayed by Apple.",
+  as5: "<strong>Step 5:</strong> Download the application and sign out.",
+
+  commTitle: "Kurd0o Community",
+  commDesc: "Join the Kurd0o channels to receive updates.",
+  commTikTok: '🎵 TikTok: <a href="https://www.tiktok.com/@mziri0y1?_r=1&_t=ZS-9BXaUbAZJQL" target="_blank" rel="noopener noreferrer" class="blue">@mziri0y1</a>',
+  commDiscord: '🎮 Discord: <a href="https://discord.gg/Tn4U989mmz" target="_blank" rel="noopener noreferrer" class="blue">Join Discord</a>',
+  commTelegram: '✈️ Telegram: <a href="https://t.me/Kurd0o1" target="_blank" rel="noopener noreferrer" class="blue">@Kurd0o1</a>',
+  commShop: '🛍️ Store: <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">KurdoAccounts</a>'
+};
+
+const T = {
+
+  en: { ...BASE_TRANSLATION },
+
+  ar: {
+    ...BASE_TRANSLATION,
+    dir: "rtl",
+
+    buy: "حسابات أبل",
+    contact: "تواصل واستفسار",
+
+    h1: "Shadowrocket لنظام iOS – الدليل الكامل",
+    p1: "اكتشف تطبيق Shadowrocket، أداة قوية لإدارة الشبكة على أجهزة Apple.",
+    p2: "تحكم باتصالات الشبكة باستخدام قواعد وإعدادات مرنة.",
+    p3: "تعرف على أهم الميزات وطريقة تحميل Shadowrocket.",
+
+    c2title: "ما الذي يجعل Shadowrocket مفيداً؟",
+    c2p1: "Shadowrocket أداة بروكسي تعتمد على القواعد لإدارة حركة الشبكة.",
+    c2p2: "يوفر إعدادات وأدوات مرنة للتحكم باتصالات الشبكة.",
+    c2li1: "🔒 إدارة مرنة لحركة الشبكة.",
+    c2li2: "📊 مراقبة حركة البيانات بشكل مباشر.",
+    c2li3: "🌐 دعم إعدادات DNS الحديثة.",
+    c2p3: "يمكنك ضبط إعدادات الشبكة وفق احتياجاتك.",
+
+    survTitle: "إدارة الشبكة",
+    survP1: "إدارة اتصالات الشبكة باستخدام قواعد قابلة للتخصيص وبروتوكولات البروكسي المدعومة.",
+    survP2: "استخدم قواعد مختلفة للتحكم بطريقة معالجة طلبات الشبكة.",
+    tipBox: "💡 نصيحة: استخدم دائماً الإعدادات من مصادر موثوقة.",
+
+    creaTitle: "إعدادات مرنة",
+    creaP1: "يوفر Shadowrocket أدوات لتنظيم حركة الشبكة.",
+    creaLi1: "🌐 قواعد توجيه تعتمد على النطاقات.",
+    creaLi2: "🔀 سياسات مختلفة لوجهات الشبكة المختلفة.",
+
+    devTitle: "التجربة على iPhone و iPad",
+    devP1: "تم تصميم Shadowrocket لأجهزة Apple المحمولة.",
+    devP2: "يمكنك إدارة الإعدادات ومراقبة نشاط الشبكة من جهازك.",
+
+    mktTitle: "الميزات والإعدادات",
+    mktP1: "استكشف خيارات الإعداد المتاحة:",
+    mktLi1: "<strong>القواعد:</strong> إدارة حركة الشبكة وفق شروط محددة.",
+    mktLi2: "<strong>DNS:</strong> إعداد خدمات DNS المدعومة.",
+    mktLi3: "<strong>المراقبة:</strong> عرض نشاط الشبكة.",
+
+    warnFull: "⚠️ <strong>تنبيه:</strong> استخدم ملفات الإعدادات والخدمات من مصادر موثوقة فقط.",
+
+    srTitle: "ما هو تطبيق Shadowrocket؟",
+    ratingLbl: "معلومات التطبيق",
+    rankSub: "أدوات",
+
+    srP1: "Shadowrocket أداة لإدارة الشبكة لمستخدمي أجهزة Apple.",
+    srP2: "وهو <strong>تطبيق بروكسي يعتمد على القواعد</strong> ويساعد في إدارة اتصالات الشبكة.",
+    srLi1: "🔒 إدارة مرنة لحركة الشبكة.",
+    srLi2: "📊 مراقبة حركة الشبكة بشكل مباشر.",
+    srLi3: "🌐 دعم DNS الحديث.",
+    srLi4: "📲 مصمم لأجهزة Apple.",
+
+    idTitle: "احصل على حساب Shadowrocket",
+    idP1: 'استخدم الحساب المتاح لتحميل <strong>Shadowrocket</strong>، أو زر <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">متجر Kurd0o</a>.',
+
+    srBtn: "احصل على حساب Shadowrocket مجاناً",
+
+    strictWarning: "تنبيه مهم: لا تسجل الدخول بالحساب المشترك في إعدادات الجهاز أو iCloud. سجّل الدخول داخل App Store فقط، ثم سجّل الخروج بعد التحميل.",
+
+    modalSr: "انتقل إلى قنوات تيليغرام الأربعة وديسكورد للمتابعة إلى حساب Shadowrocket.",
+    waitText: sec => `انتظر ${sec} ثوانٍ...`,
+    joinedText: "✓ اكتمل",
+
+    redBtnSr: "الانتقال إلى حسابات Shadowrocket",
+
+    gTitle: "طريقة تسجيل الدخول وتحميل Shadowrocket",
+    gSub: "اتبع هذه الخطوات قبل استخدام الحساب.",
+    gS1T: "افتح App Store",
+    gS1D: "افتح متجر App Store على جهاز iPhone أو iPad.",
+    gS2T: "ابحث عن Shadowrocket",
+    gS2D: "ابحث عن التطبيق باستخدام شريط البحث في App Store.",
+    gS3T: "سجّل الخروج بعد التحميل",
+    gS3D: "بعد التحميل، سجّل الخروج من الحساب المشترك داخل App Store.",
+
+    sesActive: "الجلسة نشطة",
+    sesRem: (m, s) => `متبقي ${m}:${String(s).padStart(2, "0")}`,
+    sesExpired: "انتهت",
+    sesNotice: "🔒 بيانات الحساب مخفية. لكل زر نسخ فترة انتظار 30 ثانية. اقرأ الإشعار قبل النسخ.",
+    sesApple: "حساب Apple",
+    sesPass: "كلمة المرور",
+    sesCopy: "نسخ",
+    sesWait: s => `انتظر ${s} ثانية`,
+    sesCopied: "تم النسخ!",
+    sesFooter: "⏳ الجلسة صالحة لمدة 10 دقائق. إذا انتهت، ارجع إلى الصفحة الرئيسية.",
+    sesModalTitle: "إشعار النسخ",
+    sesModalDesc: "سجّل الدخول داخل App Store فقط، وسجّل الخروج بعد التحميل. هل توافق؟",
+    sesCancel: "إلغاء",
+    sesConfirm: "موافق ونسخ",
+
+    supKicker: "هل تحتاج مساعدة؟",
+    supTitle: "التواصل والتحديثات",
+    supDesc: "للحصول على المساعدة والتحديثات، انضم إلى مجتمع Kurd0o.",
+    supDiscord: "ديسكورد Kurd0o ↗",
+    supTikTok: "تيك توك Kurd0o ↗",
+
+    as1: "<strong>الخطوة 1:</strong> افتح App Store.",
+    as2: "<strong>الخطوة 2:</strong> اضغط على صورة حسابك وسجّل الخروج من الحساب القديم.",
+    as3: "<strong>الخطوة 3:</strong> أدخل البريد الإلكتروني وكلمة المرور المقدمة.",
+    as4: "<strong>الخطوة 4:</strong> اتبع التعليمات التي تعرضها Apple.",
+    as5: "<strong>الخطوة 5:</strong> حمّل التطبيق ثم سجّل الخروج.",
+
+    commTitle: "مجتمع Kurd0o",
+    commDesc: "انضم إلى قنوات Kurd0o لتلقي التحديثات."
+  },
+
+  ku: {
+    ...BASE_TRANSLATION,
+    dir: "rtl",
+
+    buy: "هژمارێن Apple",
+    contact: "پەیوەندی و پرسیار",
+
+    h1: "Shadowrocket بۆ iOS – ڕێنماییا تەمام",
+    p1: "Shadowrocket بناسە، ئامرازەکەیە بۆ بەڕێڤەبرنا تۆڕێ ل سەر ئامێرێن Apple.",
+    p2: "پەیوەندیێن تۆڕێ ب ڕێکا ڕێساکێن جیاواز ڕێک بخە.",
+    p3: "تایبەتمەندیێن سەرەکی و چاوانیا داگرتنا Shadowrocket ببینە.",
+
+    c2title: "چ تشتێ Shadowrocket مفید دکەت؟",
+    c2p1: "Shadowrocket ئامرازەکا Proxy یە بۆ بەڕێڤەبرنا هاتوچۆیا تۆڕێ.",
+    c2p2: "ئامراز و ڕێکخستنێن جیاواز دابین دکەت بۆ کۆنترۆلکرنا پەیوەندیێن تۆڕێ.",
+    c2li1: "🔒 بەڕێڤەبرنا هاتوچۆیا تۆڕێ.",
+    c2li2: "📊 چاڤدێریکرنا هاتوچۆیا داتا ب شێوەیێ راستەوخۆ.",
+    c2li3: "🌐 پشتەڤانیا DNS یا نوی.",
+    c2p3: "ڕێکخستنێن تۆڕێ بەپێی پێدڤیێن خۆ ڕێک بخە.",
+
+    survTitle: "بەڕێڤەبرنا تۆڕێ",
+    survP1: "پەیوەندیێن تۆڕێ ب ڕێکا ڕێسایێن جیاواز بەڕێڤە ببە.",
+    survP2: "ڕێسایێن جیاواز بکار بینە بۆ کۆنترۆلکرنا داواکاریێن تۆڕێ.",
+    tipBox: "💡 شیرەت: تەنێ ڕێکخستنێن ژ سەرچاوەیێن باوەری بکار بینە.",
+
+    creaTitle: "ڕێکخستنێن نەرم",
+    creaP1: "Shadowrocket ئامرازان دابین دکەت بۆ ڕێکخستنا هاتوچۆیا تۆڕێ.",
+    creaLi1: "🌐 ڕێسایێن Domain.",
+    creaLi2: "🔀 سیاسەتێن جیاواز بۆ ئارمانجێن تۆڕێ.",
+
+    devTitle: "ئەزموون ل سەر iPhone و iPad",
+    devP1: "Shadowrocket بۆ ئامێرێن Apple یێن موبایل هاتیە دیزاینکرن.",
+    devP2: "ڕێکخستنێن خۆ بەڕێڤە ببە و چاڤدێرییا چالاکیا تۆڕێ بکە.",
+
+    mktTitle: "تایبەتمەندی و ڕێکخستن",
+    mktP1: "هەلبژاردەیێن ڕێکخستنێ ببینە:",
+    mktLi1: "<strong>Rules:</strong> بەڕێڤەبرنا هاتوچۆیا تۆڕێ.",
+    mktLi2: "<strong>DNS:</strong> ڕێکخستنا خزمەتگوزاریێن DNS.",
+    mktLi3: "<strong>Monitoring:</strong> دیتنا چالاکیا تۆڕێ.",
+
+    warnFull: "⚠️ <strong>ئاگەهداری:</strong> تەنێ فایل و خزمەتگوزاریێن ژ سەرچاوەیێن باوەری بکار بینە.",
+
+    srTitle: "Shadowrocket چییە؟",
+    srP1: "Shadowrocket ئامرازەکە بۆ بەڕێڤەبرنا تۆڕێ ل سەر ئامێرێن Apple.",
+    srP2: "ئەمە <strong>ئامرازەکا Proxy یە ب پشتبەستن ب ڕێسایان</strong> بۆ بەڕێڤەبرنا پەیوەندیێن تۆڕێ.",
+    srLi1: "🔒 بەڕێڤەبرنا هاتوچۆیا تۆڕێ.",
+    srLi2: "📊 چاڤدێرییا تۆڕێ ب شێوەیێ راستەوخۆ.",
+    srLi3: "🌐 پشتەڤانیا DNS یا نوی.",
+    srLi4: "📲 بۆ ئامێرێن Apple.",
+
+    idTitle: "هژمارەکا Shadowrocket وەرگرە",
+    idP1: 'هژمارا بەردەست بکار بینە بۆ داگرتنا <strong>Shadowrocket</strong>، یان سەردانا <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">فرۆشگەها Kurd0o</a> بکە.',
+
+    srBtn: "هژمارا Shadowrocket یا بێبەرامبەر وەرگرە",
+    strictWarning: "ئاگەهداری: ب هژمارا هاوبەش ل Settings یان iCloud تۆمار مەکە. تەنێ ل App Store تۆمار ببە و پشتی داگرتنێ دەرکەڤە.",
+
+    modalSr: "بۆ چوونا هژمارا Shadowrocket، بچۆ ناڤ چوار کەناڵێن Telegram و Discord.",
+    waitText: sec => `چاوەڕێ بکە ${sec} چرکە...`,
+    joinedText: "✓ تەمام بوو",
+
+    redBtnSr: "بچۆ بۆ هژمارێن Shadowrocket",
+
+    gTitle: "چاوانیا تۆماربوون و داگرتنا Shadowrocket",
+    gSub: "بەری بکارئینانا هژمارێ ئەڤ هەنگاڤان جێبەجێ بکە.",
+    gS1T: "App Store ڤەکە",
+    gS1D: "App Store ل سەر iPhone یان iPad ڤەکە.",
+    gS2T: "Shadowrocket بگەڕێ",
+    gS2D: "ب شێوەیێ راستەوخۆ ناڤێ ئەپێ ل App Store بگەڕێ.",
+    gS3T: "پشتی داگرتنێ دەرکەڤە",
+    gS3D: "پشتی داگرتنێ، ژ هژمارا هاوبەش ل App Store دەرکەڤە.",
+
+    sesActive: "دانیشتن چالاکە",
+    sesExpired: "دەم تەمام بوو",
+    sesNotice: "🔒 زانیاریێن هژمارێ ڤەشارتی نە. هەر دوگمەکا نسخەکرنێ 30 چرکە چاوەڕێ دکەت.",
+    sesApple: "هژمارا Apple",
+    sesPass: "پەیڤا نهێنی",
+    sesCopy: "نسخە بکە",
+    sesCopied: "هاتە نسخەکرن!",
+    sesModalTitle: "ئاگەهداریا نسخەکرنێ",
+    sesModalDesc: "تەنێ ل App Store تۆمار ببە و پشتی داگرتنێ دەرکەڤە. تو رازایی؟",
+    sesCancel: "هەلوەشاندن",
+    sesConfirm: "رازیم و نسخە بکە",
+
+    supKicker: "پێدڤی ب یارمەتیێ؟",
+    supTitle: "پەیوەندی و نویکرن",
+    supDesc: "بۆ یارمەتی و نویکرنێ، بچۆ ناڤ کۆمەڵگەها Kurd0o.",
+
+    as1: "<strong>هەنگاڤا 1:</strong> App Store ڤەکە.",
+    as2: "<strong>هەنگاڤا 2:</strong> وێنەیا هژمارێ بگرە و ژ هژمارا کەڤن دەرکەڤە.",
+    as3: "<strong>هەنگاڤا 3:</strong> ئیمەیڵ و پەیڤا نهێنی یا هاتیە دان بکار بینە.",
+    as4: "<strong>هەنگاڤا 4:</strong> ڕێنماییێن Apple جێبەجێ بکە.",
+    as5: "<strong>هەنگاڤا 5:</strong> ئەپێ دابگرە و پشتی وی دەرکەڤە.",
+
+    commTitle: "کۆمەڵگەها Kurd0o",
+    commDesc: "بۆ وەرگرتنا نویکرنان، بچۆ ناڤ کەناڵێن Kurd0o."
+  },
+
+  vi: {
+    ...BASE_TRANSLATION,
+
+    buy: "Tài khoản Apple",
+    contact: "Liên hệ và hỗ trợ",
+
+    h1: "Shadowrocket cho iOS – Hướng dẫn đầy đủ",
+    p1: "Khám phá Shadowrocket, một công cụ mạng mạnh mẽ dành cho thiết bị Apple.",
+    p2: "Quản lý kết nối mạng bằng các quy tắc cấu hình linh hoạt.",
+    p3: "Tìm hiểu các tính năng chính và cách tải Shadowrocket.",
+
+    c2title: "Điều gì khiến Shadowrocket hữu ích?",
+    c2p1: "Shadowrocket là tiện ích proxy dựa trên quy tắc để quản lý lưu lượng mạng.",
+    c2p2: "Ứng dụng cung cấp các công cụ linh hoạt để kiểm soát kết nối mạng.",
+    c2li1: "🔒 Quản lý lưu lượng mạng linh hoạt.",
+    c2li2: "📊 Theo dõi lưu lượng mạng theo thời gian thực.",
+    c2li3: "🌐 Hỗ trợ cấu hình DNS hiện đại.",
+    c2p3: "Tùy chỉnh cấu hình mạng theo nhu cầu của bạn.",
+
+    survTitle: "Quản lý mạng",
+    survP1: "Quản lý kết nối mạng bằng các quy tắc có thể tùy chỉnh.",
+    survP2: "Sử dụng các quy tắc khác nhau để kiểm soát yêu cầu mạng.",
+    tipBox: "💡 Mẹo: Chỉ sử dụng cấu hình từ nguồn đáng tin cậy.",
+
+    creaTitle: "Cấu hình linh hoạt",
+    creaP1: "Shadowrocket cung cấp công cụ để tổ chức lưu lượng mạng.",
+    creaLi1: "🌐 Quy tắc định tuyến theo tên miền.",
+    creaLi2: "🔀 Chính sách khác nhau cho từng đích mạng.",
+
+    devTitle: "Trải nghiệm trên iPhone và iPad",
+    devP1: "Shadowrocket được thiết kế cho các thiết bị di động của Apple.",
+    devP2: "Quản lý cấu hình và theo dõi hoạt động mạng trên thiết bị.",
+
+    mktTitle: "Tính năng và cấu hình",
+    mktP1: "Khám phá các tùy chọn cấu hình:",
+    mktLi1: "<strong>Rules:</strong> Quản lý lưu lượng theo điều kiện.",
+    mktLi2: "<strong>DNS:</strong> Cấu hình dịch vụ DNS được hỗ trợ.",
+    mktLi3: "<strong>Monitoring:</strong> Xem hoạt động mạng.",
+
+    warnFull: "⚠️ <strong>Lưu ý:</strong> Chỉ sử dụng tệp cấu hình và dịch vụ từ nguồn đáng tin cậy.",
+
+    srTitle: "Shadowrocket là gì?",
+    srP1: "Shadowrocket là tiện ích mạng dành cho người dùng hệ sinh thái Apple.",
+    srP2: "Đây là <strong>tiện ích proxy dựa trên quy tắc</strong> giúp quản lý kết nối mạng.",
+    srLi1: "🔒 Quản lý lưu lượng mạng linh hoạt.",
+    srLi2: "📊 Theo dõi lưu lượng mạng theo thời gian thực.",
+    srLi3: "🌐 Hỗ trợ DNS hiện đại.",
+    srLi4: "📲 Dành cho thiết bị Apple.",
+
+    idTitle: "Nhận tài khoản Shadowrocket",
+    idP1: 'Sử dụng tài khoản có sẵn để tải <strong>Shadowrocket</strong> hoặc truy cập <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">Cửa hàng Kurd0o</a>.',
+
+    srBtn: "NHẬN TÀI KHOẢN SHADOWROCKET MIỄN PHÍ",
+    strictWarning: "LƯU Ý: KHÔNG ĐĂNG NHẬP TÀI KHOẢN CHUNG TRONG CÀI ĐẶT HOẶC ICLOUD. CHỈ ĐĂNG NHẬP TRONG APP STORE VÀ ĐĂNG XUẤT SAU KHI TẢI.",
+
+    modalSr: "Tham gia bốn kênh Telegram và Discord để tiếp tục đến tài khoản Shadowrocket.",
+    waitText: sec => `Chờ ${sec} giây...`,
+    joinedText: "✓ Hoàn tất",
+    redBtnSr: "Đi đến tài khoản Shadowrocket",
+
+    gTitle: "Cách đăng nhập và tải Shadowrocket",
+    gSub: "Thực hiện các bước sau trước khi sử dụng tài khoản.",
+    gS1T: "Mở App Store",
+    gS1D: "Mở App Store trên iPhone hoặc iPad.",
+    gS2T: "Tìm Shadowrocket",
+    gS2D: "Tìm ứng dụng bằng thanh tìm kiếm trong App Store.",
+    gS3T: "Đăng xuất sau khi tải",
+    gS3D: "Sau khi tải, hãy đăng xuất tài khoản dùng chung khỏi App Store.",
+
+    sesActive: "Phiên đang hoạt động",
+    sesExpired: "Hết hạn",
+    sesNotice: "🔒 Thông tin tài khoản được ẩn. Mỗi nút sao chép có thời gian chờ 30 giây.",
+    sesApple: "Tài khoản Apple",
+    sesPass: "Mật khẩu",
+    sesCopy: "Sao chép",
+    sesCopied: "Đã sao chép!",
+    sesModalTitle: "Thông báo sao chép",
+    sesModalDesc: "Chỉ đăng nhập trong App Store và đăng xuất sau khi tải. Bạn đồng ý chứ?",
+    sesCancel: "Hủy",
+    sesConfirm: "Đồng ý và sao chép",
+
+    supKicker: "CẦN TRỢ GIÚP?",
+    supTitle: "Liên hệ và cập nhật",
+    supDesc: "Tham gia cộng đồng Kurd0o để nhận hỗ trợ và cập nhật.",
+
+    commTitle: "Cộng đồng Kurd0o",
+    commDesc: "Tham gia các kênh Kurd0o để nhận thông tin cập nhật."
+  },
+
+  tr: {
+    ...BASE_TRANSLATION,
+
+    buy: "Apple Hesapları",
+    contact: "İletişim ve Destek",
+
+    h1: "iOS için Shadowrocket – Tam Kılavuz",
+    p1: "Apple cihazları için güçlü bir ağ aracı olan Shadowrocket'ı keşfedin.",
+    p2: "Esnek yapılandırma kurallarıyla ağ bağlantılarınızı yönetin.",
+    p3: "Temel özellikleri ve Shadowrocket indirme yöntemini öğrenin.",
+
+    c2title: "Shadowrocket'ı kullanışlı yapan nedir?",
+    c2p1: "Shadowrocket, ağ trafiğini yönetmek için kural tabanlı bir proxy aracıdır.",
+    c2p2: "Ağ bağlantılarını kontrol etmek için esnek araçlar sunar.",
+    c2li1: "🔒 Esnek ağ trafiği yönetimi.",
+    c2li2: "📊 Gerçek zamanlı ağ trafiği izleme.",
+    c2li3: "🌐 Modern DNS yapılandırma desteği.",
+    c2p3: "Ağ ayarlarınızı ihtiyaçlarınıza göre düzenleyin.",
+
+    survTitle: "Ağ Yönetimi",
+    survP1: "Ağ bağlantılarını özelleştirilebilir kurallarla yönetin.",
+    survP2: "Ağ isteklerinin nasıl işleneceğini kontrol etmek için farklı kurallar kullanın.",
+    tipBox: "💡 İpucu: Yalnızca güvendiğiniz kaynaklardan yapılandırma kullanın.",
+
+    creaTitle: "Esnek Yapılandırma",
+    creaP1: "Shadowrocket, ağ trafiğini düzenlemek için araçlar sunar.",
+    creaLi1: "🌐 Alan adına dayalı yönlendirme kuralları.",
+    creaLi2: "🔀 Farklı ağ hedefleri için farklı politikalar.",
+
+    devTitle: "iPhone ve iPad Deneyimi",
+    devP1: "Shadowrocket, Apple mobil cihazları için tasarlanmıştır.",
+    devP2: "Yapılandırmaları yönetin ve ağ etkinliğini cihazınızdan izleyin.",
+
+    mktTitle: "Özellikler ve Yapılandırma",
+    mktP1: "Mevcut yapılandırma seçeneklerini keşfedin:",
+    mktLi1: "<strong>Kurallar:</strong> Trafiği belirli koşullara göre yönetin.",
+    mktLi2: "<strong>DNS:</strong> Desteklenen DNS hizmetlerini yapılandırın.",
+    mktLi3: "<strong>İzleme:</strong> Ağ etkinliğini görüntüleyin.",
+
+    warnFull: "⚠️ <strong>Not:</strong> Yalnızca güvendiğiniz kaynaklardan yapılandırma dosyaları ve hizmetleri kullanın.",
+
+    srTitle: "Shadowrocket Nedir?",
+    srP1: "Shadowrocket, Apple ekosistemi kullanıcıları için bir ağ aracıdır.",
+    srP2: "Ağ bağlantılarını yönetmeye yardımcı olan <strong>kural tabanlı bir proxy aracıdır</strong>.",
+    srLi1: "🔒 Esnek ağ trafiği yönetimi.",
+    srLi2: "📊 Gerçek zamanlı ağ trafiği izleme.",
+    srLi3: "🌐 Modern DNS desteği.",
+    srLi4: "📲 Apple cihazları için tasarlanmıştır.",
+
+    idTitle: "Shadowrocket Hesabı Alın",
+    idP1: '<strong>Shadowrocket</strong> uygulamasını indirmek için mevcut hesabı kullanın veya <a href="https://kurd3.github.io/KurdoAccounts/" target="_blank" rel="noopener noreferrer" class="blue">Kurd0o Mağazası</a> sayfasını ziyaret edin.',
+
+    srBtn: "ÜCRETSİZ SHADOWROCKET HESABI AL",
+    strictWarning: "ÖNEMLİ: PAYLAŞILAN HESAPLA CİHAZ AYARLARINA VEYA ICLOUD'A GİRİŞ YAPMAYIN. YALNIZCA APP STORE'DA OTURUM AÇIN VE İNDİRDİKTEN SONRA ÇIKIŞ YAPIN.",
+
+    modalSr: "Shadowrocket hesabına devam etmek için dört Telegram kanalına ve Discord'a katılın.",
+    waitText: sec => `${sec} saniye bekleyin...`,
+    joinedText: "✓ Tamamlandı",
+    redBtnSr: "Shadowrocket Hesaplarına Git",
+
+    gTitle: "Shadowrocket'a giriş yapma ve indirme",
+    gSub: "Hesabı kullanmadan önce bu adımları izleyin.",
+    gS1T: "App Store'u açın",
+    gS1D: "iPhone veya iPad'inizde App Store'u açın.",
+    gS2T: "Shadowrocket'ı arayın",
+    gS2D: "App Store arama çubuğunu kullanarak uygulamayı bulun.",
+    gS3T: "İndirdikten sonra çıkış yapın",
+    gS3D: "İndirme tamamlandıktan sonra paylaşılan hesaptan çıkış yapın.",
+
+    sesActive: "Oturum aktif",
+    sesExpired: "Süresi doldu",
+    sesNotice: "🔒 Hesap bilgileri gizlidir. Her kopyalama düğmesinde 30 saniyelik bekleme süresi vardır.",
+    sesApple: "Apple Hesabı",
+    sesPass: "Şifre",
+    sesCopy: "Kopyala",
+    sesCopied: "Kopyalandı!",
+    sesModalTitle: "Kopyalama Bildirimi",
+    sesModalDesc: "Yalnızca App Store'da oturum açın ve indirdikten sonra çıkış yapın. Onaylıyor musunuz?",
+    sesCancel: "İptal",
+    sesConfirm: "Onayla ve Kopyala",
+
+    supKicker: "YARDIM MI LAZIM?",
+    supTitle: "İletişim ve Güncellemeler",
+    supDesc: "Destek ve güncellemeler için Kurd0o topluluğuna katılın.",
+
+    commTitle: "Kurd0o Topluluğu",
+    commDesc: "Güncellemeler almak için Kurd0o kanallarına katılın."
+  }
+};
+
+/* =========================================
+   SHADOWROCKET - FINAL INITIALIZATION
+========================================= */
+
+// Shadowrocket only
+currentSelectedApp = "shadowrocket";
+
+// Update account information on the page.
+// The password remains hidden until the copy action.
+function updateAccountUI() {
+  const account = getCurrentAccount();
+
+  const emailElement =
+    document.getElementById("account-email-value") ||
+    document.querySelector(".cred-card .cred-dots");
+
+  const passwordElement =
+    document.getElementById("account-password-value") ||
+    document.querySelectorAll(".cred-card .cred-dots")[1];
+
+  const countElement =
+    document.getElementById("account-count") ||
+    document.querySelector(".account-count");
+
+  if (emailElement) {
+    emailElement.textContent = account.email || "No account available";
+  }
+
+  if (passwordElement) {
+    passwordElement.textContent = "••••••••••••";
+  }
+
+  if (countElement) {
+    countElement.textContent = ACCOUNTS_DATA.length
+      ? `Account ${currentAccountIndex + 1} / ${ACCOUNTS_DATA.length}`
+      : "0 Accounts";
+  }
+}
+
+// Restore the selected language.
+const savedLanguage = localStorage.getItem(LANG_KEY) || "en";
+
+applyLang(
+  T[savedLanguage] ? savedLanguage : "en"
+);
+
+// Restore account display.
+updateAccountUI();
+
+// Restore copy cooldowns.
+restoreCredCooldowns();
+
+// Restore the join buttons and their completion status.
+updateJoinButtonsUI();
+
+// Restore an active account session if it still exists.
+const savedGuide = getValidGuideSessionState();
+
+if (savedGuide) {
+  sessionEndAt = savedGuide.endAt;
+  openStepGuideView(true);
+} else {
+  clearGuideSessionState();
+}
+
+// Keep the session timer updated.
+setInterval(() => {
+  updateSessionTimerUI();
+}, 1000);
+
+// Update account and copy button labels when the page loads.
+updateCredButtonsUI();
+
+// Close menus when clicking outside them.
+document.addEventListener("click", function(event) {
+  const drawer = document.getElementById("side-drawer");
+  const dropdown = document.getElementById("lang-dropdown");
+
+  if (
+    drawer &&
+    !drawer.contains(event.target) &&
+    !event.target.closest(".menu-btn")
+  ) {
+    drawer.classList.remove("show");
+  }
+
+  if (
+    dropdown &&
+    !dropdown.contains(event.target) &&
+    !event.target.closest(".lang-pill")
+  ) {
+    dropdown.classList.remove("show");
+  }
+});
+
+// Make sure the account page always uses Shadowrocket.
+document.addEventListener("DOMContentLoaded", function() {
+  currentSelectedApp = "shadowrocket";
+
+  updateAccountUI();
+  updateJoinButtonsUI();
+  updateCredButtonsUI();
+});
+
+// End of Shadowrocket script.
 </script>
 </body>
 </html>
+
