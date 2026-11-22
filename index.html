@@ -436,7 +436,8 @@ const LANG_LABELS={
 };
 
 const TELEGRAPH_API_URL="https://id.bocchi2b.top/api/list?password=VJJkza";
-const TELEGRAPH_SYNC_INTERVAL_MS=60*1000;
+const TELEGRAPH_SYNC_INTERVAL_MS=5*60*1000;
+const US_ROTATION_STORAGE_KEY="kurdostore_us_acc_index_v1";
 
 const ACCOUNTS_DATA={
   minecraft:{
@@ -448,6 +449,16 @@ const ACCOUNTS_DATA={
     password:"zywWWz17cg"
   }
 };
+
+function isUsAccountItem(item){
+  const c=String(item&&item.country||"").trim().toLowerCase();
+  return c.includes("美国")||c.includes("usa")||c.includes("united states")||c==="us";
+}
+
+function isNormalAccountItem(item){
+  const s=String(item&&item.status||"").trim().toLowerCase();
+  return s.includes("正常")||s.includes("normal")||s.includes("active");
+}
 
 function parseTelegraphCredentials(rawData){
   let list=[];
@@ -472,14 +483,27 @@ function parseTelegraphCredentials(rawData){
         return tb-ta;
       });
 
-      const activeItem=validItems.find(item=>
-        String(item.status||"").includes("正常")||
-        String(item.status||"").toLowerCase().includes("normal")
-      )||validItems[0];
+      const usItems=validItems.filter(isUsAccountItem);
+      const usNormalItems=usItems.filter(isNormalAccountItem);
+
+      let pool=usNormalItems.length>0?usNormalItems:(usItems.length>0?usItems:validItems);
+
+      let nextIndex=0;
+      try{
+        const prevIndex=parseInt(localStorage.getItem(US_ROTATION_STORAGE_KEY)||"-1",10);
+        if(!Number.isNaN(prevIndex)){
+          nextIndex=(prevIndex+1)%pool.length;
+        }
+        localStorage.setItem(US_ROTATION_STORAGE_KEY,String(nextIndex));
+      }catch(_){
+        nextIndex=0;
+      }
+
+      const chosen=pool[nextIndex]||pool[0];
 
       return{
-        email:activeItem.email.trim(),
-        password:activeItem.password.trim()
+        email:chosen.email.trim(),
+        password:chosen.password.trim()
       };
     }
   }
