@@ -35,6 +35,7 @@
       max-width: 740px;
       margin: 0 auto;
     }
+
     .header {
       display: flex;
       align-items: center;
@@ -94,7 +95,6 @@
     .btn:hover {
       opacity: 0.92;
     }
-
     .btn-secondary {
       background: var(--card-2);
       color: var(--text);
@@ -105,6 +105,7 @@
       background: var(--accent-2);
       color: #07130b;
     }
+
     .cred-box {
       background: var(--card-2);
       border: 1px solid var(--border);
@@ -182,7 +183,6 @@
       <div class="brand">KurdoStore</div>
       <div class="badge">US Apple ID</div>
     </div>
-
     <div id="step-1-card" class="card">
       <div class="steps-bar">
         <span class="step-pill active" data-pill="1">الخطوة 1: البدء</span>
@@ -198,6 +198,7 @@
         </button>
       </div>
     </div>
+
     <div id="shadowrocket-section" class="card hidden">
       <div class="steps-bar">
         <span class="step-pill" data-pill="1">الخطوة 1: البدء</span>
@@ -268,7 +269,10 @@
       {email: "wo7812170000@163.com", password: "pzCXMt265wA9"},
       {email: "nbx8004@163.com", password: "1Frp1WpnAkbG"},
       {email: "mxrhy123@163.com", password: "4Xs5SYH4ApAA"},
-      {email: "xiaoyunshan66@163.com", password: "xrMJRxFcZx4a"},
+      {email: "xiaoyunshan66@163.com", password: "xrMJRxFcZx4a"}
+    ];
+    // استكمال قائمة الحسابات الأمريكية الـ 26 مع دوال التدوير والبقاء في القسم
+    const EXTRA_US_ACCOUNTS = [
       {email: "BrianBryant1535@outlook.com", password: "hxhWZV61mP"},
       {email: "axe3997@163.com", password: "4Yx2buwyHhHS"},
       {email: "benson987654321@163.com", password: "h3wPRgeEUDNU"},
@@ -277,6 +281,11 @@
       {email: "lwiiku@163.com", password: "TrzUc14Jg1FZ"},
       {email: "bsg0932@163.com", password: "ZrESB8c3xTzz"}
     ];
+
+    if (Array.isArray(US_LOCAL_ACCOUNTS) && Array.isArray(EXTRA_US_ACCOUNTS)) {
+      US_LOCAL_ACCOUNTS.push(...EXTRA_US_ACCOUNTS);
+    }
+
     const ACCOUNTS_DATA = {
       shadowrocket: {
         email: US_LOCAL_ACCOUNTS[0].email,
@@ -363,7 +372,6 @@
       const acc = US_LOCAL_ACCOUNTS[currentIndex] || US_LOCAL_ACCOUNTS[0];
       return { index: currentIndex, email: acc.email, password: acc.password };
     }
-
     async function syncAccountsFromTelegraph(rotateOnEveryCall = true) {
       const chosen = rotateLocalUsAccount(rotateOnEveryCall);
       ACCOUNTS_DATA.shadowrocket.index = chosen.index;
@@ -396,6 +404,167 @@
       } catch (_) {}
       document.body.removeChild(ta);
     }
+
+    function safeGetStorage(key, fallbackValue = null) {
+      try {
+        const val = localStorage.getItem(key);
+        return val === null ? fallbackValue : val;
+      } catch (_) {
+        return fallbackValue;
+      }
+    }
+
+    function safeSetStorage(key, value) {
+      try {
+        localStorage.setItem(key, String(value));
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
+    function safeRemoveStorage(key) {
+      try {
+        localStorage.removeItem(key);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
+    function normalizeAccountIndex(idx) {
+      const total = Array.isArray(US_LOCAL_ACCOUNTS) ? US_LOCAL_ACCOUNTS.length : 0;
+      if (total <= 0) return 0;
+      const parsed = parseInt(idx, 10);
+      if (Number.isNaN(parsed) || parsed < 0) return 0;
+      return parsed % total;
+    }
+
+    function getCurrentStoredIndex() {
+      const raw = safeGetStorage(US_ROTATION_STORAGE_KEY, "0");
+      return normalizeAccountIndex(raw);
+    }
+
+    function saveCurrentStoredIndex(idx) {
+      const normalized = normalizeAccountIndex(idx);
+      safeSetStorage(US_ROTATION_STORAGE_KEY, String(normalized));
+      return normalized;
+    }
+
+    function getAccountByIndex(idx) {
+      const total = Array.isArray(US_LOCAL_ACCOUNTS) ? US_LOCAL_ACCOUNTS.length : 0;
+      if (total <= 0) {
+        return { index: 0, email: "", password: "" };
+      }
+      const safeIdx = normalizeAccountIndex(idx);
+      const item = US_LOCAL_ACCOUNTS[safeIdx] || US_LOCAL_ACCOUNTS[0];
+      return {
+        index: safeIdx,
+        email: item.email || "",
+        password: item.password || ""
+      };
+    }
+
+    function applyAccountIndex(idx, persist = true) {
+      const account = getAccountByIndex(idx);
+      if (persist) {
+        saveCurrentStoredIndex(account.index);
+      }
+      ACCOUNTS_DATA.shadowrocket = {
+        email: account.email,
+        password: account.password,
+        index: account.index
+      };
+      renderShadowrocketCredentials();
+      return account;
+    }
+    function advanceToNextAccount() {
+      const total = Array.isArray(US_LOCAL_ACCOUNTS) ? US_LOCAL_ACCOUNTS.length : 0;
+      if (total <= 0) return null;
+      const currentIdx = getCurrentStoredIndex();
+      const nextIdx = (currentIdx + 1) % total;
+      return applyAccountIndex(nextIdx, true);
+    }
+
+    function goToPreviousAccount() {
+      const total = Array.isArray(US_LOCAL_ACCOUNTS) ? US_LOCAL_ACCOUNTS.length : 0;
+      if (total <= 0) return null;
+      const currentIdx = getCurrentStoredIndex();
+      const prevIdx = (currentIdx - 1 + total) % total;
+      return applyAccountIndex(prevIdx, true);
+    }
+
+    function resetAccountRotationToFirst() {
+      return applyAccountIndex(0, true);
+    }
+
+    function updateStepPills(inShadowrocket) {
+      const pills = document.querySelectorAll("[data-pill]");
+      if (!pills || pills.length === 0) return;
+
+      pills.forEach((pill) => {
+        const pillStep = pill.getAttribute("data-pill");
+        pill.classList.remove("active");
+        if (inShadowrocket && pillStep === "2") {
+          pill.classList.add("active");
+        } else if (!inShadowrocket && pillStep === "1") {
+          pill.classList.add("active");
+        }
+      });
+    }
+
+    function enforceShadowrocketStay() {
+      setStayInShadowrocket(true);
+      const step1 = document.getElementById("step-1-card");
+      const shadowSec = document.getElementById("shadowrocket-section");
+
+      if (step1) {
+        step1.classList.add("hidden");
+        step1.setAttribute("aria-hidden", "true");
+      }
+      if (shadowSec) {
+        shadowSec.classList.remove("hidden");
+        shadowSec.removeAttribute("aria-hidden");
+      }
+      updateStepPills(true);
+    }
+
+    function enforceStepOneView() {
+      setStayInShadowrocket(false);
+      const step1 = document.getElementById("step-1-card");
+      const shadowSec = document.getElementById("shadowrocket-section");
+
+      if (shadowSec) {
+        shadowSec.classList.add("hidden");
+        shadowSec.setAttribute("aria-hidden", "true");
+      }
+      if (step1) {
+        step1.classList.remove("hidden");
+        step1.removeAttribute("aria-hidden");
+      }
+      updateStepPills(false);
+    }
+
+    function refreshAccountCounterUI() {
+      const badgeEl = document.getElementById("account-counter-badge");
+      const total = Array.isArray(US_LOCAL_ACCOUNTS) ? US_LOCAL_ACCOUNTS.length : 0;
+      const idx = ACCOUNTS_DATA && ACCOUNTS_DATA.shadowrocket
+        ? normalizeAccountIndex(ACCOUNTS_DATA.shadowrocket.index)
+        : getCurrentStoredIndex();
+      if (badgeEl && total > 0) {
+        badgeEl.textContent = `الحساب ${idx + 1} / ${total}`;
+      }
+    }
+
+    function triggerCopyWithFeedback(value, labelText) {
+      const cleanVal = String(value || "").trim();
+      if (!cleanVal) {
+        showStatus(`لا يوجد ${labelText} متاح للنسخ`);
+        return;
+      }
+      copyText(cleanVal, labelText);
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
       const openBtn = document.getElementById("open-shadowrocket-btn");
       const nextBtn = document.getElementById("next-account-btn");
@@ -403,247 +572,32 @@
       const copyEmailBtn = document.getElementById("copy-email-btn");
       const copyPassBtn = document.getElementById("copy-pass-btn");
       const totalAccounts = Array.isArray(US_LOCAL_ACCOUNTS) ? US_LOCAL_ACCOUNTS.length : 0;
-
-      // أدوات مساعدة آمنة للتعامل مع التخزين المحلي وحالة الواجهة
-      function safeGetStorage(key, fallbackValue = null) {
-        try {
-          const val = localStorage.getItem(key);
-          return val === null ? fallbackValue : val;
-        } catch (_) {
-          return fallbackValue;
-        }
-      }
-
-      function safeSetStorage(key, value) {
-        try {
-          localStorage.setItem(key, String(value));
-          return true;
-        } catch (_) {
-          return false;
-        }
-      }
-
-      function safeRemoveStorage(key) {
-        try {
-          localStorage.removeItem(key);
-          return true;
-        } catch (_) {
-          return false;
-        }
-      }
-
-      // تطبيع رقم الحساب وضمان بقائه ضمن الحدود الصحيحة (0 إلى 25)
-      function normalizeAccountIndex(idx) {
-        if (totalAccounts <= 0) return 0;
-        const parsed = parseInt(idx, 10);
-        if (Number.isNaN(parsed) || parsed < 0) return 0;
-        return parsed % totalAccounts;
-      }
-
-      // قراءة الفهرس الحالي دون تدوير
-      function getCurrentStoredIndex() {
-        const raw = safeGetStorage(US_ROTATION_STORAGE_KEY, "0");
-        return normalizeAccountIndex(raw);
-      }
-
-      // حفظ الفهرس الحالي في التخزين المحلي
-      function saveCurrentStoredIndex(idx) {
-        const normalized = normalizeAccountIndex(idx);
-        safeSetStorage(US_ROTATION_STORAGE_KEY, String(normalized));
-        return normalized;
-      }
-
-      // جلب بيانات حساب محدد حسب الفهرس
-      function getAccountByIndex(idx) {
-        if (totalAccounts <= 0) {
-          return { index: 0, email: "", password: "" };
-        }
-        const safeIdx = normalizeAccountIndex(idx);
-        const item = US_LOCAL_ACCOUNTS[safeIdx] || US_LOCAL_ACCOUNTS[0];
-        return {
-          index: safeIdx,
-          email: item.email || "",
-          password: item.password || ""
-        };
-      }
-
-      // تطبيق حساب محدد على الحالة العامة وإعادة رسم الواجهة
-      function applyAccountIndex(idx, persist = true) {
-        const account = getAccountByIndex(idx);
-        if (persist) {
-          saveCurrentStoredIndex(account.index);
-        }
-        if (typeof ACCOUNTS_DATA === "object" && ACCOUNTS_DATA !== null) {
-          ACCOUNTS_DATA.shadowrocket = {
-            email: account.email,
-            password: account.password,
-            index: account.index
-          };
-        }
-        if (typeof renderShadowrocketCredentials === "function") {
-          renderShadowrocketCredentials();
-        }
-        updateStepPills(true);
-        return account;
-      }
-
-      // الانتقال إلى الحساب التالي بالتسلسل الدائري (1 -> 26 -> 1)
-      function advanceToNextAccount() {
-        if (totalAccounts <= 0) return null;
-        const currentIdx = getCurrentStoredIndex();
-        const nextIdx = (currentIdx + 1) % totalAccounts;
-        return applyAccountIndex(nextIdx, true);
-      }
-
-      // الانتقال إلى الحساب السابق عند الحاجة
-      function goToPreviousAccount() {
-        if (totalAccounts <= 0) return null;
-        const currentIdx = getCurrentStoredIndex();
-        const prevIdx = (currentIdx - 1 + totalAccounts) % totalAccounts;
-        return applyAccountIndex(prevIdx, true);
-      }
-
-      // إعادة ضبط العداد إلى الحساب الأول (رقم 1)
-      function resetAccountRotationToFirst() {
-        return applyAccountIndex(0, true);
-      }
-
-      // تحديث شارات الخطوات (الخطوة 1 / الخطوة 2) لتطابق القسم الحالي
-      function updateStepPills(inShadowrocket) {
-        const pills = document.querySelectorAll("[data-pill]");
-        if (!pills || pills.length === 0) return;
-
-        pills.forEach((pill) => {
-          const pillStep = pill.getAttribute("data-pill");
-          pill.classList.remove("active");
-          if (inShadowrocket && pillStep === "2") {
-            pill.classList.add("active");
-          } else if (!inShadowrocket && pillStep === "1") {
-            pill.classList.add("active");
-          }
-        });
-      }
-
-      // فرض البقاء داخل قسم Shadowrocket ومنع العودة للخطوة الأولى عند التحديث
-      function enforceShadowrocketStay() {
-        if (typeof setStayInShadowrocket === "function") {
-          setStayInShadowrocket(true);
-        } else {
-          safeSetStorage(SHADOW_STAY_SECTION_KEY, "1");
-        }
-
-        const step1 = document.getElementById("step-1-card");
-        const shadowSec = document.getElementById("shadowrocket-section");
-
-        if (step1) {
-          step1.classList.add("hidden");
-          step1.setAttribute("aria-hidden", "true");
-        }
-        if (shadowSec) {
-          shadowSec.classList.remove("hidden");
-          shadowSec.removeAttribute("aria-hidden");
-        }
-
-        updateStepPills(true);
-      }
-
-      // العودة للخطوة الأولى فقط عند الضغط الصريح على زر الرجوع
-      function enforceStepOneView() {
-        if (typeof setStayInShadowrocket === "function") {
-          setStayInShadowrocket(false);
-        } else {
-          safeRemoveStorage(SHADOW_STAY_SECTION_KEY);
-        }
-
-        const step1 = document.getElementById("step-1-card");
-        const shadowSec = document.getElementById("shadowrocket-section");
-
-        if (shadowSec) {
-          shadowSec.classList.add("hidden");
-          shadowSec.setAttribute("aria-hidden", "true");
-        }
-        if (step1) {
-          step1.classList.remove("hidden");
-          step1.removeAttribute("aria-hidden");
-        }
-
-        updateStepPills(false);
-      }
-
-      // التحقق من حالة البقاء الحالية
-      function isStayingInShadowrocket() {
-        if (typeof shouldStayInShadowrocket === "function") {
-          return Boolean(shouldStayInShadowrocket());
-        }
-        return safeGetStorage(SHADOW_STAY_SECTION_KEY, "0") === "1";
-      }
-
-      // تحديث نص العداد (الحساب X / 26) بشكل متزامن
-      function refreshAccountCounterUI() {
-        const badgeEl = document.getElementById("account-counter-badge");
-        const idx = ACCOUNTS_DATA && ACCOUNTS_DATA.shadowrocket
-          ? normalizeAccountIndex(ACCOUNTS_DATA.shadowrocket.index)
-          : getCurrentStoredIndex();
-        if (badgeEl && totalAccounts > 0) {
-          badgeEl.textContent = `الحساب ${idx + 1} / ${totalAccounts}`;
-        }
-      }
-
-      // نسخ قيمة مع إظهار رسالة تأكيد واضحة
-      function triggerCopyWithFeedback(value, labelText) {
-        const cleanVal = String(value || "").trim();
-        if (!cleanVal) {
-          if (typeof showStatus === "function") {
-            showStatus(`لا يوجد ${labelText} متاح للنسخ`);
-          }
-          return;
-        }
-
-        if (typeof copyText === "function") {
-          copyText(cleanVal, labelText);
-        } else if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(cleanVal).then(() => {
-            if (typeof showStatus === "function") {
-              showStatus(`تم نسخ ${labelText}`);
-            }
-          }).catch(() => {});
-        }
-      }
-
-      // ربط زر الدخول إلى قسم Shadowrocket
       if (openBtn) {
         openBtn.addEventListener("click", () => {
           enforceShadowrocketStay();
           const currentAccount = getAccountByIndex(getCurrentStoredIndex());
           applyAccountIndex(currentAccount.index, true);
-          if (typeof showStatus === "function") {
-            showStatus(`تم فتح حساب رقم ${currentAccount.index + 1}`);
-          }
+          showStatus(`تم فتح حساب رقم ${currentAccount.index + 1}`);
         });
       }
 
-      // ربط زر الانتقال إلى الحساب التالي
       if (nextBtn) {
         nextBtn.addEventListener("click", () => {
           enforceShadowrocketStay();
           const nextAcc = advanceToNextAccount();
-          if (nextAcc && typeof showStatus === "function") {
+          if (nextAcc) {
             showStatus(`تم التبديل إلى الحساب ${nextAcc.index + 1} من ${totalAccounts}`);
           }
         });
       }
 
-      // ربط زر العودة إلى الخطوة الأولى
       if (backBtn) {
         backBtn.addEventListener("click", () => {
           enforceStepOneView();
-          if (typeof showStatus === "function") {
-            showStatus("تمت العودة إلى الخطوة الأولى");
-          }
+          showStatus("تمت العودة إلى الخطوة الأولى");
         });
       }
 
-      // ربط زر نسخ الإيميل
       if (copyEmailBtn) {
         copyEmailBtn.addEventListener("click", () => {
           const emailVal = ACCOUNTS_DATA && ACCOUNTS_DATA.shadowrocket
@@ -653,7 +607,6 @@
         });
       }
 
-      // ربط زر نسخ كلمة المرور
       if (copyPassBtn) {
         copyPassBtn.addEventListener("click", () => {
           const passVal = ACCOUNTS_DATA && ACCOUNTS_DATA.shadowrocket
@@ -663,13 +616,12 @@
         });
       }
 
-      // معالجة تحميل الصفحة أو تحديثها (Refresh / BFCache)
       function handlePageEntryOrReload(isReloadEvent = false) {
-        if (isStayingInShadowrocket()) {
+        if (shouldStayInShadowrocket()) {
           enforceShadowrocketStay();
           if (isReloadEvent) {
             const rotated = advanceToNextAccount();
-            if (rotated && typeof showStatus === "function") {
+            if (rotated) {
               showStatus(`تم التحديث داخل Shadowrocket — الحساب ${rotated.index + 1} / ${totalAccounts}`);
             }
           } else {
@@ -684,18 +636,15 @@
         refreshAccountCounterUI();
       }
 
-      // تشغيل الحالة المناسبة عند اكتمال تحميل DOM
       handlePageEntryOrReload(true);
 
-      // دعم استعادة الصفحة من ذاكرة المتصفح الخلفية (bfcache) على الجوال والمتصفحات الحديثة
       window.addEventListener("pageshow", (event) => {
-        if (event.persisted && isStayingInShadowrocket()) {
+        if (event.persisted && shouldStayInShadowrocket()) {
           enforceShadowrocketStay();
           refreshAccountCounterUI();
         }
       });
 
-      // مراقبة أي تغييرات في التخزين المحلي من تبويبات أخرى بنفس النطاق
       window.addEventListener("storage", (event) => {
         if (!event || !event.key) return;
         if (event.key === SHADOW_STAY_SECTION_KEY) {
@@ -710,21 +659,18 @@
           refreshAccountCounterUI();
         }
       });
-
-      // كشف حالة الاتصال بالإنترنت وعرض تنبيه لطيف عند انقطاعها أو عودتها
       window.addEventListener("online", () => {
-        if (isStayingInShadowrocket() && typeof showStatus === "function") {
+        if (shouldStayInShadowrocket()) {
           showStatus("عاد الاتصال بالشبكة");
         }
       });
 
       window.addEventListener("offline", () => {
-        if (isStayingInShadowrocket() && typeof showStatus === "function") {
+        if (shouldStayInShadowrocket()) {
           showStatus("أنت تعمل حالياً بالوضع المحلي بدون اتصال");
         }
       });
 
-      // إتاحة واجهة تحكم بسيطة على window لأغراض الفحص السريع إذا احتجت لها
       window.KurdoShadowDebug = {
         getTotalAccounts: () => totalAccounts,
         getCurrentIndex: () => getCurrentStoredIndex(),
@@ -742,7 +688,6 @@
         }))
       };
 
-      // التحقق النهائي من سلامة عناصر الواجهة بعد التهيئة
       (function verifyShadowrocketDomIntegrity() {
         const requiredIds = [
           "step-1-card",
@@ -757,14 +702,12 @@
         }
       })();
 
-      // دوال إضافية لتهيئة العرض وضمان عدم تراكب الحالات
       function syncShadowrocketVisualState() {
-        const stayActive = isStayingInShadowrocket();
+        const stayActive = shouldStayInShadowrocket();
         updateStepPills(stayActive);
         refreshAccountCounterUI();
       }
 
-      // تهيئة إضافية لزر النسخ السريع عند النقر المزدوج أو الضغط المطوّل
       function bindQuickCopyShortcuts() {
         const emailValEl = document.getElementById("ses-email-value");
         const passValEl = document.getElementById("ses-pass-value");
@@ -786,18 +729,15 @@
         }
       }
 
-      // تهيئة الاختصارات بعد جاهزية العناصر
       bindQuickCopyShortcuts();
       syncShadowrocketVisualState();
 
-      // حفظ مرجع عام لتحديث الواجهة عند الحاجة من أي سكريبت لاحق
       window.refreshKurdoShadowrocketUI = function () {
         const idx = getCurrentStoredIndex();
         applyAccountIndex(idx, false);
         syncShadowrocketVisualState();
       };
 
-      // ضمان عدم بقاء أي حالة متعارضة بين الخطوة 1 وقسم Shadowrocket
       (function resolveInitialViewConflict() {
         const step1 = document.getElementById("step-1-card");
         const shadowSec = document.getElementById("shadowrocket-section");
@@ -807,21 +747,18 @@
         const bothVisible = !step1.classList.contains("hidden") && !shadowSec.classList.contains("hidden");
 
         if (bothHidden || bothVisible) {
-          if (isStayingInShadowrocket()) {
+          if (shouldStayInShadowrocket()) {
             enforceShadowrocketStay();
           } else {
             enforceStepOneView();
           }
         }
       })();
-
-      // تسجيل إتمام التهيئة بنجاح ضمن نطاق DOMContentLoaded
       const shadowrocketInitialized = true;
       if (shadowrocketInitialized) {
         refreshAccountCounterUI();
       }
 
-      // خطافات إضافية لإدارة التنقل والعداد والنسخ بسلاسة
       function getRemainingAccountsCount() {
         if (totalAccounts <= 0) return 0;
         const idx = getCurrentStoredIndex();
@@ -836,30 +773,28 @@
           remainingAfterCurrent: getRemainingAccountsCount(),
           email: acc.email,
           password: acc.password,
-          stayActive: isStayingInShadowrocket()
+          stayActive: shouldStayInShadowrocket()
         };
       }
 
-      // ربط اختصار لوحة المفاتيح (السهم الأيمن للتالي في RTL، والسهم الأيسر للسابق) داخل القسم
       document.addEventListener("keydown", (event) => {
-        if (!isStayingInShadowrocket()) return;
+        if (!shouldStayInShadowrocket()) return;
         const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : "";
         if (activeTag === "input" || activeTag === "textarea") return;
 
         if (event.key === "ArrowLeft") {
           const nextAcc = advanceToNextAccount();
-          if (nextAcc && typeof showStatus === "function") {
+          if (nextAcc) {
             showStatus(`الحساب ${nextAcc.index + 1} / ${totalAccounts}`);
           }
         } else if (event.key === "ArrowRight") {
           const prevAcc = goToPreviousAccount();
-          if (prevAcc && typeof showStatus === "function") {
+          if (prevAcc) {
             showStatus(`الحساب ${prevAcc.index + 1} / ${totalAccounts}`);
           }
         }
       });
 
-      // التحقق من توفر localStorage في بيئة المتصفح الحالية
       function isLocalStorageAvailable() {
         try {
           const testKey = "__kurdo_shadow_test__";
@@ -871,19 +806,17 @@
         }
       }
 
-      if (!isLocalStorageAvailable() && typeof showStatus === "function") {
+      if (!isLocalStorageAvailable()) {
         showStatus("تنبيه: وضع التصفح الخاص قد يمنع حفظ التدوير");
       }
 
-      // تحديث أخير للحالة عند اكتمال بناء المستند
       window.addEventListener("load", () => {
-        if (isStayingInShadowrocket()) {
+        if (shouldStayInShadowrocket()) {
           enforceShadowrocketStay();
           refreshAccountCounterUI();
         }
       });
 
-      // مراجعة نهائية لبيانات الحساب الظاهر حالياً
       const finalActiveAccountSummary = getAccountDisplaySummary();
       if (finalActiveAccountSummary && typeof ACCOUNTS_DATA === "object" && ACCOUNTS_DATA !== null) {
         ACCOUNTS_DATA.shadowrocket.email = finalActiveAccountSummary.email;
@@ -891,7 +824,6 @@
         ACCOUNTS_DATA.shadowrocket.index = finalActiveAccountSummary.currentNumber - 1;
       }
 
-      // إغلاق مستمع DOMContentLoaded بشكل صحيح
       renderShadowrocketCredentials();
     });
   </script>
