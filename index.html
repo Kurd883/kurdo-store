@@ -49,12 +49,12 @@ h1 {
     background: #202d40;
     border: 1px solid #e0a832;
     border-radius: 14px;
-    padding: 17px 12px;
+    padding: 18px 12px;
     margin-bottom: 25px;
 }
 
 .update-icon {
-    font-size: 32px;
+    font-size: 34px;
     margin-bottom: 12px;
     display: inline-block;
     animation: rotate 3s linear infinite;
@@ -71,17 +71,40 @@ h1 {
     margin: 4px 0;
 }
 
-.english {
-    color: #f5c75e;
-}
-
-.arabic {
-    direction: rtl;
-}
-
+.english { color: #f5c75e; }
+.arabic { direction: rtl; }
 .kurdish {
     direction: rtl;
     color: #9dd6ff;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    margin: 18px 0 8px;
+}
+
+.time-box {
+    background: #0d1728;
+    border: 1px solid #344963;
+    border-radius: 10px;
+    min-width: 65px;
+    padding: 10px 5px;
+}
+
+.time-box strong {
+    display: block;
+    font-size: 23px;
+    color: #f5c75e;
+    font-variant-numeric: tabular-nums;
+}
+
+.time-box span {
+    display: block;
+    font-size: 10px;
+    color: #aabbd1;
+    margin-top: 5px;
 }
 
 .section-title {
@@ -110,22 +133,13 @@ a:active {
     opacity: .8;
 }
 
-.telegram {
-    background: #168bd2;
-}
-
-.discord {
-    background: #5865f2;
-}
-
+.telegram { background: #168bd2; }
+.discord { background: #5865f2; }
 .buy {
     background: #159c68;
     margin-top: 22px;
 }
-
-.refresh {
-    background: #34445d;
-}
+.refresh { background: #34445d; }
 
 .footer {
     color: #7589a5;
@@ -140,7 +154,6 @@ a:active {
 <div class="container">
 
     <div class="logo">🚀</div>
-
     <h1>Shadowrocket Accounts</h1>
 
     <div class="notice">
@@ -148,39 +161,60 @@ a:active {
         <div class="update-icon">🔄</div>
 
         <p class="english">
-            The website will be updated in 68 hours.
+            The website will be updated in:
         </p>
 
         <p class="arabic">
-            سيتم تحديث الموقع بعد 68 ساعة.
+            سيتم تحديث الموقع بعد:
         </p>
 
         <p class="kurdish">
-            مالپەڕ دێ پشتی ٦٨ دەمژمێران نوو ببیتەوە.
+            مالپەڕ دێ پشتی ئەڤ ماوەیێ نوو ببیتەوە:
+        </p>
+
+        <div class="countdown">
+            <div class="time-box">
+                <strong id="hours">68</strong>
+                <span>HOURS</span>
+            </div>
+
+            <div class="time-box">
+                <strong id="minutes">00</strong>
+                <span>MINUTES</span>
+            </div>
+
+            <div class="time-box">
+                <strong id="seconds">00</strong>
+                <span>SECONDS</span>
+            </div>
+        </div>
+
+        <p id="finished" style="display:none;color:#65e6a3;">
+            Update time has arrived!
+            <br>
+            حان موعد تحديث الموقع!
+            <br>
+            دەمێ نووکرنێ هات!
         </p>
 
     </div>
 
     <div class="section-title">TELEGRAM CHANNELS</div>
 
-    <a class="telegram"
-       href="https://t.me/Kurd0o1" target="_blank">
-       Telegram Channel 01
+    <a class="telegram" href="https://t.me/Kurd0o1" target="_blank">
+        Telegram Channel 01
     </a>
 
-    <a class="telegram"
-       href="https://t.me/Kurd0o2" target="_blank">
-       Telegram Channel 02
+    <a class="telegram" href="https://t.me/Kurd0o2" target="_blank">
+        Telegram Channel 02
     </a>
 
-    <a class="telegram"
-       href="https://t.me/Kurd0o3" target="_blank">
-       Telegram Channel 03
+    <a class="telegram" href="https://t.me/Kurd0o3" target="_blank">
+        Telegram Channel 03
     </a>
 
-    <a class="telegram"
-       href="https://t.me/Kurd0o4" target="_blank">
-       Telegram Channel 04
+    <a class="telegram" href="https://t.me/Kurd0o4" target="_blank">
+        Telegram Channel 04
     </a>
 
     <div class="section-title">DISCORD COMMUNITY</div>
@@ -207,6 +241,45 @@ a:active {
     </div>
 
 </div>
+
+<script>
+const STORAGE_KEY = "shadowrocket_update_deadline";
+const DURATION = 68 * 60 * 60 * 1000;
+
+// Save the deadline only on the first visit.
+let deadline = localStorage.getItem(STORAGE_KEY);
+
+if (!deadline) {
+    deadline = Date.now() + DURATION;
+    localStorage.setItem(STORAGE_KEY, deadline);
+} else {
+    deadline = Number(deadline);
+}
+
+function updateCountdown() {
+    const remaining = Math.max(0, deadline - Date.now());
+
+    const hours = Math.floor(remaining / 3600000);
+    const minutes = Math.floor((remaining % 3600000) / 60000);
+    const seconds = Math.floor((remaining % 60000) / 1000);
+
+    document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
+
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
+
+    document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
+
+    if (remaining <= 0) {
+        document.getElementById("finished").style.display = "block";
+    }
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
 
 </body>
 </html>
