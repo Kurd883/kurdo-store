@@ -15,7 +15,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #090d16;
+    background: #080d18;
     color: white;
     min-height: 100vh;
     display: flex;
@@ -26,49 +26,88 @@ body {
 
 .container {
     width: 100%;
-    max-width: 420px;
-    background: #121a29;
-    border: 1px solid #263650;
-    border-radius: 20px;
-    padding: 28px 22px;
+    max-width: 430px;
+    background: #121c2d;
+    border: 1px solid #263c59;
+    border-radius: 22px;
+    padding: 25px 20px;
     text-align: center;
+    box-shadow: 0 10px 40px #0008;
 }
 
 .logo {
-    font-size: 42px;
-    margin-bottom: 12px;
+    font-size: 48px;
+    margin-bottom: 10px;
 }
 
 h1 {
     font-size: 25px;
-    margin-bottom: 8px;
+    margin-bottom: 20px;
 }
 
-.subtitle {
-    color: #9baac0;
-    font-size: 14px;
+.notice {
+    background: #202d40;
+    border: 1px solid #e0a832;
+    border-radius: 14px;
+    padding: 17px 12px;
     margin-bottom: 25px;
+}
+
+.update-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    display: inline-block;
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.notice p {
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 4px 0;
+}
+
+.english {
+    color: #f5c75e;
+}
+
+.arabic {
+    direction: rtl;
+}
+
+.kurdish {
+    direction: rtl;
+    color: #9dd6ff;
 }
 
 .section-title {
     text-align: left;
-    color: #8fa5c5;
-    font-size: 13px;
-    margin: 20px 0 12px;
+    font-size: 12px;
+    color: #91a6c4;
+    margin: 22px 0 12px;
+    letter-spacing: 1px;
 }
 
-a, button {
+a {
     display: block;
     width: 100%;
     padding: 15px;
     margin-bottom: 11px;
-    border: none;
     border-radius: 11px;
     text-decoration: none;
+    color: white;
     font-size: 15px;
     font-weight: bold;
-    cursor: pointer;
-    color: white;
+    transition: .2s;
+}
+
+a:active {
+    transform: scale(.97);
+    opacity: .8;
 }
 
 .telegram {
@@ -80,23 +119,18 @@ a, button {
 }
 
 .buy {
-    background: #16a36a;
-    margin-top: 20px;
+    background: #159c68;
+    margin-top: 22px;
 }
 
 .refresh {
     background: #34445d;
 }
 
-a:active, button:active {
-    opacity: .75;
-    transform: scale(.98);
-}
-
 .footer {
-    color: #71829c;
+    color: #7589a5;
     font-size: 11px;
-    margin-top: 18px;
+    margin-top: 20px;
 }
 </style>
 </head>
@@ -109,43 +143,64 @@ a:active, button:active {
 
     <h1>Shadowrocket Accounts</h1>
 
-    <p class="subtitle">
-        Join our community and get access to updates.
-    </p>
+    <div class="notice">
+
+        <div class="update-icon">🔄</div>
+
+        <p class="english">
+            The website will be updated in 68 hours.
+        </p>
+
+        <p class="arabic">
+            سيتم تحديث الموقع بعد 68 ساعة.
+        </p>
+
+        <p class="kurdish">
+            مالپەڕ دێ پشتی ٦٨ دەمژمێران نوو ببیتەوە.
+        </p>
+
+    </div>
 
     <div class="section-title">TELEGRAM CHANNELS</div>
 
-    <a class="telegram" href="CHANNEL_LINK_1" target="_blank">
-        Telegram Channel 01
+    <a class="telegram"
+       href="https://t.me/Kurd0o1" target="_blank">
+       Telegram Channel 01
     </a>
 
-    <a class="telegram" href="CHANNEL_LINK_2" target="_blank">
-        Telegram Channel 02
+    <a class="telegram"
+       href="https://t.me/Kurd0o2" target="_blank">
+       Telegram Channel 02
     </a>
 
-    <a class="telegram" href="CHANNEL_LINK_3" target="_blank">
-        Telegram Channel 03
+    <a class="telegram"
+       href="https://t.me/Kurd0o3" target="_blank">
+       Telegram Channel 03
     </a>
 
-    <a class="telegram" href="CHANNEL_LINK_4" target="_blank">
-        Telegram Channel 04
+    <a class="telegram"
+       href="https://t.me/Kurd0o4" target="_blank">
+       Telegram Channel 04
     </a>
 
-    <div class="section-title">COMMUNITY</div>
+    <div class="section-title">DISCORD COMMUNITY</div>
 
-    <a class="discord" href="DISCORD_INVITE_LINK" target="_blank">
-        Join Discord
+    <a class="discord"
+       href="https://discord.gg/gtGpAqFbA"
+       target="_blank">
+       Join Our Discord
     </a>
 
     <a class="buy"
        href="https://kurd3.github.io/KurdoAccounts/"
        target="_blank">
-        🛒 Buy Accounts
+       🛒 Buy Accounts
     </a>
 
-    <button class="refresh" onclick="location.reload()">
-        ↻ Refresh Website
-    </button>
+    <a class="refresh"
+       href="https://kurd3.github.io/KurdoAccounts/">
+       🔄 Refresh / Update Website
+    </a>
 
     <div class="footer">
         Shadowrocket Accounts © 2026
